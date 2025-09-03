@@ -173,7 +173,7 @@ export default async function BlogPage() {
                     
                     <h2 className="text-xl font-bold text-black mb-3 line-clamp-2">
                       <Link
-                        href={`/${post.slug}`}
+                        href={`/blog/${post.slug}`}
                         className="hover:text-primary-500 transition-colors"
                       >
                         {post.title.rendered}
@@ -191,7 +191,7 @@ export default async function BlogPage() {
                         {getReadingTime(post.content.rendered)} min read
                       </span>
                       <Link
-                        href={`/${post.slug}`}
+                        href={`/blog/${post.slug}`}
                         className="inline-flex items-center px-4 py-2 bg-primary-500 text-white text-sm font-medium rounded-lg hover:bg-primary-600 transition-colors"
                       >
                         Read More

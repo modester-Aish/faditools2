@@ -250,97 +250,17 @@ export default async function Home() {
       {/* Why Choose FadiTools Section */}
       <WhyChooseSection />
 
-      {/* Beautiful Wide Animated Separator - Products to Popular Tools */}
-      <div className="py-12 relative">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-center">
-            <div className="w-56 h-0.5 bg-gradient-to-r from-transparent via-primary-500/40 to-primary-500 animate-pulse"></div>
-            <div className="mx-6 w-5 h-5 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full animate-bounce shadow-lg ring-2 ring-primary-500/30"></div>
-            <div className="w-56 h-0.5 bg-gradient-to-r from-primary-500 via-primary-500/40 to-transparent animate-pulse"></div>
-          </div>
-          <div className="flex items-center justify-center mt-3">
-            <div className="w-28 h-0.5 bg-gradient-to-r from-transparent via-primary-500/25 to-transparent animate-pulse" style={{animationDelay: '0.6s'}}></div>
-            <div className="mx-4 w-2.5 h-2.5 bg-primary-500/70 rounded-full animate-ping"></div>
-            <div className="w-28 h-0.5 bg-gradient-to-r from-transparent via-primary-500/25 to-transparent animate-pulse" style={{animationDelay: '1.2s'}}></div>
-          </div>
-        </div>
-      </div>
-
       {/* Product Categories Section */}
       {categories.length > 0 && <CategorySection categories={categories} products={products} />}
-
-      {/* Beautiful Wide Animated Separator - Popular Tools to Fixed Packs */}
-      <div className="py-12 relative">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-center">
-            <div className="w-60 h-0.5 bg-gradient-to-r from-transparent via-primary-500/35 to-primary-500 animate-pulse"></div>
-            <div className="mx-6 w-5 h-5 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full animate-bounce shadow-lg ring-2 ring-primary-500/25"></div>
-            <div className="w-60 h-0.5 bg-gradient-to-r from-primary-500 via-primary-500/35 to-transparent animate-pulse"></div>
-          </div>
-          <div className="flex items-center justify-center mt-3">
-            <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary-500/30 to-transparent animate-pulse" style={{animationDelay: '0.7s'}}></div>
-            <div className="mx-4 w-2.5 h-2.5 bg-primary-500/65 rounded-full animate-ping"></div>
-            <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary-500/30 to-transparent animate-pulse" style={{animationDelay: '1.4s'}}></div>
-          </div>
-        </div>
-      </div>
 
       {/* Popular Tools Section */}
       <PopularToolsSection />
 
-      {/* Beautiful Wide Animated Separator - Popular Tools to Tools Packages */}
-      <div className="py-12 relative">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-center">
-            <div className="w-60 h-0.5 bg-gradient-to-r from-transparent via-primary-500/35 to-primary-500 animate-pulse"></div>
-            <div className="mx-6 w-5 h-5 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full animate-bounce shadow-lg ring-2 ring-primary-500/25"></div>
-            <div className="w-60 h-0.5 bg-gradient-to-r from-primary-500 via-primary-500/35 to-transparent animate-pulse"></div>
-          </div>
-          <div className="flex items-center justify-center mt-3">
-            <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary-500/30 to-transparent animate-pulse" style={{animationDelay: '0.7s'}}></div>
-            <div className="mx-4 w-2.5 h-2.5 bg-primary-500/65 rounded-full animate-ping"></div>
-            <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary-500/30 to-transparent animate-pulse" style={{animationDelay: '1.4s'}}></div>
-          </div>
-        </div>
-      </div>
-
       {/* Tools Packages Section */}
       <ToolsPackagesSection />
 
-      {/* Beautiful Wide Animated Separator - Tools Packages to Custom Pack */}
-      <div className="py-12 relative">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-center">
-            <div className="w-60 h-0.5 bg-gradient-to-r from-transparent via-primary-500/35 to-primary-500 animate-pulse"></div>
-            <div className="mx-6 w-5 h-5 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full animate-bounce shadow-lg ring-2 ring-primary-500/25"></div>
-            <div className="w-60 h-0.5 bg-gradient-to-r from-primary-500 via-primary-500/35 to-transparent animate-pulse"></div>
-          </div>
-          <div className="flex items-center justify-center mt-3">
-            <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary-500/30 to-transparent animate-pulse" style={{animationDelay: '0.7s'}}></div>
-            <div className="mx-4 w-2.5 h-2.5 bg-primary-500/65 rounded-full animate-ping"></div>
-            <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary-500/30 to-transparent animate-pulse" style={{animationDelay: '1.4s'}}></div>
-          </div>
-        </div>
-      </div>
-
       {/* Custom Pack Section */}
       <CustomPackSection />
-
-      {/* Beautiful Wide Animated Separator - Custom Pack to Testimonials */}
-      <div className="py-12 relative">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-center">
-            <div className="w-60 h-0.5 bg-gradient-to-r from-transparent via-[#D4B896]/35 to-[#D4B896] animate-pulse"></div>
-            <div className="mx-6 w-5 h-5 bg-gradient-to-r from-[#D4B896] to-[#C4A886] rounded-full animate-bounce shadow-lg ring-2 ring-[#D4B896]/25"></div>
-            <div className="w-60 h-0.5 bg-gradient-to-r from-[#D4B896] via-[#D4B896]/35 to-transparent animate-pulse"></div>
-          </div>
-          <div className="flex items-center justify-center mt-3">
-            <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-[#D4B896]/30 to-transparent animate-pulse" style={{animationDelay: '0.7s'}}></div>
-            <div className="mx-4 w-2.5 h-2.5 bg-[#D4B896]/65 rounded-full animate-ping"></div>
-            <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-[#D4B896]/30 to-transparent animate-pulse" style={{animationDelay: '1.4s'}}></div>
-          </div>
-        </div>
-      </div>
 
       {/* Trust Section */}
       <TrustSection />

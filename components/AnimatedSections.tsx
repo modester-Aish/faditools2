@@ -1,13 +1,12 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Link from 'next/link'
 
 // Why Choose FadiTools Section - Animations removed
 export const WhyChooseSection = () => {
   return (
-    <section className="py-8 relative">
+    <section className="py-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 mt-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -192,7 +191,7 @@ export const WhyChooseSection = () => {
 // Most Popular Tools Section - Animations removed
 export const PopularToolsSection = () => {
   return (
-    <section id="popular-tools" className="py-20 relative">
+    <section id="popular-tools" className="py-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -314,8 +313,6 @@ export const PopularToolsSection = () => {
 
 // Custom Pack Section - With subscription period buttons
 export const CustomPackSection = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, margin: "-100px", amount: 0.3 })
   const [selectedPeriod, setSelectedPeriod] = useState('1-month')
   
   const periods = [
@@ -361,7 +358,7 @@ export const CustomPackSection = () => {
   }
   
   return (
-    <section ref={ref} className="py-20 relative">
+    <section className="py-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="text-primary-500 text-sm font-semibold mb-4">Custom Pack pricing</div>
@@ -378,7 +375,7 @@ export const CustomPackSection = () => {
         {/* Subscription Period Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {periods.map((period, index) => (
-            <motion.button
+            <button
               key={period.id}
               onClick={() => setSelectedPeriod(period.id)}
               className={`group relative px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-500 transform hover:scale-105 overflow-hidden ${
@@ -386,11 +383,6 @@ export const CustomPackSection = () => {
                   ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30'
                   : 'bg-white text-primary-500 border-2 border-primary-500 hover:bg-primary-500 hover:text-white'
               }`}
-              initial={{ opacity: 0, y: 20, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -4, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
             >
               {/* Glowing effect for selected button */}
               {selectedPeriod === period.id && (
@@ -405,18 +397,13 @@ export const CustomPackSection = () => {
               
               {/* Selection indicator */}
               {selectedPeriod === period.id && (
-                <motion.div 
-                  className="absolute -top-2 -right-2 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                >
+                <div className="absolute -top-2 -right-2 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                </motion.div>
+                </div>
               )}
-            </motion.button>
+            </button>
           ))}
         </div>
 
@@ -474,13 +461,9 @@ export const CustomPackSection = () => {
               mainLogo: '/images/tools/semrush-logo.svg'
             }
           ].map((pack, index) => (
-            <motion.div 
+            <div 
               key={index} 
               className="group relative bg-white rounded-xl p-6 border border-gray-200 hover:border-primary-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
-              initial={{ opacity: 0, y: 100 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ y: -10, scale: 1.02 }}
             >
               {pack.isPopular && (
                 <div className="absolute -top-3 right-4 bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-bold z-20">
@@ -572,7 +555,7 @@ export const CustomPackSection = () => {
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -582,11 +565,8 @@ export const CustomPackSection = () => {
 
 // Trust Section - Only animations added
 export const TrustSection = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, margin: "-100px", amount: 0.3 })
-  
   return (
-    <section ref={ref} className="py-20 relative">
+    <section className="py-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -618,13 +598,9 @@ export const TrustSection = () => {
               description: 'Global payment network'
             }
           ].map((processor, index) => (
-            <motion.div 
+            <div 
               key={index}
               className="group relative bg-background backdrop-blur-xl rounded-3xl p-8 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20"
-              initial={{ opacity: 0, y: 100, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 100, scale: 0.8 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ y: -15, scale: 1.05 }}
             >
               <div className="absolute inset-0 bg-[#FFFFFF] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
@@ -638,7 +614,7 @@ export const TrustSection = () => {
                 <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">{processor.name}</h3>
                 <p className="text-gray-600 text-center">{processor.description}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -661,13 +637,9 @@ export const TrustSection = () => {
               icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'
             }
           ].map((guarantee, index) => (
-            <motion.div 
+            <div 
               key={index}
               className="group relative bg-background backdrop-blur-xl rounded-3xl p-8 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary-500/20"
-              initial={{ opacity: 0, y: 100, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 100, scale: 0.8 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ y: -20, scale: 1.05 }}
             >
               <div className="absolute inset-0 bg-[#FFFFFF] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
@@ -679,7 +651,7 @@ export const TrustSection = () => {
                 <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">{guarantee.title}</h3>
                 <p className="text-gray-600 text-center leading-relaxed">{guarantee.description}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

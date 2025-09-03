@@ -39,12 +39,12 @@ export default function WordPressPageCard({ page, className = '' }: WordPressPag
         )}
         
         <div className="flex items-center justify-between">
-          <Link
-            href={`/${page.slug}`}
-            className="text-blue-600 hover:text-blue-800 font-medium transition-colors"
-          >
-            Read More →
-          </Link>
+                  <Link
+                        href={`/${page.slug}`}
+          className="text-blue-600 hover:text-blue-800 font-medium transition-colors"
+        >
+          Read More →
+        </Link>
           
           <div className="flex items-center space-x-2">
             <span className="text-xs text-gray-500">ID: {page.id}</span>

@@ -180,7 +180,7 @@ class WordPressService {
       navigation.push({
         title: getTitle(page),
         slug: page.slug,
-        url: `/${page.slug}`,
+        url: `/pages/${page.slug}`,
         type: 'page'
       })
     })

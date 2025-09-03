@@ -62,7 +62,7 @@ export async function fetchNavigationData(): Promise<NavigationItem[]> {
       .map(page => ({
         title: getTitle(page),
         slug: page.slug,
-        url: `/${page.slug}`,
+        url: `/pages/${page.slug}`,
         menu_order: page.menu_order || 0,
         id: page.id,
         status: page.status || 'publish',

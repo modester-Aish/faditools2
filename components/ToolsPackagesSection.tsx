@@ -1,14 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
 import Link from 'next/link'
 
 export const ToolsPackagesSection = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, margin: "-100px", amount: 0.3 })
-
   // Only the packages data from faditools.com/packages
   const packages = [
     {
@@ -62,7 +56,7 @@ export const ToolsPackagesSection = () => {
   ]
 
   return (
-    <section id="tool-packages" ref={ref} className="py-8 relative">
+    <section id="tool-packages" className="py-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 mt-12">
@@ -79,13 +73,9 @@ export const ToolsPackagesSection = () => {
         {/* Packages Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
           {packages.map((pkg, index) => (
-            <motion.div 
+            <div 
               key={pkg.id} 
               className="group relative bg-white rounded-xl p-6 border border-gray-200 hover:border-primary-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
-              initial={{ opacity: 0, y: 100 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ y: -10, scale: 1.02 }}
             >
               {pkg.popular && (
                 <div className="absolute -top-3 right-4 bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-bold z-20">
@@ -167,7 +157,7 @@ export const ToolsPackagesSection = () => {
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

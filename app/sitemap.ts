@@ -80,7 +80,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const wordPressPages = pages
       ?.filter(page => page.status === 'publish')
       .map(page => ({
-        url: `${baseUrl}/${page.slug}`,
+        url: `${baseUrl}/pages/${page.slug}`,
         lastModified: new Date(page.modified || page.date || new Date()),
         changeFrequency: 'monthly' as const,
         priority: 0.6,
