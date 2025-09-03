@@ -1,0 +1,102 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa"/>
+  
+  <!-- Orange Band -->
+  <rect x="0" y="300" width="800" height="4" fill="#ff6b35"/>
+  
+  <!-- Central Magnifying Glass -->
+  <circle cx="400" cy="300" r="80" fill="#1e3a8a" stroke="#1e3a8a" stroke-width="4"/>
+  <circle cx="400" cy="300" r="60" fill="white"/>
+  <text x="400" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#dc2626">SEO</text>
+  <rect x="395" y="380" width="10" height="40" fill="#1e3a8a" rx="5"/>
+  
+  <!-- SEO Tool Icons -->
+  <!-- Analytics -->
+  <rect x="50" y="50" width="40" height="40" fill="#3b82f6" rx="8"/>
+  <rect x="60" y="60" width="20" height="20" fill="white" opacity="0.8"/>
+  <rect x="65" y="65" width="10" height="10" fill="#3b82f6"/>
+  
+  <!-- Search -->
+  <rect x="710" y="50" width="40" height="40" fill="#ef4444" rx="8"/>
+  <circle cx="730" cy="70" r="8" fill="white" opacity="0.8"/>
+  <line x1="735" y1="75" x2="740" y2="80" stroke="white" stroke-width="2"/>
+  
+  <!-- Clock -->
+  <rect x="150" y="100" width="40" height="40" fill="#f59e0b" rx="8"/>
+  <circle cx="170" cy="120" r="12" fill="white" opacity="0.8"/>
+  <line x1="170" y1="120" x2="170" y2="110" stroke="#f59e0b" stroke-width="2"/>
+  <line x1="170" y1="120" x2="175" y2="125" stroke="#f59e0b" stroke-width="2"/>
+  
+  <!-- Calendar -->
+  <rect x="610" y="100" width="40" height="40" fill="#10b981" rx="8"/>
+  <rect x="615" y="105" width="30" height="8" fill="white" opacity="0.8"/>
+  <rect x="620" y="120" width="6" height="6" fill="white" opacity="0.8"/>
+  <rect x="630" y="120" width="6" height="6" fill="white" opacity="0.8"/>
+  <rect x="640" y="120" width="6" height="6" fill="white" opacity="0.8"/>
+  
+  <!-- Globe -->
+  <rect x="250" y="150" width="40" height="40" fill="#8b5cf6" rx="8"/>
+  <circle cx="270" cy="170" r="12" fill="white" opacity="0.8"/>
+  <ellipse cx="270" cy="170" rx="12" ry="6" fill="none" stroke="#8b5cf6" stroke-width="1"/>
+  <ellipse cx="270" cy="170" rx="6" ry="12" fill="none" stroke="#8b5cf6" stroke-width="1"/>
+  
+  <!-- Location -->
+  <rect x="510" y="150" width="40" height="40" fill="#06b6d4" rx="8"/>
+  <path d="M530 160 L530 175 L525 180 L535 180 L530 175 Z" fill="white" opacity="0.8"/>
+  <circle cx="530" cy="165" r="3" fill="#06b6d4"/>
+  
+  <!-- Lightbulb -->
+  <rect x="380" y="50" width="40" height="40" fill="#f97316" rx="8"/>
+  <path d="M400 60 L395 70 L405 70 Z" fill="white" opacity="0.8"/>
+  <circle cx="400" cy="75" r="8" fill="white" opacity="0.8"/>
+  
+  <!-- Lock -->
+  <rect x="320" y="200" width="40" height="40" fill="#6b7280" rx="8"/>
+  <rect x="325" y="210" width="30" height="20" fill="white" opacity="0.8"/>
+  <circle cx="340" cy="215" r="3" fill="#6b7280"/>
+  
+  <!-- Bottom Row Icons -->
+  <!-- Chart -->
+  <rect x="50" y="450" width="40" height="40" fill="#1d4ed8" rx="8"/>
+  <rect x="55" y="470" width="6" height="10" fill="white" opacity="0.8"/>
+  <rect x="65" y="465" width="6" height="15" fill="white" opacity="0.8"/>
+  <rect x="75" y="460" width="6" height="20" fill="white" opacity="0.8"/>
+  
+  <!-- Refresh -->
+  <rect x="710" y="450" width="40" height="40" fill="#dc2626" rx="8"/>
+  <circle cx="730" cy="470" r="8" fill="white" opacity="0.8"/>
+  <path d="M730 462 A8 8 0 0 1 738 470" fill="none" stroke="#dc2626" stroke-width="2"/>
+  <path d="M738 470 L735 467 L738 464" fill="none" stroke="#dc2626" stroke-width="2"/>
+  
+  <!-- Checkmark -->
+  <rect x="150" y="500" width="40" height="40" fill="#059669" rx="8"/>
+  <path d="M160 510 L170 520 L180 500" fill="none" stroke="white" stroke-width="3" opacity="0.8"/>
+  
+  <!-- User -->
+  <rect x="610" y="500" width="40" height="40" fill="#7c3aed" rx="8"/>
+  <circle cx="630" cy="515" r="6" fill="white" opacity="0.8"/>
+  <path d="M620 525 Q630 535 640 525" fill="white" opacity="0.8"/>
+  
+  <!-- Settings -->
+  <rect x="250" y="450" width="40" height="40" fill="#fbbf24" rx="8"/>
+  <circle cx="270" cy="470" r="8" fill="white" opacity="0.8"/>
+  <circle cx="270" cy="470" r="3" fill="#fbbf24"/>
+  <path d="M270 462 L270 478 M262 470 L278 470" fill="none" stroke="#fbbf24" stroke-width="1"/>
+  
+  <!-- Tag -->
+  <rect x="510" y="450" width="40" height="40" fill="#0ea5e9" rx="8"/>
+  <path d="M520 460 L530 470 L520 480 L510 470 Z" fill="white" opacity="0.8"/>
+  
+  <!-- Link -->
+  <rect x="380" y="500" width="40" height="40" fill="#ef4444" rx="8"/>
+  <path d="M390 510 L410 510 M390 520 L410 520" fill="none" stroke="white" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Connection Lines -->
+  <line x1="70" y1="70" x2="150" y2="120" stroke="#d4b896" stroke-width="1" opacity="0.3" stroke-dasharray="4,4"/>
+  <line x1="730" y1="70" x2="630" y2="120" stroke="#d4b896" stroke-width="1" opacity="0.3" stroke-dasharray="4,4"/>
+  <line x1="170" y1="140" x2="270" y2="170" stroke="#d4b896" stroke-width="1" opacity="0.3" stroke-dasharray="4,4"/>
+  <line x1="550" y1="170" x2="630" y2="140" stroke="#d4b896" stroke-width="1" opacity="0.3" stroke-dasharray="4,4"/>
+  <line x1="70" y1="470" x2="150" y2="520" stroke="#d4b896" stroke-width="1" opacity="0.3" stroke-dasharray="4,4"/>
+  <line x1="730" y1="470" x2="630" y2="520" stroke="#d4b896" stroke-width="1" opacity="0.3" stroke-dasharray="4,4"/>
+</svg>

@@ -1,0 +1,935 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  /* Auto-scrolling animation for testimonials */
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-scroll-left {
+    animation: scroll-left 30s linear infinite;
+  }
+  
+  .animate-scroll-left:hover {
+    animation-play-state: paused;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white hover:from-primary-600 hover:to-primary-700 focus:ring-primary-500 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-primary-500 border-2 border-primary-500 hover:bg-primary-500 hover:text-white focus:ring-primary-500;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent;
+  }
+  
+  .glassmorphism {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  
+  /* Line clamp utilities - no longer needed as they're included in Tailwind CSS v3.3+ */
+
+/* WordPress Content Styling */
+.wordpress-content {
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-gray-900 mb-6 mt-8;
+    scroll-margin-top: 100px;
+  }
+  
+  h1 { 
+    @apply text-4xl border-b-2 border-primary-500/30 pb-4;
+  }
+  h2 { 
+    @apply text-3xl border-b border-gray-200 pb-2;
+  }
+  h3 { 
+    @apply text-2xl;
+  }
+  h4 { 
+    @apply text-xl;
+  }
+  h5 { 
+    @apply text-lg;
+  }
+  h6 { 
+    @apply text-base;
+  }
+  
+  /* First heading should have no top margin */
+  h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+    @apply mt-0;
+  }
+
+  /* Paragraphs */
+  p {
+    @apply mb-4 text-gray-700 leading-relaxed;
+  }
+
+  /* Links */
+  a {
+    @apply text-primary-500 hover:text-primary-600 underline transition-colors;
+  }
+
+  /* Lists */
+  ul, ol {
+    @apply mb-4 pl-6;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  li {
+    @apply mb-2 text-gray-700;
+  }
+
+  /* Blockquotes */
+  blockquote {
+    @apply border-l-4 border-primary-500 pl-4 py-2 mb-4 bg-primary-500/10 italic text-gray-700;
+  }
+
+  /* Code */
+  code {
+    @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono text-gray-800;
+  }
+
+  pre {
+    @apply bg-gray-900 text-white p-4 rounded-lg overflow-x-auto mb-4;
+  }
+
+  pre code {
+    @apply bg-transparent text-white p-0;
+  }
+
+  /* Tables */
+  table {
+    @apply w-full border-collapse border border-gray-300 mb-4;
+  }
+
+  th, td {
+    @apply border border-gray-300 px-4 py-2 text-left;
+  }
+
+  th {
+    @apply bg-gray-100 font-semibold;
+  }
+
+  /* Images */
+  img {
+    @apply max-w-full h-auto rounded-lg shadow-md mb-4;
+  }
+
+  /* Horizontal Rule */
+  hr {
+    @apply border-gray-300 my-8;
+  }
+
+  /* Strong and Emphasis */
+  strong {
+    @apply font-bold text-gray-900;
+  }
+
+  em {
+    @apply italic;
+  }
+
+  /* Alignment Classes */
+  .alignleft {
+    @apply float-left mr-4 mb-4;
+  }
+
+  .alignright {
+    @apply float-right ml-4 mb-4;
+  }
+
+  .aligncenter {
+    @apply block mx-auto mb-4;
+  }
+
+  /* WordPress Specific Classes */
+  .wp-caption {
+    @apply max-w-full mb-4;
+  }
+
+  .wp-caption-text {
+    @apply text-sm text-gray-600 italic mt-2;
+  }
+
+  .gallery {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4;
+  }
+
+  .gallery-item {
+    @apply text-center;
+  }
+
+  /* Responsive Images */
+  .wp-image-* {
+    @apply max-w-full h-auto;
+  }
+
+  /* Clearfix for floated elements */
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/* Dropdown Animation */
+.dropdown-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.dropdown-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+.dropdown-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 200ms ease-in, transform 200ms ease-in;
+}
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-delay-1 {
+    animation: float 6s ease-in-out infinite 1s;
+  }
+  
+  .animate-float-delay-2 {
+    animation: float 6s ease-in-out infinite 2s;
+  }
+  
+  .animate-float-delay-3 {
+    animation: float 6s ease-in-out infinite 3s;
+  }
+  
+  /* Animation Classes */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+  
+  /* Keyframes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+      transform: translate3d(0,0,0);
+    }
+    40%, 43% {
+      transform: translate3d(0, -30px, 0);
+    }
+    70% {
+      transform: translate3d(0, -15px, 0);
+    }
+    90% {
+      transform: translate3d(0, -4px, 0);
+    }
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0;
+    }
+  }
+  
+  .animate-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200px 100%;
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes drawLine {
+    from {
+      stroke-dasharray: 0 1000;
+    }
+    to {
+      stroke-dasharray: 1000 0;
+    }
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.8s ease-out forwards;
+  }
+  
+  .animate-draw-line {
+    animation: drawLine 1s ease-out forwards;
+    stroke-dasharray: 0 1000;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide-down {
+    animation: slideDown 0.8s ease-out forwards;
+  }
+}
+
+/* Custom styles for home page */
+@layer components {
+  .hero-gradient {
+    background: linear-gradient(135deg, #ffeef0 0%, #fff5f7 100%);
+  }
+  
+  .tool-letter {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    line-height: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .chart-bar-red {
+    background: linear-gradient(to top, #c0392b, #e74c3c);
+  }
+  
+  .chart-bar-gray {
+    background: linear-gradient(to top, #95a5a6, #bdc3c7);
+  }
+  
+  .hero-character {
+    position: relative;
+    width: 300px;
+    height: 300px;
+  }
+  
+  .hero-thumbs-up {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 3rem;
+  }
+  
+  .hero-stars {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    font-size: 2rem;
+  }
+  
+  .hero-character-main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+  }
+  
+  .hero-decor-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .hero-decor-elements span {
+    position: absolute;
+    font-size: 2rem;
+  }
+  
+  .hero-decor-elements span:nth-child(1) {
+    top: 70%;
+    left: 10%;
+  }
+  
+  .hero-decor-elements span:nth-child(2) {
+    bottom: 20%;
+    right: 20%;
+  }
+  
+  .hero-decor-elements span:nth-child(3) {
+    bottom: 10%;
+    left: 80%;
+  }
+  
+  .custom-features li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    position: relative;
+    padding-left: 20px;
+  }
+  
+  .custom-features li:before {
+    content: "•";
+    color: #e74c3c;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+  
+  .chart-container {
+    height: 200px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .chart-bars {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    height: 150px;
+    margin-bottom: 15px;
+    padding: 0 20px;
+  }
+  
+  .chart-bar {
+    width: 40px;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s ease;
+  }
+  
+  .chart-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    padding: 0 20px;
+  }
+  
+  .chart-labels span {
+    text-align: center;
+    width: 40px;
+  }
+}
+
+/* Product-specific animations */
+@keyframes productHover {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+@keyframes imageZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes buttonPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes starFill {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.product-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover {
+  animation: productHover 0.3s ease-out forwards;
+}
+
+.product-image {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover .product-image {
+  animation: imageZoom 0.5s ease-out forwards;
+}
+
+.add-to-cart-btn {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.add-to-cart-btn:hover {
+  animation: buttonPulse 0.2s ease-out;
+}
+
+.star-rating {
+  transition: all 0.2s ease;
+}
+
+.star-rating:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 968px) {
+  .hero-character {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .hero-character-main {
+    font-size: 6rem;
+  }
+  
+  .hero-thumbs-up {
+    font-size: 2.5rem;
+  }
+  
+  .hero-stars {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-character {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .hero-character-main {
+    font-size: 4rem;
+  }
+  
+  .hero-thumbs-up {
+    font-size: 2rem;
+  }
+  
+  .hero-stars {
+    font-size: 1.2rem;
+  }
+}
+
+/* Custom animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float-delay-1 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes float-delay-2 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-delay-3 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Animation classes */
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up-delayed {
+  animation: fade-in-up 0.8s ease-out forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delay-1 {
+  animation: float-delay-1 3s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.animate-float-delay-2 {
+  animation: float-delay-2 3s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-float-delay-3 {
+  animation: float-delay-3 3s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+/* Typing Animation */
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    border-color: transparent;
+  }
+  51%, 100% {
+    border-color: #FF6F00;
+  }
+}
+
+.animate-typing {
+  display: inline-block;
+  animation: typing 3s steps(30, end) infinite, blink 0.75s step-end infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 4px solid #FF6F00;
+  width: 0;
+  max-width: 100%;
+}
+
+.animate-typing-delayed {
+  display: inline-block;
+  animation: typing 3s steps(30, end) 3s infinite, blink 0.75s step-end infinite 3s;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 4px solid #FF6F00;
+  animation-fill-mode: both;
+  width: 0;
+  max-width: 100%;
+}
+
+/* Bounce Subtle Animation */
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+/* Spin Slow Animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* Typing Text Animation */
+@keyframes typing-text {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0.7;
+  }
+}
+
+.animate-typing-text {
+  animation: typing-text 3s ease-in-out infinite;
+}
+
+/* Line clamp utilities - no longer needed as they're included in Tailwind CSS v3.3+ */
+
+/* Product card hover effects */
+.product-card {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+/* Button hover effects */
+.btn-hover {
+  @apply transition-all duration-200 hover:scale-105 hover:shadow-lg;
+}
+
+/* Image loading states */
+.image-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Prose styles for product descriptions */
+.prose {
+  @apply text-gray-700 leading-relaxed;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  @apply text-gray-900 font-semibold mb-4;
+}
+
+.prose h1 {
+  @apply text-2xl;
+}
+
+.prose h2 {
+  @apply text-xl;
+}
+
+.prose h3 {
+  @apply text-lg;
+}
+
+.prose p {
+  @apply mb-4;
+}
+
+.prose ul, .prose ol {
+  @apply mb-4 pl-6;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose a {
+  @apply text-blue-600 hover:text-blue-800 underline;
+}
+
+.prose strong {
+  @apply font-semibold;
+}
+
+.prose em {
+  @apply italic;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic text-gray-600;
+}
+
+.prose code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-gray-100 p-4 rounded-lg overflow-x-auto;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
