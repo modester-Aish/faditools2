@@ -5,8 +5,10 @@ import Image from 'next/image'
 import { generateCanonicalUrl } from '@/lib/canonical'
 import { wooCommerceService } from '@/lib/woocommerce-service'
 import CategorySection from '../components/CategorySection'
-import { WhyChooseSection, PopularToolsSection, CustomPackSection, TrustSection } from '../components/AnimatedSections'
+import { WhyChooseSection, PopularToolsSection, CustomPackSection, TestimonialsSection, HowToOrderSection, TrustSection } from '../components/AnimatedSections'
 import { ToolsPackagesSection } from '../components/ToolsPackagesSection'
+import Typewriter from '../components/Typewriter'
+import FAQSection from '../components/FAQSection'
 
 export const metadata: Metadata = {
   title: 'FadiTools - Premium SEO Tools & Digital Marketing Solutions | Save 90% on Ahrefs, SEMrush & More',
@@ -155,7 +157,9 @@ export default async function Home() {
                 {/* Main Headline */}
                 <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
                   <div className="text-accent-500 mb-1">
-                    Premium SEO Tools,
+                    <span className="bg-gradient-to-r from-primary-400/80 to-primary-600/80 text-white px-3 py-1 rounded-xl shadow-lg backdrop-blur-sm border border-primary-300/30">
+                      Premium SEO
+                    </span> Tools,
                   </div>
                   <div className="text-white">
                     Made Accessible.
@@ -164,7 +168,14 @@ export default async function Home() {
                 
                 {/* Description */}
                 <p className="text-base text-gray-300 mb-5 leading-relaxed">
-                  Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro, and more at 90% off retail prices. 24/7 support, 99.9% uptime, instant access.
+                  <Typewriter 
+                    text="Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro, and more at 90% off retail prices. 24/7 support, 99.9% uptime, instant access." 
+                    speed={30} 
+                    delay={1000}
+                    className="text-gray-300"
+                    loop={true}
+                    loopDelay={8000}
+                  />
                 </p>
                 
                 {/* CTA Buttons */}
@@ -261,6 +272,15 @@ export default async function Home() {
 
       {/* Custom Pack Section */}
       <CustomPackSection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
+      {/* How to Place an Order Section */}
+      <HowToOrderSection />
+
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* Trust Section */}
       <TrustSection />

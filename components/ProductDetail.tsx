@@ -113,10 +113,7 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
               </div>
             </div>
             
-            {/* Product Name Again */}
-            <div className="text-lg text-gray-700 mb-8">
-              {product.title.rendered}
-            </div>
+
             
             {/* BUY NOW Button - Affiliate Link */}
             <button
