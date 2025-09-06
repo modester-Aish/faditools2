@@ -1490,18 +1490,18 @@ export const HowToOrderSection = () => {
 
         <div className="w-full space-y-6">
           {/* Step 1: Choose a Package */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary-500/20 overflow-hidden animate-fade-in-up">
+          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-4 sm:p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary-500/20 overflow-hidden animate-fade-in-up">
             <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative z-10 flex items-start gap-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-red-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-float">
-                <span className="text-3xl font-bold text-white">1</span>
+            <div className="relative z-10 flex items-start gap-4 sm:gap-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary-500 to-red-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-float">
+                <span className="text-2xl sm:text-3xl font-bold text-white">1</span>
               </div>
               <div className="flex-1">
-                <div className="flex items-baseline gap-4">
-                  <h3 className="text-xl font-bold text-gray-900 whitespace-nowrap group-hover:text-primary-600 transition-colors duration-300">
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
                     Choose a Package
                   </h3>
-                  <p className="text-base text-gray-600 flex-1 group-hover:text-gray-800 transition-colors duration-300">
+                  <p className="text-sm sm:text-base text-gray-600 flex-1 group-hover:text-gray-800 transition-colors duration-300">
                     Start by selecting any package or combination of packages from our services menu that you'd like to proceed with.
                   </p>
                 </div>
@@ -1512,18 +1512,18 @@ export const HowToOrderSection = () => {
           </div>
 
           {/* Step 2: Enter Your Details */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary-500/20 overflow-hidden animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-4 sm:p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary-500/20 overflow-hidden animate-fade-in-up" style={{animationDelay: '0.1s'}}>
             <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative z-10 flex items-start gap-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-red-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-float-delay-1">
-                <span className="text-3xl font-bold text-white">2</span>
+            <div className="relative z-10 flex items-start gap-4 sm:gap-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary-500 to-red-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-float-delay-1">
+                <span className="text-2xl sm:text-3xl font-bold text-white">2</span>
               </div>
               <div className="flex-1">
-                <div className="flex items-baseline gap-4">
-                  <h3 className="text-xl font-bold text-gray-900 whitespace-nowrap group-hover:text-primary-600 transition-colors duration-300">
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
                     Enter Your Details
                   </h3>
-                  <p className="text-base text-gray-600 flex-1 group-hover:text-gray-800 transition-colors duration-300">
+                  <p className="text-sm sm:text-base text-gray-600 flex-1 group-hover:text-gray-800 transition-colors duration-300">
                     Provide the link to your social media content where you want our services applied. There's no need to share your account access or private passwords, your privacy is always secure.
                   </p>
                 </div>
@@ -1534,18 +1534,18 @@ export const HowToOrderSection = () => {
           </div>
 
           {/* Step 3: Proceed to Payment */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary-500/20 overflow-hidden animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-4 sm:p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary-500/20 overflow-hidden animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative z-10 flex items-start gap-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-red-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-float-delay-2">
-                <span className="text-3xl font-bold text-white">3</span>
+            <div className="relative z-10 flex items-start gap-4 sm:gap-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary-500 to-red-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-float-delay-2">
+                <span className="text-2xl sm:text-3xl font-bold text-white">3</span>
               </div>
               <div className="flex-1">
-                <div className="flex items-baseline gap-4">
-                  <h3 className="text-xl font-bold text-gray-900 whitespace-nowrap group-hover:text-primary-600 transition-colors duration-300">
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
                     Proceed to Payment
                   </h3>
-                  <p className="text-base text-gray-600 flex-1 group-hover:text-gray-800 transition-colors duration-300">
+                  <p className="text-sm sm:text-base text-gray-600 flex-1 group-hover:text-gray-800 transition-colors duration-300">
                     Complete your payment easily through credit cards, Apple Pay, Android Pay, or crypto. Once done, sit back and watch as our services enhance your account, all without any extra effort from you!
                   </p>
                 </div>
