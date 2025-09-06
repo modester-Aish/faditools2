@@ -2,8 +2,10 @@
 
 import Link from 'next/link'
 import Typewriter from './Typewriter'
+import { useState } from 'react'
 
 export const ToolsPackagesSection = () => {
+  const [hoveredPackage, setHoveredPackage] = useState<string | null>(null)
   // Only the packages data from faditools.com/packages
   const packages = [
     {
@@ -13,6 +15,11 @@ export const ToolsPackagesSection = () => {
       description: 'Essential SEO tools for professionals',
       toolCount: 11,
       tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
+      allTools: [
+        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
+        'Screaming Frog', 'GTmetrix', 'Pingdom', 'Yoast SEO',
+        'Rank Math', 'SEO PowerSuite'
+      ],
       savings: 'Save $30',
       popular: false,
       mainLogo: '/images/tools/semrush-logo.svg',
@@ -25,6 +32,12 @@ export const ToolsPackagesSection = () => {
       description: 'Complete digital marketing solution',
       toolCount: 15,
       tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
+      allTools: [
+        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
+        'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
+        'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
+        'Google Analytics', 'Search Console'
+      ],
       savings: 'Save $45',
       popular: true,
       mainLogo: '/images/tools/canva-logo.svg',
@@ -37,6 +50,13 @@ export const ToolsPackagesSection = () => {
       description: 'Advanced tools for agencies',
       toolCount: 20,
       tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
+      allTools: [
+        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
+        'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
+        'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
+        'Google Analytics', 'Search Console', 'Ubersuggest',
+        'KWFinder', 'SurferSEO', 'ContentKing', 'DeepCrawl'
+      ],
       savings: 'Save $60',
       popular: false,
       mainLogo: '/images/tools/chatgpt-logo.svg',
@@ -49,6 +69,18 @@ export const ToolsPackagesSection = () => {
       description: 'All premium tools included',
       toolCount: 42,
       tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
+      allTools: [
+        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
+        'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
+        'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
+        'Google Analytics', 'Search Console', 'Ubersuggest',
+        'KWFinder', 'SurferSEO', 'ContentKing', 'DeepCrawl',
+        'ChatGPT Plus', 'Claude Pro', 'Jasper AI', 'Copy.ai',
+        'RunwayML', 'Midjourney', 'DALL-E', 'Stable Diffusion',
+        'Netflix', 'Spotify', 'Adobe Creative Suite', 'Figma',
+        'Notion', 'Slack', 'Zoom', 'Loom', 'Calendly',
+        'HubSpot', 'Salesforce', 'Zapier', 'Airtable', 'Monday.com'
+      ],
       savings: 'Save $100',
       popular: false,
       mainLogo: '/images/tools/ahrefs-logo.svg',
@@ -143,7 +175,37 @@ export const ToolsPackagesSection = () => {
                         </div>
                       )
                     })}
-                    <div className="text-sm text-gray-500">+{pkg.toolCount - pkg.tools.length} more tools</div>
+                    {/* Hover tooltip for additional tools */}
+                    <div className="relative">
+                      <div 
+                        className="text-sm text-primary-500 cursor-pointer hover:text-primary-600 transition-colors duration-200"
+                        onMouseEnter={() => setHoveredPackage(pkg.id)}
+                        onMouseLeave={() => setHoveredPackage(null)}
+                      >
+                        +{pkg.toolCount - pkg.tools.length} more tools
+                      </div>
+                      
+                      {/* Tooltip */}
+                      {hoveredPackage === pkg.id && (
+                        <div className="absolute bottom-full left-0 mb-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 p-4 z-50 animate-fade-in">
+                          <div className="text-sm font-medium text-gray-900 mb-3">
+                            All {pkg.toolCount} tools included:
+                          </div>
+                          <div className="max-h-60 overflow-y-auto">
+                            <div className="grid grid-cols-1 gap-2">
+                              {pkg.allTools.map((tool, toolIndex) => (
+                                <div key={toolIndex} className="flex items-center gap-2 text-sm text-gray-700">
+                                  <div className="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div>
+                                  <span>{tool}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          {/* Arrow */}
+                          <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
                 

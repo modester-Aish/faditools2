@@ -155,9 +155,9 @@ export default async function Home() {
                 </div>
 
                 {/* Main Headline */}
-                <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 leading-tight">
                   <div className="text-accent-500 mb-1">
-                    <span className="bg-gradient-to-r from-primary-400/80 to-primary-600/80 text-white px-3 py-1 rounded-xl shadow-lg backdrop-blur-sm border border-primary-300/30">
+                    <span className="bg-gradient-to-r from-primary-400/80 to-primary-600/80 text-white px-2 sm:px-3 py-1 rounded-xl shadow-lg backdrop-blur-sm border border-primary-300/30 inline-block">
                       Premium SEO
                     </span> Tools,
                   </div>

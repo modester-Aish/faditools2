@@ -167,7 +167,7 @@ export default async function DynamicPage({ params }: { params: { slug: string }
           <Header />
           
           <div className="pt-16">
-            {/* Hero Section */}
+            {/* Hero Section with Featured Image */}
             <div className="relative bg-primary-500 text-white overflow-hidden">
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute inset-0" style={{
@@ -175,39 +175,50 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                 }}></div>
               </div>
               
-              <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="text-center">
-                  <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4 text-white">
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                    </svg>
-                    Blog Post
+              <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                  {/* Left Side - Title and Details */}
+                  <div className="text-left">
+                    <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4 text-white">
+                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                      </svg>
+                      Blog Post
+                    </div>
+                    <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                      {blogPost.title.rendered}
+                    </h1>
+                    <div className="flex items-center space-x-4 text-sm text-white/80 mb-4">
+                      <span>{formatDate(blogPost.date)}</span>
+                      <span>•</span>
+                      <span>{getReadingTime(blogPost.content.rendered)} min read</span>
+                    </div>
+                    {/* Breadcrumbs */}
+                    <div className="text-sm text-white/70">
+                      <span>Blog</span>
+                      <span className="mx-2">›</span>
+                      <span>{blogPost.categories && blogPost.categories.length > 0 ? 'Category' : 'General'}</span>
+                      <span className="mx-2">›</span>
+                      <span className="text-white/90">{blogPost.title.rendered}</span>
+                    </div>
                   </div>
-                  <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-                    {blogPost.title.rendered}
-                  </h1>
-                  <div className="flex items-center justify-center space-x-4 text-sm text-white/80">
-                    <span>{formatDate(blogPost.date)}</span>
-                    <span>•</span>
-                    <span>{getReadingTime(blogPost.content.rendered)} min read</span>
-                  </div>
+                  
+                  {/* Right Side - Featured Image */}
+                  {getFeaturedImageUrl(blogPost) && (
+                    <div className="relative">
+                      <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl">
+                        <Image
+                          src={getFeaturedImageUrl(blogPost)!}
+                          alt={blogPost.title.rendered}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
-
-            {/* Featured Image */}
-            {getFeaturedImageUrl(blogPost) && (
-              <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div className="relative h-64 md:h-96 overflow-hidden rounded-2xl shadow-xl">
-                  <Image
-                    src={getFeaturedImageUrl(blogPost)!}
-                    alt={blogPost.title.rendered}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-            )}
 
             {/* Three Column Layout */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
