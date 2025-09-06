@@ -68,8 +68,13 @@ export default function FAQSection() {
         <div className="text-center mb-12 mt-8 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             <span className="text-primary-500">
-              Frequently Asked <span className="bg-gradient-to-r from-primary-400/80 to-primary-600/80 text-white px-3 py-1 rounded-xl shadow-lg backdrop-blur-sm border border-primary-300/30">
-                Questions
+              Frequently Asked <span className="relative inline-block px-3 sm:px-4 py-2">
+                <img 
+                  src="/stroke-removebg-preview.png" 
+                  alt="Background" 
+                  className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                />
+                <span className="relative z-10 text-white font-bold">Questions</span>
               </span>
             </span>
           </h2>

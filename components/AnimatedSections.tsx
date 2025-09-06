@@ -13,8 +13,13 @@ export const WhyChooseSection = () => {
         <div className="text-center mb-12 mt-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
             <span className="text-primary-500">
-              Why Choose <span className="bg-gradient-to-r from-primary-400/80 to-primary-600/80 text-white px-2 sm:px-3 py-1 rounded-xl shadow-lg backdrop-blur-sm border border-primary-300/30 inline-block">
-                FadiTools
+              Why Choose <span className="relative inline-block px-3 sm:px-4 py-2">
+                <img 
+                  src="/stroke-removebg-preview.png" 
+                  alt="Background" 
+                  className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                />
+                <span className="relative z-10 text-white font-bold">FadiTools</span>
               </span>?
             </span>
           </h2>
@@ -388,10 +393,13 @@ export const CustomPackSection = () => {
           <div className="text-primary-500 text-sm font-semibold mb-4">Custom Pack pricing</div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
             <span className="text-primary-500">
-              Make your own <span className="bg-gradient-to-r from-primary-400/80 to-primary-600/80 text-white px-2 sm:px-3 py-1 rounded-xl shadow-lg backdrop-blur-sm border border-primary-300/30 inline-block">
-                pack
-              </span> by <span className="bg-gradient-to-r from-primary-400/80 to-primary-600/80 text-white px-2 sm:px-3 py-1 rounded-xl shadow-lg backdrop-blur-sm border border-primary-300/30 inline-block">
-                selecting tools
+              Make your own <span className="text-orange-500 font-bold">pack</span> by <span className="relative inline-block px-3 sm:px-4 py-2">
+                <img 
+                  src="/stroke-removebg-preview.png" 
+                  alt="Background" 
+                  className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                />
+                <span className="relative z-10 text-white font-bold">selecting tools</span>
               </span>
             </span>
           </h2>
@@ -606,8 +614,13 @@ export const TestimonialsSection = () => {
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
             <span className="text-primary-500">
-              What Our <span className="bg-gradient-to-r from-primary-400/80 to-primary-600/80 text-white px-2 sm:px-3 py-1 rounded-xl shadow-lg backdrop-blur-sm border border-primary-300/30 inline-block">
-                Customers
+              What Our <span className="relative inline-block px-3 sm:px-4 py-2">
+                <img 
+                  src="/stroke-removebg-preview.png" 
+                  alt="Background" 
+                  className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                />
+                <span className="relative z-10 text-white font-bold">Customers</span>
               </span> Say
             </span>
           </h2>

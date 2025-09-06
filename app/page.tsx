@@ -157,8 +157,13 @@ export default async function Home() {
                 {/* Main Headline */}
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 leading-tight">
                   <div className="text-accent-500 mb-1">
-                    <span className="bg-gradient-to-r from-primary-400/80 to-primary-600/80 text-white px-2 sm:px-3 py-1 rounded-xl shadow-lg backdrop-blur-sm border border-primary-300/30 inline-block">
-                      Premium SEO
+                    <span className="relative inline-block px-3 sm:px-4 py-2">
+                      <img 
+                        src="/stroke-removebg-preview.png" 
+                        alt="Background" 
+                        className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                      />
+                      <span className="relative z-10 text-white font-bold">Premium SEO</span>
                     </span> Tools,
                   </div>
                   <div className="text-white">
