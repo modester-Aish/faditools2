@@ -12,6 +12,7 @@ interface WordPressPage {
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isPagesDropdownOpen, setIsPagesDropdownOpen] = useState(false)
+  const [isMobilePagesOpen, setIsMobilePagesOpen] = useState(false)
   const [pages, setPages] = useState<WordPressPage[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -151,22 +152,42 @@ export default function Header() {
               
               {/* Mobile Pages Section */}
               <div className="space-y-2">
-                <div className="text-sm font-medium text-gray-500 uppercase tracking-wide">Pages</div>
-                {isLoading ? (
-                  <div className="pl-4 text-gray-500 text-sm">Loading...</div>
-                ) : pages.length > 0 ? (
-                  pages.map((page) => (
-                    <Link 
-                      key={page.id}
-                      href={`/${page.slug}`} 
-                                              className="block pl-4 text-gray-700 hover:text-primary-500 transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {page.title.rendered}
-                    </Link>
-                  ))
-                ) : (
-                  <div className="pl-4 text-gray-500 text-sm">No pages available</div>
+                <button
+                  onClick={() => setIsMobilePagesOpen(!isMobilePagesOpen)}
+                  className="flex items-center justify-between w-full text-sm font-medium text-gray-500 uppercase tracking-wide hover:text-primary-500 transition-colors"
+                >
+                  <span>Pages</span>
+                  <svg 
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      isMobilePagesOpen ? 'rotate-90' : ''
+                    }`} 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+                
+                {isMobilePagesOpen && (
+                  <div className="pl-4 space-y-2">
+                    {isLoading ? (
+                      <div className="text-gray-500 text-sm">Loading...</div>
+                    ) : pages.length > 0 ? (
+                      pages.map((page) => (
+                        <Link 
+                          key={page.id}
+                          href={`/${page.slug}`} 
+                          className="block text-gray-700 hover:text-primary-500 transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {page.title.rendered}
+                        </Link>
+                      ))
+                    ) : (
+                      <div className="text-gray-500 text-sm">No pages available</div>
+                    )}
+                  </div>
                 )}
               </div>
               
