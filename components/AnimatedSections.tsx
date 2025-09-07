@@ -12,12 +12,13 @@ export const WhyChooseSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 mt-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-            <span className="text-primary-500">
+            <span className="text-emerald-600">
               Why Choose <span className="relative inline-block px-3 sm:px-4 py-2">
                 <img 
                   src="/stroke-removebg-preview.png" 
                   alt="Background" 
                   className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                  style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
                 />
                 <span className="relative z-10 text-white font-bold">FadiTools</span>
               </span>?
@@ -32,8 +33,8 @@ export const WhyChooseSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {/* Affordable Price */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float">
                 <img
@@ -42,9 +43,9 @@ export const WhyChooseSection = () => {
                   className="w-full h-full object-contain p-2"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-primary-600 transition-colors duration-300">Affordable Price</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Affordable Price</h3>
               <p className="text-sm text-gray-600 text-center">
-                High quality cheap SEO tools at unbelievable <span className="text-primary-500 font-semibold">affordable monthly fee</span>.
+                High quality cheap SEO tools at unbelievable <span className="text-emerald-600 font-semibold">affordable monthly fee</span>.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -52,8 +53,8 @@ export const WhyChooseSection = () => {
           </div>
 
           {/* Unique Access */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.1s' }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.1s' }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-1">
                 <img
@@ -62,9 +63,9 @@ export const WhyChooseSection = () => {
                   className="w-full h-full object-contain p-2"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-primary-600 transition-colors duration-300">Unique Access</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Unique Access</h3>
               <p className="text-sm text-gray-600 text-center">
-                Access <span className="text-primary-500 font-semibold">shared SEO tools</span> through our unique in-house developed system.
+                Access <span className="text-emerald-600 font-semibold">shared SEO tools</span> through our unique in-house developed system.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -72,8 +73,8 @@ export const WhyChooseSection = () => {
           </div>
 
           {/* Highest Uptime */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.2s' }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.2s' }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-2">
                 <img
@@ -82,9 +83,9 @@ export const WhyChooseSection = () => {
                   className="w-full h-full object-contain p-2"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-primary-600 transition-colors duration-300">Highest Uptime</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Highest Uptime</h3>
               <p className="text-sm text-gray-600 text-center">
-                With our unique self developed system to access <span className="text-primary-500 font-semibold">group buy seo tools</span> service easily.
+                With our unique self developed system to access <span className="text-emerald-600 font-semibold">group buy seo tools</span> service easily.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -92,8 +93,8 @@ export const WhyChooseSection = () => {
           </div>
 
           {/* Secure & Safe */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.3s' }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.3s' }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-3">
                 <img
@@ -102,9 +103,9 @@ export const WhyChooseSection = () => {
                   className="w-full h-full object-contain p-2"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-primary-600 transition-colors duration-300">Secure & Safe</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Secure & Safe</h3>
               <p className="text-sm text-gray-600 text-center">
-                Nothing to worry about using <span className="text-primary-500 font-semibold">FadiTools</span> - no suspicious software to install, 100% clean.
+                Nothing to worry about using <span className="text-emerald-600 font-semibold">FadiTools</span> - no suspicious software to install, 100% clean.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -112,8 +113,8 @@ export const WhyChooseSection = () => {
           </div>
 
           {/* Worldwide User */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.4s' }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.4s' }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float">
                 <img
@@ -122,9 +123,9 @@ export const WhyChooseSection = () => {
                   className="w-full h-full object-contain p-2"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-primary-600 transition-colors duration-300">Worldwide User</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Worldwide User</h3>
               <p className="text-sm text-gray-600 text-center">
-                It does not matter where you live, you are welcome to use <span className="text-primary-500 font-semibold">FadiTools</span> services!
+                It does not matter where you live, you are welcome to use <span className="text-emerald-600 font-semibold">FadiTools</span> services!
               </p>
             </div>
             {/* Shimmer effect */}
@@ -132,8 +133,8 @@ export const WhyChooseSection = () => {
           </div>
 
           {/* Cloud Based */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.5s' }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.5s' }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-1">
                 <img
@@ -142,9 +143,9 @@ export const WhyChooseSection = () => {
                   className="w-full h-full object-contain p-2"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-primary-600 transition-colors duration-300">Cloud Based</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Cloud Based</h3>
               <p className="text-sm text-gray-600 text-center">
-                Most tools are cloud based other using extension. All <span className="text-primary-500 font-semibold">SEO group buy</span> Works on any platform.
+                Most tools are cloud based other using extension. All <span className="text-emerald-600 font-semibold">SEO group buy</span> Works on any platform.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -152,8 +153,8 @@ export const WhyChooseSection = () => {
           </div>
 
           {/* Instant Access */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-4 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.6s' }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-4 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.6s' }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-2">
                 <img
@@ -162,9 +163,9 @@ export const WhyChooseSection = () => {
                   className="w-full h-full object-contain p-2"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-primary-600 transition-colors duration-300">Instant Access</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Instant Access</h3>
               <p className="text-sm text-gray-600 text-center">
-               Instant and up-to-date results from industry's leading <span className="text-primary-500 font-semibold">group seo tools</span>. Access SEO Tools. Our system connects directly to all <span className="text-primary-500 font-semibold">Shared SEO tools 2025</span>.
+               Instant and up-to-date results from industry's leading <span className="text-emerald-600 font-semibold">group seo tools</span>. Access SEO Tools. Our system connects directly to all <span className="text-emerald-600 font-semibold">Shared SEO tools 2025</span>.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -173,8 +174,8 @@ export const WhyChooseSection = () => {
           
 
           {/* User Friendly */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-4 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.7s' }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-4 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.7s' }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-3">
                 <img
@@ -183,9 +184,9 @@ export const WhyChooseSection = () => {
                   className="w-full h-full object-contain p-2"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-primary-600 transition-colors duration-300">User Friendly</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">User Friendly</h3>
               <p className="text-sm text-gray-600 text-center">
-                Clean, user-friendly dashboard, Login and select your favorite tool. Open your desired tool directly using unique <span className="text-primary-500 font-semibold">share seo tools system</span>.
+                Clean, user-friendly dashboard, Login and select your favorite tool. Open your desired tool directly using unique <span className="text-emerald-600 font-semibold">share seo tools system</span>.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -193,8 +194,8 @@ export const WhyChooseSection = () => {
           </div>
 
           {/* Premium Support */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-4 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.8s' }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-4 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.8s' }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float">
                 <img
@@ -203,9 +204,9 @@ export const WhyChooseSection = () => {
                   className="w-full h-full object-contain p-2"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-primary-600 transition-colors duration-300">Premium Support</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Premium Support</h3>
               <p className="text-sm text-gray-600 text-center">
-                All your queries will be answered within a few hours via multiple support channels by <span className="text-primary-500 font-semibold">Group buy SEO tools</span>. We are best <span className="text-primary-500 font-semibold">Flikover alternative</span>.
+                All your queries will be answered within a few hours via multiple support channels by <span className="text-emerald-600 font-semibold">Group buy SEO tools</span>. We are best <span className="text-emerald-600 font-semibold">Flikover alternative</span>.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -224,12 +225,12 @@ export const PopularToolsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            <span className="text-primary-500">
+            <span className="text-emerald-600">
               <ModernReveal 
                 text="Most Popular Tools" 
                 delay={2500}
                 repeatDelay={3000}
-                className="text-primary-500"
+                className="text-emerald-600"
               />
             </span>
           </h2>
@@ -307,10 +308,10 @@ export const PopularToolsSection = () => {
           ].map((tool, index) => (
             <div 
               key={index} 
-              className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden"
+              className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className={`w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-${index % 3}`}>
                   <img
@@ -319,14 +320,14 @@ export const PopularToolsSection = () => {
                     className="w-full h-full object-contain p-2"
                   />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center group-hover:text-primary-600 transition-colors duration-300">{tool.name}</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center group-hover:text-emerald-600 transition-colors duration-300">{tool.name}</h3>
                 <p className="text-gray-600 text-sm text-center mb-6">{tool.description}</p>
                 <div className="text-center mb-6">
-                  <span className="text-3xl font-bold text-primary-500">{tool.price}</span>
+                  <span className="text-3xl font-bold text-emerald-600">{tool.price}</span>
                   <span className="text-gray-500 line-through ml-2">/month</span>
                   <div className="text-sm text-gray-500">vs {tool.originalPrice}/month</div>
                 </div>
-                <button className="w-full bg-primary-500 text-white py-3 rounded-xl font-semibold text-center block hover:bg-primary-600 transition-all duration-300 transform group-hover:scale-105">
+                <button className="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold text-center block hover:bg-emerald-700 transition-all duration-300 transform group-hover:scale-105">
                   Buy Now
                 </button>
               </div>
@@ -390,14 +391,15 @@ export const CustomPackSection = () => {
     <section className="py-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="text-primary-500 text-sm font-semibold mb-4">Custom Pack pricing</div>
+          <div className="text-emerald-600 text-sm font-semibold mb-4">Custom Pack pricing</div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-            <span className="text-primary-500">
-              Make your own <span className="text-orange-500 font-bold">pack</span> by <span className="relative inline-block px-3 sm:px-4 py-2">
+            <span className="text-emerald-600">
+              Make your own <span className="text-emerald-600 font-bold">pack</span> by <span className="relative inline-block px-3 sm:px-4 py-2">
                 <img 
                   src="/stroke-removebg-preview.png" 
                   alt="Background" 
                   className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                  style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
                 />
                 <span className="relative z-10 text-white font-bold">selecting tools</span>
               </span>
@@ -416,13 +418,13 @@ export const CustomPackSection = () => {
               onClick={() => setSelectedPeriod(period.id)}
               className={`group relative px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-500 transform hover:scale-105 overflow-hidden ${
                 selectedPeriod === period.id
-                  ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30'
-                  : 'bg-white text-primary-500 border-2 border-primary-500 hover:bg-primary-500 hover:text-white'
+                  ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/30'
+                  : 'bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-emerald-600 hover:text-white'
               }`}
             >
               {/* Glowing effect for selected button */}
               {selectedPeriod === period.id && (
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-orange-400/20 to-red-400/20 animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 via-emerald-500/20 to-emerald-600/20 animate-pulse"></div>
               )}
               
               {/* Main content */}
@@ -433,7 +435,7 @@ export const CustomPackSection = () => {
               
               {/* Selection indicator */}
               {selectedPeriod === period.id && (
-                <div className="absolute -top-2 -right-2 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
+                <div className="absolute -top-2 -right-2 w-5 h-5 bg-emerald-600 rounded-full flex items-center justify-center shadow-lg">
                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -499,11 +501,11 @@ export const CustomPackSection = () => {
           ].map((pack, index) => (
             <div 
               key={index} 
-              className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden flex flex-col"
+              className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden flex flex-col"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
               {pack.isPopular && (
-                <div className="absolute -top-3 right-4 bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-bold z-20">
+                <div className="absolute -top-3 right-4 bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-bold z-20">
                   Popular
                 </div>
               )}
@@ -519,7 +521,7 @@ export const CustomPackSection = () => {
                     />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">{pack.name}</h3>
+                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">{pack.name}</h3>
                     <div className="text-sm text-green-600 font-medium">Custom Pack</div>
                   </div>
                 </div>
@@ -567,7 +569,7 @@ export const CustomPackSection = () => {
                   <ul className="space-y-2">
                     {pack.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start text-sm text-gray-600">
-                        <svg className="w-4 h-4 text-primary-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-4 h-4 text-emerald-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         <span className={feature.includes('extra addon fees') ? 'text-purple-600' : ''}>
@@ -586,7 +588,7 @@ export const CustomPackSection = () => {
                 {/* Action Buttons */}
                 <div className="mt-auto pt-4">
                   <button 
-                    className={`w-full py-2 px-4 font-medium text-center block transition-colors rounded-lg ${pack.isPopular ? 'bg-primary-500 text-white hover:bg-primary-600' : 'bg-primary-500 text-white hover:bg-primary-600'}`}
+                    className={`w-full py-2 px-4 font-medium text-center block transition-colors rounded-lg ${pack.isPopular ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-emerald-600 text-white hover:bg-emerald-700'}`}
                   >
                     Buy Now
                   </button>
@@ -594,7 +596,7 @@ export const CustomPackSection = () => {
               </div>
               
               {/* Hover background overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               {/* Shimmer effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
@@ -613,12 +615,13 @@ export const TestimonialsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-            <span className="text-primary-500">
+            <span className="text-emerald-600">
               What Our <span className="relative inline-block px-3 sm:px-4 py-2">
                 <img 
                   src="/stroke-removebg-preview.png" 
                   alt="Background" 
                   className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                  style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
                 />
                 <span className="relative z-10 text-white font-bold">Customers</span>
               </span> Say
@@ -772,15 +775,15 @@ export const TestimonialsSection = () => {
                       </div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900 text-sm">{review.name}</h4>
-                        <div className="flex items-center gap-1">
-                          {[...Array(5)].map((_, i) => (
+                          <div className="flex items-center gap-1">
+                            {[...Array(5)].map((_, i) => (
                             <svg key={i} className={`w-3 h-3 ${i < review.rating ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                            </svg>
-                          ))}
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              </svg>
+                            ))}
                           <span className="text-xs text-gray-500 ml-1">2d</span>
+                          </div>
                         </div>
-                      </div>
                     </div>
                     
                     {/* Review text */}
@@ -929,15 +932,15 @@ export const TestimonialsSection = () => {
                       </div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900 text-sm">{review.name}</h4>
-                        <div className="flex items-center gap-1">
-                          {[...Array(5)].map((_, i) => (
+                          <div className="flex items-center gap-1">
+                            {[...Array(5)].map((_, i) => (
                             <svg key={i} className={`w-3 h-3 ${i < review.rating ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                            </svg>
-                          ))}
+                              </svg>
+                            ))}
                           <span className="text-xs text-gray-500 ml-1">2d</span>
+                          </div>
                         </div>
-                      </div>
                     </div>
                     
                     {/* Review text */}
@@ -1439,12 +1442,12 @@ export const TrustSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            <span className="text-primary-500">
+            <span className="text-emerald-600">
               <Typewriter 
                 text="Wondering if you can trust us?" 
                 speed={60} 
                 delay={5500}
-                className="text-primary-500"
+                className="text-emerald-600"
                 loop={true}
                 loopDelay={6000}
               />
@@ -1476,10 +1479,10 @@ export const TrustSection = () => {
           ].map((processor, index) => (
             <div 
               key={index}
-              className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-8 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden"
+              className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-8 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg p-3 border border-gray-200">
                   <img 
@@ -1488,7 +1491,7 @@ export const TrustSection = () => {
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center group-hover:text-primary-600 transition-colors duration-300">{processor.name}</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center group-hover:text-emerald-600 transition-colors duration-300">{processor.name}</h3>
                 <p className="text-gray-600 text-center">{processor.description}</p>
               </div>
               
@@ -1519,17 +1522,17 @@ export const TrustSection = () => {
           ].map((guarantee, index) => (
             <div 
               key={index}
-              className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-8 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden"
+              className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-8 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
-                <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <div className="w-16 h-16 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={guarantee.icon} />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-primary-600 transition-colors duration-300">{guarantee.title}</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">{guarantee.title}</h3>
                 <p className="text-gray-600 text-center leading-relaxed">{guarantee.description}</p>
               </div>
               
@@ -1550,7 +1553,7 @@ export const HowToOrderSection = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-primary-500 to-red-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-600 to-emerald-700 bg-clip-text text-transparent">
               How to Place an Order?
             </span>
           </h2>
@@ -1561,15 +1564,15 @@ export const HowToOrderSection = () => {
 
         <div className="w-full space-y-6">
           {/* Step 1: Choose a Package */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-4 sm:p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary-500/20 overflow-hidden animate-fade-in-up">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-4 sm:p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20 overflow-hidden animate-fade-in-up">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10 flex items-start gap-4 sm:gap-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary-500 to-red-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-float">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-float">
                 <span className="text-2xl sm:text-3xl font-bold text-white">1</span>
               </div>
               <div className="flex-1">
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
                     Choose a Package
                   </h3>
                   <p className="text-sm sm:text-base text-gray-600 flex-1 group-hover:text-gray-800 transition-colors duration-300">
@@ -1583,15 +1586,15 @@ export const HowToOrderSection = () => {
           </div>
 
           {/* Step 2: Enter Your Details */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-4 sm:p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary-500/20 overflow-hidden animate-fade-in-up" style={{animationDelay: '0.1s'}}>
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-4 sm:p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20 overflow-hidden animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10 flex items-start gap-4 sm:gap-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary-500 to-red-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-float-delay-1">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-float-delay-1">
                 <span className="text-2xl sm:text-3xl font-bold text-white">2</span>
               </div>
               <div className="flex-1">
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
                     Enter Your Details
                   </h3>
                   <p className="text-sm sm:text-base text-gray-600 flex-1 group-hover:text-gray-800 transition-colors duration-300">
@@ -1605,15 +1608,15 @@ export const HowToOrderSection = () => {
           </div>
 
           {/* Step 3: Proceed to Payment */}
-          <div className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-4 sm:p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary-500/20 overflow-hidden animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-4 sm:p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20 overflow-hidden animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10 flex items-start gap-4 sm:gap-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary-500 to-red-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-float-delay-2">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg animate-float-delay-2">
                 <span className="text-2xl sm:text-3xl font-bold text-white">3</span>
               </div>
               <div className="flex-1">
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
                     Proceed to Payment
                   </h3>
                   <p className="text-sm sm:text-base text-gray-600 flex-1 group-hover:text-gray-800 transition-colors duration-300">

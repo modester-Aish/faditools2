@@ -83,7 +83,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             </svg>
           </button>
           <button 
-            className="w-10 h-10 rounded-full bg-white/90 text-gray-700 hover:bg-blue-500 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm"
+            className="w-10 h-10 rounded-full bg-white/90 text-gray-700 hover:bg-emerald-500 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
@@ -96,7 +96,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="p-4 space-y-3 flex-grow flex flex-col">
         {/* Title */}
         <Link href={`/${product.slug}`} className="block">
-          <h3 className="text-base font-semibold text-gray-900 line-clamp-2 hover:text-primary-600 transition-colors leading-tight h-10 flex items-start">
+          <h3 className="text-base font-semibold text-gray-900 line-clamp-2 hover:text-emerald-600 transition-colors leading-tight h-10 flex items-start">
             {product.title?.rendered || 'Product'}
           </h3>
         </Link>
@@ -126,7 +126,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="flex items-center gap-2">
           {isOnSale ? (
             <>
-              <span className="text-lg font-bold text-green-600">
+              <span className="text-lg font-bold text-emerald-600">
                 ${parseFloat(price || '0').toFixed(2)}
               </span>
               <span className="text-sm text-red-600 line-through opacity-70">
@@ -159,7 +159,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="mt-auto">
           <Link
             href={`/${product.slug}`}
-            className="block w-full bg-primary-600 text-white text-xs font-medium py-2 px-3 rounded-md hover:bg-primary-700 transition-colors text-center"
+            className="block w-full bg-emerald-600 text-white text-xs font-medium py-2 px-3 rounded-md hover:bg-emerald-700 transition-colors text-center"
           >
             View Details
           </Link>

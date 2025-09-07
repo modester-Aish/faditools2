@@ -80,10 +80,17 @@ export default async function Home() {
     if (wooCommerceData.categories && wooCommerceData.categories.length > 0) {
       categories = wooCommerceData.categories.map(cat => ({
         id: cat.id,
-        name: cat.name,
+        name: cat.name === 'Uncategorized' ? 'All Plan' : cat.name,
         slug: cat.slug,
         count: cat.count || 0
       }))
+      
+      // Move "All Plan" (Uncategorized) to the beginning
+      const allPlanIndex = categories.findIndex(cat => cat.name === 'All Plan')
+      if (allPlanIndex > -1) {
+        const allPlanCategory = categories.splice(allPlanIndex, 1)[0]
+        categories.unshift(allPlanCategory)
+      }
     }
     
     // Process products (limit to 12 for homepage)
@@ -108,12 +115,12 @@ export default async function Home() {
   // Always provide fallback data to ensure page renders
   if (categories.length === 0) {
     categories = [
+      { id: 6, name: 'All Plan', slug: 'uncategorized', count: 1200 },
       { id: 1, name: 'AI Tools', slug: 'ai-tools', count: 3450 },
       { id: 2, name: 'Amazon Tools', slug: 'amazon-tools', count: 2720 },
       { id: 3, name: 'Content Tools', slug: 'content-tools', count: 1560 },
       { id: 4, name: 'SEO Tools', slug: 'seo-tools', count: 2100 },
-      { id: 5, name: 'Design Tools', slug: 'design-tools', count: 1800 },
-      { id: 6, name: 'Uncategorized', slug: 'uncategorized', count: 1200 }
+      { id: 5, name: 'Design Tools', slug: 'design-tools', count: 1800 }
     ]
   }
   
@@ -143,14 +150,14 @@ export default async function Home() {
               
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full blur-2xl"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary-600 to-primary-700 rounded-full blur-xl"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full blur-2xl"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-emerald-600 to-emerald-700 rounded-full blur-xl"></div>
               </div>
               
               <div className="relative z-10 h-full flex flex-col justify-center">
                 {/* Badge */}
-                <div className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-primary-500/20 to-primary-600/20 border border-primary-500/30 rounded-full text-primary-500 text-sm font-medium mb-4 backdrop-blur-sm">
-                  <span className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2 animate-pulse"></span>
+                <div className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-emerald-500/20 to-emerald-600/20 border border-emerald-500/30 rounded-full text-emerald-500 text-sm font-medium mb-4 backdrop-blur-sm">
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2 animate-pulse"></span>
                   Trusted by 10,000+ Marketers Worldwide
                 </div>
 
@@ -162,6 +169,7 @@ export default async function Home() {
                         src="/stroke-removebg-preview.png" 
                         alt="Background" 
                         className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                        style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
                       />
                       <span className="relative z-10 text-white font-bold">Premium SEO</span>
                     </span> Tools,
@@ -185,7 +193,7 @@ export default async function Home() {
                 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="/packages" className="group relative px-5 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg font-bold text-base hover:from-primary-600 hover:to-primary-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary-500/25">
+                  <Link href="/packages" className="group relative px-5 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg font-bold text-base hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/25">
                     <span className="flex items-center justify-center">
                       Begin Your Journey
                       <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -194,7 +202,7 @@ export default async function Home() {
                     </span>
                   </Link>
                   
-                  <Link href="/tools" className="group px-5 py-3 border-2 border-primary-500 text-primary-500 rounded-lg font-bold text-base hover:bg-primary-500 hover:text-white transition-all duration-300 transform hover:scale-105">
+                  <Link href="/tools" className="group px-5 py-3 border-2 border-emerald-600 text-emerald-600 rounded-lg font-bold text-base hover:bg-emerald-600 hover:text-white transition-all duration-300 transform hover:scale-105">
                     <span className="flex items-center justify-center">
                       Discover Tools
                       <svg className="w-4 h-4 ml-2 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -218,7 +226,7 @@ export default async function Home() {
               {/* Features List */}
               <div className="space-y-3 mb-4">
                 <div className="flex items-center">
-                  <div className="w-5 h-5 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center mr-3">
+                  <div className="w-5 h-5 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-full flex items-center justify-center mr-3">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -227,7 +235,7 @@ export default async function Home() {
                 </div>
                 
                 <div className="flex items-center">
-                  <div className="w-5 h-5 bg-gradient-to-r from-primary-600 to-primary-700 rounded-full flex items-center justify-center mr-3">
+                  <div className="w-5 h-5 bg-gradient-to-r from-emerald-700 to-emerald-800 rounded-full flex items-center justify-center mr-3">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                     </svg>
@@ -236,7 +244,7 @@ export default async function Home() {
                 </div>
 
                 <div className="flex items-center">
-                  <div className="w-5 h-5 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center mr-3">
+                  <div className="w-5 h-5 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-full flex items-center justify-center mr-3">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -245,7 +253,7 @@ export default async function Home() {
                 </div>
                 
                 <div className="flex items-center">
-                  <div className="w-5 h-5 bg-gradient-to-r from-primary-600 to-primary-700 rounded-full flex items-center justify-center mr-3">
+                  <div className="w-5 h-5 bg-gradient-to-r from-emerald-700 to-emerald-800 rounded-full flex items-center justify-center mr-3">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
@@ -255,7 +263,7 @@ export default async function Home() {
               </div>
 
               {/* CTA Button */}
-              <Link href="/packages" className="w-full bg-accent-500 text-white rounded-lg font-bold text-sm py-2 px-3 text-center block hover:bg-accent-600 transition-all duration-300 transform hover:scale-105 shadow-md">
+              <Link href="/packages" className="w-full bg-emerald-600 text-white rounded-lg font-bold text-sm py-2 px-3 text-center block hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-md">
                 Get Started Now
               </Link>
             </div>
@@ -295,15 +303,15 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
-              <h4 className="text-lg font-semibold text-primary-500 mb-4">FadiTools</h4>
+              <h4 className="text-lg font-semibold text-emerald-600 mb-4">FadiTools</h4>
               <p className="text-gray-400 mb-4">Premium SEO tools made accessible. Save up to 90% on industry-leading tools.</p>
               <div className="flex space-x-4">
-                <Link href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-emerald-600 transition-colors">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
                   </svg>
               </Link>
-                <Link href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-emerald-600 transition-colors">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
@@ -314,33 +322,33 @@ export default async function Home() {
             <div>
               <h4 className="text-lg font-semibold text-white mb-4">Tools</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Ahrefs</Link></li>
-                <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">SEMrush</Link></li>
-                <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Moz Pro</Link></li>
-                <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">View All Tools</Link></li>
+                <li><Link href="#popular-tools" className="hover:text-emerald-600 transition-colors">Ahrefs</Link></li>
+                <li><Link href="#popular-tools" className="hover:text-emerald-600 transition-colors">SEMrush</Link></li>
+                <li><Link href="#popular-tools" className="hover:text-emerald-600 transition-colors">Moz Pro</Link></li>
+                <li><Link href="#popular-tools" className="hover:text-emerald-600 transition-colors">View All Tools</Link></li>
                 </ul>
               </div>
             
             <div>
               <h4 className="text-lg font-semibold text-white mb-4">Packages</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link href="#tool-packages" className="hover:text-primary-500 transition-colors">All Packages</Link></li>
-                <li><Link href="#tool-packages" className="hover:text-primary-500 transition-colors">Medium Pack</Link></li>
-                <li><Link href="#tool-packages" className="hover:text-primary-500 transition-colors">Heavy Pack</Link></li>
-                <li><Link href="#tool-packages" className="hover:text-primary-500 transition-colors">Mega Pack</Link></li>
+                <li><Link href="#tool-packages" className="hover:text-emerald-600 transition-colors">All Packages</Link></li>
+                <li><Link href="#tool-packages" className="hover:text-emerald-600 transition-colors">Medium Pack</Link></li>
+                <li><Link href="#tool-packages" className="hover:text-emerald-600 transition-colors">Heavy Pack</Link></li>
+                <li><Link href="#tool-packages" className="hover:text-emerald-600 transition-colors">Mega Pack</Link></li>
               </ul>
             </div>
             
             <div>
               <h4 className="text-lg font-semibold text-white mb-4">Support</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link href="/contact" className="hover:text-primary-500 transition-colors">Help Center</Link></li>
-                <li><Link href="/contact" className="hover:text-primary-500 transition-colors">Contact Support</Link></li>
-                <li><Link href="/contact" className="hover:text-primary-500 transition-colors">System Status</Link></li>
+                <li><Link href="/contact" className="hover:text-emerald-600 transition-colors">Help Center</Link></li>
+                <li><Link href="/contact" className="hover:text-emerald-600 transition-colors">Contact Support</Link></li>
+                <li><Link href="/contact" className="hover:text-emerald-600 transition-colors">System Status</Link></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-primary-500/10 mt-8 pt-8 text-center text-gray-600">
+          <div className="border-t border-emerald-500/10 mt-8 pt-8 text-center text-gray-600">
             <p>&copy; 2024 FadiTools. All rights reserved.</p>
           </div>
         </div>

@@ -73,7 +73,7 @@ export default function CategorySection({ categories, products = [] }: CategoryS
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            <span className="text-primary-500">
+            <span className="text-emerald-600">
               Explore Our Products
             </span>
           </h2>
@@ -85,7 +85,7 @@ export default function CategorySection({ categories, products = [] }: CategoryS
         {/* Categories Section - All 6 in one line */}
         <div className="mb-16">
           {/* All categories in single line with existing design */}
-          <div className="mx-auto flex max-w-[1200px] flex-col overflow-hidden rounded-2xl bg-background shadow-lg border border-primary-500/15">
+          <div className="mx-auto flex max-w-[1200px] flex-col overflow-hidden rounded-2xl bg-background shadow-lg border border-emerald-200">
             <div role="tablist" className="relative grid h-16 grid-cols-6 sm:h-20">
               {categories.slice(0, 6).map((category, index) => (
                 <div
@@ -153,7 +153,7 @@ export default function CategorySection({ categories, products = [] }: CategoryS
           {displayProducts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
               {displayProducts.map((product) => (
-                <div key={product.id} className="group relative bg-background backdrop-blur-xl rounded-3xl p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 h-[400px] flex flex-col">
+                <div key={product.id} className="group relative bg-background backdrop-blur-xl rounded-3xl p-6 border border-emerald-200 hover:border-emerald-300 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 h-[400px] flex flex-col">
                   <div className="absolute inset-0 bg-[#FFFFFF] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10 flex flex-col h-full">
                     {/* Image Section */}
@@ -176,12 +176,12 @@ export default function CategorySection({ categories, products = [] }: CategoryS
                           )}
                         </div>
                       ) : (
-                        <div className="w-full h-20 bg-gradient-to-br from-primary-500/20 to-primary-600/20 rounded-2xl flex items-center justify-center border-2 border-dashed border-primary-500/30">
+                        <div className="w-full h-20 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl flex items-center justify-center border-2 border-dashed border-emerald-500/30">
                           <div className="text-center">
-                            <svg className="w-8 h-8 text-primary-500/50 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-8 h-8 text-emerald-500/50 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />
                             </svg>
-                            <span className="text-primary-500/50 text-xs font-medium">No Image</span>
+                            <span className="text-emerald-500/50 text-xs font-medium">No Image</span>
                           </div>
                         </div>
                       )}
@@ -198,13 +198,13 @@ export default function CategorySection({ categories, products = [] }: CategoryS
                       <div className="text-center mb-4">
                         {product.on_sale ? (
                           <>
-                            <span className="text-2xl font-bold text-primary-500">${product.sale_price}</span>
+                            <span className="text-2xl font-bold text-emerald-600">${product.sale_price}</span>
                             <span className="text-gray-500 line-through ml-2">/month</span>
                             <div className="text-sm text-gray-500">vs ${product.regular_price}/month</div>
                           </>
                         ) : (
                           <>
-                            <span className="text-2xl font-bold text-primary-500">${product.price}</span>
+                            <span className="text-2xl font-bold text-emerald-600">${product.price}</span>
                             <span className="text-gray-500 line-through ml-2">/month</span>
                           </>
                         )}
@@ -213,7 +213,7 @@ export default function CategorySection({ categories, products = [] }: CategoryS
                     
                     {/* Button Section - Always at bottom */}
                     <div className="mt-auto">
-                      <Link href={`/${product.slug}`} className="w-full bg-primary-500 text-white py-3 rounded-xl font-semibold text-center block hover:bg-primary-600 transition-all duration-300 transform group-hover:scale-105">
+                      <Link href={`/${product.slug}`} className="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold text-center block hover:bg-emerald-700 transition-all duration-300 transform group-hover:scale-105">
                         Explore Now
                       </Link>
                     </div>
@@ -239,7 +239,7 @@ export default function CategorySection({ categories, products = [] }: CategoryS
           <div className="text-center">
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-primary-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
+              className="inline-flex items-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               View All Products
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

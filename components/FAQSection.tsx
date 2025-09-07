@@ -67,12 +67,13 @@ export default function FAQSection() {
         {/* Section Header */}
         <div className="text-center mb-12 mt-8 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            <span className="text-primary-500">
+            <span className="text-emerald-600">
               Frequently Asked <span className="relative inline-block px-3 sm:px-4 py-2">
                 <img 
                   src="/stroke-removebg-preview.png" 
                   alt="Background" 
                   className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                  style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
                 />
                 <span className="relative z-10 text-white font-bold">Questions</span>
               </span>
@@ -90,10 +91,10 @@ export default function FAQSection() {
           {faqData.map((item, index) => (
             <div
               key={index}
-              className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl shadow-sm border border-primary-500/15 overflow-hidden hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up"
+              className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl shadow-sm border border-emerald-500/15 overflow-hidden hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <button
                   onClick={() => toggleItem(index)}

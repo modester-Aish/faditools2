@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Product } from '@/types'
 import ProductCard from './ProductCard'
@@ -14,6 +14,8 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
   const [selectedImage, setSelectedImage] = useState(0)
   const [isTableExpanded, setIsTableExpanded] = useState(false)
   const [isImageZoomed, setIsImageZoomed] = useState(false)
+  const [purchaseCount, setPurchaseCount] = useState(0)
+  const [soldCounts, setSoldCounts] = useState<number[]>([])
 
   const handleAffiliatePurchase = () => {
     if (product.affiliate_link) {
@@ -25,6 +27,12 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
   const handleImageZoom = () => {
     setIsImageZoomed(true)
   }
+
+  // Generate random numbers on client-side to avoid hydration errors
+  useEffect(() => {
+    setPurchaseCount(Math.floor(Math.random() * 70) + 1)
+    setSoldCounts(relatedProducts.slice(0, 8).map(() => Math.floor(Math.random() * 50) + 1))
+  }, [relatedProducts])
 
 
 
@@ -64,7 +72,7 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
           {/* Right Column - Product Info & CTA */}
           <div className="flex flex-col justify-center">
             {/* Instant Access Badge */}
-            <div className="inline-flex items-center px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full mb-4 w-fit mt-4">
+            <div className="inline-flex items-center px-3 py-1 bg-emerald-600 text-white text-xs font-bold rounded-full mb-4 w-fit mt-4">
               Instant Access!
             </div>
 
@@ -99,17 +107,41 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
             {/* Key Features Box - Clean like Toolsurf */}
             <div className="bg-white border border-gray-200 rounded-lg p-6 mb-8">
               <div className="space-y-4">
-                {/* WooCommerce Short Description */}
-                {product.excerpt?.rendered ? (
-                  <div 
-                    className="text-gray-700 leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: product.excerpt.rendered }}
-                  />
-                ) : (
-                  <div className="text-gray-600 text-center py-4">
-                    No description available
+                {/* 24 Hours Refund Policy */}
+                <div className="flex items-start space-x-3">
+                  <div className="text-green-500 text-xl">💰</div>
+                  <div>
+                    <h3 className="font-bold text-gray-900">24 Hours Refund Policy</h3>
+                    <p className="text-gray-600 text-sm">Full refund within 24 hours. Valid for individual tools only. Check FAQ for details.</p>
                   </div>
-                )}
+                </div>
+
+                {/* Direct Access */}
+                <div className="flex items-start space-x-3">
+                  <div className="text-orange-500 text-xl">➡️</div>
+                  <div>
+                    <h3 className="font-bold text-gray-900">Direct Access</h3>
+                    <p className="text-gray-600 text-sm">No software installation required. No RDP needed. Some tools may require browser extension.</p>
+                  </div>
+                </div>
+
+                {/* Instant Access */}
+                <div className="flex items-start space-x-3">
+                  <div className="text-red-500 text-xl">🔥</div>
+                  <div>
+                    <h3 className="font-bold text-gray-900">Instant Access</h3>
+                    <p className="text-gray-600 text-sm">Immediate access after payment. No waiting time or approval process required.</p>
+                  </div>
+                </div>
+
+                {/* Data Privacy */}
+                <div className="flex items-start space-x-3">
+                  <div className="text-blue-500 text-xl">🔒</div>
+                  <div>
+                    <h3 className="font-bold text-gray-900">Data Privacy</h3>
+                    <p className="text-gray-600 text-sm">Your tool usage and data remain confidential and private from other users.</p>
+                  </div>
+                </div>
               </div>
             </div>
             
@@ -119,7 +151,7 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
             <button
               onClick={handleAffiliatePurchase}
               disabled={!product.affiliate_link}
-              className="w-32 bg-green-500 hover:bg-green-600 text-white text-base font-bold py-2 px-4 rounded-lg transition-all duration-200 hover:scale-[1.02] shadow-lg disabled:opacity-50 disabled:cursor-not-allowed mb-4"
+              className="w-32 bg-emerald-600 hover:bg-emerald-700 text-white text-base font-bold py-2 px-4 rounded-lg transition-all duration-200 hover:scale-[1.02] shadow-lg disabled:opacity-50 disabled:cursor-not-allowed mb-4"
             >
               {product.affiliate_link ? 'BUY NOW' : 'Coming Soon'}
             </button>
@@ -134,8 +166,8 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
       {/* Content Section Below Product Info */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         {/* Recent Purchases Banner */}
-        <div className="bg-green-500 text-white text-center py-2 px-6 rounded-lg mb-8">
-          <span className="font-semibold">18 people purchased this product in last 24 hours</span>
+        <div className="bg-emerald-600 text-white text-center py-2 px-6 rounded-lg mb-8">
+          <span className="font-semibold">{purchaseCount} people purchased this product in last 24 hours</span>
         </div>
 
         {/* Description Separator */}
@@ -201,6 +233,30 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
           </div>
         </div>
       </div>
+
+      {/* Related Products Section */}
+      {relatedProducts && relatedProducts.length > 0 && (
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Related Products</h2>
+            <p className="text-gray-600">You might also be interested in these tools</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {relatedProducts.slice(0, 8).map((relatedProduct, index) => (
+              <div 
+                key={relatedProduct.id}
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <ProductCard 
+                  product={relatedProduct}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Zoom Modal */}
       {isImageZoomed && (

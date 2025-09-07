@@ -94,7 +94,7 @@ export const ToolsPackagesSection = () => {
         {/* Header */}
         <div className="text-center mb-16 mt-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            <span className="text-primary-500">
+            <span className="text-emerald-600">
               Tool Packages
             </span>
           </h2>
@@ -108,11 +108,11 @@ export const ToolsPackagesSection = () => {
           {packages.map((pkg, index) => (
             <div 
               key={pkg.id} 
-              className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 animate-fade-in-up overflow-hidden flex flex-col"
+              className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden flex flex-col"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
               {pkg.popular && (
-                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-primary-500 to-red-600 text-white px-4 py-2 rounded-full text-sm font-bold z-50 animate-bounce-subtle shadow-lg">
+                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-4 py-2 rounded-full text-sm font-bold z-50 animate-bounce-subtle shadow-lg">
                   Popular
                 </div>
               )}
@@ -178,7 +178,7 @@ export const ToolsPackagesSection = () => {
                     {/* Hover tooltip for additional tools */}
                     <div className="relative">
                       <div 
-                        className="text-sm text-primary-500 cursor-pointer hover:text-primary-600 transition-colors duration-200"
+                        className="text-sm text-emerald-600 cursor-pointer hover:text-emerald-700 transition-colors duration-200"
                         onMouseEnter={() => setHoveredPackage(pkg.id)}
                         onMouseLeave={() => setHoveredPackage(null)}
                       >
@@ -195,7 +195,7 @@ export const ToolsPackagesSection = () => {
                             <div className="grid grid-cols-1 gap-2">
                               {pkg.allTools.map((tool, toolIndex) => (
                                 <div key={toolIndex} className="flex items-center gap-2 text-sm text-gray-700">
-                                  <div className="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div>
+                                  <div className="w-2 h-2 bg-emerald-600 rounded-full flex-shrink-0"></div>
                                   <span>{tool}</span>
                                 </div>
                               ))}
@@ -212,7 +212,7 @@ export const ToolsPackagesSection = () => {
                 {/* Action Buttons */}
                 <div className="mt-auto pt-4">
                   <button 
-                    className="w-full py-2 px-4 bg-primary-500 text-white rounded-lg font-medium text-center block hover:bg-primary-600 transition-colors transform group-hover:scale-105"
+                    className="w-full py-2 px-4 bg-emerald-600 text-white rounded-lg font-medium text-center block hover:bg-emerald-700 transition-colors transform group-hover:scale-105"
                   >
                     Buy Now
                   </button>
@@ -220,7 +220,7 @@ export const ToolsPackagesSection = () => {
               </div>
               
               {/* Hover background overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               {/* Shimmer effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>

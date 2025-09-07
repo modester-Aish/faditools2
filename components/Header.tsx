@@ -49,10 +49,10 @@ export default function Header() {
   // Don't render until mounted to prevent SSR issues
   if (!mounted) {
     return (
-      <header className="bg-white shadow-sm sticky top-0 z-50">
+      <header className="bg-white shadow-sm sticky top-0 z-50">   
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-primary-500">FadiTools</div>
+            <div className="text-2xl font-bold text-emerald-600">FadiTools</div>
             <div className="hidden md:flex space-x-8">
               <div className="h-4 bg-gray-200 rounded animate-pulse w-16"></div>
               <div className="h-4 bg-gray-200 rounded animate-pulse w-16"></div>
@@ -68,13 +68,13 @@ export default function Header() {
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-primary-500 hover:text-primary-600 transition-colors">
+          <Link href="/" className="text-2xl font-bold text-emerald-600 hover:text-emerald-700 transition-colors">
             FadiTools
           </Link>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-primary-500 transition-colors">
+            <Link href="/" className="text-gray-700 hover:text-emerald-600 transition-colors">
               Home
             </Link>
             
@@ -86,7 +86,7 @@ export default function Header() {
             >
               <Link
                 href="/pages"
-                className="text-gray-700 hover:text-primary-500 transition-colors flex items-center"
+                className="text-gray-700 hover:text-emerald-600 transition-colors flex items-center"
               >
                 Pages
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,7 +103,7 @@ export default function Header() {
                       <Link 
                         key={page.id}
                         href={`/${page.slug}`} 
-                        className="block px-4 py-2 text-gray-700 hover:bg-primary-500/10 hover:text-primary-500 transition-colors"
+                        className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors"
                       >
                         {page.title.rendered}
                       </Link>
@@ -115,10 +115,10 @@ export default function Header() {
               )}
             </div>
             
-            <Link href="/blog" className="text-gray-700 hover:text-primary-500 transition-colors">
+            <Link href="/blog" className="text-gray-700 hover:text-emerald-600 transition-colors">
               Posts
             </Link>
-            <Link href="/products" className="text-gray-700 hover:text-primary-500 transition-colors">
+            <Link href="/products" className="text-gray-700 hover:text-emerald-600 transition-colors">
               Products
             </Link>
           </div>
@@ -126,7 +126,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-md text-gray-700 hover:text-primary-500 hover:bg-primary-500/10 transition-colors"
+            className="md:hidden p-2 rounded-md text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-colors"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMenuOpen ? (
@@ -140,11 +140,11 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-primary-500/20">
+          <div className="md:hidden mt-4 pb-4 border-t border-emerald-200">
             <div className="flex flex-col space-y-4 pt-4">
               <Link 
                 href="/" 
-                className="text-gray-700 hover:text-primary-500 transition-colors"
+                className="text-gray-700 hover:text-emerald-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
@@ -154,7 +154,7 @@ export default function Header() {
               <div className="space-y-2">
                 <button
                   onClick={() => setIsMobilePagesOpen(!isMobilePagesOpen)}
-                  className="flex items-center justify-between w-full text-sm font-medium text-gray-500 uppercase tracking-wide hover:text-primary-500 transition-colors"
+                  className="flex items-center justify-between w-full text-sm font-medium text-gray-500 uppercase tracking-wide hover:text-emerald-600 transition-colors"
                 >
                   <span>Pages</span>
                   <svg 
@@ -193,14 +193,14 @@ export default function Header() {
               
               <Link 
                 href="/blog" 
-                className="text-gray-700 hover:text-primary-500 transition-colors"
+                className="text-gray-700 hover:text-emerald-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Posts
               </Link>
               <Link 
                 href="/products" 
-                className="text-gray-500 hover:text-primary-500 transition-colors"
+                className="text-gray-700 hover:text-emerald-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products

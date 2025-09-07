@@ -127,6 +127,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
+// Helper function to extract affiliate link from meta_data
+function getAffiliateLinkFromMeta(meta_data: any[]): string | undefined {
+  if (!meta_data || !Array.isArray(meta_data)) return undefined;
+  
+  const affiliateMeta = meta_data.find(meta => meta.key === 'affiliate_link');
+  return affiliateMeta?.value || undefined;
+}
+
 export default async function DynamicPage({ params }: { params: { slug: string } }) {
   try {
     // First try to find a blog post
@@ -865,8 +873,8 @@ export default async function DynamicPage({ params }: { params: { slug: string }
       stock_quantity: product.stock_quantity,
       images: product.images,
       attributes: product.attributes,
-      // Extract affiliate link from WooCommerce external product URL
-      affiliate_link: product.external_url || undefined,
+      // Extract affiliate link from WooCommerce external product URL or meta_data
+      affiliate_link: product.external_url || getAffiliateLinkFromMeta(product.meta_data) || undefined,
       // Additional fields
       categories: product.categories.map(cat => cat.id),
       tags: product.tags.map(tag => tag.id),
