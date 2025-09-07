@@ -231,9 +231,14 @@ export default function WhyChooseUs({ testimonials = [], totalTestimonials = 0 }
                 Start your journey with FadiTools today and see the difference our tools can make for your business.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <button className="bg-white text-blue-600 px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-xl animate-bounce-subtle">
+                <a 
+                  href="https://members.seotoolsgroupbuy.us/signup" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-white text-blue-600 px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-xl animate-bounce-subtle inline-block"
+                >
                   Get Started Now
-                </button>
+                </a>
                 <button className="border-3 border-white text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
                   Learn More
                 </button>

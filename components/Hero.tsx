@@ -56,18 +56,22 @@ export default function Hero({ onScrollToTools, onScrollToPricing, siteStats }: 
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <button
-              onClick={onScrollToTools}
-              className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 animate-pulse-glow"
+            <a
+              href="https://members.seotoolsgroupbuy.us/signup"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 animate-pulse-glow inline-block"
             >
               View All Tools 🚀
-            </button>
-            <button
-              onClick={onScrollToPricing}
-              className="px-8 py-4 bg-white text-gray-700 border-2 border-gray-300 rounded-xl font-semibold text-lg hover:border-emerald-500 hover:text-emerald-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            </a>
+            <a
+              href="https://members.seotoolsgroupbuy.us/signup"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-white text-gray-700 border-2 border-gray-300 rounded-xl font-semibold text-lg hover:border-emerald-500 hover:text-emerald-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-block"
             >
               Start Free Trial ⭐
-            </button>
+            </a>
           </div>
 
           {/* Stats */}

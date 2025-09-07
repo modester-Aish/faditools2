@@ -263,9 +263,14 @@ export default async function Home() {
               </div>
 
               {/* CTA Button */}
-              <Link href="/packages" className="w-full bg-emerald-600 text-white rounded-lg font-bold text-sm py-2 px-3 text-center block hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-md">
+              <a 
+                href="https://members.seotoolsgroupbuy.us/signup" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full bg-emerald-600 text-white rounded-lg font-bold text-sm py-2 px-3 text-center block hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-md"
+              >
                 Get Started Now
-              </Link>
+              </a>
             </div>
           </div>
         </div>

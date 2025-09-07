@@ -104,7 +104,34 @@ export const ToolsPackagesSection = () => {
         </div>
 
         {/* Packages Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4 relative">
+          {/* Tooltip for additional tools - positioned above cards */}
+          {hoveredPackage && (
+            <div className="absolute -top-32 left-0 right-0 z-50 flex justify-center">
+              <div className="bg-white rounded-xl shadow-2xl border border-gray-200 p-4 animate-fade-in">
+                <div className="text-sm font-medium text-gray-900 mb-3 text-center">
+                  All {packages.find(p => p.id === hoveredPackage)?.toolCount} tools included:
+                </div>
+                <div className="w-full max-w-4xl">
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {packages.find(p => p.id === hoveredPackage)?.allTools.map((tool, toolIndex) => (
+                      <button
+                        key={toolIndex}
+                        className="px-3 py-2 text-sm bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200 hover:bg-emerald-100 hover:border-emerald-300 transition-all duration-200 flex items-center gap-2 whitespace-nowrap"
+                        title={tool}
+                      >
+                        <div className="w-2 h-2 bg-emerald-600 rounded-full flex-shrink-0"></div>
+                        <span>{tool}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                {/* Arrow pointing down */}
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+              </div>
+            </div>
+          )}
+          
           {packages.map((pkg, index) => (
             <div 
               key={pkg.id} 
@@ -184,38 +211,20 @@ export const ToolsPackagesSection = () => {
                       >
                         +{pkg.toolCount - pkg.tools.length} more tools
                       </div>
-                      
-                      {/* Tooltip */}
-                      {hoveredPackage === pkg.id && (
-                        <div className="absolute bottom-full left-0 mb-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 p-4 z-50 animate-fade-in">
-                          <div className="text-sm font-medium text-gray-900 mb-3">
-                            All {pkg.toolCount} tools included:
-                          </div>
-                          <div className="max-h-60 overflow-y-auto">
-                            <div className="grid grid-cols-1 gap-2">
-                              {pkg.allTools.map((tool, toolIndex) => (
-                                <div key={toolIndex} className="flex items-center gap-2 text-sm text-gray-700">
-                                  <div className="w-2 h-2 bg-emerald-600 rounded-full flex-shrink-0"></div>
-                                  <span>{tool}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                          {/* Arrow */}
-                          <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-                        </div>
-                      )}
                     </div>
                   </div>
                 </div>
                 
                 {/* Action Buttons */}
                 <div className="mt-auto pt-4">
-                  <button 
+                  <a 
+                    href="https://members.seotoolsgroupbuy.us/signup" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
                     className="w-full py-2 px-4 bg-emerald-600 text-white rounded-lg font-medium text-center block hover:bg-emerald-700 transition-colors transform group-hover:scale-105"
                   >
                     Buy Now
-                  </button>
+                  </a>
                 </div>
               </div>
               

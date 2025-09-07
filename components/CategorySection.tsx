@@ -190,9 +190,18 @@ export default function CategorySection({ categories, products = [] }: CategoryS
                     {/* Content Section - Flexible */}
                     <div className="flex-grow flex flex-col">
                       <h3 className="text-xl font-bold text-gray-900 mb-2 text-center line-clamp-2">{product.name}</h3>
-                      <p className="text-gray-600 text-sm text-center mb-4 flex-grow">
-                        Premium product with amazing features and professional quality
-                      </p>
+                      
+                      {/* Rating Stars */}
+                      <div className="flex justify-center items-center mb-4 flex-grow">
+                        <div className="flex items-center space-x-1">
+                          {[...Array(5)].map((_, i) => (
+                            <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                          ))}
+                          <span className="text-sm text-gray-600 ml-2">(4.9)</span>
+                        </div>
+                      </div>
                       
                       {/* Price Section */}
                       <div className="text-center mb-4">

@@ -327,9 +327,14 @@ export const PopularToolsSection = () => {
                   <span className="text-gray-500 line-through ml-2">/month</span>
                   <div className="text-sm text-gray-500">vs {tool.originalPrice}/month</div>
                 </div>
-                <button className="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold text-center block hover:bg-emerald-700 transition-all duration-300 transform group-hover:scale-105">
+                <a 
+                  href="https://members.seotoolsgroupbuy.us/signup" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold text-center block hover:bg-emerald-700 transition-all duration-300 transform group-hover:scale-105"
+                >
                   Buy Now
-                </button>
+                </a>
               </div>
               {/* Shimmer effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
@@ -587,11 +592,14 @@ export const CustomPackSection = () => {
                 
                 {/* Action Buttons */}
                 <div className="mt-auto pt-4">
-                  <button 
-                    className={`w-full py-2 px-4 font-medium text-center block transition-colors rounded-lg ${pack.isPopular ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-emerald-600 text-white hover:bg-emerald-700'}`}
+                  <a 
+                    href="https://members.seotoolsgroupbuy.us/signup" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`w-full py-2 px-4 font-medium text-center block transition-colors rounded-lg transform group-hover:scale-105 ${pack.isPopular ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-emerald-600 text-white hover:bg-emerald-700'}`}
                   >
                     Buy Now
-                  </button>
+                  </a>
                 </div>
               </div>
               
