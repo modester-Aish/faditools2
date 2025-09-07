@@ -585,16 +585,16 @@ export async function POST(request: NextRequest) {
     const successfulScrapes = scrapingResults.filter(r => r.success).length;
     const successfulPosts = wooCommerceResults.filter(r => r.success).length;
 
-    console.log(`🎉 Test scraping completed! Successfully scraped: ${successfulScrapes}/${testLimit}, Posted to WooCommerce: ${successfulPosts}/${testLimit}`);
+    console.log(`🎉 Full scraping completed! Successfully scraped: ${successfulScrapes}/${productData.length}, Posted to WooCommerce: ${successfulPosts}/${productData.length}`);
 
     return NextResponse.json({
       success: true,
       summary: {
-        totalUrls: testLimit,
+        totalUrls: productData.length,
         successfulScrapes,
         successfulPosts,
-        failedScrapes: testLimit - successfulScrapes,
-        failedPosts: testLimit - successfulPosts
+        failedScrapes: productData.length - successfulScrapes,
+        failedPosts: productData.length - successfulPosts
       },
       scrapingResults,
       wooCommerceResults
