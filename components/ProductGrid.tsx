@@ -183,7 +183,7 @@ export default function ProductGrid({
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
           <div className="flex items-center justify-between">
             <div className="text-sm text-gray-700">
-              Showing {((currentPage - 1) * 12) + 1} to {Math.min(currentPage * 12, totalProducts)} of {totalProducts} products
+              Showing {((currentPage - 1) * 24) + 1} to {Math.min(currentPage * 24, totalProducts)} of {totalProducts} products
             </div>
             
             <div className="flex items-center space-x-2">
@@ -199,18 +199,36 @@ export default function ProductGrid({
 
               {/* Page Numbers */}
               <div className="flex items-center space-x-1">
-                {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                {/* First page */}
+                {currentPage > 3 && (
+                  <>
+                    <a
+                      href={buildPageUrl(1)}
+                      className="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
+                    >
+                      1
+                    </a>
+                    {currentPage > 4 && (
+                      <span className="px-2 text-gray-500">...</span>
+                    )}
+                  </>
+                )}
+
+                {/* Current page and surrounding pages */}
+                {Array.from({ length: Math.min(7, totalPages) }, (_, i) => {
                   let pageNum: number
                   
-                  if (totalPages <= 5) {
+                  if (totalPages <= 7) {
                     pageNum = i + 1
-                  } else if (currentPage <= 3) {
+                  } else if (currentPage <= 4) {
                     pageNum = i + 1
-                  } else if (currentPage >= totalPages - 2) {
-                    pageNum = totalPages - 4 + i
+                  } else if (currentPage >= totalPages - 3) {
+                    pageNum = totalPages - 6 + i
                   } else {
-                    pageNum = currentPage - 2 + i
+                    pageNum = currentPage - 3 + i
                   }
+
+                  if (pageNum < 1 || pageNum > totalPages) return null
 
                   return (
                     <a
@@ -226,6 +244,21 @@ export default function ProductGrid({
                     </a>
                   )
                 })}
+
+                {/* Last page */}
+                {currentPage < totalPages - 3 && (
+                  <>
+                    {currentPage < totalPages - 4 && (
+                      <span className="px-2 text-gray-500">...</span>
+                    )}
+                    <a
+                      href={buildPageUrl(totalPages)}
+                      className="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
+                    >
+                      {totalPages}
+                    </a>
+                  </>
+                )}
               </div>
 
               {/* Next Page */}
@@ -236,6 +269,28 @@ export default function ProductGrid({
                 >
                   Next
                 </a>
+              )}
+
+              {/* Go to page input for large page counts */}
+              {totalPages > 10 && (
+                <div className="flex items-center space-x-2 ml-4 pl-4 border-l border-gray-300">
+                  <span className="text-sm text-gray-600">Go to:</span>
+                  <input
+                    type="number"
+                    min="1"
+                    max={totalPages}
+                    defaultValue={currentPage}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        const page = parseInt((e.target as HTMLInputElement).value)
+                        if (page >= 1 && page <= totalPages) {
+                          window.location.href = buildPageUrl(page)
+                        }
+                      }
+                    }}
+                    className="w-16 px-2 py-1 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                </div>
               )}
             </div>
           </div>

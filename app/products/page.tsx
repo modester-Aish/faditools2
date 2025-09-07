@@ -78,9 +78,10 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
     
     totalProducts = filteredProducts.length
     
-    // Apply pagination
-    const startIndex = (page - 1) * 12
-    const endIndex = startIndex + 12
+    // Apply pagination - increased to 24 products per page for better UX
+    const productsPerPage = 24
+    const startIndex = (page - 1) * productsPerPage
+    const endIndex = startIndex + productsPerPage
     const paginatedProducts = filteredProducts.slice(startIndex, endIndex)
     
     // Convert WooCommerce products to Product format for compatibility
@@ -138,7 +139,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
     categories = []
   }
 
-  const totalPages = Math.ceil(totalProducts / 12)
+  const totalPages = Math.ceil(totalProducts / 24)
 
   return (
     <div className="min-h-screen bg-background">

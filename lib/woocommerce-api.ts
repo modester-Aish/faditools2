@@ -152,8 +152,54 @@ async function fetchWithCache<T>(
 
 // WooCommerce Products API functions
 export async function fetchAllProducts(): Promise<WooCommerceApiResponse<WooCommerceProduct[]>> {
-  const url = `${WOOCOMMERCE_BASE_URL}/wp-json/wc/v3/products?consumer_key=${CONSUMER_KEY}&consumer_secret=${CONSUMER_SECRET}&per_page=100`
-  return fetchWithCache<WooCommerceProduct[]>(url)
+  try {
+    let allProducts: WooCommerceProduct[] = [];
+    let page = 1;
+    let hasMore = true;
+    const perPage = 100;
+
+    while (hasMore) {
+      const url = `${WOOCOMMERCE_BASE_URL}/wp-json/wc/v3/products?consumer_key=${CONSUMER_KEY}&consumer_secret=${CONSUMER_SECRET}&per_page=${perPage}&page=${page}`;
+      
+      const response = await fetch(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0',
+        },
+        cache: 'no-store'
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const products: WooCommerceProduct[] = await response.json();
+      
+      if (products.length === 0) {
+        hasMore = false;
+      } else {
+        allProducts = [...allProducts, ...products];
+        page++;
+        
+        // If we got less than perPage products, we've reached the end
+        if (products.length < perPage) {
+          hasMore = false;
+        }
+      }
+    }
+
+    console.log(`✅ Fetched ${allProducts.length} total products from WooCommerce`);
+    return { data: allProducts, error: null, loading: false };
+  } catch (error) {
+    console.error('WooCommerce API Error:', error);
+    return {
+      data: null,
+      error: error instanceof Error ? error.message : 'Unknown error occurred',
+      loading: false
+    };
+  }
 }
 
 export async function fetchProductById(id: number): Promise<WooCommerceApiResponse<WooCommerceProduct>> {
@@ -260,6 +306,7 @@ export function getDiscountPercentage(product: WooCommerceProduct): number | nul
 // Utility function to clear cache
 export function clearWooCommerceCache(): void {
   cache.clear()
+  console.log('🧹 WooCommerce cache cleared - fresh data will be fetched')
 }
 
 // Utility function to get cache stats
