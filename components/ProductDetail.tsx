@@ -48,14 +48,14 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
 
   return (
     <div className="bg-white">
-      {/* Main Product Section - Toolsurf Style */}
+      {/* Main Product Section - Source Style */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           
           {/* Left Column - Product Logo */}
           <div className="flex flex-col items-center justify-center pt-8">
             <div className="text-center">
-              {/* Product Logo/Image - Larger size like Toolsurf - Clickable for zoom */}
+              {/* Product Logo/Image - Larger size like source - Clickable for zoom */}
               <div 
                 className="w-64 h-64 bg-gray-50 rounded-xl overflow-hidden mb-6 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={handleImageZoom}
@@ -104,7 +104,7 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
               )}
             </div>
 
-            {/* Key Features Box - Clean like Toolsurf */}
+            {/* Key Features Box - Clean like source */}
             <div className="bg-white border border-gray-200 rounded-lg p-6 mb-8">
               <div className="space-y-4">
                 {/* 24 Hours Refund Policy */}

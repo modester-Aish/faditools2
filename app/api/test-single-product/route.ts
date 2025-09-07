@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
         },
         {
           key: 'source_url',
-          value: 'ToolSurf'
+          value: 'Source'
         }
       ]
     };

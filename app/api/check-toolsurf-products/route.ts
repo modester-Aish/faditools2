@@ -3,34 +3,43 @@ import { fetchAllProducts } from '@/lib/woocommerce-api'
 
 export async function GET(request: NextRequest) {
   try {
-    console.log('🔍 Checking for ToolSurf products...')
+    console.log('🔍 Checking for scraped products...')
     
     // Fetch all products
-    const products = await fetchAllProducts()
+    const productsResponse = await fetchAllProducts()
     
-    // Search for ToolSurf products by looking for specific patterns
-    const toolsurfProducts = products.filter(product => {
+    if (productsResponse.error || !productsResponse.data) {
+      return NextResponse.json({
+        success: false,
+        error: productsResponse.error || 'No products found'
+      }, { status: 500 })
+    }
+    
+    const products = productsResponse.data
+    
+    // Search for scraped products by looking for specific patterns
+    const scrapedProducts = products.filter(product => {
       const name = product.name.toLowerCase()
       const metaData = product.meta_data || []
       
-      // Check if it has ToolSurf meta data
-      const hasToolSurfMeta = metaData.some((meta: any) => 
-        meta.key === 'source_url' && meta.value === 'ToolSurf'
+      // Check if it has scraped meta data
+      const hasScrapedMeta = metaData.some((meta: any) => 
+        meta.key === 'source_url' && meta.value && meta.value !== ''
       )
       
-      // Check if name contains ToolSurf-related keywords
-      const hasToolSurfKeywords = name.includes('group buy') || 
+      // Check if name contains relevant keywords
+      const hasRelevantKeywords = name.includes('group buy') || 
                                  name.includes('tool') ||
                                  name.includes('seo') ||
                                  name.includes('shutterstock') ||
                                  name.includes('picmonkey') ||
                                  name.includes('animoto')
       
-      return hasToolSurfMeta || hasToolSurfKeywords
+      return hasScrapedMeta || hasRelevantKeywords
     })
     
     // Get some sample products to show
-    const sampleProducts = toolsurfProducts.slice(0, 10).map(product => ({
+    const sampleProducts = scrapedProducts.slice(0, 10).map(product => ({
       id: product.id,
       name: product.name,
       price: product.price,
@@ -44,13 +53,13 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       success: true,
       totalProducts: products.length,
-      toolsurfProductsFound: toolsurfProducts.length,
+      scrapedProductsFound: scrapedProducts.length,
       sampleProducts,
-      message: `Found ${toolsurfProducts.length} ToolSurf products out of ${products.length} total products`
+      message: `Found ${scrapedProducts.length} scraped products out of ${products.length} total products`
     })
     
   } catch (error: any) {
-    console.error('Error checking ToolSurf products:', error)
+    console.error('Error checking scraped products:', error)
     return NextResponse.json({
       success: false,
       error: error.message

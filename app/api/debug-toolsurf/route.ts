@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
   try {
     const testUrl = 'https://www.toolsurf.com/seo-tools/shutterstock-private-account/';
     
-    console.log('🔍 Debugging ToolSurf scraping for:', testUrl);
+    console.log('🔍 Debugging source scraping for:', testUrl);
     
     const response = await axios.get(testUrl, {
       headers: {
@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   return NextResponse.json({
-    message: 'Debug ToolSurf scraping API endpoint',
-    instructions: 'Send a POST request to debug ToolSurf scraping issues'
+    message: 'Debug source scraping API endpoint',
+    instructions: 'Send a POST request to debug source scraping issues'
   });
 }

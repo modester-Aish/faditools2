@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
 
-// ToolSurf sitemap URL
-const TOOLSURF_SITEMAP_URL = 'https://www.toolsurf.com/product-sitemap.xml';
+// Source sitemap URL
+const SOURCE_SITEMAP_URL = 'https://www.toolsurf.com/product-sitemap.xml';
 
 // Affiliate link for all products
 const AFFILIATE_LINK = 'https://members.seotoolsgroupbuy.us/signup';
@@ -22,12 +22,12 @@ interface ScrapedProduct {
   affiliateLink: string;
 }
 
-// Function to fetch first 5 product URLs from ToolSurf sitemap for testing
+// Function to fetch first 5 product URLs from source sitemap for testing
 async function fetchTestProductUrls(): Promise<string[]> {
   try {
-    console.log('🔄 Fetching test product URLs from ToolSurf sitemap...');
+    console.log('🔄 Fetching test product URLs from source sitemap...');
     
-    const response = await axios.get(TOOLSURF_SITEMAP_URL, {
+    const response = await axios.get(SOURCE_SITEMAP_URL, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
       },
@@ -191,7 +191,7 @@ async function postToWooCommerce(product: ScrapedProduct): Promise<any> {
         },
         {
           key: 'source_url',
-          value: 'ToolSurf'
+          value: 'Source'
         }
       ]
     };
@@ -225,19 +225,19 @@ async function postToWooCommerce(product: ScrapedProduct): Promise<any> {
 
 export async function POST(request: NextRequest) {
   try {
-    // First, fetch test product URLs from ToolSurf sitemap
+    // First, fetch test product URLs from source sitemap
     const productUrls = await fetchTestProductUrls();
     
     if (productUrls.length === 0) {
       return NextResponse.json({
         success: false,
-        error: 'No product URLs found in ToolSurf sitemap'
+        error: 'No product URLs found in source sitemap'
       }, { status: 400 });
     }
 
     const results: any[] = [];
 
-    console.log(`🚀 Starting to scrape ${productUrls.length} test products from ToolSurf...`);
+    console.log(`🚀 Starting to scrape ${productUrls.length} test products from source...`);
 
     // Scrape all test products
     for (let i = 0; i < productUrls.length; i++) {

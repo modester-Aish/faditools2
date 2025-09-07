@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     // Test product data with different image URLs
     const testProducts = [
       {
-        name: 'Debug Test 1 - Original ToolSurf URL',
+        name: 'Debug Test 1 - Original Source URL',
         type: 'simple',
         regular_price: '19.00',
         price: '19.00',

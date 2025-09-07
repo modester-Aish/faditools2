@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
 
-// ToolSurf sitemap URL
-const TOOLSURF_SITEMAP_URL = 'https://www.toolsurf.com/product-sitemap.xml';
+// Source sitemap URL
+const SOURCE_SITEMAP_URL = 'https://www.toolsurf.com/product-sitemap.xml';
 
 // Affiliate link for all products
 const AFFILIATE_LINK = 'https://members.seotoolsgroupbuy.us/signup';
@@ -22,7 +22,7 @@ interface ScrapedProduct {
   affiliateLink: string;
 }
 
-// Function to scrape product data from ToolSurf
+// Function to scrape product data from source
 async function scrapeProductWithAxios(url: string): Promise<ScrapedProduct | null> {
   try {
     const response = await axios.get(url, {
@@ -142,7 +142,7 @@ async function updateWooCommerceProduct(productId: number, product: ScrapedProdu
         },
         {
           key: 'source_url',
-          value: 'ToolSurf'
+          value: 'Source'
         }
       ]
     };
@@ -235,7 +235,7 @@ export async function POST(request: NextRequest) {
             },
             {
               key: 'source_url',
-              value: 'ToolSurf'
+              value: 'Source'
             }
           ]
         };

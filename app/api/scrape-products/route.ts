@@ -3,8 +3,8 @@ import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
 
-// ToolSurf sitemap URL
-const TOOLSURF_SITEMAP_URL = 'https://www.toolsurf.com/product-sitemap.xml';
+// Source sitemap URL
+const SOURCE_SITEMAP_URL = 'https://www.toolsurf.com/product-sitemap.xml';
 
 // Affiliate link for all products
 const AFFILIATE_LINK = 'https://members.seotoolsgroupbuy.us/signup';
@@ -132,12 +132,12 @@ interface ScrapedProduct {
   affiliateLink: string;
 }
 
-// Function to fetch all product data from ToolSurf sitemap
+// Function to fetch all product data from source sitemap
 async function fetchAllProductDataFromSitemap(): Promise<Array<{url: string, name: string, image: string}>> {
   try {
-    console.log('🔄 Fetching product data from ToolSurf sitemap...');
+    console.log('🔄 Fetching product data from source sitemap...');
     
-    const response = await axios.get(TOOLSURF_SITEMAP_URL, {
+    const response = await axios.get(SOURCE_SITEMAP_URL, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
       },
@@ -253,7 +253,7 @@ async function scrapeProductWithAxios(url: string, sitemapName?: string, sitemap
         // Try to extract from breadcrumb or navigation
         /<span[^>]*class="[^"]*breadcrumb[^"]*"[^>]*>.*?([^<]*(?:Group Buy|Tool|SEO|Account)[^<]*)<\/span>/i,
         // Try title tag as fallback but clean it better
-        /<title>([^<]*(?:Group Buy|Tool|SEO|Account)[^<]*?)\s*-\s*Toolsurf<\/title>/i
+        /<title>([^<]*(?:Group Buy|Tool|SEO|Account)[^<]*?)\s*-\s*[^<]*<\/title>/i
       ];
 
       for (const pattern of namePatterns) {
@@ -316,7 +316,7 @@ async function scrapeProductWithAxios(url: string, sitemapName?: string, sitemap
     
     // Try multiple patterns for regular price (strikethrough/crossed out)
     const regularPricePatterns = [
-      // ToolSurf specific patterns
+      // Source specific patterns
       /~~\$([\d,]+\.?\d*)~~/i, // ~~$9.00~~
       /<del[^>]*>.*?\$([\d,]+\.?\d*).*?<\/del>/i, // <del>$9.00</del>
       /<span[^>]*class="[^"]*price[^"]*"[^>]*>.*?<del[^>]*>.*?(\$[\d,]+\.?\d*).*?<\/del>/i,
@@ -328,7 +328,7 @@ async function scrapeProductWithAxios(url: string, sitemapName?: string, sitemap
 
     // Try multiple patterns for sale price (current/highlighted price)
     const salePricePatterns = [
-      // ToolSurf specific patterns - look for current price after strikethrough
+      // Source specific patterns - look for current price after strikethrough
       /~~\$[\d,]+\.?\d*~~.*?(\$[\d,]+\.?\d*)/i, // ~~$9.00~~ $1.00
       /<del[^>]*>.*?\$[\d,]+\.?\d*.*?<\/del>.*?(\$[\d,]+\.?\d*)/i, // <del>$9.00</del> $1.00
       // Look for any price that's not strikethrough
@@ -503,7 +503,7 @@ async function postToWooCommerce(product: ScrapedProduct): Promise<WooCommerceRe
         },
         {
           key: 'source_url',
-          value: 'ToolSurf'
+          value: 'Source'
         }
       ]
     };
@@ -537,20 +537,20 @@ async function postToWooCommerce(product: ScrapedProduct): Promise<WooCommerceRe
 
 export async function POST(request: NextRequest) {
   try {
-    // First, fetch all product data from ToolSurf sitemap
+    // First, fetch all product data from source sitemap
     const productData = await fetchAllProductDataFromSitemap();
     
     if (productData.length === 0) {
       return NextResponse.json({
         success: false,
-        error: 'No product data found in ToolSurf sitemap'
+        error: 'No product data found in source sitemap'
       }, { status: 400 });
     }
 
     const scrapingResults: ScrapingResult[] = [];
     const wooCommerceResults: WooCommerceResult[] = [];
 
-    console.log(`🚀 Starting FULL scraping for ALL ${productData.length} products from ToolSurf...`);
+    console.log(`🚀 Starting FULL scraping for ALL ${productData.length} products from source...`);
     
     // Scrape ALL products
     for (let i = 0; i < productData.length; i++) {
@@ -617,7 +617,7 @@ export async function GET() {
     return NextResponse.json({
       message: 'Product scraping API endpoint',
       instructions: 'Send a POST request to start scraping products',
-      sitemapUrl: TOOLSURF_SITEMAP_URL,
+      sitemapUrl: SOURCE_SITEMAP_URL,
       currentProductCount: productData.length,
       wooCommerceConfigured: !!(WOOCOMMERCE_CONFIG.consumerKey && WOOCOMMERCE_CONFIG.consumerSecret),
       wooCommerceSite: WOOCOMMERCE_CONFIG.siteUrl
@@ -626,7 +626,7 @@ export async function GET() {
     return NextResponse.json({
       message: 'Product scraping API endpoint',
       instructions: 'Send a POST request to start scraping products',
-      sitemapUrl: TOOLSURF_SITEMAP_URL,
+      sitemapUrl: SOURCE_SITEMAP_URL,
       error: 'Could not fetch current product count from sitemap',
       wooCommerceConfigured: !!(WOOCOMMERCE_CONFIG.consumerKey && WOOCOMMERCE_CONFIG.consumerSecret),
       wooCommerceSite: WOOCOMMERCE_CONFIG.siteUrl
