@@ -1,15 +1,12 @@
 import { NextResponse } from 'next/server';
-import { clearWooCommerceCache, fetchAllProducts } from '@/lib/woocommerce-api';
+import { clearWooCommerceCache, fetchAllProducts, forceRefreshProducts } from '@/lib/woocommerce-api';
 
 export async function POST() {
   try {
     console.log('🔄 Refreshing WooCommerce products cache...');
     
-    // Clear the cache
-    clearWooCommerceCache();
-    
-    // Fetch fresh data
-    const response = await fetchAllProducts();
+    // Force refresh products (clears cache and fetches fresh data)
+    const response = await forceRefreshProducts();
     
     if (response.error) {
       return NextResponse.json({

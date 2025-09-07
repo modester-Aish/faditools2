@@ -102,7 +102,7 @@ export interface WooCommerceProduct {
 
 // Cache for storing API responses
 const cache = new Map<string, { data: any; timestamp: number }>()
-const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes cache
+const CACHE_DURATION = 2 * 60 * 1000 // 2 minutes cache for faster updates
 
 // Generic fetch function with caching and error handling
 async function fetchWithCache<T>(
@@ -152,6 +152,15 @@ async function fetchWithCache<T>(
 
 // WooCommerce Products API functions
 export async function fetchAllProducts(): Promise<WooCommerceApiResponse<WooCommerceProduct[]>> {
+  const cacheKey = 'all-products'
+  const cached = cache.get(cacheKey)
+
+  // Return cached data if still valid (but with shorter cache duration for real-time updates)
+  if (cached && Date.now() - cached.timestamp < 2 * 60 * 1000) { // 2 minutes cache
+    console.log(`📦 Using cached products: ${cached.data.length} products`)
+    return { data: cached.data, error: null, loading: false }
+  }
+
   try {
     let allProducts: WooCommerceProduct[] = [];
     let page = 1;
@@ -189,6 +198,9 @@ export async function fetchAllProducts(): Promise<WooCommerceApiResponse<WooComm
         }
       }
     }
+
+    // Cache the successful response
+    cache.set(cacheKey, { data: allProducts, timestamp: Date.now() })
 
     console.log(`✅ Fetched ${allProducts.length} total products from WooCommerce`);
     return { data: allProducts, error: null, loading: false };
@@ -307,6 +319,18 @@ export function getDiscountPercentage(product: WooCommerceProduct): number | nul
 export function clearWooCommerceCache(): void {
   cache.clear()
   console.log('🧹 WooCommerce cache cleared - fresh data will be fetched')
+}
+
+// Utility function to clear specific cache entry
+export function clearSpecificCache(key: string): void {
+  cache.delete(key)
+  console.log(`🧹 Cleared cache for: ${key}`)
+}
+
+// Utility function to force refresh all products
+export async function forceRefreshProducts(): Promise<WooCommerceApiResponse<WooCommerceProduct[]>> {
+  clearSpecificCache('all-products')
+  return fetchAllProducts()
 }
 
 // Utility function to get cache stats
