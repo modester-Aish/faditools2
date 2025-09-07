@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { Product } from '@/types'
 import ProductCard from './ProductCard'
-import { useCart } from '@/context/CartContext'
 
 interface RecommendedProductsGridProps {
   products: Product[]
@@ -16,15 +15,10 @@ export default function RecommendedProductsGrid({
   title = "Recommended Products",
   maxProducts = 6 
 }: RecommendedProductsGridProps) {
-  const { addToCart } = useCart()
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
 
   // Limit the number of products to display
   const displayProducts = products?.slice(0, maxProducts) || []
-
-  const handleAddToCart = (product: Product, quantity: number) => {
-    addToCart(product, quantity)
-  }
 
   if (displayProducts.length === 0) {
     return (
@@ -98,7 +92,6 @@ export default function RecommendedProductsGrid({
           >
             <ProductCard 
               product={product} 
-              onAddToCart={handleAddToCart}
             />
           </div>
         ))}
