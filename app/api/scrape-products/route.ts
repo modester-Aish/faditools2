@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
-import * as cheerio from 'cheerio';
 
 // ToolSurf sitemap URL
 const TOOLSURF_SITEMAP_URL = 'https://www.toolsurf.com/product-sitemap.xml';
@@ -73,7 +72,7 @@ interface WooCommerceResult {
 }
 
 
-// Simplified scraping function using only axios and cheerio
+// Simplified scraping function using regex parsing instead of cheerio
 async function scrapeProductWithAxios(url: string): Promise<ScrapedProduct | null> {
   try {
     const response = await axios.get(url, {
@@ -83,47 +82,51 @@ async function scrapeProductWithAxios(url: string): Promise<ScrapedProduct | nul
       timeout: 15000
     });
 
-    const $ = cheerio.load(response.data);
+    const html = response.data;
     
-    // Try multiple selectors for product name
+    // Extract product name using regex patterns
     let productName = '';
-    const nameSelectors = [
-      'h1.product_title',
-      'h1.entry-title',
-      'h1[class*="product"]',
-      'h1[class*="title"]',
-      '.product-title h1',
-      '.product-name h1',
-      'h1'
+    
+    // Try multiple patterns for product name
+    const namePatterns = [
+      /<h1[^>]*class="[^"]*product_title[^"]*"[^>]*>(.*?)<\/h1>/i,
+      /<h1[^>]*class="[^"]*entry-title[^"]*"[^>]*>(.*?)<\/h1>/i,
+      /<h1[^>]*class="[^"]*product[^"]*"[^>]*>(.*?)<\/h1>/i,
+      /<h1[^>]*class="[^"]*title[^"]*"[^>]*>(.*?)<\/h1>/i,
+      /<h1[^>]*>(.*?)<\/h1>/i
     ];
 
-    for (const selector of nameSelectors) {
-      const nameElement = $(selector).first();
-      if (nameElement.length && nameElement.text().trim()) {
-        productName = nameElement.text().trim();
-        break;
+    for (const pattern of namePatterns) {
+      const match = html.match(pattern);
+      if (match && match[1]) {
+        productName = match[1].replace(/<[^>]*>/g, '').trim();
+        if (productName) break;
       }
     }
 
-    // Try multiple selectors for product image
+    // Extract product image using regex patterns
     let productImage = '';
-    const imageSelectors = [
-      '.woocommerce-product-gallery__image img',
-      '.product-image img',
-      '.product-photo img',
-      '.main-image img',
-      '.featured-image img',
-      'img[class*="product"]',
-      'img[class*="main"]',
-      'img[class*="featured"]'
+    
+    // Try multiple patterns for product image
+    const imagePatterns = [
+      /<img[^>]*class="[^"]*woocommerce-product-gallery[^"]*"[^>]*src="([^"]+)"/i,
+      /<img[^>]*class="[^"]*product-image[^"]*"[^>]*src="([^"]+)"/i,
+      /<img[^>]*class="[^"]*product-photo[^"]*"[^>]*src="([^"]+)"/i,
+      /<img[^>]*class="[^"]*main-image[^"]*"[^>]*src="([^"]+)"/i,
+      /<img[^>]*class="[^"]*featured-image[^"]*"[^>]*src="([^"]+)"/i,
+      /<img[^>]*class="[^"]*product[^"]*"[^>]*src="([^"]+)"/i,
+      /<img[^>]*class="[^"]*main[^"]*"[^>]*src="([^"]+)"/i,
+      /<img[^>]*class="[^"]*featured[^"]*"[^>]*src="([^"]+)"/i,
+      /<img[^>]*data-src="([^"]+)"[^>]*class="[^"]*product[^"]*"/i,
+      /<img[^>]*data-lazy-src="([^"]+)"[^>]*class="[^"]*product[^"]*"/i
     ];
 
-    for (const selector of imageSelectors) {
-      const imgElement = $(selector).first();
-      if (imgElement.length) {
-        const src = imgElement.attr('src') || imgElement.attr('data-src') || imgElement.attr('data-lazy-src');
-        if (src && src.startsWith('http')) {
-          productImage = src;
+    for (const pattern of imagePatterns) {
+      const match = html.match(pattern);
+      if (match && match[1]) {
+        const src = match[1];
+        if (src && (src.startsWith('http') || src.startsWith('//'))) {
+          productImage = src.startsWith('//') ? 'https:' + src : src;
           break;
         }
       }
@@ -144,7 +147,7 @@ async function scrapeProductWithAxios(url: string): Promise<ScrapedProduct | nul
 }
 
 async function scrapeProduct(url: string): Promise<ScrapingResult> {
-  // Use simplified scraping with axios and cheerio
+  // Use simplified scraping with axios and regex parsing
   const scrapedData = await scrapeProductWithAxios(url);
 
   if (!scrapedData) {
