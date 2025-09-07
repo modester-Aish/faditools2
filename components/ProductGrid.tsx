@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { Product } from '@/types'
 import ProductCard from './ProductCard'
-import { useCart } from '@/context/CartContext'
 
 interface ProductGridProps {
   products: Product[]
@@ -22,15 +21,9 @@ export default function ProductGrid({
   category,
   search
 }: ProductGridProps) {
-  const { addToCart } = useCart()
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [sortBy, setSortBy] = useState<'name' | 'price' | 'date'>('name')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc')
-
-  const handleAddToCart = (product: Product, quantity: number) => {
-    // Pass the original product object to the cart
-    addToCart(product, quantity)
-  }
 
   const handleSort = (field: 'name' | 'price' | 'date') => {
     if (sortBy === field) {
@@ -159,7 +152,7 @@ export default function ProductGrid({
 
       {/* Products Grid */}
       <div className={viewMode === 'grid' 
-        ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' 
+        ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4' 
         : 'space-y-4'
       }>
                  {sortedProducts.map((product, index) => (
@@ -171,7 +164,6 @@ export default function ProductGrid({
              >
                <ProductCard 
                  product={product} 
-                 onAddToCart={handleAddToCart}
                />
              </div>
            )

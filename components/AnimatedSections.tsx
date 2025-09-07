@@ -632,8 +632,8 @@ export const TestimonialsSection = () => {
         {/* Facebook Reviews */}
         <div className="mb-12">
           <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
-            <div className="w-6 h-6 bg-blue-500 rounded-lg flex items-center justify-center">
-              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
             </div>
@@ -762,29 +762,41 @@ export const TestimonialsSection = () => {
                 ].map((review, index) => (
                   <div 
                     key={index}
-                    className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 overflow-hidden flex-shrink-0"
-                    style={{ width: '280px' }}
+                    className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 flex-shrink-0 hover:shadow-md transition-shadow duration-300"
+                    style={{ width: '320px' }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="text-3xl">{review.icon}</div>
-                        <div>
-                          <h4 className="font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">{review.name}</h4>
-                          <div className="flex items-center gap-1">
-                            {[...Array(5)].map((_, i) => (
-                              <svg key={i} className={`w-4 h-4 ${i < review.rating ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                              </svg>
-                            ))}
-                          </div>
+                    {/* Facebook-style header */}
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                        {review.name.split(' ').map(n => n[0]).join('')}
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-gray-900 text-sm">{review.name}</h4>
+                        <div className="flex items-center gap-1">
+                          {[...Array(5)].map((_, i) => (
+                            <svg key={i} className={`w-3 h-3 ${i < review.rating ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                          ))}
+                          <span className="text-xs text-gray-500 ml-1">2d</span>
                         </div>
                       </div>
-                      <p className="text-gray-700 text-sm leading-relaxed">{review.review}</p>
                     </div>
                     
-                    {/* Shimmer effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    {/* Review text */}
+                    <p className="text-gray-800 text-sm leading-relaxed mb-3">{review.review}</p>
+                    
+                    {/* Facebook-style actions */}
+                    <div className="flex items-center gap-4 text-xs text-gray-500">
+                      <button className="flex items-center gap-1 hover:text-blue-600">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.994a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/>
+                        </svg>
+                        Like
+                      </button>
+                      <button className="hover:text-blue-600">Comment</button>
+                      <button className="hover:text-blue-600">Share</button>
+                    </div>
                   </div>
                 ))}
 
@@ -907,29 +919,41 @@ export const TestimonialsSection = () => {
                 ].map((review, index) => (
                   <div 
                     key={`duplicate-${index}`}
-                    className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 overflow-hidden flex-shrink-0"
-                    style={{ width: '300px' }}
+                    className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 flex-shrink-0 hover:shadow-md transition-shadow duration-300"
+                    style={{ width: '320px' }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="text-3xl">{review.icon}</div>
-                        <div>
-                          <h4 className="font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">{review.name}</h4>
-                          <div className="flex items-center gap-1">
-                            {[...Array(5)].map((_, i) => (
-                              <svg key={i} className={`w-4 h-4 ${i < review.rating ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                              </svg>
-                            ))}
-                          </div>
+                    {/* Facebook-style header */}
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                        {review.name.split(' ').map(n => n[0]).join('')}
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-gray-900 text-sm">{review.name}</h4>
+                        <div className="flex items-center gap-1">
+                          {[...Array(5)].map((_, i) => (
+                            <svg key={i} className={`w-3 h-3 ${i < review.rating ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                          ))}
+                          <span className="text-xs text-gray-500 ml-1">2d</span>
                         </div>
                       </div>
-                      <p className="text-gray-700 text-sm leading-relaxed">{review.review}</p>
                     </div>
                     
-                    {/* Shimmer effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    {/* Review text */}
+                    <p className="text-gray-800 text-sm leading-relaxed mb-3">{review.review}</p>
+                    
+                    {/* Facebook-style actions */}
+                    <div className="flex items-center gap-4 text-xs text-gray-500">
+                      <button className="flex items-center gap-1 hover:text-blue-600">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.994a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/>
+                        </svg>
+                        Like
+                      </button>
+                      <button className="hover:text-blue-600">Comment</button>
+                      <button className="hover:text-blue-600">Share</button>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -940,9 +964,9 @@ export const TestimonialsSection = () => {
         {/* Trustpilot Reviews */}
         <div>
           <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
-            <div className="w-6 h-6 bg-yellow-500 rounded-lg flex items-center justify-center">
-              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
               </svg>
             </div>
             Trustpilot Reviews
@@ -1195,29 +1219,46 @@ export const TestimonialsSection = () => {
              ].map((review, index) => (
               <div 
                 key={index}
-                className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 overflow-hidden flex-shrink-0"
-                style={{ width: '320px' }}
+                className="bg-white rounded-lg shadow-sm border border-gray-200 p-5 flex-shrink-0 hover:shadow-md transition-shadow duration-300"
+                style={{ width: '350px' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="text-3xl">{review.icon}</div>
+                {/* Trustpilot-style header */}
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                      {review.name.split(' ').map(n => n[0]).join('')}
+                    </div>
                     <div>
-                      <h4 className="font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">{review.name}</h4>
+                      <h4 className="font-semibold text-gray-900 text-sm">{review.name}</h4>
                       <div className="flex items-center gap-1">
                         {[...Array(5)].map((_, i) => (
-                          <svg key={i} className={`w-4 h-4 ${i < review.rating ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
+                          <svg key={i} className={`w-4 h-4 ${i < review.rating ? 'text-green-500' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                           </svg>
                         ))}
                       </div>
                     </div>
                   </div>
-                  <p className="text-gray-700 text-sm leading-relaxed">{review.review}</p>
+                  <div className="text-xs text-gray-500">3 days ago</div>
                 </div>
                 
-                {/* Shimmer effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                {/* Review text */}
+                <p className="text-gray-800 text-sm leading-relaxed mb-4">{review.review}</p>
+                
+                {/* Trustpilot-style footer */}
+                <div className="flex items-center justify-between text-xs text-gray-500">
+                  <div className="flex items-center gap-2">
+                    <span>Verified purchase</span>
+                    <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+                    <span>United States</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span>Helpful?</span>
+                    <button className="text-green-600 hover:text-green-700">Yes</button>
+                    <span className="text-gray-400">•</span>
+                    <button className="text-gray-500 hover:text-gray-600">No</button>
+                  </div>
+                </div>
               </div>
             ))}
 
@@ -1340,29 +1381,46 @@ export const TestimonialsSection = () => {
                 ].map((review, index) => (
                   <div 
                     key={`duplicate-trustpilot-${index}`}
-                    className="group relative bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 overflow-hidden flex-shrink-0"
+                    className="bg-white rounded-lg shadow-sm border border-gray-200 p-5 flex-shrink-0 hover:shadow-md transition-shadow duration-300"
                     style={{ width: '350px' }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="text-3xl">{review.icon}</div>
+                    {/* Trustpilot-style header */}
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                          {review.name.split(' ').map(n => n[0]).join('')}
+                        </div>
                         <div>
-                          <h4 className="font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">{review.name}</h4>
+                          <h4 className="font-semibold text-gray-900 text-sm">{review.name}</h4>
                           <div className="flex items-center gap-1">
                             {[...Array(5)].map((_, i) => (
-                              <svg key={i} className={`w-4 h-4 ${i < review.rating ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
+                              <svg key={i} className={`w-4 h-4 ${i < review.rating ? 'text-green-500' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                               </svg>
                             ))}
                           </div>
                         </div>
                       </div>
-                      <p className="text-gray-700 text-sm leading-relaxed">{review.review}</p>
+                      <div className="text-xs text-gray-500">3 days ago</div>
                     </div>
                     
-                    {/* Shimmer effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    {/* Review text */}
+                    <p className="text-gray-800 text-sm leading-relaxed mb-4">{review.review}</p>
+                    
+                    {/* Trustpilot-style footer */}
+                    <div className="flex items-center justify-between text-xs text-gray-500">
+                      <div className="flex items-center gap-2">
+                        <span>Verified purchase</span>
+                        <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+                        <span>United States</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <span>Helpful?</span>
+                        <button className="text-green-600 hover:text-green-700">Yes</button>
+                        <span className="text-gray-400">•</span>
+                        <button className="text-gray-500 hover:text-gray-600">No</button>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>

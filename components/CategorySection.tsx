@@ -153,10 +153,11 @@ export default function CategorySection({ categories, products = [] }: CategoryS
           {displayProducts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
               {displayProducts.map((product) => (
-                <div key={product.id} className="group relative bg-background backdrop-blur-xl rounded-3xl p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20">
+                <div key={product.id} className="group relative bg-background backdrop-blur-xl rounded-3xl p-6 border border-primary-500/15 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary-500/20 h-[400px] flex flex-col">
                   <div className="absolute inset-0 bg-[#FFFFFF] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="mb-6">
+                  <div className="relative z-10 flex flex-col h-full">
+                    {/* Image Section */}
+                    <div className="mb-4">
                       {product.images && product.images.length > 0 ? (
                         <div className="relative overflow-hidden rounded-2xl">
                           <img
@@ -185,27 +186,37 @@ export default function CategorySection({ categories, products = [] }: CategoryS
                         </div>
                       )}
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">{product.name}</h3>
-                    <p className="text-gray-600 text-sm text-center mb-6">
-                      Premium product with amazing features and professional quality
-                    </p>
-                    <div className="text-center mb-6">
-                      {product.on_sale ? (
-                        <>
-                          <span className="text-3xl font-bold text-primary-500">${product.sale_price}</span>
-                          <span className="text-gray-500 line-through ml-2">/month</span>
-                          <div className="text-sm text-gray-500">vs ${product.regular_price}/month</div>
-                        </>
-                      ) : (
-                        <>
-                          <span className="text-3xl font-bold text-primary-500">${product.price}</span>
-                          <span className="text-gray-500 line-through ml-2">/month</span>
-                        </>
-                      )}
+                    
+                    {/* Content Section - Flexible */}
+                    <div className="flex-grow flex flex-col">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 text-center line-clamp-2">{product.name}</h3>
+                      <p className="text-gray-600 text-sm text-center mb-4 flex-grow">
+                        Premium product with amazing features and professional quality
+                      </p>
+                      
+                      {/* Price Section */}
+                      <div className="text-center mb-4">
+                        {product.on_sale ? (
+                          <>
+                            <span className="text-2xl font-bold text-primary-500">${product.sale_price}</span>
+                            <span className="text-gray-500 line-through ml-2">/month</span>
+                            <div className="text-sm text-gray-500">vs ${product.regular_price}/month</div>
+                          </>
+                        ) : (
+                          <>
+                            <span className="text-2xl font-bold text-primary-500">${product.price}</span>
+                            <span className="text-gray-500 line-through ml-2">/month</span>
+                          </>
+                        )}
+                      </div>
                     </div>
-                    <Link href={`/${product.slug}`} className="w-full bg-primary-500 text-white py-3 rounded-xl font-semibold text-center block hover:bg-primary-600 transition-all duration-300 transform group-hover:scale-105">
-                      Explore Now
-                    </Link>
+                    
+                    {/* Button Section - Always at bottom */}
+                    <div className="mt-auto">
+                      <Link href={`/${product.slug}`} className="w-full bg-primary-500 text-white py-3 rounded-xl font-semibold text-center block hover:bg-primary-600 transition-all duration-300 transform group-hover:scale-105">
+                        Explore Now
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}

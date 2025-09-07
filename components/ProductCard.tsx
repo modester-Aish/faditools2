@@ -3,37 +3,14 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Product } from '@/types'
-import { useCart } from '@/context/CartContext'
 
 interface ProductCardProps {
   product: Product
-  onAddToCart?: (product: Product, quantity: number) => void
 }
 
-export default function ProductCard({ product, onAddToCart }: ProductCardProps) {
-  const { addToCart } = useCart()
+export default function ProductCard({ product }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
   const [isWishlisted, setIsWishlisted] = useState(false)
-
-  const handleAddToCart = async (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    
-    setIsLoading(true)
-    try {
-      if (onAddToCart) {
-        onAddToCart(product, 1)
-      } else {
-        // Pass the original product object to the cart
-        addToCart(product, 1)
-      }
-    } catch (error) {
-      console.error('Error adding to cart:', error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
 
   const toggleWishlist = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -53,14 +30,14 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
 
   return (
     <div
-      className={`group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] h-[600px] flex flex-col ${
-        isHovered ? 'shadow-xl scale-[1.02]' : ''
+      className={`group bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.01] h-[420px] flex flex-col ${
+        isHovered ? 'shadow-lg scale-[1.01]' : ''
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Product Image */}
-      <div className="relative aspect-square overflow-hidden bg-gray-50 flex-shrink-0">
+      <div className="relative aspect-[4/3] overflow-hidden bg-gray-50 flex-shrink-0">
         <Link href={`/${product.slug}`} className="block w-full h-full">
           <img
             src={mainImage}
@@ -116,21 +93,21 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
       </div>
 
       {/* Product Info */}
-      <div className="p-6 space-y-4 flex-grow flex flex-col">
+      <div className="p-4 space-y-3 flex-grow flex flex-col">
         {/* Title */}
         <Link href={`/${product.slug}`} className="block">
-          <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 hover:text-primary-600 transition-colors leading-tight h-12 flex items-start">
+          <h3 className="text-base font-semibold text-gray-900 line-clamp-2 hover:text-primary-600 transition-colors leading-tight h-10 flex items-start">
             {product.title?.rendered || 'Product'}
           </h3>
         </Link>
 
         {/* Rating */}
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-1">
           <div className="flex items-center space-x-1">
             {[...Array(5)].map((_, i) => (
               <svg
                 key={i}
-                className={`w-4 h-4 ${
+                className={`w-3 h-3 ${
                   i < Math.floor(rating) 
                     ? 'text-yellow-400 fill-current' 
                     : 'text-gray-300'
@@ -142,23 +119,22 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
               </svg>
             ))}
           </div>
-          <span className="text-sm text-gray-600">({rating})</span>
-          <span className="text-sm text-gray-500">• {reviewCount} reviews</span>
+          <span className="text-xs text-gray-600">({rating})</span>
         </div>
 
         {/* Price */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           {isOnSale ? (
             <>
-              <span className="text-2xl font-bold text-green-600">
+              <span className="text-lg font-bold text-green-600">
                 ${parseFloat(price || '0').toFixed(2)}
               </span>
-              <span className="text-lg text-red-600 line-through opacity-70">
+              <span className="text-sm text-red-600 line-through opacity-70">
                 ${parseFloat(regularPrice || '0').toFixed(2)}
               </span>
             </>
           ) : (
-            <span className="text-2xl font-bold text-gray-900">
+            <span className="text-lg font-bold text-gray-900">
               ${parseFloat(price || '0').toFixed(2)}
             </span>
           )}
@@ -167,54 +143,26 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         {/* Short Description */}
         {product.excerpt?.rendered ? (
           <div 
-            className="text-sm text-gray-600 line-clamp-3 leading-relaxed h-16 flex items-start"
+            className="text-xs text-gray-600 line-clamp-2 leading-relaxed h-10 flex items-start"
             dangerouslySetInnerHTML={{ 
-              __html: product.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 120) + '...' 
+              __html: product.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 80) + '...' 
             }}
           />
         ) : (
-          <div className="text-sm text-gray-600 h-16 flex items-start">
+          <div className="text-xs text-gray-600 h-10 flex items-start">
             <span className="text-gray-400">No description available</span>
           </div>
         )}
 
-        {/* Shipping Info */}
-        <div className="flex items-center space-x-2 text-sm text-gray-600">
-          <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-          </svg>
-          <span>Free Delivery</span>
-          <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span>Easy Returns</span>
-        </div>
 
-        {/* Action Buttons */}
-        <div className="flex gap-2 mt-auto">
+        {/* Action Button */}
+        <div className="mt-auto">
           <Link
             href={`/${product.slug}`}
-            className="flex-1 bg-gray-100 text-gray-700 text-sm font-medium py-3 px-4 rounded-lg hover:bg-gray-200 transition-colors text-center border border-gray-200"
+            className="block w-full bg-primary-600 text-white text-xs font-medium py-2 px-3 rounded-md hover:bg-primary-700 transition-colors text-center"
           >
             View Details
           </Link>
-          
-          {isInStock && (
-            <button
-              onClick={handleAddToCart}
-              disabled={isLoading}
-              className="flex-1 bg-primary-600 text-white text-sm font-medium py-3 px-4 rounded-lg hover:bg-primary-700 transition-all duration-200 hover:scale-[1.02] shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isLoading ? (
-                <svg className="animate-spin h-4 w-4 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-              ) : (
-                'Add to Cart'
-              )}
-            </button>
-          )}
         </div>
       </div>
     </div>
