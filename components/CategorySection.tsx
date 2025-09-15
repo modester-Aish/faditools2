@@ -31,14 +31,47 @@ interface CategorySectionProps {
 export default function CategorySection({ categories, products = [] }: CategorySectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>(categories.length > 0 ? categories[0].slug : '')
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
+  const [categoryProducts, setCategoryProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(false)
 
-  // Filter products based on selected category
-  const filteredProducts = products.filter(product => 
-    product.categories.some(cat => cat.slug === selectedCategory)
-  )
+  // Fetch products for selected category
+  useEffect(() => {
+    const fetchCategoryProducts = async () => {
+      if (!selectedCategory) return
+      
+      setLoading(true)
+      try {
+        const category = categories.find(cat => cat.slug === selectedCategory)
+        if (!category) return
 
-  // Get products for display (limit to 12 for responsive grid)
-  const displayProducts = filteredProducts.slice(0, 12)
+        const response = await fetch(`/api/woocommerce?action=products&category=${category.id}&limit=12`)
+        const data = await response.json()
+        
+        if (data.success) {
+          setCategoryProducts(data.data.products.map((product: any) => ({
+            id: product.id,
+            name: product.name,
+            slug: product.slug,
+            price: product.price,
+            regular_price: product.regular_price,
+            sale_price: product.sale_price,
+            on_sale: product.on_sale,
+            images: product.images || [],
+            categories: product.categories || []
+          })))
+        }
+      } catch (error) {
+        console.error('Error fetching category products:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchCategoryProducts()
+  }, [selectedCategory, categories])
+
+  // Get products for display
+  const displayProducts = categoryProducts
 
   // Get category icon based on name
   const getCategoryIcon = (categoryName: string) => {
@@ -150,7 +183,23 @@ export default function CategorySection({ categories, products = [] }: CategoryS
 
         {/* Bottom Section - Products Grid */}
         <div className="mb-8">
-          {displayProducts.length > 0 ? (
+          {loading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
+              {[...Array(8)].map((_, index) => (
+                <div key={index} className="bg-background backdrop-blur-xl rounded-3xl p-6 border border-emerald-200 h-[400px] flex flex-col animate-pulse">
+                  <div className="mb-4">
+                    <div className="w-full h-20 bg-gray-300 rounded-2xl"></div>
+                  </div>
+                  <div className="flex-grow flex flex-col">
+                    <div className="h-6 bg-gray-300 rounded mb-2"></div>
+                    <div className="flex-grow"></div>
+                    <div className="h-8 bg-gray-300 rounded mb-4"></div>
+                    <div className="h-10 bg-gray-300 rounded"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : displayProducts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
               {displayProducts.map((product) => (
                 <div key={product.id} className="group relative bg-background backdrop-blur-xl rounded-3xl p-6 border border-emerald-200 hover:border-emerald-300 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 h-[400px] flex flex-col">
@@ -243,8 +292,28 @@ export default function CategorySection({ categories, products = [] }: CategoryS
           )}
         </div>
 
+        {/* Empty State */}
+        {!loading && displayProducts.length === 0 && (
+          <div className="text-center py-16">
+            <div className="text-6xl mb-4">🔍</div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">No Products Found</h3>
+            <p className="text-gray-600 mb-6">
+              No products available in this category at the moment.
+            </p>
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-all duration-300"
+            >
+              Browse All Products
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+          </div>
+        )}
+
         {/* View All Products Button */}
-        {displayProducts.length > 0 && (
+        {!loading && displayProducts.length > 0 && (
           <div className="text-center">
             <Link
               href="/products"
