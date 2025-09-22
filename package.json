@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-  "dev": "next dev --turbo",
-  "dev:windows": "set CHOKIDAR_USEPOLLING=true && set WATCHPACK_POLLING=true && next dev --turbo",
-  "build": "next build",
-  "start": "next start -H 0.0.0.0 -p ${PORT:-3000}",
-  "lint": "next lint",
-  "clean": "if exist .next rmdir /s /q .next && if exist node_modules rmdir /s /q node_modules && if exist package-lock.json del package-lock.json",
-  "clean-dev": "powershell -ExecutionPolicy Bypass -File scripts/clean-dev.ps1"
+    "dev": "next dev --turbo",
+    "dev:windows": "set CHOKIDAR_USEPOLLING=true && set WATCHPACK_POLLING=true && next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "clean": "if exist .next rmdir /s /q .next && if exist node_modules rmdir /s /q node_modules && if exist package-lock.json del package-lock.json",
+    "clean-dev": "powershell -ExecutionPolicy Bypass -File scripts/clean-dev.ps1"
   },
   "dependencies": {
     "@types/xml2js": "^0.4.14",
