@@ -1,11 +1,8 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  // App Router / experimental optimizations
   experimental: {
     forceSwcTransforms: true,
   },
 
-  // Webpack tweaks for Windows / fallback fixes
   webpack: (config, { isServer }) => {
     config.resolve.fallback = {
       ...config.resolve.fallback,
@@ -24,24 +21,18 @@ const nextConfig = {
     return config;
   },
 
-  // Minify JS/CSS using SWC
   swcMinify: true,
 
-  // Image optimization for external domains
   images: {
-    domains: ['faditools.com'],  // yahan tumhara tunnel domain
+    domains: ['faditools.com'],
     unoptimized: process.env.NODE_ENV === 'development',
   },
 
-  // Standalone output for production / easier deployment
   output: 'standalone',
-
-  // Disable source maps for Windows
   productionBrowserSourceMaps: false,
 
-  // ✅ Cloudflare Tunnel / Subdomain fix
-  basePath: '',  // agar subpath pe deploy karna ho, yahan add karo
-  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://faditools.com' : '',
+  // ✅ Important: Hardcode tunnel domain
+  assetPrefix: 'https://faditools.com',
 };
 
 module.exports = nextConfig;
