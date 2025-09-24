@@ -1,6 +1,6 @@
 import { WordPressPage, WordPressPost, WordPressApiResponse } from '@/types/wordpress'
 
-const WORDPRESS_BASE_URL = 'https://app.faditools.com'
+const WORDPRESS_BASE_URL = process.env.WORDPRESS_BASE_URL || 'https://app.faditools.com'
 
 // Cache for storing API responses
 const cache = new Map<string, { data: any; timestamp: number }>()

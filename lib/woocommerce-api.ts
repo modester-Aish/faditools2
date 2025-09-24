@@ -1,9 +1,9 @@
 import { Product, WooCommerceImage, WooCommerceAttribute } from '@/types/wordpress'
 
 // WooCommerce API Configuration
-const WOOCOMMERCE_BASE_URL = 'https://app.faditools.com'
-const CONSUMER_KEY = 'ck_6f94477acb6864e94e9f206fa4853c251928c638'
-const CONSUMER_SECRET = 'cs_770cfcaa05a4732d3774a4e91f42e285f9140683'
+const WOOCOMMERCE_BASE_URL = process.env.WOOCOMMERCE_BASE_URL || 'https://app.faditools.com'
+const CONSUMER_KEY = process.env.WC_CONSUMER_KEY || ''
+const CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || ''
 
 // WooCommerce API Response Types
 export interface WooCommerceApiResponse<T> {
@@ -162,6 +162,10 @@ export async function fetchAllProducts(): Promise<WooCommerceApiResponse<WooComm
   }
 
   try {
+    if (!CONSUMER_KEY || !CONSUMER_SECRET) {
+      throw new Error('WooCommerce credentials are missing. Set WC_CONSUMER_KEY and WC_CONSUMER_SECRET in env.')
+    }
+
     let allProducts: WooCommerceProduct[] = [];
     let page = 1;
     let hasMore = true;

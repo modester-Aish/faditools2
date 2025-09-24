@@ -1,11 +1,13 @@
 import { Tool, Package, Testimonial, WordPressPost, WordPressPage, Product } from '@/types'
 
-const API_BASE = 'https://app.faditools.com/wp-json/wp/v2'
-const WOOCOMMERCE_API = 'https://app.faditools.com/wp-json/wc/v3'
+const WORDPRESS_BASE_URL = process.env.WORDPRESS_BASE_URL || 'https://app.faditools.com'
+const API_BASE = `${WORDPRESS_BASE_URL}/wp-json/wp/v2`
+const WOOCOMMERCE_API_BASE = process.env.WOOCOMMERCE_BASE_URL || WORDPRESS_BASE_URL
+const WOOCOMMERCE_API = `${WOOCOMMERCE_API_BASE}/wp-json/wc/v3`
 
-// WooCommerce API credentials (you'll need to add these to your environment)
-const WOO_CONSUMER_KEY = process.env.WOO_CONSUMER_KEY || ''
-const WOO_CONSUMER_SECRET = process.env.WOO_CONSUMER_SECRET || ''
+// WooCommerce API credentials (server-side via environment)
+const WOO_CONSUMER_KEY = process.env.WC_CONSUMER_KEY || ''
+const WOO_CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || ''
 
 // Helper function to get Products category ID
 async function getProductsCategoryId(): Promise<number | null> {
@@ -79,7 +81,7 @@ async function fetchWithPluginFields(endpoint: string, params: string = '') {
   return response.json()
 }
 
-// WooCommerce fetch function with SEO data
+// WooCommerce fetch function with SEO data (server-side)
 async function fetchWooCommerceProducts(params: string = '') {
   if (!WOO_CONSUMER_KEY || !WOO_CONSUMER_SECRET) {
     console.warn('WooCommerce credentials not configured')
@@ -296,7 +298,7 @@ export async function fetchProductBySlug(slug: string): Promise<Product | null> 
     
     if (!product) return null
     
-  return {
+    return {
       id: product.id,
       date: product.date_created,
       modified: product.date_modified,
