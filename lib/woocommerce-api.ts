@@ -2,8 +2,8 @@ import { Product, WooCommerceImage, WooCommerceAttribute } from '@/types/wordpre
 
 // WooCommerce API Configuration
 const WOOCOMMERCE_BASE_URL = process.env.WOOCOMMERCE_BASE_URL || 'https://app.faditools.com'
-const CONSUMER_KEY = process.env.WC_CONSUMER_KEY || ''
-const CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || ''
+const CONSUMER_KEY = process.env.WC_CONSUMER_KEY || process.env.WOO_CONSUMER_KEY || ''
+const CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || process.env.WOO_CONSUMER_SECRET || ''
 
 // WooCommerce API Response Types
 export interface WooCommerceApiResponse<T> {
