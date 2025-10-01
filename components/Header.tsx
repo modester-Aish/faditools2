@@ -21,28 +21,32 @@ export default function Header() {
     setMounted(true)
   }, [])
 
-  // Fetch pages on component mount
+  // Fetch pages on component mount with debouncing
   useEffect(() => {
     // Only fetch on client side and after component is mounted
     if (mounted) {
-      setIsLoading(true)
-      const fetchPages = async () => {
-        try {
-          const response = await fetch('/api/pages')
-          if (response.ok) {
-            const data = await response.json()
-            setPages(data)
-          } else {
-            console.error('Failed to fetch pages:', response.status)
+      const timeoutId = setTimeout(() => {
+        setIsLoading(true)
+        const fetchPages = async () => {
+          try {
+            const response = await fetch('/api/pages')
+            if (response.ok) {
+              const data = await response.json()
+              setPages(data)
+            } else {
+              console.error('Failed to fetch pages:', response.status)
+            }
+          } catch (error) {
+            console.error('Error fetching pages:', error)
+          } finally {
+            setIsLoading(false)
           }
-        } catch (error) {
-          console.error('Error fetching pages:', error)
-        } finally {
-          setIsLoading(false)
         }
-      }
 
-      fetchPages()
+        fetchPages()
+      }, 100) // Small delay to prevent blocking
+
+      return () => clearTimeout(timeoutId)
     }
   }, [mounted])
 

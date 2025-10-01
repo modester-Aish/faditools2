@@ -78,6 +78,26 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        {/* Resource hints for better performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://app.faditools.com" />
+        <link rel="preload" href="/favicon.svg" as="image" type="image/svg+xml" />
+        {/* Critical CSS for above-the-fold content */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            .bg-white { background-color: #ffffff; }
+            .text-emerald-600 { color: #059669; }
+            .text-gray-700 { color: #374151; }
+            .font-bold { font-weight: 700; }
+            .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+            .flex { display: flex; }
+            .items-center { align-items: center; }
+            .justify-between { justify-content: space-between; }
+            .hidden { display: none; }
+            @media (min-width: 768px) { .md\\:flex { display: flex; } }
+          `
+        }} />
       </head>
       <body className={inter.className}>
         <AuthProvider>
