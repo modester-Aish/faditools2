@@ -127,6 +127,8 @@ export default function Header() {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2 rounded-md text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-colors"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMenuOpen ? (
@@ -155,6 +157,8 @@ export default function Header() {
                 <button
                   onClick={() => setIsMobilePagesOpen(!isMobilePagesOpen)}
                   className="flex items-center justify-between w-full text-sm font-medium text-gray-500 uppercase tracking-wide hover:text-emerald-600 transition-colors"
+                  aria-label="Toggle pages menu"
+                  aria-expanded={isMobilePagesOpen}
                 >
                   <span>Pages</span>
                   <svg 

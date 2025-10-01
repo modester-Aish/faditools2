@@ -6,6 +6,12 @@ const nextConfig = {
     forceSwcTransforms: true,
   },
   
+  // Compiler optimizations for modern browsers
+  // Note: removeConsole is not compatible with Turbopack
+  // compiler: {
+  //   removeConsole: process.env.NODE_ENV === 'production',
+  // },
+  
   // Webpack configuration for better Windows compatibility
   webpack: (config, { isServer }) => {
     // Fix Windows path issues
@@ -25,6 +31,25 @@ const nextConfig = {
           '**/.git',
           '**/.next',
         ],
+      }
+    }
+    
+    // CSS optimization for better performance
+    if (!isServer) {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          chunks: 'all',
+          cacheGroups: {
+            ...config.optimization.splitChunks?.cacheGroups,
+            styles: {
+              name: 'styles',
+              test: /\.(css|scss)$/,
+              chunks: 'all',
+              enforce: true,
+            },
+          },
+        },
       }
     }
     

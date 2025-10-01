@@ -50,7 +50,7 @@ export default function ModernProductCard({ product, onAddToCart }: ModernProduc
         <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight mb-3 md:mb-4">
           for any type of project.
         </h2>
-        <p className="text-base md:text-lg text-[#A0A0A0] leading-relaxed max-w-2xl">
+        <p className="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl">
           {product.short_description || "With our full AI stack, generate images, videos, music, and more – all included in your subscription."}
         </p>
       </div>
@@ -123,7 +123,7 @@ export default function ModernProductCard({ product, onAddToCart }: ModernProduc
           <div className="bg-[#2A2A2A]/80 backdrop-blur-lg border border-[#D4B896]/20 rounded-xl p-4 md:p-6">
             {/* Price Section */}
             <div className="mb-4 md:mb-6 pb-3 md:pb-4 border-b border-white/10">
-              <div className="text-xs md:text-sm text-[#A0A0A0] mb-1">From</div>
+              <div className="text-xs md:text-sm text-gray-300 mb-1">From</div>
               <div className="text-lg md:text-xl font-semibold text-white">
                 ${parseFloat(currentPrice).toFixed(2)}/month
               </div>

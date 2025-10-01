@@ -38,7 +38,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     >
       {/* Product Image */}
       <div className="relative aspect-[4/3] overflow-hidden bg-gray-50 flex-shrink-0">
-        <Link href={`/${product.slug}`} className="block w-full h-full">
+        <Link href={`/${product.slug}`} className="block w-full h-full" aria-label={`View details for ${product.title?.rendered || 'Product'}`}>
           <img
             src={mainImage}
             alt={product.title?.rendered || 'Product'}
@@ -77,6 +77,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 ? 'bg-red-500 text-white' 
                 : 'bg-white/90 text-gray-700 hover:bg-red-500 hover:text-white'
             }`}
+            aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
           >
             <svg className="w-5 h-5" fill={isWishlisted ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -84,6 +85,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </button>
           <button 
             className="w-10 h-10 rounded-full bg-white/90 text-gray-700 hover:bg-emerald-500 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm"
+            aria-label="Share product"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
@@ -95,7 +97,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Product Info */}
       <div className="p-4 space-y-3 flex-grow flex flex-col">
         {/* Title */}
-        <Link href={`/${product.slug}`} className="block">
+        <Link href={`/${product.slug}`} className="block" aria-label={`View details for ${product.title?.rendered || 'Product'}`}>
           <h3 className="text-base font-semibold text-gray-900 line-clamp-2 hover:text-emerald-600 transition-colors leading-tight h-10 flex items-start">
             {product.title?.rendered || 'Product'}
           </h3>
@@ -160,6 +162,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <Link
             href={`/${product.slug}`}
             className="block w-full bg-emerald-600 text-white text-xs font-medium py-2 px-3 rounded-md hover:bg-emerald-700 transition-colors text-center"
+            aria-label={`View details for ${product.title?.rendered || 'Product'}`}
           >
             View Details
           </Link>
