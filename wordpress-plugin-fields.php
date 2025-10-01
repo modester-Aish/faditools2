@@ -301,6 +301,147 @@ add_action('rest_api_init', function() {
 });
 
 /**
+ * Chat Settings - Admin Page
+ */
+class FadiToolsChatSettings {
+    
+    public function __construct() {
+        add_action('admin_menu', array($this, 'add_settings_page'));
+        add_action('admin_init', array($this, 'register_settings'));
+    }
+    
+    public function add_settings_page() {
+        add_options_page(
+            'Chat Settings',
+            'Chat Settings',
+            'manage_options',
+            'faditools-chat-settings',
+            array($this, 'settings_page_html')
+        );
+    }
+    
+    public function register_settings() {
+        register_setting('faditools_chat_settings', 'faditools_whatsapp_number');
+        register_setting('faditools_chat_settings', 'faditools_facebook_link');
+        register_setting('faditools_chat_settings', 'faditools_email');
+        register_setting('faditools_chat_settings', 'faditools_whatsapp_enabled');
+        register_setting('faditools_chat_settings', 'faditools_facebook_enabled');
+        register_setting('faditools_chat_settings', 'faditools_email_enabled');
+    }
+    
+    public function settings_page_html() {
+        if (!current_user_can('manage_options')) {
+            return;
+        }
+        
+        if (isset($_GET['settings-updated'])) {
+            add_settings_error('faditools_chat_messages', 'faditools_chat_message', 'Settings Saved', 'updated');
+        }
+        
+        settings_errors('faditools_chat_messages');
+        ?>
+        <div class="wrap">
+            <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+            <form action="options.php" method="post">
+                <?php
+                settings_fields('faditools_chat_settings');
+                ?>
+                <table class="form-table">
+                    <tr>
+                        <th scope="row"><label for="faditools_whatsapp_number">WhatsApp Number</label></th>
+                        <td>
+                            <input type="text" 
+                                   id="faditools_whatsapp_number" 
+                                   name="faditools_whatsapp_number" 
+                                   value="<?php echo esc_attr(get_option('faditools_whatsapp_number')); ?>" 
+                                   class="regular-text"
+                                   placeholder="+923001234567">
+                            <p class="description">Enter with country code (e.g., +923001234567)</p>
+                            <label>
+                                <input type="checkbox" 
+                                       name="faditools_whatsapp_enabled" 
+                                       value="1" 
+                                       <?php checked(get_option('faditools_whatsapp_enabled'), 1); ?>>
+                                Enable WhatsApp Button
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="faditools_facebook_link">Facebook Page Link</label></th>
+                        <td>
+                            <input type="text" 
+                                   id="faditools_facebook_link" 
+                                   name="faditools_facebook_link" 
+                                   value="<?php echo esc_attr(get_option('faditools_facebook_link')); ?>" 
+                                   class="regular-text"
+                                   placeholder="https://www.facebook.com/yourpage">
+                            <p class="description">Enter your Facebook page URL</p>
+                            <label>
+                                <input type="checkbox" 
+                                       name="faditools_facebook_enabled" 
+                                       value="1" 
+                                       <?php checked(get_option('faditools_facebook_enabled'), 1); ?>>
+                                Enable Facebook Button
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="faditools_email">Email Address</label></th>
+                        <td>
+                            <input type="email" 
+                                   id="faditools_email" 
+                                   name="faditools_email" 
+                                   value="<?php echo esc_attr(get_option('faditools_email')); ?>" 
+                                   class="regular-text"
+                                   placeholder="support@faditools.com">
+                            <p class="description">Enter your support email address</p>
+                            <label>
+                                <input type="checkbox" 
+                                       name="faditools_email_enabled" 
+                                       value="1" 
+                                       <?php checked(get_option('faditools_email_enabled'), 1); ?>>
+                                Enable Email Button
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+                <?php submit_button('Save Settings'); ?>
+            </form>
+        </div>
+        <?php
+    }
+}
+
+// Initialize chat settings
+new FadiToolsChatSettings();
+
+/**
+ * REST API endpoint for chat settings
+ */
+add_action('rest_api_init', function() {
+    register_rest_route('faditools/v1', '/chat-settings', array(
+        'methods' => 'GET',
+        'callback' => function($request) {
+            return array(
+                'whatsapp' => array(
+                    'number' => get_option('faditools_whatsapp_number', ''),
+                    'enabled' => (bool) get_option('faditools_whatsapp_enabled', false)
+                ),
+                'facebook' => array(
+                    'link' => get_option('faditools_facebook_link', ''),
+                    'enabled' => (bool) get_option('faditools_facebook_enabled', false)
+                ),
+                'email' => array(
+                    'address' => get_option('faditools_email', ''),
+                    'enabled' => (bool) get_option('faditools_email_enabled', false)
+                )
+            );
+        },
+        'permission_callback' => '__return_true'
+    ));
+});
+
+/**
  * Extend WooCommerce REST API to include SEO data
  */
 add_action('rest_api_init', function() {

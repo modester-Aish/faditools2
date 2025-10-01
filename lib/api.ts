@@ -5,9 +5,9 @@ const API_BASE = `${WORDPRESS_BASE_URL}/wp-json/wp/v2`
 const WOOCOMMERCE_API_BASE = process.env.WOOCOMMERCE_BASE_URL || WORDPRESS_BASE_URL
 const WOOCOMMERCE_API = `${WOOCOMMERCE_API_BASE}/wp-json/wc/v3`
 
-// WooCommerce API credentials (server-side via environment)
-const WOO_CONSUMER_KEY = process.env.WC_CONSUMER_KEY || ''
-const WOO_CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || ''
+// WooCommerce API credentials (configured via environment)
+const WOO_CONSUMER_KEY = process.env.WC_CONSUMER_KEY || process.env.WOO_CONSUMER_KEY || ''
+const WOO_CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || process.env.WOO_CONSUMER_SECRET || ''
 
 // Helper function to get Products category ID
 async function getProductsCategoryId(): Promise<number | null> {
@@ -81,10 +81,10 @@ async function fetchWithPluginFields(endpoint: string, params: string = '') {
   return response.json()
 }
 
-// WooCommerce fetch function with SEO data (server-side)
+// WooCommerce fetch function with SEO data
 async function fetchWooCommerceProducts(params: string = '') {
   if (!WOO_CONSUMER_KEY || !WOO_CONSUMER_SECRET) {
-    console.warn('WooCommerce credentials not configured')
+    console.warn('WooCommerce credentials not configured (set WC_CONSUMER_KEY/WC_CONSUMER_SECRET or legacy WOO_CONSUMER_KEY/WOO_CONSUMER_SECRET)')
     return []
   }
 
@@ -259,7 +259,7 @@ export async function fetchProducts(): Promise<Product[]> {
 export async function fetchProductCategories(): Promise<Array<{ id: number; name: string; slug: string }>> {
   try {
     if (!WOO_CONSUMER_KEY || !WOO_CONSUMER_SECRET) {
-      console.warn('WooCommerce credentials not configured')
+      console.warn('WooCommerce credentials not configured (set WC_CONSUMER_KEY/WC_CONSUMER_SECRET or legacy WOO_CONSUMER_KEY/WOO_CONSUMER_SECRET)')
       return []
     }
 

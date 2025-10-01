@@ -5,6 +5,7 @@ import { CartProvider } from '@/context/CartContext'
 import { NavigationProvider } from '@/context/NavigationContext'
 import { AuthProvider } from '@/context/AuthContext'
 import { generateCanonicalUrl } from '@/lib/canonical'
+import FloatingChatButtons from '@/components/FloatingChatButtons'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -83,6 +84,7 @@ export default function RootLayout({
           <NavigationProvider>
             <CartProvider>
               {children}
+              <FloatingChatButtons />
             </CartProvider>
           </NavigationProvider>
         </AuthProvider>

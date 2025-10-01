@@ -163,7 +163,7 @@ export async function fetchAllProducts(): Promise<WooCommerceApiResponse<WooComm
 
   try {
     if (!CONSUMER_KEY || !CONSUMER_SECRET) {
-      throw new Error('WooCommerce credentials are missing. Set WC_CONSUMER_KEY and WC_CONSUMER_SECRET in env.')
+      throw new Error('WooCommerce credentials are missing. Set WC_CONSUMER_KEY/WC_CONSUMER_SECRET (or legacy WOO_CONSUMER_KEY/WOO_CONSUMER_SECRET) in env.')
     }
 
     let allProducts: WooCommerceProduct[] = [];
