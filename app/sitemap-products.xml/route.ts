@@ -5,7 +5,7 @@ export async function GET() {
   
   try {
     // Fetch products with pagination - limit to first 200 for performance
-    let allProducts = []
+    let allProducts: any[] = []
     let page = 1
     const perPage = 50
     const maxPages = 4 // Limit to 200 products for performance
