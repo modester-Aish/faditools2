@@ -17,6 +17,24 @@ export const metadata: Metadata = {
   authors: [{ name: 'FadiTools Team' }],
   creator: 'FadiTools',
   publisher: 'FadiTools',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/faditools-favicon.svg', type: 'image/svg+xml' }
+    ],
+    shortcut: '/favicon.ico',
+    apple: [
+      { url: '/favicon.ico', sizes: '180x180' }
+    ],
+    other: [
+      {
+        rel: 'icon',
+        url: '/favicon.ico',
+        sizes: '32x32',
+        type: 'image/x-icon'
+      }
+    ]
+  },
   openGraph: {
     title: 'FadiTools - Premium SEO Tools & Digital Marketing Solutions',
     description: 'Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount. Trusted by 10,000+ marketers worldwide.',
