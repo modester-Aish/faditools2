@@ -19,19 +19,19 @@ export const metadata: Metadata = {
   publisher: 'FadiTools',
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/faditools-favicon.svg', type: 'image/svg+xml' }
+      { url: '/faditools-favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' }
     ],
-    shortcut: '/favicon.ico',
+    shortcut: '/faditools-favicon.svg',
     apple: [
-      { url: '/favicon.ico', sizes: '180x180' }
+      { url: '/faditools-favicon.svg', sizes: '180x180' }
     ],
     other: [
       {
         rel: 'icon',
-        url: '/favicon.ico',
+        url: '/faditools-favicon.svg',
         sizes: '32x32',
-        type: 'image/x-icon'
+        type: 'image/svg+xml'
       }
     ]
   },
@@ -90,6 +90,9 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="google-site-verification" content="12RUQGTb4pDfBnos0FueAq6seC22wJl6Bvs8JyihvVM" />
+        {/* Favicon links */}
+        <link rel="icon" type="image/svg+xml" href="/faditools-favicon.svg" />
+        <link rel="shortcut icon" href="/faditools-favicon.svg" />
         {/* Resource hints for better performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
