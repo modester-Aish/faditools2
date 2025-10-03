@@ -82,7 +82,7 @@ async function fetchWithPluginFields(endpoint: string, params: string = '') {
 }
 
 // WooCommerce fetch function with SEO data
-async function fetchWooCommerceProducts(params: string = '') {
+export async function fetchWooCommerceProducts(params: string = '') {
   if (!WOO_CONSUMER_KEY || !WOO_CONSUMER_SECRET) {
     console.warn('WooCommerce credentials not configured (set WC_CONSUMER_KEY/WC_CONSUMER_SECRET or legacy WOO_CONSUMER_KEY/WOO_CONSUMER_SECRET)')
     return []
