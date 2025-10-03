@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/', '/wp-admin/'],
     },
-    sitemap: 'https://faditools.com/sitemap.xml',
+    sitemap: 'https://faditools.com/sitemap-index.xml',
   }
 }

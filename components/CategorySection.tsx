@@ -94,6 +94,27 @@ export default function CategorySection({ categories, products = [] }: CategoryS
     return 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg'
   }
 
+  // Get short category name for display
+  const getShortCategoryName = (categoryName: string) => {
+    const name = categoryName.toLowerCase()
+    if (name.includes('seo')) return 'SEO'
+    if (name.includes('ai')) return 'AI'
+    if (name.includes('amazon')) return 'Amazon'
+    if (name.includes('content')) return 'Content'
+    if (name.includes('design')) return 'Design'
+    if (name.includes('social')) return 'Social'
+    if (name.includes('instagram')) return 'Instagram'
+    if (name.includes('youtube')) return 'YouTube'
+    if (name.includes('tiktok')) return 'TikTok'
+    if (name.includes('facebook')) return 'Facebook'
+    if (name.includes('twitter')) return 'Twitter'
+    if (name.includes('linkedin')) return 'LinkedIn'
+    if (name.includes('writing')) return 'Writing'
+    if (name.includes('video')) return 'Video'
+    if (name.includes('audio')) return 'Audio'
+    return categoryName.length > 8 ? categoryName.substring(0, 8) + '...' : categoryName
+  }
+
   // Check if category should show NEW badge
   const shouldShowNewBadge = (categoryName: string) => {
     const name = categoryName.toLowerCase()
@@ -142,8 +163,8 @@ export default function CategorySection({ categories, products = [] }: CategoryS
                       />
                     </div>
                     <div className="flex flex-col gap-y-1">
-                      <div className="hidden whitespace-nowrap text-xs font-medium text-gray-700 group-[.active]/tab:font-semibold sm:block">
-                        {category.name} Services
+                      <div className="whitespace-nowrap text-xs font-medium text-gray-700 group-[.active]/tab:font-semibold">
+                        {getShortCategoryName(category.name)}
                       </div>
                       <div className="hidden md:block">
                         <div className="inline-flex items-center text-xs font-semibold">

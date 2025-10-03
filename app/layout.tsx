@@ -20,7 +20,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon.svg', type: 'image/svg+xml' }
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' }
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
     ],
     shortcut: '/favicon.ico'
   },
@@ -82,7 +87,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://app.faditools.com" />
-        <link rel="preload" href="/favicon.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/favicon.svg?v=2" as="image" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico?v=2" />
+        <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
         {/* Critical CSS for above-the-fold content */}
         <style dangerouslySetInnerHTML={{
           __html: `
