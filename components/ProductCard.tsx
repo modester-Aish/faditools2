@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Product } from '@/types'
 
 interface ProductCardProps {
@@ -39,13 +40,14 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Product Image */}
       <div className="relative aspect-[4/3] overflow-hidden bg-gray-50 flex-shrink-0">
         <Link href={`/${product.slug}`} className="block w-full h-full" aria-label={`View details for ${product.title?.rendered || 'Product'}`}>
-          <img
+          <Image
             src={mainImage}
             alt={product.title?.rendered || 'Product'}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
-            decoding="async"
-            fetchPriority="low"
+            priority={false}
           />
         </Link>
         

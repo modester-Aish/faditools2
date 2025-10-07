@@ -13,7 +13,12 @@ const FloatingChatButtons = dynamic(() => import('@/components/FloatingChatButto
   loading: () => null
 })
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-inter'
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://faditools.com'),
@@ -165,7 +170,7 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${inter.className}`}>
         <AuthProvider>
           <NavigationProvider>
             <CartProvider>
