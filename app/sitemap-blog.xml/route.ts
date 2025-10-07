@@ -1,5 +1,8 @@
 import { fetchBlogPosts } from '@/lib/api'
 
+export const dynamic = 'force-static'
+export const revalidate = 3600 // Revalidate every hour
+
 export async function GET() {
   const baseUrl = 'https://faditools.com'
   
@@ -27,6 +30,7 @@ ${blogPages.map(page => `  <url>
     return new Response(sitemap, {
       headers: {
         'Content-Type': 'application/xml',
+        'Cache-Control': 'public, max-age=3600, s-maxage=3600',
       },
     })
   } catch (error) {

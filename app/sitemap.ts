@@ -1,5 +1,12 @@
-import { fetchPages, fetchBlogPosts, fetchProducts } from '@/lib/api'
+import { fetchPages, fetchBlogPosts } from '@/lib/api'
 import { MetadataRoute } from 'next'
+
+// Direct WooCommerce API credentials for efficient product fetching
+const WOOCOMMERCE_BASE_URL = process.env.WOOCOMMERCE_BASE_URL || 'https://app.faditools.com'
+const WOO_CONSUMER_KEY = process.env.WC_CONSUMER_KEY || process.env.WOO_CONSUMER_KEY || ''
+const WOO_CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || process.env.WOO_CONSUMER_SECRET || ''
+
+export const revalidate = 3600 // Revalidate every hour
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://faditools.com'
@@ -97,16 +104,40 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.5,
       })) || []
 
-    // Fetch WordPress products
-    const products = await fetchProducts()
-    const wordPressProducts = products
-      ?.filter(product => product.status === 'publish')
-      .map(product => ({
-        url: `${baseUrl}/${product.slug}`,
-        lastModified: new Date(product.modified || product.date || new Date()),
-        changeFrequency: 'weekly' as const,
-        priority: 0.5,
-      })) || []
+    // Fetch WooCommerce products directly (without SEO data to avoid timeout)
+    let wordPressProducts: MetadataRoute.Sitemap = []
+    
+    if (WOO_CONSUMER_KEY && WOO_CONSUMER_SECRET) {
+      try {
+        const auth = Buffer.from(`${WOO_CONSUMER_KEY}:${WOO_CONSUMER_SECRET}`).toString('base64')
+        
+        // Fetch first 100 products only for main sitemap (use sitemap-products.xml for full list)
+        const productsResponse = await fetch(
+          `${WOOCOMMERCE_BASE_URL}/wp-json/wc/v3/products?per_page=100&status=publish&orderby=modified&order=desc`,
+          {
+            headers: {
+              'Authorization': `Basic ${auth}`,
+              'Content-Type': 'application/json',
+            },
+            next: { revalidate: 3600 }
+          }
+        )
+        
+        if (productsResponse.ok) {
+          const products = await productsResponse.json()
+          wordPressProducts = products
+            .filter((product: any) => product.status === 'publish' && product.slug)
+            .map((product: any) => ({
+              url: `${baseUrl}/${product.slug}`,
+              lastModified: new Date(product.date_modified || product.date_created || new Date()),
+              changeFrequency: 'weekly' as const,
+              priority: 0.5,
+            }))
+        }
+      } catch (productError) {
+        console.error('Error fetching products for sitemap:', productError)
+      }
+    }
 
     return [...staticPages, ...toolPages, ...packagePages, ...wordPressPages, ...wordPressPosts, ...wordPressProducts]
   } catch (error) {

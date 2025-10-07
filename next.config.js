@@ -2,6 +2,9 @@
 const nextConfig = {
   // App Router optimizations
   
+  // Increase static page generation timeout for API-heavy pages like sitemaps
+  staticPageGenerationTimeout: 120, // 120 seconds (default is 60)
+  
   // Compiler optimizations for modern browsers
   // Note: removeConsole is not compatible with Turbopack
   // compiler: {

@@ -1,3 +1,6 @@
+export const dynamic = 'force-static'
+export const revalidate = 3600 // Revalidate every hour
+
 export async function GET() {
   const baseUrl = 'https://faditools.com'
   
@@ -39,6 +42,7 @@ ${sitemaps.map(sitemap => `  <sitemap>
   return new Response(sitemapIndex, {
     headers: {
       'Content-Type': 'application/xml',
+      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
     },
   })
 }
