@@ -1,38 +1,43 @@
 import { NextResponse } from 'next/server'
-import { fetchPages } from '@/lib/api'
+import { clearWordPressCache } from '@/lib/wordpress-api'
+import { clearNavigationCache } from '@/lib/navigation-api'
 
 // Force dynamic rendering and disable caching
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
+/**
+ * API endpoint to manually clear all caches
+ * GET /api/clear-cache
+ */
 export async function GET() {
   try {
-    const pages = await fetchPages()
-    const simplifiedPages = pages.map(page => ({
-      id: page.id,
-      title: page.title,
-      slug: page.slug
-    }))
+    // Clear all caches
+    clearWordPressCache()
+    clearNavigationCache()
     
-    // Return response with cache control headers to prevent CDN caching
-    return NextResponse.json(simplifiedPages, {
+    return NextResponse.json({
+      success: true,
+      message: 'All caches cleared successfully',
+      timestamp: new Date().toISOString()
+    }, {
       headers: {
         'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
         'CDN-Cache-Control': 'no-store',
         'Vercel-CDN-Cache-Control': 'no-store',
-        'Pragma': 'no-cache',
-        'Expires': '0',
       }
     })
   } catch (error) {
-    console.error('Error fetching pages for API:', error)
-    return NextResponse.json([], { 
+    console.error('Error clearing cache:', error)
+    return NextResponse.json({
+      success: false,
+      error: 'Failed to clear cache'
+    }, { 
       status: 500,
       headers: {
         'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
-        'CDN-Cache-Control': 'no-store',
-        'Vercel-CDN-Cache-Control': 'no-store',
       }
     })
   }
 }
+

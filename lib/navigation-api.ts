@@ -29,7 +29,7 @@ const EXCLUDED_SLUGS = [
 // Cache for navigation data
 let navigationCache: NavigationItem[] | null = null
 let cacheTimestamp: number = 0
-const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
+const CACHE_DURATION = 60 * 1000 // 1 minute (reduced from 5 minutes for faster updates)
 
 export async function fetchNavigationData(): Promise<NavigationItem[]> {
   // Return cached data if still valid

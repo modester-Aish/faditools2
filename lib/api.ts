@@ -12,8 +12,13 @@ const WOO_CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || process.env.WOO_CO
 // Helper function to get Products category ID
 async function getProductsCategoryId(): Promise<number | null> {
   try {
-    const response = await fetch(`${API_BASE}/categories?slug=product`, {
-      cache: 'no-store'
+    const timestamp = Date.now()
+    const response = await fetch(`${API_BASE}/categories?slug=product&_t=${timestamp}`, {
+      cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+      }
     })
     const categories = await response.json()
     return categories[0]?.id || null
@@ -70,8 +75,15 @@ function extractSEOData(item: any) {
 
 // Enhanced fetch function with all plugin fields
 async function fetchWithPluginFields(endpoint: string, params: string = '') {
-  const response = await fetch(`${API_BASE}/${endpoint}?${params}&_embed&acf=1`, {
-    cache: 'no-store'
+  // Add cache-busting timestamp to prevent CDN caching
+  const timestamp = Date.now()
+  const separator = params ? '&' : ''
+  const response = await fetch(`${API_BASE}/${endpoint}?${params}${separator}_embed&acf=1&_t=${timestamp}`, {
+    cache: 'no-store',
+    headers: {
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+    }
   })
   
   if (!response.ok) {

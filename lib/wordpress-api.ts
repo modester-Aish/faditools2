@@ -4,7 +4,7 @@ const WORDPRESS_BASE_URL = process.env.WORDPRESS_BASE_URL || 'https://app.fadito
 
 // Cache for storing API responses
 const cache = new Map<string, { data: any; timestamp: number }>()
-const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes cache
+const CACHE_DURATION = 60 * 1000 // 1 minute cache (reduced from 5 minutes for faster updates)
 
 // Generic fetch function with caching and error handling
 async function fetchWithCache<T>(
@@ -20,7 +20,12 @@ async function fetchWithCache<T>(
   }
 
   try {
-    const response = await fetch(url, {
+    // Add cache-busting timestamp to URL
+    const timestamp = Date.now()
+    const separator = url.includes('?') ? '&' : '?'
+    const urlWithTimestamp = `${url}${separator}_t=${timestamp}`
+    
+    const response = await fetch(urlWithTimestamp, {
       ...options,
       headers: {
         'Content-Type': 'application/json',
