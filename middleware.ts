@@ -5,10 +5,11 @@ export function middleware(request: NextRequest) {
   const { pathname, hostname } = request.nextUrl
   const response = NextResponse.next()
 
-  // Redirect www.faditools.com to faditools.com (301 permanent redirect)
-  if (hostname === 'www.faditools.com') {
+  // Redirect www to non-www (301 permanent redirect)
+  // Works for www.faditools.com -> faditools.com
+  if (hostname.startsWith('www.')) {
     const url = request.nextUrl.clone()
-    url.hostname = 'faditools.com'
+    url.hostname = hostname.replace('www.', '')
     return NextResponse.redirect(url, 301)
   }
 
