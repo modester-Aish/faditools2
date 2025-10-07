@@ -5,11 +5,11 @@ export function middleware(request: NextRequest) {
   const { pathname, hostname } = request.nextUrl
   const response = NextResponse.next()
 
-  // Redirect www.faditools.com to faditools.com
+  // Redirect www.faditools.com to faditools.com (301 permanent redirect)
   if (hostname === 'www.faditools.com') {
     const url = request.nextUrl.clone()
     url.hostname = 'faditools.com'
-    return NextResponse.redirect(url)
+    return NextResponse.redirect(url, 301)
   }
 
   // Redirect old blog URLs to clean URLs
@@ -38,12 +38,8 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Match all paths except for:
-    // - api (API routes)
-    // - _next/static (static files)
-    // - _next/image (image optimization files)
-    // - favicon.ico (favicon file)
-    // - public files
-    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)',
+    // Match ALL paths for www redirect and security headers
+    // The middleware will handle all routes including API, static files, etc.
+    '/(.*)',
   ],
 }
