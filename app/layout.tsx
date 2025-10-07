@@ -97,11 +97,11 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="google-site-verification" content="12RUQGTb4pDfBnos0FueAq6seC22wJl6Bvs8JyihvVM" />
         {/* Favicon links */}
-        <link rel="icon" type="image/png" href="/fadi-logo.png" />
-        <link rel="shortcut icon" href="/fadi-logo.png" />
+        <link rel="icon" type="image/png" href="/fadi-logo.png?v=2" />
+        <link rel="shortcut icon" href="/fadi-logo.png?v=2" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/fadi-logo.png" />
-        <meta name="msapplication-TileImage" content="/fadi-logo.png" />
+        <link rel="apple-touch-icon" href="/fadi-logo.png?v=2" />
+        <meta name="msapplication-TileImage" content="/fadi-logo.png?v=2" />
         {/* Resource hints for better performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
