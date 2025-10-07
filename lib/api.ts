@@ -125,6 +125,44 @@ export async function fetchWooCommerceProducts(params: string = '') {
         const seoResponse = await fetch(`${API_BASE}/posts?slug=${product.slug}&_embed&acf=1`, {
           cache: 'no-store'
         })
+        
+        // Check if response is OK and is JSON before parsing
+        if (!seoResponse.ok) {
+          // Product doesn't have a corresponding post, use fallback SEO
+          return {
+            ...product,
+            seo: {
+              title: product.name,
+              description: product.short_description?.replace(/<[^>]*>/g, '') || '',
+              canonical: `https://www.faditools.com/${product.slug}`,
+              ogTitle: product.name,
+              ogDescription: product.short_description?.replace(/<[^>]*>/g, '') || '',
+              twitterTitle: product.name,
+              twitterDescription: product.short_description?.replace(/<[^>]*>/g, '') || '',
+              robots: { index: true, follow: true }
+            }
+          }
+        }
+        
+        // Verify content-type is JSON
+        const contentType = seoResponse.headers.get('content-type')
+        if (!contentType || !contentType.includes('application/json')) {
+          // Not JSON response, use fallback SEO
+          return {
+            ...product,
+            seo: {
+              title: product.name,
+              description: product.short_description?.replace(/<[^>]*>/g, '') || '',
+              canonical: `https://www.faditools.com/${product.slug}`,
+              ogTitle: product.name,
+              ogDescription: product.short_description?.replace(/<[^>]*>/g, '') || '',
+              twitterTitle: product.name,
+              twitterDescription: product.short_description?.replace(/<[^>]*>/g, '') || '',
+              robots: { index: true, follow: true }
+            }
+          }
+        }
+        
         const seoData = await seoResponse.json()
         const seoItem = seoData[0]
         
