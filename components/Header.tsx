@@ -63,8 +63,10 @@ export default function Header() {
     return (
       <header className="bg-white shadow-sm sticky top-0 z-50">   
         <nav className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-emerald-600">FadiTools</div>
+        <div className="flex items-center justify-between">
+          <div className="text-2xl font-bold text-emerald-600 italic">
+            FadiTools
+          </div>
             <div className="hidden md:flex space-x-8">
               <div className="h-4 bg-gray-200 rounded animate-pulse w-16"></div>
               <div className="h-4 bg-gray-200 rounded animate-pulse w-16"></div>
@@ -80,8 +82,10 @@ export default function Header() {
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-emerald-600 hover:text-emerald-700 transition-colors">
-            FadiTools
+          <Link href="/" className="hover:opacity-80 transition-opacity">
+            <div className="text-2xl font-bold text-emerald-600 italic">
+              FadiTools
+            </div>
           </Link>
           
           {/* Desktop Navigation */}

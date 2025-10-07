@@ -25,19 +25,19 @@ export const metadata: Metadata = {
   publisher: 'FadiTools',
   icons: {
     icon: [
-      { url: '/faditools-favicon.svg', type: 'image/svg+xml' },
+      { url: '/fadi-logo.png', type: 'image/png' },
       { url: '/favicon.ico', sizes: 'any' }
     ],
-    shortcut: '/faditools-favicon.svg',
+    shortcut: '/fadi-logo.png',
     apple: [
-      { url: '/faditools-favicon.svg', sizes: '180x180' }
+      { url: '/fadi-logo.png', sizes: '180x180' }
     ],
     other: [
       {
         rel: 'icon',
-        url: '/faditools-favicon.svg',
+        url: '/fadi-logo.png',
         sizes: '32x32',
-        type: 'image/svg+xml'
+        type: 'image/png'
       }
     ]
   },
@@ -97,8 +97,11 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="google-site-verification" content="12RUQGTb4pDfBnos0FueAq6seC22wJl6Bvs8JyihvVM" />
         {/* Favicon links */}
-        <link rel="icon" type="image/svg+xml" href="/faditools-favicon.svg" />
-        <link rel="shortcut icon" href="/faditools-favicon.svg" />
+        <link rel="icon" type="image/png" href="/fadi-logo.png" />
+        <link rel="shortcut icon" href="/fadi-logo.png" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/fadi-logo.png" />
+        <meta name="msapplication-TileImage" content="/fadi-logo.png" />
         {/* Resource hints for better performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
