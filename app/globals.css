@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Google Fonts - optimized with display=swap and preload */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap&subset=latin&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap&subset=latin');
 
 @layer base {
   html {
