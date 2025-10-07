@@ -2,23 +2,28 @@
 
 import { useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Typewriter from './Typewriter'
 import ModernReveal from './ModernReveal'
 
 // Why Choose FadiTools Section - Animations removed
 export const WhyChooseSection = () => {
   return (
-    <section className="py-12 relative">
+    <section className="py-12 relative contain-layout">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 mt-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
             <span className="text-emerald-600">
-              Why Choose <span className="relative inline-block px-3 sm:px-4 py-2">
-                <img 
+              Why Choose <span className="relative inline-block px-3 sm:px-4 py-2 min-h-[2.5rem] min-w-[8rem]">
+                <Image 
                   src="/stroke-removebg-preview.png" 
                   alt="Background" 
                   className="absolute inset-0 w-full h-full object-cover rounded-xl"
                   style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
+                  width={128}
+                  height={40}
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <span className="relative z-10 text-white font-bold">FadiTools</span>
               </span>?
@@ -37,13 +42,14 @@ export const WhyChooseSection = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float">
-                <img
+                <Image
                   src="https://cdn-icons-png.flaticon.com/512/2454/2454282.png"
                   alt="Affordable Price"
                   className="w-full h-full object-contain p-2"
-                  width={64}
-                  height={64}
+                  width={80}
+                  height={80}
                   loading="lazy"
+                  sizes="80px"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Affordable Price</h3>
@@ -60,13 +66,14 @@ export const WhyChooseSection = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-1">
-                <img
+                <Image
                   src="https://cdn-icons-png.flaticon.com/512/483/483408.png"
                   alt="Unique Access"
                   className="w-full h-full object-contain p-2"
-                  width={64}
-                  height={64}
+                  width={80}
+                  height={80}
                   loading="lazy"
+                  sizes="80px"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Unique Access</h3>
@@ -83,13 +90,14 @@ export const WhyChooseSection = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-2">
-                <img
+                <Image
                   src="https://cdn-icons-png.flaticon.com/512/1055/1055683.png"
                   alt="Highest Uptime"
                   className="w-full h-full object-contain p-2"
-                  width={64}
-                  height={64}
+                  width={80}
+                  height={80}
                   loading="lazy"
+                  sizes="80px"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Highest Uptime</h3>
@@ -106,13 +114,14 @@ export const WhyChooseSection = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-3">
-                <img
+                <Image
                   src="https://img.icons8.com/color/96/shield.png"
                   alt="Secure & Safe"
                   className="w-full h-full object-contain p-2"
-                  width={64}
-                  height={64}
+                  width={80}
+                  height={80}
                   loading="lazy"
+                  sizes="80px"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Secure & Safe</h3>
@@ -129,13 +138,14 @@ export const WhyChooseSection = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float">
-                <img
+                <Image
                   src="https://img.icons8.com/color/96/globe.png"
                   alt="Worldwide User"
                   className="w-full h-full object-contain p-2"
-                  width={64}
-                  height={64}
+                  width={80}
+                  height={80}
                   loading="lazy"
+                  sizes="80px"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Worldwide User</h3>

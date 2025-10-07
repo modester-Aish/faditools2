@@ -110,10 +110,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://img.icons8.com" />
         <link rel="preconnect" href="https://cdn-icons-png.flaticon.com" />
         <link rel="preconnect" href="https://upload.wikimedia.org" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://img.icons8.com" />
         <link rel="dns-prefetch" href="https://cdn-icons-png.flaticon.com" />
         <link rel="dns-prefetch" href="https://upload.wikimedia.org" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
         {/* Critical CSS for above-the-fold content */}
         <style dangerouslySetInnerHTML={{
           __html: `
@@ -135,6 +137,31 @@ export default function RootLayout({
             /* Smooth loading transitions */
             .fade-in { opacity: 0; animation: fadeIn 0.3s ease-in-out forwards; }
             @keyframes fadeIn { to { opacity: 1; } }
+            /* Performance optimizations */
+            .will-change-transform { will-change: transform; }
+            .will-change-opacity { will-change: opacity; }
+            .contain-layout { contain: layout; }
+            .contain-paint { contain: paint; }
+            /* Critical above-the-fold styles */
+            .hero-section { min-height: 100vh; }
+            .text-emerald-600 { color: #059669; }
+            .bg-emerald-25 { background-color: #f0fdf4; }
+            .bg-emerald-50 { background-color: #ecfdf5; }
+          `
+        }} />
+        {/* Performance monitoring */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            // Web Vitals monitoring
+            if ('web-vital' in window) {
+              import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+                getCLS(console.log);
+                getFID(console.log);
+                getFCP(console.log);
+                getLCP(console.log);
+                getTTFB(console.log);
+              });
+            }
           `
         }} />
       </head>

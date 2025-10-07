@@ -30,7 +30,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div
-      className={`group bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.01] h-[420px] flex flex-col ${
+      className={`group bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.01] h-[450px] flex flex-col ${
         isHovered ? 'shadow-lg scale-[1.01]' : ''
       }`}
       onMouseEnter={() => setIsHovered(true)}
@@ -97,10 +97,10 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Product Info */}
-      <div className="p-4 space-y-3 flex-grow flex flex-col">
+      <div className="p-4 space-y-3 flex-grow flex flex-col justify-between">
         {/* Title */}
         <Link href={`/${product.slug}`} className="block" aria-label={`View details for ${product.title?.rendered || 'Product'}`}>
-          <h3 className="text-base font-semibold text-gray-900 line-clamp-2 hover:text-emerald-600 transition-colors leading-tight h-10 flex items-start">
+          <h3 className="text-base font-semibold text-gray-900 line-clamp-2 hover:text-emerald-600 transition-colors leading-tight h-8 flex items-start">
             {product.title?.rendered || 'Product'}
           </h3>
         </Link>
@@ -147,13 +147,13 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Short Description */}
         {product.excerpt?.rendered ? (
           <div 
-            className="text-xs text-gray-600 line-clamp-2 leading-relaxed h-10 flex items-start"
+            className="text-xs text-gray-600 line-clamp-2 leading-relaxed h-8 flex items-start"
             dangerouslySetInnerHTML={{ 
               __html: product.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 80) + '...' 
             }}
           />
         ) : (
-          <div className="text-xs text-gray-600 h-10 flex items-start">
+          <div className="text-xs text-gray-600 h-8 flex items-start">
             <span className="text-gray-400">No description available</span>
           </div>
         )}
@@ -163,10 +163,19 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="mt-auto">
           <Link
             href={`/${product.slug}`}
-            className="block w-full bg-emerald-600 text-white text-xs font-medium py-2 px-3 rounded-md hover:bg-emerald-700 transition-colors text-center"
+            className="group/btn relative block w-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white text-sm font-semibold py-3 px-4 rounded-xl hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 text-center shadow-sm hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] overflow-hidden"
             aria-label={`View details for ${product.title?.rendered || 'Product'}`}
           >
-            View Details
+            {/* Animated background effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 ease-out"></div>
+            
+            <span className="relative flex items-center justify-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              View Details
+            </span>
           </Link>
         </div>
       </div>

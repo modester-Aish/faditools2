@@ -146,23 +146,36 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       <Header />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 text-white py-12 overflow-hidden">
+      <section className="relative bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 text-white py-8 overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full animate-float"></div>
-          <div className="absolute top-20 right-20 w-16 h-16 bg-white/10 rounded-full animate-float-delay-1"></div>
-          <div className="absolute bottom-10 left-1/4 w-12 h-12 bg-white/10 rounded-full animate-float-delay-2"></div>
-          <div className="absolute bottom-20 right-1/3 w-24 h-24 bg-white/10 rounded-full animate-float-delay-3"></div>
+          <div className="absolute top-6 left-6 w-12 h-12 bg-white/10 rounded-full animate-float"></div>
+          <div className="absolute top-12 right-12 w-10 h-10 bg-white/10 rounded-full animate-float-delay-1"></div>
+          <div className="absolute bottom-6 left-1/4 w-8 h-8 bg-white/10 rounded-full animate-float-delay-2"></div>
+          <div className="absolute bottom-12 right-1/3 w-14 h-14 bg-white/10 rounded-full animate-float-delay-3"></div>
         </div>
         <div className="container mx-auto px-8 lg:px-16 xl:px-24 text-center relative z-10">
           <div className="animate-fade-in-up">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-              🛍️ Our Products
+            <div className="flex items-center justify-center mb-4">
+              <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/20 shadow-lg">
+                <svg 
+                  className="w-10 h-10 text-white" 
+                  fill="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
+                  <path d="M2 17L12 22L22 17"/>
+                  <path d="M2 12L12 17L22 12"/>
+                </svg>
+              </div>
+            </div>
+            <h1 className="text-3xl md:text-5xl font-bold mb-3 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+              Our Products
             </h1>
-            <p className="text-lg md:text-xl max-w-3xl mx-auto text-white/90 leading-relaxed">
+            <p className="text-base md:text-lg max-w-2xl mx-auto text-white/90 leading-relaxed">
               Discover our amazing products managed through WooCommerce with stunning design and seamless integration
             </p>
-            <div className="mt-6 flex justify-center space-x-4">
+            <div className="mt-4 flex justify-center space-x-4">
               <div className="px-5 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
                 <span className="text-base font-semibold">{totalProducts} Products</span>
               </div>
@@ -177,19 +190,6 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       {/* Products Grid */}
       <section className="py-20 -mt-10 relative z-20">
         <div className="container mx-auto px-8 lg:px-16 xl:px-24">
-          {/* Search and Filters */}
-          <ClientOnly fallback={
-            <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl border border-white/20 p-6 mb-8 animate-pulse">
-              <div className="h-12 bg-gray-200 rounded mb-4"></div>
-              <div className="h-8 bg-gray-200 rounded w-1/3"></div>
-            </div>
-          }>
-            <ProductSearch 
-              categories={categories}
-              currentCategory={category}
-              currentSearch={search}
-            />
-          </ClientOnly>
           
           {products && products.length > 0 ? (
             <ClientOnly fallback={
@@ -217,6 +217,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                 totalProducts={totalProducts}
                 category={category}
                 search={search}
+                categories={categories}
               />
             </ClientOnly>
           ) : (

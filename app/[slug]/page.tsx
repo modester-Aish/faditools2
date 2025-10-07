@@ -616,8 +616,8 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                       
                       <div className="space-y-4">
                         {recommendedProducts.map((product: any) => (
-                          <div key={product.id} className="group">
-                            <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                          <Link key={product.id} href={`/${product.slug}`} className="block group">
+                            <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
                               {product.images && product.images[0] && (
                                 <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                                   <img
@@ -649,7 +649,7 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                                 </div>
                               </div>
                             </div>
-                          </div>
+                          </Link>
                         ))}
                       </div>
                       

@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { Product } from '@/types'
 import ProductCard from './ProductCard'
 
@@ -11,6 +12,7 @@ interface ProductGridProps {
   totalProducts: number
   category?: string
   search?: string
+  categories?: Array<{ id: number; name: string; slug: string }>
 }
 
 export default function ProductGrid({ 
@@ -19,11 +21,82 @@ export default function ProductGrid({
   totalPages, 
   totalProducts,
   category,
-  search
+  search,
+  categories = []
 }: ProductGridProps) {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [sortBy, setSortBy] = useState<'name' | 'price' | 'date'>('name')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc')
+  const [searchTerm, setSearchTerm] = useState(search || '')
+  const [selectedCategory, setSelectedCategory] = useState(category || '')
+  
+  const router = useRouter()
+  const searchParams = useSearchParams()
+
+  // Update search input when URL parameters change
+  useEffect(() => {
+    const urlSearch = searchParams.get('search') || ''
+    const urlCategory = searchParams.get('category') || ''
+    
+    setSearchTerm(urlSearch)
+    setSelectedCategory(urlCategory)
+  }, [searchParams])
+
+  // Auto-redirect to main products page when search is cleared
+  useEffect(() => {
+    if (searchTerm === '' && !selectedCategory) {
+      const currentSearch = searchParams.get('search') || ''
+      const currentCategory = searchParams.get('category') || ''
+      
+      // Only redirect if there are active filters in URL but search is empty
+      if ((currentSearch || currentCategory) && searchTerm === '' && !selectedCategory) {
+        router.push('/products')
+      }
+    }
+  }, [searchTerm, selectedCategory, searchParams, router])
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    const params = new URLSearchParams()
+    
+    if (searchTerm.trim()) {
+      params.append('search', searchTerm.trim())
+    }
+    
+    if (selectedCategory) {
+      params.append('category', selectedCategory)
+    }
+    
+    const url = `/products${params.toString() ? `?${params.toString()}` : ''}`
+    router.push(url)
+  }
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category)
+    const params = new URLSearchParams()
+    
+    if (searchTerm.trim()) {
+      params.append('search', searchTerm.trim())
+    }
+    
+    if (category) {
+      params.append('category', category)
+    }
+    
+    // Auto-redirect to main page if both search and category are empty
+    if (!searchTerm.trim() && !category) {
+      router.push('/products')
+    } else {
+      const url = `/products${params.toString() ? `?${params.toString()}` : ''}`
+      router.push(url)
+    }
+  }
+
+  const clearFilters = () => {
+    setSearchTerm('')
+    setSelectedCategory('')
+    router.push('/products')
+  }
 
   const handleSort = (field: 'name' | 'price' | 'date') => {
     if (sortBy === field) {
@@ -72,24 +145,114 @@ export default function ProductGrid({
 
   return (
     <div className="space-y-8">
-      {/* Header with Controls */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      {/* Combined Search and Products Header */}
+      <div className="bg-gradient-to-br from-white via-white to-gray-50/50 rounded-3xl shadow-lg border border-gray-200/60 p-6 backdrop-blur-sm">
+        {/* Search Section */}
+        <div className="mb-6 pb-6 border-b border-gray-200">
+          <form onSubmit={handleSearch} className="space-y-4">
+            {/* Search Bar */}
+            <div className="flex gap-3">
+              <div className="flex-1 relative">
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  value={searchTerm}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value)
+                    // Auto-redirect to main page when search is completely cleared
+                    if (e.target.value === '' && selectedCategory === '') {
+                      router.push('/products')
+                    }
+                  }}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-base"
+                />
+                <svg
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <button
+                type="submit"
+                className="px-6 py-3 bg-primary-600 text-white rounded-xl hover:bg-primary-700 transition-all duration-200 hover:scale-[1.02] shadow-sm font-medium"
+              >
+                Search
+              </button>
+            </div>
+
+            {/* Category Filter */}
+            {categories.length > 0 && (
+              <div className="flex items-center gap-3">
+                <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Category:</label>
+                <select 
+                  value={selectedCategory}
+                  onChange={(e) => {
+                    setSelectedCategory(e.target.value)
+                    handleCategoryChange(e.target.value)
+                  }}
+                  className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-sm"
+                >
+                  <option value="">All Categories</option>
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.slug}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+
+            {/* Active Filters */}
+            {(searchTerm || selectedCategory) && (
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-sm text-gray-600">Active filters:</span>
+                {searchTerm && (
+                  <span className="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-sm font-medium">
+                    Search: "{searchTerm}"
+                  </span>
+                )}
+                {selectedCategory && (
+                  <span className="px-3 py-1 bg-accent-100 text-accent-800 rounded-full text-sm font-medium">
+                    Category: {categories.find(c => c.slug === selectedCategory)?.name || selectedCategory}
+                  </span>
+                )}
+                <button
+                  type="button"
+                  onClick={clearFilters}
+                  className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
+                >
+                  Clear All
+                </button>
+              </div>
+            )}
+          </form>
+        </div>
+
+        {/* Products Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           {/* Results Info */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-3">
             <h2 className="text-2xl font-bold text-gray-900">
-              Products ({totalProducts})
+              Products
+              <span className="ml-2 text-base font-semibold text-primary-600 bg-primary-50 px-3 py-1 rounded-full">
+                {totalProducts} items
+              </span>
             </h2>
+            
+            {/* Active Filters */}
             {(category || search) && (
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center gap-2">
                 {category && (
                   <span className="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-sm font-medium">
-                    Category: {category}
+                    {category}
                   </span>
                 )}
                 {search && (
                   <span className="px-3 py-1 bg-accent-100 text-accent-800 rounded-full text-sm font-medium">
-                    Search: "{search}"
+                    "{search}"
                   </span>
                 )}
               </div>
@@ -97,10 +260,10 @@ export default function ProductGrid({
           </div>
 
           {/* Controls */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-4">
             {/* Sort Dropdown */}
-            <div className="flex items-center space-x-2">
-              <label className="text-sm font-medium text-gray-700">Sort by:</label>
+            <div className="flex items-center gap-2">
+              <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Sort:</label>
               <select
                 value={`${sortBy}-${sortOrder}`}
                 onChange={(e) => {
@@ -110,17 +273,17 @@ export default function ProductGrid({
                 }}
                 className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white"
               >
-                <option value="name-asc">Name A-Z</option>
-                <option value="name-desc">Name Z-A</option>
-                <option value="price-asc">Price Low to High</option>
-                <option value="price-desc">Price High to Low</option>
-                <option value="date-desc">Newest First</option>
-                <option value="date-asc">Oldest First</option>
+                <option value="name-asc">📝 Name (A → Z)</option>
+                <option value="name-desc">📝 Name (Z → A)</option>
+                <option value="price-asc">💰 Price (Low → High)</option>
+                <option value="price-desc">💰 Price (High → Low)</option>
+                <option value="date-desc">🆕 Newest First</option>
+                <option value="date-asc">⏰ Oldest First</option>
               </select>
             </div>
 
             {/* View Mode Toggle */}
-            <div className="flex items-center space-x-2 bg-gray-100 rounded-lg p-1">
+            <div className="flex items-center bg-gradient-to-r from-gray-100 to-gray-50 rounded-lg p-1 shadow-inner">
               <button
                 onClick={() => setViewMode('grid')}
                 className={`p-2 rounded-md transition-all duration-200 ${
@@ -128,6 +291,7 @@ export default function ProductGrid({
                     ? 'bg-white text-primary-600 shadow-sm' 
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
+                title="Grid View"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
@@ -140,6 +304,7 @@ export default function ProductGrid({
                     ? 'bg-white text-primary-600 shadow-sm' 
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
+                title="List View"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />

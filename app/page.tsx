@@ -169,11 +169,15 @@ export default async function Home() {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 leading-tight">
                   <div className="text-accent-500 mb-1">
                     <span className="relative inline-block px-3 sm:px-4 py-2">
-                      <img 
-                        src="/stroke-removebg-preview.png" 
+                      <Image 
+                        src="/stroke-removebg-preview.png"
+                        width={128}
+                        height={40}
+                        priority
                         alt="Background" 
                         className="absolute inset-0 w-full h-full object-cover rounded-xl"
                         style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <span className="relative z-10 text-white font-bold">Premium SEO</span>
                     </span> Tools,

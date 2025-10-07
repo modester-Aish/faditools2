@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 
 interface FAQItem {
   question: string
@@ -69,11 +70,15 @@ export default function FAQSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             <span className="text-emerald-600">
               Frequently Asked <span className="relative inline-block px-3 sm:px-4 py-2">
-                <img 
-                  src="/stroke-removebg-preview.png" 
+                <Image 
+                  src="/stroke-removebg-preview.png"
+                  width={128}
+                  height={40}
+                  priority
                   alt="Background" 
                   className="absolute inset-0 w-full h-full object-cover rounded-xl"
                   style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <span className="relative z-10 text-white font-bold">Questions</span>
               </span>

@@ -62,9 +62,9 @@ export default function Header() {
   if (!mounted) {
     return (
       <header className="bg-white shadow-sm sticky top-0 z-50">   
-        <nav className="container mx-auto px-4 py-4">
+        <nav className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-emerald-600 italic">
+          <div className="text-3xl font-bold text-emerald-600 italic">
             FadiTools
           </div>
             <div className="hidden md:flex space-x-8">
@@ -80,17 +80,17 @@ export default function Header() {
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      <nav className="container mx-auto px-4 py-4">
+      <nav className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="hover:opacity-80 transition-opacity">
-            <div className="text-2xl font-bold text-emerald-600 italic">
+            <div className="text-3xl font-bold text-emerald-600 italic">
               FadiTools
             </div>
           </Link>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-emerald-600 transition-colors">
+            <Link href="/" className="text-gray-700 hover:text-emerald-600 transition-colors text-lg font-medium">
               Home
             </Link>
             
@@ -102,7 +102,7 @@ export default function Header() {
             >
               <Link
                 href="/pages"
-                className="text-gray-700 hover:text-emerald-600 transition-colors flex items-center"
+                className="text-gray-700 hover:text-emerald-600 transition-colors flex items-center text-lg font-medium"
               >
                 Pages
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -131,10 +131,10 @@ export default function Header() {
               )}
             </div>
             
-            <Link href="/blog" className="text-gray-700 hover:text-emerald-600 transition-colors">
+            <Link href="/blog" className="text-gray-700 hover:text-emerald-600 transition-colors text-lg font-medium">
               Posts
             </Link>
-            <Link href="/products" className="text-gray-700 hover:text-emerald-600 transition-colors">
+            <Link href="/products" className="text-gray-700 hover:text-emerald-600 transition-colors text-lg font-medium">
               Products
             </Link>
           </div>

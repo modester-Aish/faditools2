@@ -25,10 +25,26 @@ export function middleware(request: NextRequest) {
   response.headers.set('X-Content-Type-Options', 'nosniff')
   response.headers.set('X-XSS-Protection', '1; mode=block')
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+  
+  // Performance optimization headers
+  response.headers.set('X-Robots-Tag', 'index, follow')
+  response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
 
   // Add cache headers for static assets
   if (pathname.startsWith('/_next/static/') || pathname.startsWith('/images/')) {
     response.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
+  } else if (pathname.startsWith('/api/')) {
+    // API routes - shorter cache
+    response.headers.set('Cache-Control', 'public, max-age=300, s-maxage=300')
+  } else if (pathname.endsWith('.css') || pathname.endsWith('.js')) {
+    // CSS/JS files
+    response.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
+  } else if (pathname.endsWith('.svg') || pathname.endsWith('.png') || pathname.endsWith('.jpg') || pathname.endsWith('.jpeg') || pathname.endsWith('.webp')) {
+    // Image files
+    response.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
+  } else {
+    // HTML pages - moderate cache
+    response.headers.set('Cache-Control', 'public, max-age=3600, s-maxage=3600')
   }
 
   // Add compression hint
