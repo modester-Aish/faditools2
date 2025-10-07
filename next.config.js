@@ -34,7 +34,7 @@ const nextConfig = {
       }
     }
     
-    // CSS optimization for better performance
+    // Enhanced optimization for better performance
     if (!isServer) {
       config.optimization = {
         ...config.optimization,
@@ -42,6 +42,8 @@ const nextConfig = {
           chunks: 'all',
           minSize: 20000,
           maxSize: 244000,
+          maxAsyncRequests: 30,
+          maxInitialRequests: 30,
           cacheGroups: {
             ...config.optimization.splitChunks?.cacheGroups,
             styles: {
@@ -49,6 +51,7 @@ const nextConfig = {
               test: /\.(css|scss)$/,
               chunks: 'all',
               enforce: true,
+              priority: 20,
             },
             vendor: {
               test: /[\\/]node_modules[\\/]/,
@@ -64,10 +67,18 @@ const nextConfig = {
               priority: 5,
               reuseExistingChunk: true,
             },
+            react: {
+              test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+              name: 'react',
+              chunks: 'all',
+              priority: 15,
+            },
           },
         },
         usedExports: true,
         sideEffects: false,
+        moduleIds: 'deterministic',
+        chunkIds: 'deterministic',
       }
     }
     
@@ -77,7 +88,7 @@ const nextConfig = {
   // Optimize for production
   swcMinify: true,
   
-  // Enable compression
+  // Enable compression with gzip
   compress: true,
   
   // Power optimizations
@@ -88,21 +99,21 @@ const nextConfig = {
     forceSwcTransforms: true,
     esmExternals: true,
     optimizePackageImports: ['@/components', '@/lib'],
+    gzipSize: true,
+    optimizeCss: true,
+    scrollRestoration: true,
   },
   
-  // Image optimization
+  // Optimized image configuration
   images: {
-    domains: ['app.faditools.com', 'images.unsplash.com', 'img.icons8.com', 'cdn-icons-png.flaticon.com', 'upload.wikimedia.org'],
+    domains: ['app.faditools.com'],
     unoptimized: process.env.NODE_ENV === 'development',
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 31536000, // 1 year cache
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    // Enable modern image formats for better compression
-    dangerouslyAllowSVG: true,
-    // Optimize loading
     loader: 'default',
   },
   
@@ -175,6 +186,15 @@ const nextConfig = {
       },
       {
         source: '/_next/image(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      },
+      {
+        source: '/(.*)\\.(css|js|woff2|png|jpg|jpeg|gif|svg|ico)',
         headers: [
           {
             key: 'Cache-Control',

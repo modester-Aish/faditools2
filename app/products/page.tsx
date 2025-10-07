@@ -2,7 +2,6 @@ import { Metadata } from 'next'
 import { wooCommerceService } from '@/lib/woocommerce-service'
 import Header from '../../components/Header'
 import ProductGrid from '../../components/ProductGrid'
-import ProductSearch from '../../components/ProductSearch'
 import ClientOnly from '../../components/ClientOnly'
 import { WooCommerceProduct } from '@/lib/woocommerce-api'
 import { Product } from '@/types'
@@ -32,6 +31,8 @@ export const metadata: Metadata = {
 
 // Enable ISR for better performance
 export const revalidate = 3600 // Revalidate every hour
+export const dynamic = 'force-static'
+export const dynamicParams = false
 
 interface ProductsPageProps {
   searchParams: {

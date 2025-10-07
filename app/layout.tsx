@@ -17,7 +17,8 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   preload: true,
-  variable: '--font-inter'
+  variable: '--font-inter',
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif']
 })
 
 export const metadata: Metadata = {
@@ -106,67 +107,21 @@ export default function RootLayout({
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/faditools-favicon.svg" />
         <meta name="msapplication-TileImage" content="/faditools-favicon.svg" />
-        {/* Resource hints for better performance */}
+        {/* Optimized resource hints - only essential domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://app.faditools.com" />
-        {/* Preconnect to external domains for faster loading */}
-        <link rel="preconnect" href="https://images.unsplash.com" />
-        <link rel="preconnect" href="https://img.icons8.com" />
-        <link rel="preconnect" href="https://cdn-icons-png.flaticon.com" />
-        <link rel="preconnect" href="https://upload.wikimedia.org" />
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        <link rel="dns-prefetch" href="https://img.icons8.com" />
-        <link rel="dns-prefetch" href="https://cdn-icons-png.flaticon.com" />
-        <link rel="dns-prefetch" href="https://upload.wikimedia.org" />
-        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-        {/* Critical CSS for above-the-fold content */}
+        {/* Critical CSS - minimal and optimized */}
         <style dangerouslySetInnerHTML={{
           __html: `
-            .bg-white { background-color: #ffffff; }
-            .text-emerald-600 { color: #059669; }
-            .text-gray-700 { color: #374151; }
-            .font-bold { font-weight: 700; }
-            .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-            .flex { display: flex; }
-            .items-center { align-items: center; }
-            .justify-between { justify-content: space-between; }
-            .hidden { display: none; }
-            @media (min-width: 768px) { .md\\:flex { display: flex; } }
             /* Prevent layout shifts */
-            img { max-width: 100%; height: auto; }
-            .aspect-ratio { aspect-ratio: attr(width) / attr(height); }
-            /* Reserve space for dynamic content */
-            .reserve-space { min-height: 200px; }
-            /* Smooth loading transitions */
-            .fade-in { opacity: 0; animation: fadeIn 0.3s ease-in-out forwards; }
-            @keyframes fadeIn { to { opacity: 1; } }
-            /* Performance optimizations */
-            .will-change-transform { will-change: transform; }
-            .will-change-opacity { will-change: opacity; }
-            .contain-layout { contain: layout; }
-            .contain-paint { contain: paint; }
-            /* Critical above-the-fold styles */
-            .hero-section { min-height: 100vh; }
-            .text-emerald-600 { color: #059669; }
-            .bg-emerald-25 { background-color: #f0fdf4; }
-            .bg-emerald-50 { background-color: #ecfdf5; }
-          `
-        }} />
-        {/* Performance monitoring */}
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            // Web Vitals monitoring
-            if ('web-vital' in window) {
-              import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-                getCLS(console.log);
-                getFID(console.log);
-                getFCP(console.log);
-                getLCP(console.log);
-                getTTFB(console.log);
-              });
-            }
+            img{max-width:100%;height:auto}
+            /* Critical above-the-fold */
+            .hero-section{min-height:100vh}
+            .container{max-width:1200px;margin:0 auto;padding:0 1rem}
+            /* Performance */
+            .contain-layout{contain:layout}
+            .contain-paint{contain:paint}
           `
         }} />
         
