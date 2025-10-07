@@ -5,7 +5,13 @@ import { CartProvider } from '@/context/CartContext'
 import { NavigationProvider } from '@/context/NavigationContext'
 import { AuthProvider } from '@/context/AuthContext'
 import { generateCanonicalUrl } from '@/lib/canonical'
-import FloatingChatButtons from '@/components/FloatingChatButtons'
+import dynamic from 'next/dynamic'
+
+// Lazy load non-critical components
+const FloatingChatButtons = dynamic(() => import('@/components/FloatingChatButtons'), {
+  ssr: false,
+  loading: () => null
+})
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -97,6 +103,15 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://app.faditools.com" />
+        {/* Preconnect to external domains for faster loading */}
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://img.icons8.com" />
+        <link rel="preconnect" href="https://cdn-icons-png.flaticon.com" />
+        <link rel="preconnect" href="https://upload.wikimedia.org" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://img.icons8.com" />
+        <link rel="dns-prefetch" href="https://cdn-icons-png.flaticon.com" />
+        <link rel="dns-prefetch" href="https://upload.wikimedia.org" />
         {/* Critical CSS for above-the-fold content */}
         <style dangerouslySetInnerHTML={{
           __html: `
@@ -110,6 +125,14 @@ export default function RootLayout({
             .justify-between { justify-content: space-between; }
             .hidden { display: none; }
             @media (min-width: 768px) { .md\\:flex { display: flex; } }
+            /* Prevent layout shifts */
+            img { max-width: 100%; height: auto; }
+            .aspect-ratio { aspect-ratio: attr(width) / attr(height); }
+            /* Reserve space for dynamic content */
+            .reserve-space { min-height: 200px; }
+            /* Smooth loading transitions */
+            .fade-in { opacity: 0; animation: fadeIn 0.3s ease-in-out forwards; }
+            @keyframes fadeIn { to { opacity: 1; } }
           `
         }} />
       </head>

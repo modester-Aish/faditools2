@@ -41,6 +41,9 @@ export const WhyChooseSection = () => {
                   src="https://cdn-icons-png.flaticon.com/512/2454/2454282.png"
                   alt="Affordable Price"
                   className="w-full h-full object-contain p-2"
+                  width={64}
+                  height={64}
+                  loading="lazy"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Affordable Price</h3>
@@ -61,6 +64,9 @@ export const WhyChooseSection = () => {
                   src="https://cdn-icons-png.flaticon.com/512/483/483408.png"
                   alt="Unique Access"
                   className="w-full h-full object-contain p-2"
+                  width={64}
+                  height={64}
+                  loading="lazy"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Unique Access</h3>
@@ -81,6 +87,9 @@ export const WhyChooseSection = () => {
                   src="https://cdn-icons-png.flaticon.com/512/1055/1055683.png"
                   alt="Highest Uptime"
                   className="w-full h-full object-contain p-2"
+                  width={64}
+                  height={64}
+                  loading="lazy"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Highest Uptime</h3>
@@ -101,6 +110,9 @@ export const WhyChooseSection = () => {
                   src="https://img.icons8.com/color/96/shield.png"
                   alt="Secure & Safe"
                   className="w-full h-full object-contain p-2"
+                  width={64}
+                  height={64}
+                  loading="lazy"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Secure & Safe</h3>
@@ -121,6 +133,9 @@ export const WhyChooseSection = () => {
                   src="https://img.icons8.com/color/96/globe.png"
                   alt="Worldwide User"
                   className="w-full h-full object-contain p-2"
+                  width={64}
+                  height={64}
+                  loading="lazy"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Worldwide User</h3>
@@ -141,6 +156,9 @@ export const WhyChooseSection = () => {
                   src="https://img.icons8.com/color/96/cloud.png"
                   alt="Cloud Based"
                   className="w-full h-full object-contain p-2"
+                  width={64}
+                  height={64}
+                  loading="lazy"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Cloud Based</h3>
@@ -161,6 +179,9 @@ export const WhyChooseSection = () => {
                   src="https://img.icons8.com/color/96/lightning-bolt.png"
                   alt="Instant Access"
                   className="w-full h-full object-contain p-2"
+                  width={64}
+                  height={64}
+                  loading="lazy"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Instant Access</h3>
@@ -182,6 +203,9 @@ export const WhyChooseSection = () => {
                   src="https://img.icons8.com/color/96/user.png"
                   alt="User Friendly"
                   className="w-full h-full object-contain p-2"
+                  width={64}
+                  height={64}
+                  loading="lazy"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">User Friendly</h3>
@@ -202,6 +226,9 @@ export const WhyChooseSection = () => {
                   src="https://img.icons8.com/color/96/headset.png"
                   alt="Premium Support"
                   className="w-full h-full object-contain p-2"
+                  width={64}
+                  height={64}
+                  loading="lazy"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Premium Support</h3>

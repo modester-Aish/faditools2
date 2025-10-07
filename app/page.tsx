@@ -142,9 +142,13 @@ export default async function Home() {
               {/* Background Image - Behind the text content */}
               <div className="absolute inset-0">
                 <img 
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=888&q=80&fm=webp" 
                   alt="SEO Tools Banner Background" 
                   className="w-full h-full object-cover opacity-40"
+                  loading="eager"
+                  fetchPriority="high"
+                  width={888}
+                  height={632}
                 />
               </div>
               

@@ -44,6 +44,12 @@ const nextConfig = {
               chunks: 'all',
               enforce: true,
             },
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              chunks: 'all',
+              priority: 10,
+            },
           },
         },
       }
@@ -55,20 +61,29 @@ const nextConfig = {
   // Optimize for production
   swcMinify: true,
   
+  // Enable compression
+  compress: true,
+  
+  // Power optimizations
+  poweredByHeader: false,
+  
   // Enable modern features
   experimental: {
     forceSwcTransforms: true,
     esmExternals: true,
+    optimizePackageImports: ['@/components', '@/lib'],
   },
   
   // Image optimization
   images: {
-    domains: ['app.faditools.com'],
+    domains: ['app.faditools.com', 'images.unsplash.com', 'img.icons8.com', 'cdn-icons-png.flaticon.com', 'upload.wikimedia.org'],
     unoptimized: process.env.NODE_ENV === 'development',
     formats: ['image/webp', 'image/avif'],
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 31536000, // 1 year cache
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   
   // Output configuration for better deployment
@@ -91,6 +106,14 @@ const nextConfig = {
           {
             key: 'X-Content-Type-Options',
             value: 'nosniff'
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin'
           }
         ]
       },
@@ -105,6 +128,33 @@ const nextConfig = {
       },
       {
         source: '/favicon.svg',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      },
+      {
+        source: '/images/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      },
+      {
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      },
+      {
+        source: '/_next/image(.*)',
         headers: [
           {
             key: 'Cache-Control',

@@ -3,6 +3,7 @@ import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
   const { pathname, hostname } = request.nextUrl
+  const response = NextResponse.next()
 
   // Redirect www.faditools.com to faditools.com
   if (hostname === 'www.faditools.com') {
@@ -17,7 +18,22 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`/${slug}`, request.url))
   }
 
-  return NextResponse.next()
+  // Add performance headers
+  response.headers.set('X-DNS-Prefetch-Control', 'on')
+  response.headers.set('X-Frame-Options', 'DENY')
+  response.headers.set('X-Content-Type-Options', 'nosniff')
+  response.headers.set('X-XSS-Protection', '1; mode=block')
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+
+  // Add cache headers for static assets
+  if (pathname.startsWith('/_next/static/') || pathname.startsWith('/images/')) {
+    response.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
+  }
+
+  // Add compression hint
+  response.headers.set('Vary', 'Accept-Encoding')
+
+  return response
 }
 
 export const config = {

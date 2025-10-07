@@ -78,7 +78,7 @@ export default function CategorySection({ categories, products = [] }: CategoryS
     const name = categoryName.toLowerCase()
     if (name.includes('ai')) return 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg'
     if (name.includes('amazon')) return 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg'
-    if (name.includes('content')) return '/images/tools/content-tools.svg'
+    if (name.includes('content')) return 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Grammarly_logo.svg'
     if (name.includes('seo')) return 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg'
     if (name.includes('design')) return 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg'
     if (name.includes('instagram')) return 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg'
@@ -160,6 +160,9 @@ export default function CategorySection({ categories, products = [] }: CategoryS
                         src={getCategoryIcon(category.name)} 
                         alt={category.name}
                         className="w-6 h-6 md:w-8 md:h-8 object-contain"
+                        width={32}
+                        height={32}
+                        loading="lazy"
                       />
                     </div>
                     <div className="flex flex-col gap-y-1">
