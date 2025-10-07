@@ -4,7 +4,7 @@ export const packages: Package[] = [
   {
     id: 'seo-combo',
     name: 'SEO Combo',
-    price: '$25.00',
+    price: '$30.00',
     description: 'Essential SEO tools for professionals',
     toolCount: 11,
     tools: [
@@ -19,7 +19,7 @@ export const packages: Package[] = [
   {
     id: 'heavy-pack',
     name: 'Heavy Pack',
-    price: '$35.00',
+    price: '$40.00',
     description: 'Complete digital marketing solution',
     toolCount: 15,
     popular: true,
@@ -36,7 +36,7 @@ export const packages: Package[] = [
   {
     id: 'mega-pack',
     name: 'Mega Pack',
-    price: '$45.00',
+    price: '$50.00',
     description: 'Advanced tools for agencies',
     toolCount: 20,
     tools: [
@@ -53,7 +53,7 @@ export const packages: Package[] = [
   {
     id: 'mega-combo',
     name: 'Mega Combo Pack',
-    price: '$65.00',
+    price: '$60.00',
     description: 'All premium tools included',
     toolCount: 42,
     tools: [

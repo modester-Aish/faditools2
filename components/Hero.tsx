@@ -50,7 +50,7 @@ export default function Hero({ onScrollToTools, onScrollToPricing, siteStats }: 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
             Access <span className="font-semibold text-emerald-600">{siteStats?.totalTools || 130}+ premium SEO tools</span> starting at just{' '}
-            <span className="font-bold text-emerald-700">$12/month</span>. 
+            <span className="font-bold text-emerald-700">$4.99/month</span>. 
             Boost your digital marketing with the best tools at unbeatable prices.
           </p>
 

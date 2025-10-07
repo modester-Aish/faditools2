@@ -223,7 +223,7 @@ export default async function Home() {
               {/* Price Header */}
               <div className="text-center mb-4">
                 <div className="text-gray-500 text-xs font-medium mb-1">Starting from</div>
-                <div className="text-2xl md:text-3xl font-black text-black mb-1">$5.00</div>
+                <div className="text-2xl md:text-3xl font-black text-black mb-1">$4.99</div>
                 <div className="text-sm text-gray-600">/month</div>
               </div>
               

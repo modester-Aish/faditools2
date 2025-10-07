@@ -73,25 +73,46 @@ export default function CategorySection({ categories, products = [] }: CategoryS
   // Get products for display
   const displayProducts = categoryProducts
 
-  // Get category icon based on name
+  // Get category icon based on name - Using CDN.jsdelivr.net (most reliable)
   const getCategoryIcon = (categoryName: string) => {
     const name = categoryName.toLowerCase()
-    if (name.includes('ai')) return 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg'
-    if (name.includes('amazon')) return 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg'
-    if (name.includes('content')) return 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Grammarly_logo.svg'
-    if (name.includes('seo')) return 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg'
-    if (name.includes('design')) return 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg'
-    if (name.includes('instagram')) return 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg'
-    if (name.includes('youtube')) return 'https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_logo_%282017%29.svg'
-    if (name.includes('tiktok')) return 'https://upload.wikimedia.org/wikipedia/commons/1/1b/TikTok_logo.svg'
-    if (name.includes('facebook')) return 'https://upload.wikimedia.org/wikipedia/commons/8/89/Facebook_Logo_%282019%29.svg'
-    if (name.includes('twitter')) return 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg'
-    if (name.includes('linkedin')) return 'https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png'
-    if (name.includes('writing')) return 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Grammarly_logo.svg'
-    if (name.includes('video')) return 'https://upload.wikimedia.org/wikipedia/commons/9/98/YouTube_logo_%282017%29.svg'
-    if (name.includes('audio')) return 'https://upload.wikimedia.org/wikipedia/commons/8/8c/Spotify_logo.svg'
-    if (name.includes('social')) return 'https://upload.wikimedia.org/wikipedia/commons/8/89/Facebook_Logo_%282019%29.svg'
-    return 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg'
+    if (name.includes('ai')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg'
+    if (name.includes('amazon')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazon.svg'
+    if (name.includes('content')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googledocs.svg'
+    if (name.includes('seo')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg'
+    if (name.includes('design')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/figma.svg'
+    if (name.includes('instagram')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/instagram.svg'
+    if (name.includes('youtube')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/youtube.svg'
+    if (name.includes('tiktok')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tiktok.svg'
+    if (name.includes('facebook')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/facebook.svg'
+    if (name.includes('twitter')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/x.svg'
+    if (name.includes('linkedin')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg'
+    if (name.includes('writing')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googledocs.svg'
+    if (name.includes('video')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/youtube.svg'
+    if (name.includes('audio')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/spotify.svg'
+    if (name.includes('social')) return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/facebook.svg'
+    return 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlechrome.svg'
+  }
+
+  // Get emoji fallback for categories
+  const getCategoryEmoji = (categoryName: string) => {
+    const name = categoryName.toLowerCase()
+    if (name.includes('ai')) return '🤖'
+    if (name.includes('amazon')) return '📦'
+    if (name.includes('content')) return '📝'
+    if (name.includes('seo')) return '🔍'
+    if (name.includes('design')) return '🎨'
+    if (name.includes('instagram')) return '📸'
+    if (name.includes('youtube')) return '▶️'
+    if (name.includes('tiktok')) return '🎵'
+    if (name.includes('facebook')) return '👥'
+    if (name.includes('twitter')) return '🐦'
+    if (name.includes('linkedin')) return '💼'
+    if (name.includes('writing')) return '✍️'
+    if (name.includes('video')) return '🎬'
+    if (name.includes('audio')) return '🎧'
+    if (name.includes('social')) return '🌐'
+    return '⚙️'
   }
 
   // Get short category name for display
@@ -155,14 +176,18 @@ export default function CategorySection({ categories, products = [] }: CategoryS
                   aria-label={`${category.name} Services`}
                 >
                   <div className="relative z-[1] flex h-full flex-col items-center justify-center gap-x-1 gap-y-1 pl-2 pr-4 md:flex-row md:justify-start md:pl-3 lg:gap-x-2 lg:pr-6">
-                    <div className="shrink-0">
+                    <div className="shrink-0 w-6 h-6 md:w-8 md:h-8 flex items-center justify-center bg-white rounded-lg p-1 shadow-sm">
                       <img 
                         src={getCategoryIcon(category.name)} 
                         alt={category.name}
-                        className="w-6 h-6 md:w-8 md:h-8 object-contain"
-                        width={32}
-                        height={32}
-                        loading="lazy"
+                        className="w-full h-full object-contain"
+                        style={{ filter: 'brightness(0) saturate(100%) invert(36%) sepia(90%) saturate(1000%) hue-rotate(140deg) brightness(95%) contrast(101%)' }}
+                        loading="eager"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.onerror = null;
+                          target.src = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='70' font-size='70'>${getCategoryEmoji(category.name)}</text></svg>`;
+                        }}
                       />
                     </div>
                     <div className="flex flex-col gap-y-1">

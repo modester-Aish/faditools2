@@ -78,7 +78,7 @@ export default function CTA({ onScrollToPricing, onScrollToTools, siteStats }: C
                 </svg>
               </div>
               <h3 className="font-semibold mb-1">Affordable Pricing</h3>
-              <p className="text-blue-200 text-sm">Starting at just $12/month</p>
+              <p className="text-blue-200 text-sm">Starting at just $4.99/month</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3">

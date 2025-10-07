@@ -11,7 +11,7 @@ export const ToolsPackagesSection = () => {
     {
       id: 'seo-combo',
       name: 'SEO Combo',
-      price: '$25.00',
+      price: '$30.00',
       description: 'Essential SEO tools for professionals',
       toolCount: 11,
       tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
@@ -28,7 +28,7 @@ export const ToolsPackagesSection = () => {
     {
       id: 'heavy-pack',
       name: 'Heavy Pack',
-      price: '$35.00',
+      price: '$40.00',
       description: 'Complete digital marketing solution',
       toolCount: 15,
       tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
@@ -46,7 +46,7 @@ export const ToolsPackagesSection = () => {
     {
       id: 'mega-pack',
       name: 'Mega Pack',
-      price: '$45.00',
+      price: '$50.00',
       description: 'Advanced tools for agencies',
       toolCount: 20,
       tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],

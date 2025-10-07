@@ -271,7 +271,7 @@ export const PopularToolsSection = () => {
             {
               name: 'Ahrefs',
               id: 'ahrefs',
-              price: '$18.00',
+              price: '$30.00',
               originalPrice: '$99.00',
               image: '/images/tools/ahrefs-logo.svg',
               description: 'Comprehensive SEO toolkit for keyword research and backlink analysis'
@@ -279,7 +279,7 @@ export const PopularToolsSection = () => {
             {
               name: 'SEMrush',
               id: 'semrush',
-              price: '$5.00',
+              price: '$4.99',
               originalPrice: '$119.95',
               image: '/images/tools/semrush-logo.svg',
               description: 'All-in-one marketing toolkit for competitive analysis'
@@ -287,7 +287,7 @@ export const PopularToolsSection = () => {
             {
               name: 'Moz Pro',
               id: 'moz',
-              price: '$6.00',
+              price: '$4.99',
               originalPrice: '$99.00',
               image: '/images/tools/moz-logo.svg',
               description: 'Professional SEO software for rank tracking and optimization'
@@ -295,7 +295,7 @@ export const PopularToolsSection = () => {
             {
               name: 'Canva Pro',
               id: 'canva',
-              price: '$3.66',
+              price: '$4.99',
               originalPrice: '$12.99',
               image: 'https://img.icons8.com/color/96/canva.png',
               description: 'Professional design platform with premium templates'
@@ -303,7 +303,7 @@ export const PopularToolsSection = () => {
             {
               name: 'ChatGPT Plus',
               id: 'chatgpt-plus',
-              price: '$5.00',
+              price: '$4.99',
               originalPrice: '$20.00',
               image: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg',
               description: 'Best text Based AI Co pilot'
@@ -311,7 +311,7 @@ export const PopularToolsSection = () => {
             {
               name: 'RunwayML',
               id: 'runwayml',
-              price: '$10.00',
+              price: '$4.99',
               originalPrice: '$35.00',
               image: 'https://img.icons8.com/color/96/runway.png',
               description: 'Best AI video Maker'
@@ -319,7 +319,7 @@ export const PopularToolsSection = () => {
             {
               name: 'Netflix',
               id: 'netflix',
-              price: '$3.66',
+              price: '$4.99',
               originalPrice: '$15.99',
               image: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg',
               description: 'Entertainment from TV series'
@@ -327,7 +327,7 @@ export const PopularToolsSection = () => {
             {
               name: 'Claude',
               id: 'claude',
-              price: '$6.00',
+              price: '$4.99',
               originalPrice: '$20.00',
               image: '/images/tools/claude-logo.svg',
               description: 'AI coding vibe'
@@ -351,8 +351,7 @@ export const PopularToolsSection = () => {
                 <p className="text-gray-600 text-sm text-center mb-6">{tool.description}</p>
                 <div className="text-center mb-6">
                   <span className="text-3xl font-bold text-emerald-600">{tool.price}</span>
-                  <span className="text-gray-500 line-through ml-2">/month</span>
-                  <div className="text-sm text-gray-500">vs {tool.originalPrice}/month</div>
+                  <div className="text-sm text-gray-500">vs {tool.originalPrice}</div>
                 </div>
                 <a 
                   href="https://members.seotoolsgroupbuy.us/signup" 
@@ -404,10 +403,10 @@ export const CustomPackSection = () => {
   }
   
   const basePrices: Record<string, number> = {
-    'Medium Pack': 14.00,
-    'Heavy Pack': 16.00,
-    'Mega Pack': 18.00,
-    'Mega Combo Pack': 28.00
+    'Medium Pack': 30.00,
+    'Heavy Pack': 40.00,
+    'Mega Pack': 50.00,
+    'Mega Combo Pack': 60.00
   }
   
   const getPriceForPeriod = (basePrice: number, period: string) => {
@@ -482,7 +481,7 @@ export const CustomPackSection = () => {
             {
               name: 'Medium Pack',
               description: 'Perfect for small businesses and freelancers',
-              price: '$14.00',
+              price: '$30.00',
               tools: ['/images/tools/ahrefs-logo.svg', '/images/tools/semrush-logo.svg', '/images/tools/chatgpt-logo.svg'],
               isPopular: true,
               features: [
@@ -495,7 +494,7 @@ export const CustomPackSection = () => {
             {
               name: 'Heavy Pack',
               description: 'Ideal for growing agencies and businesses',
-              price: '$16.00',
+              price: '$40.00',
               tools: ['/images/tools/netflix-logo.svg', '/images/tools/canva-logo.svg', '/images/tools/runwayml-logo.svg'],
               isPopular: false,
               features: [
@@ -508,7 +507,7 @@ export const CustomPackSection = () => {
             {
               name: 'Mega Pack',
               description: 'Complete solution for large organizations',
-              price: '$18.00',
+              price: '$50.00',
               tools: ['/images/tools/moz-logo.svg', '/images/tools/claude-logo.svg', '/images/tools/ahrefs-logo.svg'],
               isPopular: false,
               features: [
@@ -521,7 +520,7 @@ export const CustomPackSection = () => {
             {
               name: 'Mega Combo Pack',
               description: 'Everything you need to dominate search results',
-              price: '$28.00',
+              price: '$60.00',
               tools: ['/images/tools/semrush-logo.svg', '/images/tools/chatgpt-logo.svg', '/images/tools/netflix-logo.svg', '/images/tools/canva-logo.svg'],
               isPopular: false,
               features: [

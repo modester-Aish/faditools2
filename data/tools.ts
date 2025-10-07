@@ -4,7 +4,7 @@ export const tools: Tool[] = [
   {
     id: 'semrush',
     name: 'SEMrush',
-    price: '$5.00',
+    price: '$4.99',
     period: 'Per user/month',
     popular: true,
     color: 'from-blue-500 to-blue-600',
@@ -14,7 +14,7 @@ export const tools: Tool[] = [
   {
     id: 'ahrefs',
     name: 'Ahrefs',
-    price: '$8.00',
+    price: '$30.00',
     period: 'Per user/month',
     color: 'from-orange-500 to-red-500',
     icon: '🔗',
@@ -23,7 +23,7 @@ export const tools: Tool[] = [
   {
     id: 'grammarly',
     name: 'Grammarly',
-    price: '$3.66',
+    price: '$4.99',
     period: 'Per user/month',
     color: 'from-green-500 to-green-600',
     icon: '✍️',
@@ -41,7 +41,7 @@ export const tools: Tool[] = [
   {
     id: 'moz',
     name: 'Moz Pro',
-    price: '$6.00',
+    price: '$4.99',
     period: 'Per user/month',
     color: 'from-indigo-500 to-purple-500',
     icon: '📈',
