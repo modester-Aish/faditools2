@@ -1,0 +1,26 @@
+{
+  "name": "FadiTools - Premium SEO Tools",
+  "short_name": "FadiTools",
+  "description": "Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#059669",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/faditools-favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "en",
+  "dir": "ltr"
+}

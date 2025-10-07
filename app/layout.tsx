@@ -169,6 +169,23 @@ export default function RootLayout({
             }
           `
         }} />
+        
+        {/* Service Worker Registration */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            if ('serviceWorker' in navigator) {
+              window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                  .then((registration) => {
+                    console.log('SW registered: ', registration);
+                  })
+                  .catch((registrationError) => {
+                    console.log('SW registration failed: ', registrationError);
+                  });
+              });
+            }
+          `
+        }} />
       </head>
       <body className={`${inter.variable} ${inter.className}`}>
         <AuthProvider>

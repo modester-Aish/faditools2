@@ -30,6 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
+// Enable ISR for better performance
+export const revalidate = 3600 // Revalidate every hour
+
 interface ProductsPageProps {
   searchParams: {
     page?: string

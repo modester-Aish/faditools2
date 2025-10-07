@@ -22,6 +22,24 @@ import {
 } from './woocommerce-api'
 import { Product } from '@/types/wordpress'
 
+// Cache configuration
+const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
+const cache = new Map<string, { data: any; timestamp: number }>()
+
+// Cache helper functions
+function getFromCache(key: string): any | null {
+  const cached = cache.get(key)
+  if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+    return cached.data
+  }
+  cache.delete(key)
+  return null
+}
+
+function setCache(key: string, data: any): void {
+  cache.set(key, { data, timestamp: Date.now() })
+}
+
 export interface WooCommerceSiteData {
   products: WooCommerceProduct[]
   categories: any[]
@@ -51,24 +69,20 @@ class WooCommerceService {
     try {
       console.log('🔄 Fetching all WooCommerce data...')
       
-      const [
-        productsResponse,
-        categoriesResponse,
-        featuredResponse,
-        onSaleResponse
-      ] = await Promise.all([
+      // Fetch products and categories first (most important)
+      const [productsResponse, categoriesResponse] = await Promise.all([
         fetchAllProducts(),
-        fetchProductCategories(),
-        fetchFeaturedProducts(),
-        fetchOnSaleProducts()
+        fetchProductCategories()
       ])
 
-      // Process and filter data
+      // Process main data
       const products = filterPublishedProducts(productsResponse.data || [])
       const categories = categoriesResponse.data || []
-      const featuredProducts = filterPublishedProducts(featuredResponse.data || [])
-      const onSaleProducts = filterPublishedProducts(onSaleResponse.data || [])
       const inStockProducts = filterInStockProducts(products)
+
+      // Derive featured and on-sale products from main products list for better performance
+      const featuredProducts = products.filter(product => product.featured)
+      const onSaleProducts = products.filter(product => product.on_sale)
 
       const siteData: WooCommerceSiteData = {
         products,
