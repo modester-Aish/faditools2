@@ -6,6 +6,7 @@ import { NavigationProvider } from '@/context/NavigationContext'
 import { AuthProvider } from '@/context/AuthContext'
 import { generateCanonicalUrl } from '@/lib/canonical'
 import dynamic from 'next/dynamic'
+import SEOMonitor from '@/components/SEOMonitor'
 
 // Lazy load non-critical components
 const FloatingChatButtons = dynamic(() => import('@/components/FloatingChatButtons'), {
@@ -99,7 +100,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <meta name="google-site-verification" content="12RUQGTb4pDfBnos0FueAq6seC22wJl6Bvs8JyihvVM" />
+        <meta name="google-site-verification" content="FLAscQ24VbDi1GaSCy0mIVHSFr6L8GOTXEK4yBN1tVk" />
+        <meta name="msvalidate.01" content="YOUR_BING_WEBMASTER_VERIFICATION_CODE" />
+        <meta name="baidu-site-verification" content="YOUR_BAIDU_VERIFICATION_CODE" />
+        <meta name="yandex-verification" content="YOUR_YANDEX_VERIFICATION_CODE" />
         {/* Favicon links */}
         <link rel="icon" type="image/svg+xml" href="/faditools-favicon.svg" />
         <link rel="shortcut icon" href="/faditools-favicon.svg" />
@@ -154,6 +158,21 @@ export default function RootLayout({
             .bg-emerald-50 { background-color: #ecfdf5; }
           `
         }} />
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZWMMJVGJD"></script>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-LZWMMJVGJD', {
+              page_title: document.title,
+              page_location: window.location.href,
+              send_page_view: true
+            });
+          `
+        }} />
+        
         {/* Performance monitoring */}
         <script dangerouslySetInnerHTML={{
           __html: `
@@ -188,6 +207,7 @@ export default function RootLayout({
         }} />
       </head>
       <body className={`${inter.variable} ${inter.className}`}>
+        <SEOMonitor />
         <AuthProvider>
           <NavigationProvider>
             <CartProvider>
