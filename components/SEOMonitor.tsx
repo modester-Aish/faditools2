@@ -39,81 +39,40 @@ export default function SEOMonitor({
       })
     }
 
-    // Track Web Vitals
-    const trackWebVitals = async () => {
+    // Track Web Vitals (Simplified version)
+    const trackWebVitals = () => {
       if (typeof window !== 'undefined') {
-        try {
-          // Import web-vitals with proper typing
-          const { getCLS, getFID, getFCP, getLCP, getTTFB } = await import('web-vitals')
-          
-          // Track Core Web Vitals
-          if (getCLS) {
-            getCLS((metric: any) => {
-              console.log('CLS:', metric)
-              if (window.gtag) {
-                window.gtag('event', 'web_vitals', {
-                  metric_name: 'CLS',
-                  metric_value: Math.round(metric.value * 1000) / 1000,
-                  metric_delta: Math.round(metric.delta * 1000) / 1000
-                })
-              }
-            })
-          }
-
-          if (getFID) {
-            getFID((metric: any) => {
-              console.log('FID:', metric)
-              if (window.gtag) {
-                window.gtag('event', 'web_vitals', {
-                  metric_name: 'FID',
-                  metric_value: Math.round(metric.value),
-                  metric_delta: Math.round(metric.delta)
-                })
-              }
-            })
-          }
-
-          if (getFCP) {
-            getFCP((metric: any) => {
-              console.log('FCP:', metric)
-              if (window.gtag) {
-                window.gtag('event', 'web_vitals', {
-                  metric_name: 'FCP',
-                  metric_value: Math.round(metric.value),
-                  metric_delta: Math.round(metric.delta)
-                })
-              }
-            })
-          }
-
-          if (getLCP) {
-            getLCP((metric: any) => {
-              console.log('LCP:', metric)
-              if (window.gtag) {
-                window.gtag('event', 'web_vitals', {
-                  metric_name: 'LCP',
-                  metric_value: Math.round(metric.value),
-                  metric_delta: Math.round(metric.delta)
-                })
-              }
-            })
-          }
-
-          if (getTTFB) {
-            getTTFB((metric: any) => {
-              console.log('TTFB:', metric)
-              if (window.gtag) {
-                window.gtag('event', 'web_vitals', {
-                  metric_name: 'TTFB',
-                  metric_value: Math.round(metric.value),
-                  metric_delta: Math.round(metric.delta)
-                })
-              }
-            })
-          }
-        } catch (error) {
-          console.error('Error loading web-vitals:', error)
+        // Track page load time
+        const trackPageLoadTime = () => {
+          window.addEventListener('load', () => {
+            const loadTime = performance.now()
+            if (window.gtag) {
+              window.gtag('event', 'page_load_time', {
+                load_time: Math.round(loadTime),
+                page_url: window.location.href
+              })
+            }
+          })
         }
+
+        // Track performance metrics
+        const trackPerformanceMetrics = () => {
+          if (window.performance && window.performance.timing) {
+            const timing = window.performance.timing
+            const loadTime = timing.loadEventEnd - timing.navigationStart
+            
+            if (window.gtag) {
+              window.gtag('event', 'performance_metrics', {
+                load_time: loadTime,
+                dom_ready: timing.domContentLoadedEventEnd - timing.navigationStart,
+                page_url: window.location.href
+              })
+            }
+          }
+        }
+
+        trackPageLoadTime()
+        trackPerformanceMetrics()
       }
     }
 
