@@ -43,12 +43,12 @@ export default function SEOMonitor({
     const trackWebVitals = async () => {
       if (typeof window !== 'undefined') {
         try {
-          // Dynamic import with proper typing
-          const webVitals = await import('web-vitals')
+          // Import web-vitals with proper typing
+          const { getCLS, getFID, getFCP, getLCP, getTTFB } = await import('web-vitals')
           
-          // Check if functions exist before using them
-          if (webVitals.getCLS) {
-            webVitals.getCLS((metric: any) => {
+          // Track Core Web Vitals
+          if (getCLS) {
+            getCLS((metric: any) => {
               console.log('CLS:', metric)
               if (window.gtag) {
                 window.gtag('event', 'web_vitals', {
@@ -60,8 +60,8 @@ export default function SEOMonitor({
             })
           }
 
-          if (webVitals.getFID) {
-            webVitals.getFID((metric: any) => {
+          if (getFID) {
+            getFID((metric: any) => {
               console.log('FID:', metric)
               if (window.gtag) {
                 window.gtag('event', 'web_vitals', {
@@ -73,8 +73,8 @@ export default function SEOMonitor({
             })
           }
 
-          if (webVitals.getFCP) {
-            webVitals.getFCP((metric: any) => {
+          if (getFCP) {
+            getFCP((metric: any) => {
               console.log('FCP:', metric)
               if (window.gtag) {
                 window.gtag('event', 'web_vitals', {
@@ -86,8 +86,8 @@ export default function SEOMonitor({
             })
           }
 
-          if (webVitals.getLCP) {
-            webVitals.getLCP((metric: any) => {
+          if (getLCP) {
+            getLCP((metric: any) => {
               console.log('LCP:', metric)
               if (window.gtag) {
                 window.gtag('event', 'web_vitals', {
@@ -99,8 +99,8 @@ export default function SEOMonitor({
             })
           }
 
-          if (webVitals.getTTFB) {
-            webVitals.getTTFB((metric: any) => {
+          if (getTTFB) {
+            getTTFB((metric: any) => {
               console.log('TTFB:', metric)
               if (window.gtag) {
                 window.gtag('event', 'web_vitals', {
