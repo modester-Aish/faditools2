@@ -101,7 +101,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="google-site-verification" content="FLAscQ24VbDi1GaSCy0mIVHSFr6L8GOTXEK4yBN1tVk" />
-        <meta name="msvalidate.01" content="YOUR_BING_WEBMASTER_VERIFICATION_CODE" />
+        <meta name="msvalidate.01" content="CA9C80743C5C403924230A48CF321E7C" />
         <meta name="baidu-site-verification" content="YOUR_BAIDU_VERIFICATION_CODE" />
         <meta name="yandex-verification" content="YOUR_YANDEX_VERIFICATION_CODE" />
         {/* Favicon links */}

@@ -40,7 +40,7 @@ export const SEO_CONFIG = {
   // Verification Codes (Replace with actual codes)
   verification: {
     google: 'FLAscQ24VbDi1GaSCy0mIVHSFr6L8GOTXEK4yBN1tVk',
-    bing: 'YOUR_BING_WEBMASTER_VERIFICATION_CODE',
+    bing: 'CA9C80743C5C403924230A48CF321E7C',
     baidu: 'YOUR_BAIDU_VERIFICATION_CODE',
     yandex: 'YOUR_YANDEX_VERIFICATION_CODE'
   },
