@@ -5,7 +5,8 @@ import Image from 'next/image'
 import { generateCanonicalUrl } from '@/lib/canonical'
 import { wooCommerceService } from '@/lib/woocommerce-service'
 import CategorySection from '../components/CategorySection'
-import { WhyChooseSection, PopularToolsSection, CustomPackSection, TestimonialsSection, HowToOrderSection, TrustSection } from '../components/AnimatedSections'
+import { WhyChooseSection, PopularToolsSection, TestimonialsSection, HowToOrderSection, TrustSection } from '../components/AnimatedSections'
+import InteractivePricingCards from '../components/InteractivePricingCards'
 import { ToolsPackagesSection } from '../components/ToolsPackagesSection'
 import Typewriter from '../components/Typewriter'
 import FAQSection from '../components/FAQSection'
@@ -296,8 +297,8 @@ export default async function Home() {
       {/* Tools Packages Section */}
       <ToolsPackagesSection />
 
-      {/* Custom Pack Section */}
-      <CustomPackSection />
+      {/* Interactive Pricing Cards Section */}
+      <InteractivePricingCards />
 
       {/* Testimonials Section */}
       <TestimonialsSection />
