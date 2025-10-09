@@ -23,7 +23,7 @@ export async function GET() {
     let allProducts: any[] = []
     let page = 1
     const perPage = 100
-    const maxProducts = 500 // Limit total products to avoid timeout
+    const maxProducts = 1000 // Increased limit to include all products
     
     while (allProducts.length < maxProducts) {
       try {
