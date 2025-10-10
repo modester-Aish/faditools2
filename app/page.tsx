@@ -315,7 +315,7 @@ export default async function Home() {
       {/* Footer */}
       <footer className="bg-[#1A1A1A] text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div>
               <h4 className="text-lg font-semibold text-emerald-600 mb-4">FadiTools</h4>
               <p className="text-gray-400 mb-4">Premium SEO tools made accessible. Save up to 90% on industry-leading tools.</p>
@@ -353,14 +353,6 @@ export default async function Home() {
               </ul>
             </div>
             
-            <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Support</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/contact" className="hover:text-emerald-600 transition-colors">Help Center</Link></li>
-                <li><Link href="/contact" className="hover:text-emerald-600 transition-colors">Contact Support</Link></li>
-                <li><Link href="/contact" className="hover:text-emerald-600 transition-colors">System Status</Link></li>
-              </ul>
-            </div>
           </div>
           <div className="border-t border-emerald-500/10 mt-8 pt-8 text-center text-gray-600">
             <p>&copy; 2024 FadiTools. All rights reserved.</p>

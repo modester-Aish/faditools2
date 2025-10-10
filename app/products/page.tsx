@@ -3,7 +3,6 @@ import { wooCommerceService } from '@/lib/woocommerce-service'
 import Header from '../../components/Header'
 import ProductGrid from '../../components/ProductGrid'
 import ProductSearch from '../../components/ProductSearch'
-import ClientOnly from '../../components/ClientOnly'
 import { WooCommerceProduct } from '@/lib/woocommerce-api'
 import { Product } from '@/types'
 import { generateCanonicalUrl } from '@/lib/canonical'
@@ -196,34 +195,15 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         <div className="container mx-auto px-8 lg:px-16 xl:px-24">
           
           {products && products.length > 0 ? (
-            <ClientOnly fallback={
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {Array.from({ length: 6 }).map((_, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden animate-pulse">
-                    <div className="aspect-square bg-gray-200"></div>
-                    <div className="p-4 space-y-3">
-                      <div className="h-6 bg-gray-200 rounded w-3/4"></div>
-                      <div className="h-8 bg-gray-200 rounded w-1/2"></div>
-                      <div className="space-y-2">
-                        <div className="h-4 bg-gray-200 rounded w-full"></div>
-                        <div className="h-4 bg-gray-200 rounded w-2/3"></div>
-                      </div>
-                      <div className="h-10 bg-gray-200 rounded"></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            }>
-              <ProductGrid 
-                products={products} 
-                currentPage={page}
-                totalPages={totalPages}
-                totalProducts={totalProducts}
-                category={category}
-                search={search}
-                categories={categories}
-              />
-            </ClientOnly>
+            <ProductGrid 
+              products={products} 
+              currentPage={page}
+              totalPages={totalPages}
+              totalProducts={totalProducts}
+              category={category}
+              search={search}
+              categories={categories}
+            />
           ) : (
             <div className="text-center py-20 animate-fade-in-up">
               <div className="max-w-lg mx-auto">

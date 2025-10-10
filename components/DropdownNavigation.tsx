@@ -28,6 +28,7 @@ export default function DropdownNavigation({
     setMounted(true)
   }, [])
 
+  // Don't render anything until mounted to avoid SSR issues
   if (!mounted) {
     return (
       <div className={`flex items-center space-x-4 ${className}`}>

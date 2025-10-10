@@ -6,10 +6,15 @@ import { NavigationProvider } from '@/context/NavigationContext'
 import { AuthProvider } from '@/context/AuthContext'
 import { generateCanonicalUrl } from '@/lib/canonical'
 import dynamic from 'next/dynamic'
-import SEOMonitor from '@/components/SEOMonitor'
 
 // Lazy load non-critical components
 const FloatingChatButtons = dynamic(() => import('@/components/FloatingChatButtons'), {
+  ssr: false,
+  loading: () => null
+})
+
+// Ensure consistent rendering
+const SEOMonitor = dynamic(() => import('@/components/SEOMonitor'), {
   ssr: false,
   loading: () => null
 })
@@ -29,6 +34,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'FadiTools Team' }],
   creator: 'FadiTools',
   publisher: 'FadiTools',
+  alternates: {
+    canonical: 'https://faditools.com',
+  },
   icons: {
     icon: [
       { url: '/faditools-favicon.svg', type: 'image/svg+xml' },
@@ -86,8 +94,12 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-title': 'FadiTools',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
+    'apple-mobile-web-app-orientations': 'portrait',
     'format-detection': 'telephone=no',
-    'viewport': 'width=device-width, initial-scale=1, maximum-scale=5',
+    'viewport': 'width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes',
+    'mobile-web-app-capable': 'yes',
+    'HandheldFriendly': 'true',
+    'MobileOptimized': '320',
   },
 }
 
@@ -99,7 +111,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <meta name="google-site-verification" content="FLAscQ24VbDi1GaSCy0mIVHSFr6L8GOTXEK4yBN1tVk" />
         <meta name="msvalidate.01" content="CA9C80743C5C403924230A48CF321E7C" />
         <meta name="baidu-site-verification" content="YOUR_BAIDU_VERIFICATION_CODE" />
@@ -125,6 +137,13 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://cdn-icons-png.flaticon.com" />
         <link rel="dns-prefetch" href="https://upload.wikimedia.org" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+        {/* Performance hints */}
+        <link rel="preload" href="/faditools-favicon.svg" as="image" type="image/svg+xml" />
+        <link rel="modulepreload" href="/_next/static/chunks/pages/_app.js" />
+        {/* Critical resource hints */}
+        <link rel="prefetch" href="/tools" />
+        <link rel="prefetch" href="/packages" />
+        <link rel="prefetch" href="/blog" />
         {/* Critical CSS for above-the-fold content */}
         <style dangerouslySetInnerHTML={{
           __html: `

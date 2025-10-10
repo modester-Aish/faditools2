@@ -8,13 +8,13 @@ interface ClientOnlyProps {
 }
 
 export default function ClientOnly({ children, fallback = null }: ClientOnlyProps) {
-  const [mounted, setMounted] = useState(false)
+  const [hasMounted, setHasMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
+    setHasMounted(true)
   }, [])
 
-  if (!mounted) {
+  if (!hasMounted) {
     return <>{fallback}</>
   }
 

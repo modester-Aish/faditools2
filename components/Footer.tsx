@@ -9,32 +9,25 @@ export default function Footer() {
   const footerLinks = {
     tools: [
       { name: 'All Tools', href: '/tools' },
-      { name: 'SEO Tools', href: '/tools?category=seo' },
-      { name: 'Keyword Research', href: '/tools?category=keyword-research' },
-      { name: 'Backlink Tools', href: '/tools?category=backlinks' },
-      { name: 'Analytics Tools', href: '/tools?category=analytics' }
+      { name: 'Ahrefs', href: '/ahrefs' },
+      { name: 'SEMrush', href: '/semrush' },
+      { name: 'Moz Pro', href: '/moz' },
+      { name: 'Canva Pro', href: '/canva' }
     ],
     packages: [
       { name: 'All Packages', href: '/packages' },
-      { name: 'Starter Package', href: '/starter' },
-      { name: 'Professional Package', href: '/professional' },
-      { name: 'Enterprise Package', href: '/enterprise' },
-      { name: 'Custom Solutions', href: '/custom' }
+      { name: 'SEO Combo', href: '/seo-combo' },
+      { name: 'Heavy Pack', href: '/heavy-pack' },
+      { name: 'Mega Pack', href: '/mega-pack' },
+      { name: 'Mega Combo', href: '/mega-combo' }
     ],
     company: [
-      { name: 'About Us', href: '/about-us' },
-      { name: 'Contact', href: '/contact' },
+      { name: 'About Us', href: '/pages/about-us' },
+      { name: 'Contact', href: '/pages/contact' },
       { name: 'Blog', href: '/blog' },
       { name: 'Testimonials', href: '/testimonials' },
-      { name: 'Careers', href: '/careers' }
+      { name: 'Privacy Policy', href: '/pages/privacy-policy' }
     ],
-    support: [
-      { name: 'Help Center', href: '/help' },
-      { name: 'Documentation', href: '/docs' },
-      { name: 'API Reference', href: '/api' },
-      { name: 'Status Page', href: '/status' },
-      { name: 'Contact Support', href: '/support' }
-    ]
   }
 
   const socialLinks = [
@@ -128,10 +121,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Company & Support Links */}
+          {/* Company Links */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-emerald-600">Company</h4>
-            <ul className="space-y-2 mb-6">
+            <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link
@@ -144,19 +137,6 @@ export default function Footer() {
               ))}
             </ul>
 
-            <h4 className="text-lg font-semibold mb-4 text-emerald-600">Support</h4>
-            <ul className="space-y-2">
-              {footerLinks.support.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-600 hover:text-emerald-600 transition-colors duration-200"
-                  >
-                    {link.name}
-                </Link>
-              </li>
-            ))}
-            </ul>
           </div>
         </div>
       </div>
