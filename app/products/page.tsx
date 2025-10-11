@@ -8,12 +8,12 @@ import { Product } from '@/types'
 import { generateCanonicalUrl } from '@/lib/canonical'
 
 export const metadata: Metadata = {
-  title: 'Products - FadiTools',
-  description: 'Discover our amazing products managed through WooCommerce. Browse through our complete product catalog with clean design and seamless shopping experience.',
-  keywords: 'products, WooCommerce products, digital products, online shopping, ecommerce',
+  title: 'SEO Tools & Digital Marketing Products | FadiTools',
+  description: 'Get Ahrefs group buy & SEMrush group buy at 90% discount! Best SEO tools for beginners, small business & agencies. Free keyword research tools, Ahrefs vs SEMrush comparison, local SEO tools - save thousands!',
+  keywords: 'SEO tools pricing, SEO tools comparison, best SEO tools, keyword research tool, backlink checker, site audit tool, rank tracking tool, Ahrefs vs SEMrush comparison, local SEO tools, beginner friendly SEO tools, competitor analysis tools, content optimization tools, digital marketing tools, group buy SEO tools, Ahrefs group buy, SEMrush group buy, cheap SEO tools, affordable SEO tools, Ahrefs alternative, SEMrush alternative, discount SEO tools',
   openGraph: {
-    title: 'Products - FadiTools',
-    description: 'Discover our amazing products managed through WooCommerce.',
+    title: 'SEO Tools & Digital Marketing Products | FadiTools',
+    description: 'Get Ahrefs group buy & SEMrush group buy at 90% discount! Best SEO tools for beginners, small business & agencies. Free keyword research tools, Ahrefs vs SEMrush comparison.',
     url: 'https://faditools.com/products',
     siteName: 'FadiTools',
     locale: 'en_US',
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Products - FadiTools',
-    description: 'Discover our amazing products managed through WooCommerce.',
+    title: 'SEO Tools & Digital Marketing Products | FadiTools',
+    description: 'Get Ahrefs group buy & SEMrush group buy at 90% discount! Best SEO tools for beginners, small business & agencies. Free keyword research tools, Ahrefs vs SEMrush comparison.',
   },
   alternates: {
     canonical: generateCanonicalUrl('/products'),
@@ -173,17 +173,20 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
               </div>
             </div>
             <h1 className="text-3xl md:text-5xl font-bold mb-3 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-              Our Products
+              Best SEO Tools & Digital Marketing Products
             </h1>
             <p className="text-base md:text-lg max-w-2xl mx-auto text-white/90 leading-relaxed">
-              Discover our amazing products managed through WooCommerce with stunning design and seamless integration
+              Get Ahrefs group buy, SEMrush group buy, and 50+ premium SEO tools at 90% discount. Compare SEO tools pricing, find the best keyword research tools, and save thousands on digital marketing software.
             </p>
             <div className="mt-4 flex justify-center space-x-4">
               <div className="px-5 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-                <span className="text-base font-semibold">{totalProducts} Products</span>
+                <span className="text-base font-semibold">{totalProducts} SEO Tools</span>
               </div>
               <div className="px-5 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-                <span className="text-base font-semibold">Premium Quality</span>
+                <span className="text-base font-semibold">90% Discount</span>
+              </div>
+              <div className="px-5 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
+                <span className="text-base font-semibold">Group Buy Access</span>
               </div>
             </div>
           </div>
@@ -212,39 +215,55 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                   </svg>
                 </div>
-                <h3 className="text-3xl font-bold text-text mb-4">No Products Found</h3>
+                <h3 className="text-3xl font-bold text-text mb-4">No SEO Tools Found</h3>
                 <p className="text-lg text-secondary-500 mb-8">
                   {search 
-                    ? `No products found matching "${search}"`
+                    ? `No SEO tools found matching "${search}". Try searching for "Ahrefs", "SEMrush", "keyword research", or "backlink checker"`
                     : category 
-                    ? `No products found in this category`
-                    : 'No products are currently available.'
+                    ? `No SEO tools found in this category. Browse our full collection of premium SEO tools and digital marketing software.`
+                    : 'Our SEO tools collection is being updated. Please check back soon for the latest premium tools including Ahrefs group buy, SEMrush group buy, and more.'
                   }
                 </p>
                 <div className="bg-gradient-to-r from-primary-50 to-primary-100 border border-primary-200 rounded-2xl p-8 text-left shadow-lg">
-                  <h4 className="font-bold text-primary-900 mb-4 text-lg">🚀 How to add products:</h4>
-                  <ol className="text-primary-800 space-y-3 text-base">
-                    <li className="flex items-center space-x-3">
-                      <span className="w-8 h-8 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
-                      <span>Go to WordPress Admin → Products → Add New</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <span className="w-8 h-8 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
-                      <span>Add product name, description, and price</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <span className="w-8 h-8 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
-                      <span>Upload product images</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <span className="w-8 h-8 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold">4</span>
-                      <span>Set product categories and tags</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <span className="w-8 h-8 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold">5</span>
-                      <span>Publish the product</span>
-                    </li>
-                  </ol>
+                  <h4 className="font-bold text-primary-900 mb-4 text-lg">🔍 Popular SEO Tools to Search:</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-primary-800">
+                    <div className="space-y-2">
+                      <p className="font-semibold">Keyword Research Tools:</p>
+                      <ul className="space-y-1 text-sm">
+                        <li>• Ahrefs Keyword Explorer</li>
+                        <li>• SEMrush Keyword Magic Tool</li>
+                        <li>• Ubersuggest</li>
+                        <li>• Answer The Public</li>
+                      </ul>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="font-semibold">Backlink Analysis Tools:</p>
+                      <ul className="space-y-1 text-sm">
+                        <li>• Ahrefs Site Explorer</li>
+                        <li>• SEMrush Backlink Analytics</li>
+                        <li>• Majestic SEO</li>
+                        <li>• Moz Link Explorer</li>
+                      </ul>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="font-semibold">Site Audit Tools:</p>
+                      <ul className="space-y-1 text-sm">
+                        <li>• SEMrush Site Audit</li>
+                        <li>• Ahrefs Site Audit</li>
+                        <li>• Screaming Frog</li>
+                        <li>• GTmetrix</li>
+                      </ul>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="font-semibold">Rank Tracking Tools:</p>
+                      <ul className="space-y-1 text-sm">
+                        <li>• AccuRanker</li>
+                        <li>• SE Ranking</li>
+                        <li>• Rank Math</li>
+                        <li>• Pro Rank Tracker</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

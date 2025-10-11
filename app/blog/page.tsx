@@ -7,11 +7,11 @@ import Image from 'next/image'
 import { generateCanonicalUrl } from '@/lib/canonical'
 
 export const metadata: Metadata = {
-  title: 'Blog - FadiTools',
-  description: 'Read our latest blog posts, tutorials, and insights about digital marketing and SEO tools.',
+  title: 'SEO Tips & Digital Marketing Blog | FadiTools',
+  description: 'Read our latest SEO tips and digital marketing blog posts. Learn how to use SEO tools, keyword research tips, backlink analysis guides, and SEO tools tutorials. Best SEO tools for agencies and startups.',
   openGraph: {
-    title: 'Blog - FadiTools',
-    description: 'Read our latest blog posts, tutorials, and insights about digital marketing and SEO tools.',
+    title: 'SEO Tips & Digital Marketing Blog | FadiTools',
+    description: 'Read our latest SEO tips and digital marketing blog posts. Learn how to use SEO tools, keyword research tips, backlink analysis guides, and SEO tools tutorials.',
     url: 'https://faditools.com/blog',
     siteName: 'FadiTools',
     locale: 'en_US',
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog - FadiTools',
-    description: 'Read our latest blog posts, tutorials, and insights about digital marketing and SEO tools.',
+    title: 'SEO Tips & Digital Marketing Blog | FadiTools',
+    description: 'Read our latest SEO tips and digital marketing blog posts. Learn how to use SEO tools, keyword research tips, backlink analysis guides, and SEO tools tutorials.',
   },
   alternates: {
     canonical: generateCanonicalUrl('/blog'),
@@ -101,7 +101,7 @@ export default async function BlogPage() {
                 {posts.length} Articles Available
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-                Blog
+                SEO Tips & Digital Marketing Blog
               </h1>
                              <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
                 Read our latest blog posts, tutorials, and insights about digital marketing and SEO tools

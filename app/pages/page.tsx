@@ -7,11 +7,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export const metadata: Metadata = {
-  title: 'Pages - FadiTools',
-  description: 'Browse all available pages on FadiTools',
+  title: 'All Pages & Resources | FadiTools',
+  description: 'Explore all FadiTools pages and resources. Find SEO tools guides, pricing information, tutorials, and comprehensive digital marketing resources for beginners and professionals.',
   openGraph: {
-    title: 'Pages - FadiTools',
-    description: 'Browse all available pages on FadiTools',
+    title: 'All Pages & Resources | FadiTools',
+    description: 'Explore all FadiTools pages and resources. Find SEO tools guides, pricing information, tutorials, and comprehensive digital marketing resources for beginners and professionals.',
     url: 'https://faditools.com/pages',
     siteName: 'FadiTools',
     locale: 'en_US',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pages - FadiTools',
+    title: 'All Pages & Resources | FadiTools',
     description: 'Browse all available pages on FadiTools',
   },
   alternates: {
@@ -101,7 +101,7 @@ export default async function PagesPage() {
                 {pages.length} Pages Available
               </div>
                              <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-                Pages
+                All Pages & Resources
               </h1>
                              <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
                 Browse through all our available pages and find the information you need

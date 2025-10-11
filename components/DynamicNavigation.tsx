@@ -20,7 +20,6 @@ export default function DynamicNavigation({
   const { navigationItems, loading, error } = useNavigation()
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set())
   const [mounted, setMounted] = useState(false)
-  const pathname = usePathname()
 
   useEffect(() => {
     setMounted(true)
@@ -40,6 +39,8 @@ export default function DynamicNavigation({
       </div>
     )
   }
+
+  const pathname = usePathname()
 
   const isActivePage = (url: string): boolean => {
     if (url === '/') {

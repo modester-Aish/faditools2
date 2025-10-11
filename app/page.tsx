@@ -12,9 +12,9 @@ import Typewriter from '../components/Typewriter'
 import FAQSection from '../components/FAQSection'
 
 export const metadata: Metadata = {
-  title: 'FadiTools - Premium SEO Tools & Digital Marketing Solutions | Save 90% on Ahrefs, SEMrush & More',
-  description: 'Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount. Trusted by 10,000+ marketers. 24/7 support, 99.9% uptime. Start your SEO journey today!',
-  keywords: 'SEO tools, Ahrefs group buy, SEMrush discount, digital marketing tools, keyword research, backlink analysis, competitor analysis, SEO software, marketing automation, content optimization',
+  title: 'Best SEO Tools 2024 | Ahrefs, SEMrush Group Buy | FadiTools',
+  description: 'Get Ahrefs group buy & SEMrush group buy at 90% discount! What is the best SEO tool? How to choose SEO tools? Which SEO tool is better? How much does Ahrefs cost? Find answers and save thousands on premium SEO tools!',
+  keywords: 'best SEO tools, keyword research tool, backlink checker, site audit tool, rank tracking tool, group buy SEO tools, Ahrefs group buy, SEMrush group buy, cheap SEO tools, affordable SEO tools, SEO tools pricing, SEO tools comparison, best SEO tools 2024, Ahrefs alternative, SEMrush alternative, best SEO tools for beginners, SEO tools for small business, free keyword research tools, Ahrefs vs SEMrush comparison, local SEO tools, beginner friendly SEO tools, affordable SEO tools for startups, best SEO tools for agencies, what is the best SEO tool, how to choose SEO tools, which SEO tool is better, how much does Ahrefs cost, what are the best SEO tools for 2024',
   authors: [{ name: 'FadiTools Team' }],
   creator: 'FadiTools',
   publisher: 'FadiTools',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'FadiTools - Premium SEO Tools & Digital Marketing Solutions',
-    description: 'Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount. Trusted by 10,000+ marketers worldwide.',
+    description: 'Get Ahrefs group buy & SEMrush group buy at 90% discount! What is the best SEO tool? How to choose SEO tools? Which SEO tool is better? Find answers and save thousands!',
     url: 'https://faditools.com',
     siteName: 'FadiTools',
     images: [{ url: 'https://faditools.com/logo.png', width: 1200, height: 630, alt: 'FadiTools - Premium SEO Tools Platform' }],
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'FadiTools - Premium SEO Tools & Digital Marketing Solutions',
-    description: 'Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount. Trusted by 10,000+ marketers worldwide.',
+    description: 'Get Ahrefs group buy & SEMrush group buy at 90% discount! What is the best SEO tool? How to choose SEO tools? Which SEO tool is better? Find answers and save thousands!',
     images: ['https://faditools.com/logo.png'],
     creator: '@faditools',
     site: '@faditools',
@@ -144,7 +144,7 @@ export default async function Home() {
               <div className="absolute inset-0">
                 <img 
                   src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=888&q=80&fm=webp" 
-                  alt="SEO Tools Banner Background" 
+                  alt="Best SEO Tools Group Buy - Ahrefs SEMrush at 90% Discount" 
                   className="w-full h-full object-cover opacity-40"
                   loading="eager"
                   fetchPriority="high"
@@ -163,7 +163,7 @@ export default async function Home() {
                 {/* Badge */}
                 <div className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-emerald-500/20 to-emerald-600/20 border border-emerald-500/30 rounded-full text-emerald-500 text-sm font-medium mb-4 backdrop-blur-sm">
                   <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2 animate-pulse"></span>
-                  Trusted by 10,000+ Marketers Worldwide
+                  #1 Group Buy SEO Tools Platform - Save 90% on Premium Tools
                 </div>
 
                 {/* Main Headline */}
@@ -175,23 +175,23 @@ export default async function Home() {
                         width={128}
                         height={40}
                         priority
-                        alt="Background" 
+                        alt="FadiTools SEO Tools Platform" 
                         className="absolute inset-0 w-full h-full object-cover rounded-xl"
                         style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
-                      <span className="relative z-10 text-white font-bold">Premium SEO</span>
-                    </span> Tools,
+                      <span className="relative z-10 text-white font-bold">Best SEO Tools</span>
+                    </span> Group Buy,
                   </div>
                   <div className="text-white">
-                    Made Accessible.
+                    Ahrefs & SEMrush at 90% Off.
                   </div>
                 </h1>
                 
                 {/* Description */}
                 <p className="text-base text-gray-300 mb-5 leading-relaxed">
                   <Typewriter 
-                    text="Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro, and more at 90% off retail prices. 24/7 support, 99.9% uptime, instant access." 
+                    text="Get group buy access to premium SEO tools with massive discounts. Compare SEO tools pricing, find best alternatives, and save thousands on digital marketing software. Perfect for beginners, agencies, and small businesses." 
                     speed={30} 
                     delay={1000}
                     className="text-gray-300"
@@ -202,18 +202,18 @@ export default async function Home() {
                 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="/packages" className="group relative px-5 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg font-bold text-base hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/25">
+                  <Link href="https://members.seotoolsgroupbuy.us/signup" target="_blank" rel="noopener noreferrer" className="group relative px-5 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg font-bold text-base hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/25">
                     <span className="flex items-center justify-center">
-                      Begin Your Journey
+                      Browse SEO Tools Packages
                       <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     </span>
                   </Link>
                   
-                  <Link href="/tools" className="group px-5 py-3 border-2 border-emerald-600 text-emerald-600 rounded-lg font-bold text-base hover:bg-emerald-600 hover:text-white transition-all duration-300 transform hover:scale-105">
+                  <Link href="https://members.seotoolsgroupbuy.us/signup" target="_blank" rel="noopener noreferrer" className="group px-5 py-3 border-2 border-emerald-600 text-emerald-600 rounded-lg font-bold text-base hover:bg-emerald-600 hover:text-white transition-all duration-300 transform hover:scale-105">
                     <span className="flex items-center justify-center">
-                      Discover Tools
+                      Compare SEO Tools
                       <svg className="w-4 h-4 ml-2 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                       </svg>
@@ -227,9 +227,9 @@ export default async function Home() {
             <div className="w-full lg:w-80 bg-white rounded-3xl p-4 md:p-6 shadow-2xl border border-gray-100 flex flex-col justify-center">
               {/* Price Header */}
               <div className="text-center mb-4">
-                <div className="text-gray-500 text-xs font-medium mb-1">Starting from</div>
+                <div className="text-gray-500 text-xs font-medium mb-1">Group Buy Access</div>
                 <div className="text-2xl md:text-3xl font-black text-black mb-1">$4.99</div>
-                <div className="text-sm text-gray-600">/month</div>
+                <div className="text-sm text-gray-600">/month • Save $500+</div>
               </div>
               
               {/* Features List */}
@@ -240,7 +240,7 @@ export default async function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <span className="text-black font-medium text-sm">50+ Premium SEO Tools</span>
+                  <span className="text-black font-medium text-sm">Ahrefs, SEMrush & More</span>
                 </div>
                 
                 <div className="flex items-center">
@@ -249,7 +249,7 @@ export default async function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                     </svg>
                   </div>
-                  <span className="text-black font-medium text-sm">90% Off Retail Prices</span>
+                  <span className="text-black font-medium text-sm">Group Buy Discounts</span>
                 </div>
 
                 <div className="flex items-center">
@@ -258,7 +258,7 @@ export default async function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <span className="text-black font-medium text-sm">24/7 Support Available</span>
+                  <span className="text-black font-medium text-sm">Perfect for Agencies</span>
                 </div>
                 
                 <div className="flex items-center">
@@ -267,7 +267,7 @@ export default async function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <span className="text-black font-medium text-sm">99.9% Uptime Guarantee</span>
+                  <span className="text-black font-medium text-sm">Beginner Friendly</span>
                 </div>
               </div>
 
@@ -278,7 +278,7 @@ export default async function Home() {
                 rel="noopener noreferrer"
                 className="w-full bg-emerald-600 text-white rounded-lg font-bold text-sm py-2 px-3 text-center block hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-md"
               >
-                Get Started Now
+                Join Group Buy Now
               </a>
             </div>
           </div>

@@ -31,7 +31,7 @@ export const WhyChooseSection = () => {
           </h2>
           <p className="text-base text-gray-600 max-w-3xl mx-auto">
             <span className="inline-block">
-              Experience premium SEO tools at affordable prices with unmatched reliability
+              Get group buy access to premium SEO tools including Ahrefs, SEMrush, and 50+ tools at 90% discount. Perfect for beginners, agencies, and small businesses.
             </span>
           </p>
         </div>
@@ -44,7 +44,7 @@ export const WhyChooseSection = () => {
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float">
                 <Image
                   src="https://cdn-icons-png.flaticon.com/512/2454/2454282.png"
-                  alt="Affordable Price"
+                  alt="Group Buy Discounts - Save 90% on SEO Tools"
                   className="w-full h-full object-contain p-2"
                   width={80}
                   height={80}
@@ -52,9 +52,9 @@ export const WhyChooseSection = () => {
                   sizes="80px"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Affordable Price</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Group Buy Discounts</h3>
               <p className="text-sm text-gray-600 text-center">
-                High quality cheap SEO tools at unbelievable <span className="text-emerald-600 font-semibold">affordable monthly fee</span>.
+                Get premium SEO tools at <span className="text-emerald-600 font-semibold">90% off retail prices</span> with our group buy access.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -68,7 +68,7 @@ export const WhyChooseSection = () => {
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-1">
                 <Image
                   src="https://cdn-icons-png.flaticon.com/512/483/483408.png"
-                  alt="Unique Access"
+                  alt="Premium SEO Tools Access - Ahrefs SEMrush Group Buy"
                   className="w-full h-full object-contain p-2"
                   width={80}
                   height={80}
@@ -76,7 +76,7 @@ export const WhyChooseSection = () => {
                   sizes="80px"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Unique Access</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Premium Tools Access</h3>
               <p className="text-sm text-gray-600 text-center">
                 Access <span className="text-emerald-600 font-semibold">shared SEO tools</span> through our unique in-house developed system.
               </p>
@@ -92,7 +92,7 @@ export const WhyChooseSection = () => {
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-2">
                 <Image
                   src="https://cdn-icons-png.flaticon.com/512/1055/1055683.png"
-                  alt="Highest Uptime"
+                  alt="Reliable SEO Tools Service - 99.9% Uptime Guarantee"
                   className="w-full h-full object-contain p-2"
                   width={80}
                   height={80}
@@ -100,9 +100,9 @@ export const WhyChooseSection = () => {
                   sizes="80px"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Highest Uptime</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Reliable Service</h3>
               <p className="text-sm text-gray-600 text-center">
-                With our unique self developed system to access <span className="text-emerald-600 font-semibold">group buy seo tools</span> service easily.
+                <span className="text-emerald-600 font-semibold">99.9% uptime</span> with our unique system for accessing premium SEO tools.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -116,7 +116,7 @@ export const WhyChooseSection = () => {
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-3">
                 <Image
                   src="https://img.icons8.com/color/96/shield.png"
-                  alt="Secure & Safe"
+                  alt="Secure SEO Tools Access - Safe Group Buy Platform"
                   className="w-full h-full object-contain p-2"
                   width={80}
                   height={80}
@@ -124,9 +124,9 @@ export const WhyChooseSection = () => {
                   sizes="80px"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Secure & Safe</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Safe & Secure</h3>
               <p className="text-sm text-gray-600 text-center">
-                Nothing to worry about using <span className="text-emerald-600 font-semibold">FadiTools</span> - no suspicious software to install, 100% clean.
+                <span className="text-emerald-600 font-semibold">100% secure</span> group buy access - no software installation required, clean and safe.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -140,7 +140,7 @@ export const WhyChooseSection = () => {
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float">
                 <Image
                   src="https://img.icons8.com/color/96/globe.png"
-                  alt="Worldwide User"
+                  alt="Global SEO Tools Access - Available Worldwide"
                   className="w-full h-full object-contain p-2"
                   width={80}
                   height={80}
@@ -148,9 +148,9 @@ export const WhyChooseSection = () => {
                   sizes="80px"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Worldwide User</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Global Access</h3>
               <p className="text-sm text-gray-600 text-center">
-                It does not matter where you live, you are welcome to use <span className="text-emerald-600 font-semibold">FadiTools</span> services!
+                Available <span className="text-emerald-600 font-semibold">worldwide</span> - join users from 50+ countries using our SEO tools platform.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -171,9 +171,9 @@ export const WhyChooseSection = () => {
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Cloud Based</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Cross-Platform</h3>
               <p className="text-sm text-gray-600 text-center">
-                Most tools are cloud based other using extension. All <span className="text-emerald-600 font-semibold">SEO group buy</span> Works on any platform.
+                <span className="text-emerald-600 font-semibold">Cloud-based</span> SEO tools that work on any device - Windows, Mac, mobile, and tablets.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -196,7 +196,7 @@ export const WhyChooseSection = () => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Instant Access</h3>
               <p className="text-sm text-gray-600 text-center">
-               Instant and up-to-date results from industry's leading <span className="text-emerald-600 font-semibold">group seo tools</span>. Access SEO Tools. Our system connects directly to all <span className="text-emerald-600 font-semibold">Shared SEO tools 2025</span>.
+                <span className="text-emerald-600 font-semibold">Instant access</span> to premium SEO tools with real-time data and up-to-date results.
               </p>
             </div>
             {/* Shimmer effect */}

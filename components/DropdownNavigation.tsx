@@ -22,7 +22,6 @@ export default function DropdownNavigation({
   const [isMobilePagesOpen, setIsMobilePagesOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
-  const pathname = usePathname()
 
   useEffect(() => {
     setMounted(true)
@@ -42,6 +41,8 @@ export default function DropdownNavigation({
       </div>
     )
   }
+
+  const pathname = usePathname()
 
   // Hover timeout for desktop dropdown
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null)

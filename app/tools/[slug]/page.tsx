@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
   }
   
-  const title = `${tool.name} - ${tool.price} ${tool.period} | FadiTools`
-  const description = tool.description
+  const title = `${tool.name} group buy - ${tool.price} ${tool.period} | FadiTools`
+  const description = tool.description || `Get ${tool.name} group buy access at 90% discount. ${tool.name} alternative with affordable pricing. Join thousands of marketers saving on premium SEO tools.`
   
   return {
     title,
