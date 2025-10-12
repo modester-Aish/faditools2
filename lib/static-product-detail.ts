@@ -115,7 +115,7 @@ export async function loadRelatedProducts(currentProductSlug: string, limit: num
         
         // Check if any categories match
         return p.categories.some(cat => 
-          currentProduct.categories.some(currentCat => currentCat.id === cat.id)
+          currentProduct.categories.some((currentCat: any) => currentCat.id === cat.id)
         )
       })
       .slice(0, limit)
