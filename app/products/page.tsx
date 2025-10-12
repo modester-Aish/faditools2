@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { wooCommerceService } from '@/lib/woocommerce-service'
+import { loadStaticProducts, loadStaticCategories } from '@/lib/static-products'
 import Header from '../../components/Header'
 import ProductGrid from '../../components/ProductGrid'
 import ProductSearch from '../../components/ProductSearch'
@@ -29,9 +29,11 @@ export const metadata: Metadata = {
   },
 }
 
-// Enable ISR for better performance
-export const revalidate = 3600 // Revalidate every hour
-export const dynamic = 'force-dynamic'
+// Enable ISR (Incremental Static Regeneration) for better performance
+// Products will be statically generated and revalidated every 6 hours
+// This means the page is built once and served from cache for 6 hours
+export const revalidate = 21600 // Revalidate every 6 hours (21600 seconds)
+// Removed dynamic = 'force-dynamic' to enable static generation with ISR
 
 interface ProductsPageProps {
   searchParams: {
@@ -51,18 +53,22 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   let categories: Array<{ id: number; name: string; slug: string }> = []
   
   try {
-    // Fetch WooCommerce data
-    const wooCommerceData = await wooCommerceService.getWooCommerceData()
+    // Load products from static JSON file (ultra-fast! 0.01s)
+    // No API calls - data loaded from public/data/products.json
+    const staticProducts = await loadStaticProducts()
+    const staticCategories = await loadStaticCategories()
+    
+    console.log(`📦 Loaded ${staticProducts.length} products from static file (Solution 3: Static + Webhooks)`)
     
     // Get categories for search component
-    categories = wooCommerceData.categories.map(cat => ({
+    categories = staticCategories.map(cat => ({
       id: cat.id,
       name: cat.name,
       slug: cat.slug
     }))
     
     // Apply filters to products
-    let filteredProducts = wooCommerceData.products
+    let filteredProducts = staticProducts
     
     if (category) {
       filteredProducts = filteredProducts.filter((product: WooCommerceProduct) => 

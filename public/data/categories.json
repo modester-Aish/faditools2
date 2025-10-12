@@ -1,0 +1,642 @@
+{
+  "categories": [
+    {
+      "id": 21,
+      "name": "Ai tools",
+      "slug": "ai-tools",
+      "parent": 0,
+      "description": "",
+      "display": "default",
+      "image": null,
+      "menu_order": 0,
+      "count": 24,
+      "yoast_head": "<!-- This site is optimized with the Yoast SEO plugin v26.1.1 - https://yoast.com/wordpress/plugins/seo/ -->\n<title>Ai tools Archives - My Blog</title>\n<!-- Admin only notice: this page does not show a meta description because it does not have one, either write it for this page specifically or go into the [Yoast SEO - Settings] menu and set up a template. -->\n<meta name=\"robots\" content=\"noindex, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\" />\n<meta property=\"og:locale\" content=\"en_US\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"og:title\" content=\"Ai tools Archives - My Blog\" />\n<meta property=\"og:url\" content=\"https://app.faditools.com/product-category/ai-tools/\" />\n<meta property=\"og:site_name\" content=\"My Blog\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<script type=\"application/ld+json\" class=\"yoast-schema-graph\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"CollectionPage\",\"@id\":\"https://app.faditools.com/product-category/ai-tools/\",\"url\":\"https://app.faditools.com/product-category/ai-tools/\",\"name\":\"Ai tools Archives - My Blog\",\"isPartOf\":{\"@id\":\"https://app.faditools.com/#website\"},\"breadcrumb\":{\"@id\":\"https://app.faditools.com/product-category/ai-tools/#breadcrumb\"},\"inLanguage\":\"en-US\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://app.faditools.com/product-category/ai-tools/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://app.faditools.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Ai tools\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://app.faditools.com/#website\",\"url\":\"https://app.faditools.com/\",\"name\":\"My Blog\",\"description\":\"My WordPress Blog\",\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://app.faditools.com/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"}]}</script>\n<!-- / Yoast SEO plugin. -->",
+      "yoast_head_json": {
+        "title": "Ai tools Archives - My Blog",
+        "robots": {
+          "index": "noindex",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "og_locale": "en_US",
+        "og_type": "article",
+        "og_title": "Ai tools Archives - My Blog",
+        "og_url": "https://app.faditools.com/product-category/ai-tools/",
+        "og_site_name": "My Blog",
+        "twitter_card": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "CollectionPage",
+              "@id": "https://app.faditools.com/product-category/ai-tools/",
+              "url": "https://app.faditools.com/product-category/ai-tools/",
+              "name": "Ai tools Archives - My Blog",
+              "isPartOf": {
+                "@id": "https://app.faditools.com/#website"
+              },
+              "breadcrumb": {
+                "@id": "https://app.faditools.com/product-category/ai-tools/#breadcrumb"
+              },
+              "inLanguage": "en-US"
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://app.faditools.com/product-category/ai-tools/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://app.faditools.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Ai tools"
+                }
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://app.faditools.com/#website",
+              "url": "https://app.faditools.com/",
+              "name": "My Blog",
+              "description": "My WordPress Blog",
+              "potentialAction": [
+                {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://app.faditools.com/?s={search_term_string}"
+                  },
+                  "query-input": {
+                    "@type": "PropertyValueSpecification",
+                    "valueRequired": true,
+                    "valueName": "search_term_string"
+                  }
+                }
+              ],
+              "inLanguage": "en-US"
+            }
+          ]
+        }
+      },
+      "_links": {
+        "self": [
+          {
+            "href": "https://app.faditools.com/wp-json/wc/v3/products/categories/21",
+            "targetHints": {
+              "allow": [
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE"
+              ]
+            }
+          }
+        ],
+        "collection": [
+          {
+            "href": "https://app.faditools.com/wp-json/wc/v3/products/categories"
+          }
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "name": "Amazon tools",
+      "slug": "amazon-tools",
+      "parent": 0,
+      "description": "",
+      "display": "default",
+      "image": null,
+      "menu_order": 0,
+      "count": 4,
+      "yoast_head": "<!-- This site is optimized with the Yoast SEO plugin v26.1.1 - https://yoast.com/wordpress/plugins/seo/ -->\n<title>Amazon tools Archives - My Blog</title>\n<!-- Admin only notice: this page does not show a meta description because it does not have one, either write it for this page specifically or go into the [Yoast SEO - Settings] menu and set up a template. -->\n<meta name=\"robots\" content=\"noindex, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\" />\n<meta property=\"og:locale\" content=\"en_US\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"og:title\" content=\"Amazon tools Archives - My Blog\" />\n<meta property=\"og:url\" content=\"https://app.faditools.com/product-category/amazon-tools/\" />\n<meta property=\"og:site_name\" content=\"My Blog\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<script type=\"application/ld+json\" class=\"yoast-schema-graph\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"CollectionPage\",\"@id\":\"https://app.faditools.com/product-category/amazon-tools/\",\"url\":\"https://app.faditools.com/product-category/amazon-tools/\",\"name\":\"Amazon tools Archives - My Blog\",\"isPartOf\":{\"@id\":\"https://app.faditools.com/#website\"},\"breadcrumb\":{\"@id\":\"https://app.faditools.com/product-category/amazon-tools/#breadcrumb\"},\"inLanguage\":\"en-US\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://app.faditools.com/product-category/amazon-tools/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://app.faditools.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Amazon tools\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://app.faditools.com/#website\",\"url\":\"https://app.faditools.com/\",\"name\":\"My Blog\",\"description\":\"My WordPress Blog\",\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://app.faditools.com/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"}]}</script>\n<!-- / Yoast SEO plugin. -->",
+      "yoast_head_json": {
+        "title": "Amazon tools Archives - My Blog",
+        "robots": {
+          "index": "noindex",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "og_locale": "en_US",
+        "og_type": "article",
+        "og_title": "Amazon tools Archives - My Blog",
+        "og_url": "https://app.faditools.com/product-category/amazon-tools/",
+        "og_site_name": "My Blog",
+        "twitter_card": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "CollectionPage",
+              "@id": "https://app.faditools.com/product-category/amazon-tools/",
+              "url": "https://app.faditools.com/product-category/amazon-tools/",
+              "name": "Amazon tools Archives - My Blog",
+              "isPartOf": {
+                "@id": "https://app.faditools.com/#website"
+              },
+              "breadcrumb": {
+                "@id": "https://app.faditools.com/product-category/amazon-tools/#breadcrumb"
+              },
+              "inLanguage": "en-US"
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://app.faditools.com/product-category/amazon-tools/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://app.faditools.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Amazon tools"
+                }
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://app.faditools.com/#website",
+              "url": "https://app.faditools.com/",
+              "name": "My Blog",
+              "description": "My WordPress Blog",
+              "potentialAction": [
+                {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://app.faditools.com/?s={search_term_string}"
+                  },
+                  "query-input": {
+                    "@type": "PropertyValueSpecification",
+                    "valueRequired": true,
+                    "valueName": "search_term_string"
+                  }
+                }
+              ],
+              "inLanguage": "en-US"
+            }
+          ]
+        }
+      },
+      "_links": {
+        "self": [
+          {
+            "href": "https://app.faditools.com/wp-json/wc/v3/products/categories/23",
+            "targetHints": {
+              "allow": [
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE"
+              ]
+            }
+          }
+        ],
+        "collection": [
+          {
+            "href": "https://app.faditools.com/wp-json/wc/v3/products/categories"
+          }
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "name": "Content tools",
+      "slug": "content-tools",
+      "parent": 0,
+      "description": "",
+      "display": "default",
+      "image": null,
+      "menu_order": 0,
+      "count": 5,
+      "yoast_head": "<!-- This site is optimized with the Yoast SEO plugin v26.1.1 - https://yoast.com/wordpress/plugins/seo/ -->\n<title>Content tools Archives - My Blog</title>\n<!-- Admin only notice: this page does not show a meta description because it does not have one, either write it for this page specifically or go into the [Yoast SEO - Settings] menu and set up a template. -->\n<meta name=\"robots\" content=\"noindex, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\" />\n<meta property=\"og:locale\" content=\"en_US\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"og:title\" content=\"Content tools Archives - My Blog\" />\n<meta property=\"og:url\" content=\"https://app.faditools.com/product-category/content-tools/\" />\n<meta property=\"og:site_name\" content=\"My Blog\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<script type=\"application/ld+json\" class=\"yoast-schema-graph\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"CollectionPage\",\"@id\":\"https://app.faditools.com/product-category/content-tools/\",\"url\":\"https://app.faditools.com/product-category/content-tools/\",\"name\":\"Content tools Archives - My Blog\",\"isPartOf\":{\"@id\":\"https://app.faditools.com/#website\"},\"breadcrumb\":{\"@id\":\"https://app.faditools.com/product-category/content-tools/#breadcrumb\"},\"inLanguage\":\"en-US\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://app.faditools.com/product-category/content-tools/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://app.faditools.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Content tools\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://app.faditools.com/#website\",\"url\":\"https://app.faditools.com/\",\"name\":\"My Blog\",\"description\":\"My WordPress Blog\",\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://app.faditools.com/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"}]}</script>\n<!-- / Yoast SEO plugin. -->",
+      "yoast_head_json": {
+        "title": "Content tools Archives - My Blog",
+        "robots": {
+          "index": "noindex",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "og_locale": "en_US",
+        "og_type": "article",
+        "og_title": "Content tools Archives - My Blog",
+        "og_url": "https://app.faditools.com/product-category/content-tools/",
+        "og_site_name": "My Blog",
+        "twitter_card": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "CollectionPage",
+              "@id": "https://app.faditools.com/product-category/content-tools/",
+              "url": "https://app.faditools.com/product-category/content-tools/",
+              "name": "Content tools Archives - My Blog",
+              "isPartOf": {
+                "@id": "https://app.faditools.com/#website"
+              },
+              "breadcrumb": {
+                "@id": "https://app.faditools.com/product-category/content-tools/#breadcrumb"
+              },
+              "inLanguage": "en-US"
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://app.faditools.com/product-category/content-tools/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://app.faditools.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Content tools"
+                }
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://app.faditools.com/#website",
+              "url": "https://app.faditools.com/",
+              "name": "My Blog",
+              "description": "My WordPress Blog",
+              "potentialAction": [
+                {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://app.faditools.com/?s={search_term_string}"
+                  },
+                  "query-input": {
+                    "@type": "PropertyValueSpecification",
+                    "valueRequired": true,
+                    "valueName": "search_term_string"
+                  }
+                }
+              ],
+              "inLanguage": "en-US"
+            }
+          ]
+        }
+      },
+      "_links": {
+        "self": [
+          {
+            "href": "https://app.faditools.com/wp-json/wc/v3/products/categories/22",
+            "targetHints": {
+              "allow": [
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE"
+              ]
+            }
+          }
+        ],
+        "collection": [
+          {
+            "href": "https://app.faditools.com/wp-json/wc/v3/products/categories"
+          }
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "name": "Design tools",
+      "slug": "design-tools",
+      "parent": 0,
+      "description": "",
+      "display": "default",
+      "image": null,
+      "menu_order": 0,
+      "count": 11,
+      "yoast_head": "<!-- This site is optimized with the Yoast SEO plugin v26.1.1 - https://yoast.com/wordpress/plugins/seo/ -->\n<title>Design tools Archives - My Blog</title>\n<!-- Admin only notice: this page does not show a meta description because it does not have one, either write it for this page specifically or go into the [Yoast SEO - Settings] menu and set up a template. -->\n<meta name=\"robots\" content=\"noindex, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\" />\n<meta property=\"og:locale\" content=\"en_US\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"og:title\" content=\"Design tools Archives - My Blog\" />\n<meta property=\"og:url\" content=\"https://app.faditools.com/product-category/design-tools/\" />\n<meta property=\"og:site_name\" content=\"My Blog\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<script type=\"application/ld+json\" class=\"yoast-schema-graph\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"CollectionPage\",\"@id\":\"https://app.faditools.com/product-category/design-tools/\",\"url\":\"https://app.faditools.com/product-category/design-tools/\",\"name\":\"Design tools Archives - My Blog\",\"isPartOf\":{\"@id\":\"https://app.faditools.com/#website\"},\"breadcrumb\":{\"@id\":\"https://app.faditools.com/product-category/design-tools/#breadcrumb\"},\"inLanguage\":\"en-US\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://app.faditools.com/product-category/design-tools/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://app.faditools.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Design tools\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://app.faditools.com/#website\",\"url\":\"https://app.faditools.com/\",\"name\":\"My Blog\",\"description\":\"My WordPress Blog\",\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://app.faditools.com/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"}]}</script>\n<!-- / Yoast SEO plugin. -->",
+      "yoast_head_json": {
+        "title": "Design tools Archives - My Blog",
+        "robots": {
+          "index": "noindex",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "og_locale": "en_US",
+        "og_type": "article",
+        "og_title": "Design tools Archives - My Blog",
+        "og_url": "https://app.faditools.com/product-category/design-tools/",
+        "og_site_name": "My Blog",
+        "twitter_card": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "CollectionPage",
+              "@id": "https://app.faditools.com/product-category/design-tools/",
+              "url": "https://app.faditools.com/product-category/design-tools/",
+              "name": "Design tools Archives - My Blog",
+              "isPartOf": {
+                "@id": "https://app.faditools.com/#website"
+              },
+              "breadcrumb": {
+                "@id": "https://app.faditools.com/product-category/design-tools/#breadcrumb"
+              },
+              "inLanguage": "en-US"
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://app.faditools.com/product-category/design-tools/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://app.faditools.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Design tools"
+                }
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://app.faditools.com/#website",
+              "url": "https://app.faditools.com/",
+              "name": "My Blog",
+              "description": "My WordPress Blog",
+              "potentialAction": [
+                {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://app.faditools.com/?s={search_term_string}"
+                  },
+                  "query-input": {
+                    "@type": "PropertyValueSpecification",
+                    "valueRequired": true,
+                    "valueName": "search_term_string"
+                  }
+                }
+              ],
+              "inLanguage": "en-US"
+            }
+          ]
+        }
+      },
+      "_links": {
+        "self": [
+          {
+            "href": "https://app.faditools.com/wp-json/wc/v3/products/categories/24",
+            "targetHints": {
+              "allow": [
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE"
+              ]
+            }
+          }
+        ],
+        "collection": [
+          {
+            "href": "https://app.faditools.com/wp-json/wc/v3/products/categories"
+          }
+        ]
+      }
+    },
+    {
+      "id": 19,
+      "name": "seo",
+      "slug": "seo",
+      "parent": 0,
+      "description": "",
+      "display": "default",
+      "image": null,
+      "menu_order": 0,
+      "count": 148,
+      "yoast_head": "<!-- This site is optimized with the Yoast SEO plugin v26.1.1 - https://yoast.com/wordpress/plugins/seo/ -->\n<title>seo Archives - My Blog</title>\n<!-- Admin only notice: this page does not show a meta description because it does not have one, either write it for this page specifically or go into the [Yoast SEO - Settings] menu and set up a template. -->\n<meta name=\"robots\" content=\"noindex, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\" />\n<meta property=\"og:locale\" content=\"en_US\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"og:title\" content=\"seo Archives - My Blog\" />\n<meta property=\"og:url\" content=\"https://app.faditools.com/product-category/seo/\" />\n<meta property=\"og:site_name\" content=\"My Blog\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<script type=\"application/ld+json\" class=\"yoast-schema-graph\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"CollectionPage\",\"@id\":\"https://app.faditools.com/product-category/seo/\",\"url\":\"https://app.faditools.com/product-category/seo/\",\"name\":\"seo Archives - My Blog\",\"isPartOf\":{\"@id\":\"https://app.faditools.com/#website\"},\"breadcrumb\":{\"@id\":\"https://app.faditools.com/product-category/seo/#breadcrumb\"},\"inLanguage\":\"en-US\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://app.faditools.com/product-category/seo/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://app.faditools.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"seo\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://app.faditools.com/#website\",\"url\":\"https://app.faditools.com/\",\"name\":\"My Blog\",\"description\":\"My WordPress Blog\",\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://app.faditools.com/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"}]}</script>\n<!-- / Yoast SEO plugin. -->",
+      "yoast_head_json": {
+        "title": "seo Archives - My Blog",
+        "robots": {
+          "index": "noindex",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "og_locale": "en_US",
+        "og_type": "article",
+        "og_title": "seo Archives - My Blog",
+        "og_url": "https://app.faditools.com/product-category/seo/",
+        "og_site_name": "My Blog",
+        "twitter_card": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "CollectionPage",
+              "@id": "https://app.faditools.com/product-category/seo/",
+              "url": "https://app.faditools.com/product-category/seo/",
+              "name": "seo Archives - My Blog",
+              "isPartOf": {
+                "@id": "https://app.faditools.com/#website"
+              },
+              "breadcrumb": {
+                "@id": "https://app.faditools.com/product-category/seo/#breadcrumb"
+              },
+              "inLanguage": "en-US"
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://app.faditools.com/product-category/seo/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://app.faditools.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "seo"
+                }
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://app.faditools.com/#website",
+              "url": "https://app.faditools.com/",
+              "name": "My Blog",
+              "description": "My WordPress Blog",
+              "potentialAction": [
+                {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://app.faditools.com/?s={search_term_string}"
+                  },
+                  "query-input": {
+                    "@type": "PropertyValueSpecification",
+                    "valueRequired": true,
+                    "valueName": "search_term_string"
+                  }
+                }
+              ],
+              "inLanguage": "en-US"
+            }
+          ]
+        }
+      },
+      "_links": {
+        "self": [
+          {
+            "href": "https://app.faditools.com/wp-json/wc/v3/products/categories/19",
+            "targetHints": {
+              "allow": [
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE"
+              ]
+            }
+          }
+        ],
+        "collection": [
+          {
+            "href": "https://app.faditools.com/wp-json/wc/v3/products/categories"
+          }
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "name": "Uncategorized",
+      "slug": "uncategorized",
+      "parent": 0,
+      "description": "",
+      "display": "default",
+      "image": null,
+      "menu_order": 0,
+      "count": 432,
+      "yoast_head": "<!-- This site is optimized with the Yoast SEO plugin v26.1.1 - https://yoast.com/wordpress/plugins/seo/ -->\n<title>Uncategorized Archives - My Blog</title>\n<!-- Admin only notice: this page does not show a meta description because it does not have one, either write it for this page specifically or go into the [Yoast SEO - Settings] menu and set up a template. -->\n<meta name=\"robots\" content=\"noindex, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\" />\n<meta property=\"og:locale\" content=\"en_US\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"og:title\" content=\"Uncategorized Archives - My Blog\" />\n<meta property=\"og:url\" content=\"https://app.faditools.com/product-category/uncategorized/\" />\n<meta property=\"og:site_name\" content=\"My Blog\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<script type=\"application/ld+json\" class=\"yoast-schema-graph\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"CollectionPage\",\"@id\":\"https://app.faditools.com/product-category/uncategorized/\",\"url\":\"https://app.faditools.com/product-category/uncategorized/\",\"name\":\"Uncategorized Archives - My Blog\",\"isPartOf\":{\"@id\":\"https://app.faditools.com/#website\"},\"breadcrumb\":{\"@id\":\"https://app.faditools.com/product-category/uncategorized/#breadcrumb\"},\"inLanguage\":\"en-US\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://app.faditools.com/product-category/uncategorized/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://app.faditools.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Uncategorized\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://app.faditools.com/#website\",\"url\":\"https://app.faditools.com/\",\"name\":\"My Blog\",\"description\":\"My WordPress Blog\",\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://app.faditools.com/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"}]}</script>\n<!-- / Yoast SEO plugin. -->",
+      "yoast_head_json": {
+        "title": "Uncategorized Archives - My Blog",
+        "robots": {
+          "index": "noindex",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "og_locale": "en_US",
+        "og_type": "article",
+        "og_title": "Uncategorized Archives - My Blog",
+        "og_url": "https://app.faditools.com/product-category/uncategorized/",
+        "og_site_name": "My Blog",
+        "twitter_card": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "CollectionPage",
+              "@id": "https://app.faditools.com/product-category/uncategorized/",
+              "url": "https://app.faditools.com/product-category/uncategorized/",
+              "name": "Uncategorized Archives - My Blog",
+              "isPartOf": {
+                "@id": "https://app.faditools.com/#website"
+              },
+              "breadcrumb": {
+                "@id": "https://app.faditools.com/product-category/uncategorized/#breadcrumb"
+              },
+              "inLanguage": "en-US"
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://app.faditools.com/product-category/uncategorized/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://app.faditools.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Uncategorized"
+                }
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://app.faditools.com/#website",
+              "url": "https://app.faditools.com/",
+              "name": "My Blog",
+              "description": "My WordPress Blog",
+              "potentialAction": [
+                {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://app.faditools.com/?s={search_term_string}"
+                  },
+                  "query-input": {
+                    "@type": "PropertyValueSpecification",
+                    "valueRequired": true,
+                    "valueName": "search_term_string"
+                  }
+                }
+              ],
+              "inLanguage": "en-US"
+            }
+          ]
+        }
+      },
+      "_links": {
+        "self": [
+          {
+            "href": "https://app.faditools.com/wp-json/wc/v3/products/categories/16",
+            "targetHints": {
+              "allow": [
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE"
+              ]
+            }
+          }
+        ],
+        "collection": [
+          {
+            "href": "https://app.faditools.com/wp-json/wc/v3/products/categories"
+          }
+        ]
+      }
+    }
+  ],
+  "totalCategories": 6,
+  "lastUpdated": "2025-10-12T17:00:51.262Z"
+}

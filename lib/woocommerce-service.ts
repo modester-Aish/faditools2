@@ -22,8 +22,8 @@ import {
 } from './woocommerce-api'
 import { Product } from '@/types/wordpress'
 
-// Cache configuration
-const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
+// Cache configuration - Increased to 24 hours for optimal performance
+const CACHE_DURATION = 24 * 60 * 60 * 1000 // 24 hours (matches class cache duration)
 const cache = new Map<string, { data: any; timestamp: number }>()
 
 // Cache helper functions
@@ -62,7 +62,9 @@ export interface ProductStats {
 
 class WooCommerceService {
   private cache: Map<string, { data: any; timestamp: number }> = new Map()
-  private CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
+  // Increased cache to 24 hours for optimal performance
+  // This prevents repeated API calls to WooCommerce
+  private CACHE_DURATION = 24 * 60 * 60 * 1000 // 24 hours
 
   // Fetch all WooCommerce data
   async fetchAllWooCommerceData(): Promise<WooCommerceSiteData> {

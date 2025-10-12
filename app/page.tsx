@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Link from 'next/link'
 import Image from 'next/image'
 import { generateCanonicalUrl } from '@/lib/canonical'
-import { wooCommerceService } from '@/lib/woocommerce-service'
+import { loadStaticProducts, loadStaticCategories } from '@/lib/static-products'
 import CategorySection from '../components/CategorySection'
 import { WhyChooseSection, PopularToolsSection, TestimonialsSection, HowToOrderSection, TrustSection } from '../components/AnimatedSections'
 import InteractivePricingCards from '../components/InteractivePricingCards'
@@ -59,6 +59,10 @@ export const metadata: Metadata = {
   },
 }
 
+// Enable ISR for homepage - revalidate every 6 hours
+// This caches the homepage and reduces WooCommerce API calls
+export const revalidate = 21600 // 6 hours
+
 export default async function Home() {
   // Fetch categories and products for the homepage
   let categories: Array<{ id: number; name: string; slug: string; count: number }> = []
@@ -75,11 +79,16 @@ export default async function Home() {
   }> = []
   
   try {
-    const wooCommerceData = await wooCommerceService.getWooCommerceData()
+    // Load products from static JSON file (ultra-fast! 0.01s)
+    // Solution 3: Static + Webhooks - No API calls!
+    const staticProducts = await loadStaticProducts()
+    const staticCategories = await loadStaticCategories()
+    
+    console.log(`📦 Homepage: Loaded ${staticProducts.length} products from static file (Solution 3)`)
     
     // Process categories
-    if (wooCommerceData.categories && wooCommerceData.categories.length > 0) {
-      categories = wooCommerceData.categories.map(cat => ({
+    if (staticCategories && staticCategories.length > 0) {
+      categories = staticCategories.map(cat => ({
         id: cat.id,
         name: cat.name === 'Uncategorized' ? 'All Plan' : cat.name,
         slug: cat.slug,
@@ -95,8 +104,8 @@ export default async function Home() {
     }
     
     // Process products (limit to 12 for homepage)
-    if (wooCommerceData.products && wooCommerceData.products.length > 0) {
-      products = wooCommerceData.products.slice(0, 12).map(product => ({
+    if (staticProducts && staticProducts.length > 0) {
+      products = staticProducts.slice(0, 12).map(product => ({
         id: product.id,
         name: product.name,
         slug: product.slug,
@@ -109,7 +118,7 @@ export default async function Home() {
       }))
     }
   } catch (error) {
-    console.error('Error fetching WooCommerce data:', error)
+    console.error('Error loading static data:', error)
     // Continue with fallback data - don't break the page
   }
   

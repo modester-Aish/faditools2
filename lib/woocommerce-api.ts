@@ -102,7 +102,9 @@ export interface WooCommerceProduct {
 
 // Cache for storing API responses
 const cache = new Map<string, { data: any; timestamp: number }>()
-const CACHE_DURATION = 2 * 60 * 1000 // 2 minutes cache for faster updates
+// Increased cache duration to 24 hours (86400000ms) for better performance
+// Products will be cached for 1 day instead of 2 minutes
+const CACHE_DURATION = 24 * 60 * 60 * 1000 // 24 hours cache for optimal performance
 
 // Generic fetch function with caching and error handling
 async function fetchWithCache<T>(
@@ -155,9 +157,9 @@ export async function fetchAllProducts(): Promise<WooCommerceApiResponse<WooComm
   const cacheKey = 'all-products'
   const cached = cache.get(cacheKey)
 
-  // Return cached data if still valid (but with shorter cache duration for real-time updates)
-  if (cached && Date.now() - cached.timestamp < 2 * 60 * 1000) { // 2 minutes cache
-    console.log(`📦 Using cached products: ${cached.data.length} products`)
+  // Return cached data if still valid - using 24 hour cache for better performance
+  if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+    console.log(`📦 Using cached products: ${cached.data.length} products (cached for ${Math.round((Date.now() - cached.timestamp) / 1000 / 60)} minutes)`)
     return { data: cached.data, error: null, loading: false }
   }
 
