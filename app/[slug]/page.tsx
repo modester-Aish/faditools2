@@ -84,9 +84,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
     
     // If not a page, try to find a product (ULTRA-FAST static loading!)
+    console.log(`🔍 [METADATA] Loading product metadata for: ${params.slug}`)
     const product = await loadProductBySlug(params.slug)
     
     if (!product) {
+      console.log(`❌ [METADATA] Product not found: ${params.slug}`)
       return {
         title: 'Page Not Found | FadiTools',
         description: 'The requested page could not be found.',
@@ -96,6 +98,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         }
       }
     }
+    
+    console.log(`✅ [METADATA] Product found: ${product.name}`)
     
     const title = `${product.name} - ${product.price} | FadiTools`
     const description = product.short_description || product.description
@@ -830,9 +834,11 @@ export default async function DynamicPage({ params }: { params: { slug: string }
     }
     
     // If not a page, try to find a product (ULTRA-FAST static loading!)
+    console.log(`🔍 [COMPONENT] Loading product for rendering: ${params.slug}`)
     const product = await loadProductBySlug(params.slug)
     
     if (!product) {
+      console.log(`❌ [COMPONENT] Product not found: ${params.slug}`)
       return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
           <div className="max-w-md w-full bg-white shadow-lg rounded-lg p-6 text-center">

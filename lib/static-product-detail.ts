@@ -18,21 +18,30 @@ export interface StaticProductDetailData {
  * This replaces the slow full WooCommerce fetch in product detail pages
  */
 export async function loadProductBySlug(slug: string): Promise<WooCommerceProduct | null> {
+  console.log(`🔍 Loading product: ${slug}`)
+  
   try {
     // Try to load from full products file
     const fs = require('fs')
     const path = require('path')
     const filePath = path.join(process.cwd(), 'public', 'data', 'products.json')
     
+    console.log(`📁 Checking file: ${filePath}`)
+    console.log(`📁 File exists: ${fs.existsSync(filePath)}`)
+    
     if (!fs.existsSync(filePath)) {
       console.warn('⚠️ products.json not found. Falling back to WooCommerce API...')
       // Fallback to WooCommerce API
-      const { wooCommerceService } = await import('./woocommerce-service')
-      const wooCommerceData = await wooCommerceService.getWooCommerceData()
-      const product = wooCommerceData.products.find((p: WooCommerceProduct) => p.slug === slug)
-      if (product) {
-        console.log(`📦 Product Detail: Loaded "${product.name}" from WooCommerce API (fallback)`)
-        return product
+      try {
+        const { wooCommerceService } = await import('./woocommerce-service')
+        const wooCommerceData = await wooCommerceService.getWooCommerceData()
+        const product = wooCommerceData.products.find((p: WooCommerceProduct) => p.slug === slug)
+        if (product) {
+          console.log(`📦 Product Detail: Loaded "${product.name}" from WooCommerce API (fallback)`)
+          return product
+        }
+      } catch (error) {
+        console.error('❌ WooCommerce fallback failed:', error)
       }
       return null
     }
@@ -40,45 +49,28 @@ export async function loadProductBySlug(slug: string): Promise<WooCommerceProduc
     const fileContent = fs.readFileSync(filePath, 'utf-8')
     const data = JSON.parse(fileContent)
     
+    console.log(`📦 Total products in file: ${data.products.length}`)
+    
     // Find product by slug
     const product = data.products.find((p: WooCommerceProduct) => p.slug === slug)
     
     if (product) {
-      console.log(`📦 Product Detail: Loaded "${product.name}" from static file (instant!)`)
+      console.log(`✅ Product Detail: Loaded "${product.name}" from static file (instant!)`)
       return product
     }
     
-    console.log(`❌ Product not found in static file: ${slug}. Trying WooCommerce API...`)
+    console.log(`❌ Product not found in static file: ${slug}. Available slugs:`)
+    console.log(data.products.slice(0, 5).map((p: WooCommerceProduct) => p.slug))
     
-    // Fallback to WooCommerce API if not found in static file
-    const { wooCommerceService } = await import('./woocommerce-service')
-    const wooCommerceData = await wooCommerceService.getWooCommerceData()
-    const fallbackProduct = wooCommerceData.products.find((p: WooCommerceProduct) => p.slug === slug)
-    
-    if (fallbackProduct) {
-      console.log(`📦 Product Detail: Loaded "${fallbackProduct.name}" from WooCommerce API (fallback)`)
-      return fallbackProduct
-    }
-    
-    console.log(`❌ Product not found anywhere: ${slug}`)
+    // Skip WooCommerce fallback for better performance - just return null
+    console.log(`⚡ Skipping WooCommerce fallback for faster 404 response`)
     return null
     
   } catch (error) {
     console.error('❌ Error loading product by slug:', error)
     
-    // Final fallback to WooCommerce API
-    try {
-      console.log('🔄 Trying WooCommerce API as final fallback...')
-      const { wooCommerceService } = await import('./woocommerce-service')
-      const wooCommerceData = await wooCommerceService.getWooCommerceData()
-      const product = wooCommerceData.products.find((p: WooCommerceProduct) => p.slug === slug)
-      if (product) {
-        console.log(`📦 Product Detail: Loaded "${product.name}" from WooCommerce API (error fallback)`)
-        return product
-      }
-    } catch (fallbackError) {
-      console.error('❌ Fallback also failed:', fallbackError)
-    }
+    // Skip WooCommerce fallback for better performance
+    console.log('⚡ Skipping WooCommerce fallback for faster error response')
     
     return null
   }
