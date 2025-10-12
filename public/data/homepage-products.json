@@ -1,0 +1,379 @@
+{
+  "products": [
+    {
+      "id": 7611,
+      "name": "Rafflepress Group Buy",
+      "slug": "rafflepress-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7610,
+          "date_created": "2025-09-07T16:32:30",
+          "date_created_gmt": "2025-09-07T16:32:30",
+          "date_modified": "2025-09-07T16:32:30",
+          "date_modified_gmt": "2025-09-07T16:32:30",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/cop-3.png",
+          "name": "cop-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/cop-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/cop-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/cop-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/cop-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 19,
+          "name": "seo",
+          "slug": "seo"
+        }
+      ]
+    },
+    {
+      "id": 7609,
+      "name": "Headlime Group Buy",
+      "slug": "headlime-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7608,
+          "date_created": "2025-09-07T16:32:25",
+          "date_created_gmt": "2025-09-07T16:32:25",
+          "date_modified": "2025-09-07T16:32:25",
+          "date_modified_gmt": "2025-09-07T16:32:25",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/maker-3.png",
+          "name": "maker-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/maker-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/maker-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/maker-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/maker-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 22,
+          "name": "Content tools",
+          "slug": "content-tools"
+        }
+      ]
+    },
+    {
+      "id": 7607,
+      "name": "Copysmith Group Buy",
+      "slug": "copysmith-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7606,
+          "date_created": "2025-09-07T16:32:21",
+          "date_created_gmt": "2025-09-07T16:32:21",
+          "date_modified": "2025-09-07T16:32:21",
+          "date_modified_gmt": "2025-09-07T16:32:21",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/path-3.png",
+          "name": "path-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/path-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/path-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/path-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/path-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 22,
+          "name": "Content tools",
+          "slug": "content-tools"
+        }
+      ]
+    },
+    {
+      "id": 7605,
+      "name": "Makerwords Group Buy",
+      "slug": "makerwords-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7604,
+          "date_created": "2025-09-07T16:32:16",
+          "date_created_gmt": "2025-09-07T16:32:16",
+          "date_modified": "2025-09-07T16:32:16",
+          "date_modified_gmt": "2025-09-07T16:32:16",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/craiyon-3.png",
+          "name": "craiyon-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/craiyon-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/craiyon-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/craiyon-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/craiyon-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 19,
+          "name": "seo",
+          "slug": "seo"
+        }
+      ]
+    },
+    {
+      "id": 7603,
+      "name": "Pathmatics Group Buy",
+      "slug": "pathmatics-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7602,
+          "date_created": "2025-09-07T16:32:12",
+          "date_created_gmt": "2025-09-07T16:32:12",
+          "date_modified": "2025-09-07T16:32:12",
+          "date_modified_gmt": "2025-09-07T16:32:12",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/klue-3.png",
+          "name": "klue-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/klue-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/klue-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/klue-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/klue-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 19,
+          "name": "seo",
+          "slug": "seo"
+        }
+      ]
+    },
+    {
+      "id": 7601,
+      "name": "Craiyon Group Buy",
+      "slug": "craiyon-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7600,
+          "date_created": "2025-09-07T16:32:07",
+          "date_created_gmt": "2025-09-07T16:32:07",
+          "date_modified": "2025-09-07T16:32:07",
+          "date_modified_gmt": "2025-09-07T16:32:07",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/wss-3.png",
+          "name": "wss-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/wss-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/wss-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/wss-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/wss-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7599,
+      "name": "Klue Group Buy",
+      "slug": "klue-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7598,
+          "date_created": "2025-09-07T16:32:03",
+          "date_created_gmt": "2025-09-07T16:32:03",
+          "date_modified": "2025-09-07T16:32:03",
+          "date_modified_gmt": "2025-09-07T16:32:03",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/seee-3.png",
+          "name": "seee-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/seee-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/seee-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/seee-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/seee-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 19,
+          "name": "seo",
+          "slug": "seo"
+        }
+      ]
+    },
+    {
+      "id": 7597,
+      "name": "Editby Group Buy",
+      "slug": "editby-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7596,
+          "date_created": "2025-09-07T16:31:54",
+          "date_created_gmt": "2025-09-07T16:31:54",
+          "date_modified": "2025-09-07T16:31:54",
+          "date_modified_gmt": "2025-09-07T16:31:54",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/data-1-3.png",
+          "name": "data-1-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/data-1-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/data-1-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/data-1-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/data-1-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 19,
+          "name": "seo",
+          "slug": "seo"
+        }
+      ]
+    },
+    {
+      "id": 7595,
+      "name": "Sellerlabs Group Buy",
+      "slug": "sellerlabs-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7594,
+          "date_created": "2025-09-07T16:31:46",
+          "date_created_gmt": "2025-09-07T16:31:46",
+          "date_modified": "2025-09-07T16:31:46",
+          "date_modified_gmt": "2025-09-07T16:31:46",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/data-4.png",
+          "name": "data-4.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/data-4.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/data-4-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/data-4-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/data-4.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 19,
+          "name": "seo",
+          "slug": "seo"
+        }
+      ]
+    },
+    {
+      "id": 7593,
+      "name": "Teikametrics Group Buy",
+      "slug": "teikametrics-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7592,
+          "date_created": "2025-09-07T16:31:39",
+          "date_created_gmt": "2025-09-07T16:31:39",
+          "date_modified": "2025-09-07T16:31:39",
+          "date_modified_gmt": "2025-09-07T16:31:39",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/getkeywords-group-buy-3.png",
+          "name": "getkeywords-group-buy-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/getkeywords-group-buy-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/getkeywords-group-buy-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/getkeywords-group-buy-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/getkeywords-group-buy-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 19,
+          "name": "seo",
+          "slug": "seo"
+        }
+      ]
+    },
+    {
+      "id": 7591,
+      "name": "Datahawk Group Buy",
+      "slug": "datahawk-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7590,
+          "date_created": "2025-09-07T16:31:35",
+          "date_created_gmt": "2025-09-07T16:31:35",
+          "date_modified": "2025-09-07T16:31:35",
+          "date_modified_gmt": "2025-09-07T16:31:35",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/Socialpilot-group-buy-1.png",
+          "name": "Socialpilot-group-buy-1.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/Socialpilot-group-buy-1.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/Socialpilot-group-buy-1-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/Socialpilot-group-buy-1-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/Socialpilot-group-buy-1.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 19,
+          "name": "seo",
+          "slug": "seo"
+        }
+      ]
+    },
+    {
+      "id": 7589,
+      "name": "Getkeywords Group Buy",
+      "slug": "getkeywords-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7588,
+          "date_created": "2025-09-07T16:31:28",
+          "date_created_gmt": "2025-09-07T16:31:28",
+          "date_modified": "2025-09-07T16:31:28",
+          "date_modified_gmt": "2025-09-07T16:31:28",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/bright-3.png",
+          "name": "bright-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/bright-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/bright-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/bright-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/bright-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 19,
+          "name": "seo",
+          "slug": "seo"
+        }
+      ]
+    }
+  ],
+  "totalProducts": 12,
+  "lastUpdated": "2025-10-12T18:44:13.492Z",
+  "note": "Lightweight data for homepage - only 12 products with essential fields"
+}

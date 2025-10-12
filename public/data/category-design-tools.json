@@ -1,0 +1,349 @@
+{
+  "products": [
+    {
+      "id": 7533,
+      "name": "Designevo Group Buy",
+      "slug": "designevo-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7532,
+          "date_created": "2025-09-07T16:28:06",
+          "date_created_gmt": "2025-09-07T16:28:06",
+          "date_modified": "2025-09-07T16:28:06",
+          "date_modified_gmt": "2025-09-07T16:28:06",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/sna-3.png",
+          "name": "sna-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/sna-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/sna-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/sna-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/sna-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 24,
+          "name": "Design tools",
+          "slug": "design-tools"
+        }
+      ]
+    },
+    {
+      "id": 7463,
+      "name": "Thestockfootageclub Group Buy",
+      "slug": "thestockfootageclub-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7462,
+          "date_created": "2025-09-07T16:23:15",
+          "date_created_gmt": "2025-09-07T16:23:15",
+          "date_modified": "2025-09-07T16:23:15",
+          "date_modified_gmt": "2025-09-07T16:23:15",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/notta-group-buy-1.png",
+          "name": "notta-group-buy-1.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/notta-group-buy-1.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/notta-group-buy-1-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/notta-group-buy-1-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/notta-group-buy-1.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 24,
+          "name": "Design tools",
+          "slug": "design-tools"
+        }
+      ]
+    },
+    {
+      "id": 7449,
+      "name": "Coreldraw Group Buy",
+      "slug": "coreldraw-group-buy",
+      "price": "4",
+      "regular_price": "4",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7448,
+          "date_created": "2025-09-07T16:22:12",
+          "date_created_gmt": "2025-09-07T16:22:12",
+          "date_modified": "2025-09-07T16:22:12",
+          "date_modified_gmt": "2025-09-07T16:22:12",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/illustroke-group-buy-1.png",
+          "name": "illustroke-group-buy-1.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/illustroke-group-buy-1.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/illustroke-group-buy-1-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/illustroke-group-buy-1-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/illustroke-group-buy-1.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 24,
+          "name": "Design tools",
+          "slug": "design-tools"
+        }
+      ]
+    },
+    {
+      "id": 7423,
+      "name": "Designrr Group Buy",
+      "slug": "designrr-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7422,
+          "date_created": "2025-09-07T16:20:05",
+          "date_created_gmt": "2025-09-07T16:20:05",
+          "date_modified": "2025-09-07T16:20:05",
+          "date_modified_gmt": "2025-09-07T16:20:05",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/yarnit-group-buy-1.png",
+          "name": "yarnit-group-buy-1.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/yarnit-group-buy-1.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/yarnit-group-buy-1-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/yarnit-group-buy-1-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/yarnit-group-buy-1.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 24,
+          "name": "Design tools",
+          "slug": "design-tools"
+        }
+      ]
+    },
+    {
+      "id": 7383,
+      "name": "Unlimphotos Group Buy",
+      "slug": "unlimphotos-group-buy",
+      "price": "6",
+      "regular_price": "6",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7382,
+          "date_created": "2025-09-07T16:17:41",
+          "date_created_gmt": "2025-09-07T16:17:41",
+          "date_modified": "2025-09-07T16:17:41",
+          "date_modified_gmt": "2025-09-07T16:17:41",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/inbox-1.png",
+          "name": "inbox-1.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/inbox-1.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/inbox-1-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/inbox-1-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/inbox-1.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 24,
+          "name": "Design tools",
+          "slug": "design-tools"
+        }
+      ]
+    },
+    {
+      "id": 7315,
+      "name": "Photokit Group Buy",
+      "slug": "photokit-group-buy",
+      "price": "4",
+      "regular_price": "4",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7314,
+          "date_created": "2025-09-07T16:14:27",
+          "date_created_gmt": "2025-09-07T16:14:27",
+          "date_modified": "2025-09-07T16:14:27",
+          "date_modified_gmt": "2025-09-07T16:14:27",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/alamy-group-buy-1.png",
+          "name": "alamy-group-buy-1.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/alamy-group-buy-1.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/alamy-group-buy-1-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/alamy-group-buy-1-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/alamy-group-buy-1.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 24,
+          "name": "Design tools",
+          "slug": "design-tools"
+        }
+      ]
+    },
+    {
+      "id": 7313,
+      "name": "Rawpixel Group Buy",
+      "slug": "rawpixel-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7312,
+          "date_created": "2025-09-07T16:13:50",
+          "date_created_gmt": "2025-09-07T16:13:50",
+          "date_modified": "2025-09-07T16:13:50",
+          "date_modified_gmt": "2025-09-07T16:13:50",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/mockupcloud-group-buy-4.png",
+          "name": "mockupcloud-group-buy-4.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/mockupcloud-group-buy-4.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/mockupcloud-group-buy-4-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/mockupcloud-group-buy-4-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/mockupcloud-group-buy-4.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 24,
+          "name": "Design tools",
+          "slug": "design-tools"
+        }
+      ]
+    },
+    {
+      "id": 7309,
+      "name": "Mockupcloud Group Buy",
+      "slug": "mockupcloud-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7308,
+          "date_created": "2025-09-07T16:13:43",
+          "date_created_gmt": "2025-09-07T16:13:43",
+          "date_modified": "2025-09-07T16:13:43",
+          "date_modified_gmt": "2025-09-07T16:13:43",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/pixelsquid-group-buy-2.png",
+          "name": "pixelsquid-group-buy-2.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/pixelsquid-group-buy-2.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/pixelsquid-group-buy-2-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/pixelsquid-group-buy-2-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/pixelsquid-group-buy-2.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 24,
+          "name": "Design tools",
+          "slug": "design-tools"
+        }
+      ]
+    },
+    {
+      "id": 7273,
+      "name": "Depositphotos Group Buy",
+      "slug": "depositphotos-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7272,
+          "date_created": "2025-09-07T16:11:51",
+          "date_created_gmt": "2025-09-07T16:11:51",
+          "date_modified": "2025-09-07T16:11:51",
+          "date_modified_gmt": "2025-09-07T16:11:51",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/rewaed-4.png",
+          "name": "rewaed-4.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/rewaed-4.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/rewaed-4-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/rewaed-4-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/rewaed-4.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 24,
+          "name": "Design tools",
+          "slug": "design-tools"
+        }
+      ]
+    },
+    {
+      "id": 7271,
+      "name": "Yellow Images Group Buy",
+      "slug": "yellow-images-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7270,
+          "date_created": "2025-09-07T16:11:46",
+          "date_created_gmt": "2025-09-07T16:11:46",
+          "date_modified": "2025-09-07T16:11:46",
+          "date_modified_gmt": "2025-09-07T16:11:46",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/boloo-4.png",
+          "name": "boloo-4.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/boloo-4.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/boloo-4-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/boloo-4-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/boloo-4.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 24,
+          "name": "Design tools",
+          "slug": "design-tools"
+        }
+      ]
+    },
+    {
+      "id": 6449,
+      "name": "Pngtree Group Buy",
+      "slug": "pngtree-group-buy",
+      "price": "1",
+      "regular_price": "1",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 6448,
+          "date_created": "2025-09-07T15:32:35",
+          "date_created_gmt": "2025-09-07T15:32:35",
+          "date_modified": "2025-09-07T15:32:35",
+          "date_modified_gmt": "2025-09-07T15:32:35",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/Pngtree-Group-Buy-Starting-just-4-per-month-Toolsurf-6.png",
+          "name": "Pngtree-Group-Buy-Starting-just-4-per-month-Toolsurf-6.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/Pngtree-Group-Buy-Starting-just-4-per-month-Toolsurf-6.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/Pngtree-Group-Buy-Starting-just-4-per-month-Toolsurf-6-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/Pngtree-Group-Buy-Starting-just-4-per-month-Toolsurf-6-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/Pngtree-Group-Buy-Starting-just-4-per-month-Toolsurf-6.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 24,
+          "name": "Design tools",
+          "slug": "design-tools"
+        }
+      ]
+    }
+  ],
+  "totalProducts": 11,
+  "category": "design-tools",
+  "lastUpdated": "2025-10-12T18:44:13.504Z",
+  "note": "Products for design-tools category - 11 products"
+}

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { loadCategoryProducts } from '@/lib/homepage-products'
 
 interface Category {
   id: number
@@ -34,40 +35,51 @@ export default function CategorySection({ categories, products = [] }: CategoryS
   const [categoryProducts, setCategoryProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(false)
 
-  // Fetch products for selected category
+  // Load products for selected category from static data (ULTRA-FAST!)
   useEffect(() => {
-    const fetchCategoryProducts = async () => {
+    const loadCategoryProductsStatic = async () => {
       if (!selectedCategory) return
       
       setLoading(true)
       try {
-        const category = categories.find(cat => cat.slug === selectedCategory)
-        if (!category) return
-
-        const response = await fetch(`/api/woocommerce?action=products&category=${category.id}&limit=12`)
-        const data = await response.json()
+        // Use static data instead of API calls - instant loading!
+        const staticProducts = await loadCategoryProducts(selectedCategory, 12)
         
-        if (data.success) {
-          setCategoryProducts(data.data.products.map((product: any) => ({
-            id: product.id,
-            name: product.name,
-            slug: product.slug,
-            price: product.price,
-            regular_price: product.regular_price,
-            sale_price: product.sale_price,
-            on_sale: product.on_sale,
-            images: product.images || [],
-            categories: product.categories || []
-          })))
+        const mappedProducts = staticProducts.map((product: any) => ({
+          id: product.id,
+          name: product.name,
+          slug: product.slug,
+          price: product.price,
+          regular_price: product.regular_price,
+          sale_price: product.sale_price,
+          on_sale: product.on_sale,
+          images: product.images || [],
+          categories: product.categories || []
+        }))
+        
+        setCategoryProducts(mappedProducts)
+        
+        // Debug: Check images for first product
+        if (mappedProducts.length > 0) {
+          console.log(`🔍 Debug - First product: ${mappedProducts[0].name}`)
+          console.log(`🔍 Debug - Images count: ${mappedProducts[0].images.length}`)
+          if (mappedProducts[0].images.length > 0) {
+            console.log(`🔍 Debug - First image: ${mappedProducts[0].images[0].src}`)
+          } else {
+            console.log(`❌ Debug - No images found!`)
+          }
         }
+        
+        console.log(`⚡ Category "${selectedCategory}": Instant loading from static data!`)
+        
       } catch (error) {
-        console.error('Error fetching category products:', error)
+        console.error('Error loading category products:', error)
       } finally {
         setLoading(false)
       }
     }
 
-    fetchCategoryProducts()
+    loadCategoryProductsStatic()
   }, [selectedCategory, categories])
 
   // Get products for display

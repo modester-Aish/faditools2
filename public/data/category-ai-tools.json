@@ -1,0 +1,752 @@
+{
+  "products": [
+    {
+      "id": 7601,
+      "name": "Craiyon Group Buy",
+      "slug": "craiyon-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7600,
+          "date_created": "2025-09-07T16:32:07",
+          "date_created_gmt": "2025-09-07T16:32:07",
+          "date_modified": "2025-09-07T16:32:07",
+          "date_modified_gmt": "2025-09-07T16:32:07",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/wss-3.png",
+          "name": "wss-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/wss-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/wss-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/wss-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/wss-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7577,
+      "name": "Pollo Ai Group Buy",
+      "slug": "pollo-ai-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7576,
+          "date_created": "2025-09-07T16:30:55",
+          "date_created_gmt": "2025-09-07T16:30:55",
+          "date_modified": "2025-09-07T16:30:55",
+          "date_modified_gmt": "2025-09-07T16:30:55",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/cym-3.png",
+          "name": "cym-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/cym-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/cym-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/cym-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/cym-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7551,
+      "name": "Rask Ai Group Buy",
+      "slug": "rask-ai-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7550,
+          "date_created": "2025-09-07T16:28:41",
+          "date_created_gmt": "2025-09-07T16:28:41",
+          "date_modified": "2025-09-07T16:28:41",
+          "date_modified_gmt": "2025-09-07T16:28:41",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/d-id-group-buy-1.png",
+          "name": "d-id-group-buy-1.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/d-id-group-buy-1.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/d-id-group-buy-1-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/d-id-group-buy-1-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/d-id-group-buy-1.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7545,
+      "name": "Aistudios Group Buy",
+      "slug": "aistudios-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7544,
+          "date_created": "2025-09-07T16:28:29",
+          "date_created_gmt": "2025-09-07T16:28:29",
+          "date_modified": "2025-09-07T16:28:29",
+          "date_modified_gmt": "2025-09-07T16:28:29",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/kura-3.png",
+          "name": "kura-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/kura-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/kura-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/kura-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/kura-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7501,
+      "name": "Elai Group Buy",
+      "slug": "elai-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7500,
+          "date_created": "2025-09-07T16:26:34",
+          "date_created_gmt": "2025-09-07T16:26:34",
+          "date_modified": "2025-09-07T16:26:34",
+          "date_modified_gmt": "2025-09-07T16:26:34",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/socialbee-group-buy-1.png",
+          "name": "socialbee-group-buy-1.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/socialbee-group-buy-1.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/socialbee-group-buy-1-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/socialbee-group-buy-1-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/socialbee-group-buy-1.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7499,
+      "name": "Yepic Ai Group Buy",
+      "slug": "yepic-ai-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7498,
+          "date_created": "2025-09-07T16:26:26",
+          "date_created_gmt": "2025-09-07T16:26:26",
+          "date_modified": "2025-09-07T16:26:26",
+          "date_modified_gmt": "2025-09-07T16:26:26",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/voicepen-group-buy-1.png",
+          "name": "voicepen-group-buy-1.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/voicepen-group-buy-1.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/voicepen-group-buy-1-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/voicepen-group-buy-1-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/voicepen-group-buy-1.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7495,
+      "name": "Voicepen Ai Group Buy",
+      "slug": "voicepen-ai-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7494,
+          "date_created": "2025-09-07T16:26:11",
+          "date_created_gmt": "2025-09-07T16:26:11",
+          "date_modified": "2025-09-07T16:26:11",
+          "date_modified_gmt": "2025-09-07T16:26:11",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/no-3.png",
+          "name": "no-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/no-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/no-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/no-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/no-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7477,
+      "name": "Voicely Group Buy",
+      "slug": "voicely-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7476,
+          "date_created": "2025-09-07T16:24:16",
+          "date_created_gmt": "2025-09-07T16:24:16",
+          "date_modified": "2025-09-07T16:24:16",
+          "date_modified_gmt": "2025-09-07T16:24:16",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/Hotspot-Shield-group-buy-3.png",
+          "name": "Hotspot-Shield-group-buy-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/Hotspot-Shield-group-buy-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/Hotspot-Shield-group-buy-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/Hotspot-Shield-group-buy-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/Hotspot-Shield-group-buy-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7471,
+      "name": "Voicetapp Group Buy",
+      "slug": "voicetapp-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7470,
+          "date_created": "2025-09-07T16:23:44",
+          "date_created_gmt": "2025-09-07T16:23:44",
+          "date_modified": "2025-09-07T16:23:44",
+          "date_modified_gmt": "2025-09-07T16:23:44",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/wis-3.png",
+          "name": "wis-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/wis-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/wis-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/wis-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/wis-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7469,
+      "name": "Originality Ai Group Buy",
+      "slug": "originality-ai-group-buy",
+      "price": "9.99",
+      "regular_price": "9.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7468,
+          "date_created": "2025-09-07T16:23:34",
+          "date_created_gmt": "2025-09-07T16:23:34",
+          "date_modified": "2025-09-07T16:23:34",
+          "date_modified_gmt": "2025-09-07T16:23:34",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/creattie-group-buy-1.png",
+          "name": "creattie-group-buy-1.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/creattie-group-buy-1.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/creattie-group-buy-1-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/creattie-group-buy-1-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/creattie-group-buy-1.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7453,
+      "name": "Mailchimp Group Buy",
+      "slug": "mailchimp-group-buy",
+      "price": "6",
+      "regular_price": "6",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7452,
+          "date_created": "2025-09-07T16:22:30",
+          "date_created_gmt": "2025-09-07T16:22:30",
+          "date_modified": "2025-09-07T16:22:30",
+          "date_modified_gmt": "2025-09-07T16:22:30",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/corel-3.png",
+          "name": "corel-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/corel-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/corel-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/corel-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/corel-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7431,
+      "name": "Airbrush Group Buy",
+      "slug": "airbrush-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7430,
+          "date_created": "2025-09-07T16:21:00",
+          "date_created_gmt": "2025-09-07T16:21:00",
+          "date_modified": "2025-09-07T16:21:00",
+          "date_modified_gmt": "2025-09-07T16:21:00",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/pex-1.png",
+          "name": "pex-1.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/pex-1.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/pex-1-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/pex-1-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/pex-1.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7369,
+      "name": "Aithor Group Buy",
+      "slug": "aithor-group-buy",
+      "price": "5",
+      "regular_price": "5",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7368,
+          "date_created": "2025-09-07T16:17:08",
+          "date_created_gmt": "2025-09-07T16:17:08",
+          "date_modified": "2025-09-07T16:17:08",
+          "date_modified_gmt": "2025-09-07T16:17:08",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/Untitled-design-50.png",
+          "name": "Untitled-design-50.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/Untitled-design-50.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/Untitled-design-50-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/Untitled-design-50-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/Untitled-design-50.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7343,
+      "name": "Audiojourney Group Buy",
+      "slug": "audiojourney-group-buy",
+      "price": "4",
+      "regular_price": "4",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7342,
+          "date_created": "2025-09-07T16:15:56",
+          "date_created_gmt": "2025-09-07T16:15:56",
+          "date_modified": "2025-09-07T16:15:56",
+          "date_modified_gmt": "2025-09-07T16:15:56",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/jit-1-3.png",
+          "name": "jit-1-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/jit-1-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/jit-1-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/jit-1-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/jit-1-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7325,
+      "name": "Spotify Group Buy",
+      "slug": "spotify-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7324,
+          "date_created": "2025-09-07T16:14:56",
+          "date_created_gmt": "2025-09-07T16:14:56",
+          "date_modified": "2025-09-07T16:14:56",
+          "date_modified_gmt": "2025-09-07T16:14:56",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/merh-3.png",
+          "name": "merh-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/merh-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/merh-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/merh-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/merh-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7259,
+      "name": "Soundstripe Group Buy",
+      "slug": "soundstripe-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7258,
+          "date_created": "2025-09-07T16:11:15",
+          "date_created_gmt": "2025-09-07T16:11:15",
+          "date_modified": "2025-09-07T16:11:15",
+          "date_modified_gmt": "2025-09-07T16:11:15",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/istock-group-buy-2.png",
+          "name": "istock-group-buy-2.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/istock-group-buy-2.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/istock-group-buy-2-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/istock-group-buy-2-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/istock-group-buy-2.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7095,
+      "name": "Revoicer Group Buy",
+      "slug": "revoicer-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7094,
+          "date_created": "2025-09-07T16:00:20",
+          "date_created_gmt": "2025-09-07T16:00:20",
+          "date_modified": "2025-09-07T16:00:20",
+          "date_modified_gmt": "2025-09-07T16:00:20",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/Clickmagick-group-buy-2.png",
+          "name": "Clickmagick-group-buy-2.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/Clickmagick-group-buy-2.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/Clickmagick-group-buy-2-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/Clickmagick-group-buy-2-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/Clickmagick-group-buy-2.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 7089,
+      "name": "Voicemaker Group Buy",
+      "slug": "voicemaker-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7088,
+          "date_created": "2025-09-07T15:59:51",
+          "date_created_gmt": "2025-09-07T15:59:51",
+          "date_modified": "2025-09-07T15:59:51",
+          "date_modified_gmt": "2025-09-07T15:59:51",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/Deepl-group-buy-2.png",
+          "name": "Deepl-group-buy-2.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/Deepl-group-buy-2.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/Deepl-group-buy-2-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/Deepl-group-buy-2-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/Deepl-group-buy-2.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 6947,
+      "name": "Audiobuzz Group Buy",
+      "slug": "audiobuzz-group-buy",
+      "price": "2",
+      "regular_price": "2",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 6946,
+          "date_created": "2025-09-07T15:53:47",
+          "date_created_gmt": "2025-09-07T15:53:47",
+          "date_modified": "2025-09-07T15:53:47",
+          "date_modified_gmt": "2025-09-07T15:53:47",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/1to10-finder-4.png",
+          "name": "1to10-finder-4.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/1to10-finder-4.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/1to10-finder-4-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/1to10-finder-4-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/1to10-finder-4.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 6779,
+      "name": "Soundsnap Group Buy",
+      "slug": "soundsnap-group-buy",
+      "price": "1",
+      "regular_price": "1",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 6778,
+          "date_created": "2025-09-07T15:45:27",
+          "date_created_gmt": "2025-09-07T15:45:27",
+          "date_modified": "2025-09-07T15:45:27",
+          "date_modified_gmt": "2025-09-07T15:45:27",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/Renderforest-group-buy-1-5.png",
+          "name": "Renderforest-group-buy-1-5.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/Renderforest-group-buy-1-5.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/Renderforest-group-buy-1-5-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/Renderforest-group-buy-1-5-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/Renderforest-group-buy-1-5.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 6709,
+      "name": "Speechelo Group Buy",
+      "slug": "speechelo-group-buy",
+      "price": "1",
+      "regular_price": "1",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 6708,
+          "date_created": "2025-09-07T15:42:58",
+          "date_created_gmt": "2025-09-07T15:42:58",
+          "date_modified": "2025-09-07T15:42:58",
+          "date_modified_gmt": "2025-09-07T15:42:58",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/amzchart-group-buy-starting-just-7.99-per-month-5.png",
+          "name": "amzchart-group-buy-starting-just-7.99-per-month-5.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/amzchart-group-buy-starting-just-7.99-per-month-5.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/amzchart-group-buy-starting-just-7.99-per-month-5-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/amzchart-group-buy-starting-just-7.99-per-month-5-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/amzchart-group-buy-starting-just-7.99-per-month-5.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 6631,
+      "name": "Soundraw Group Buy",
+      "slug": "soundraw-group-buy",
+      "price": "6.99",
+      "regular_price": "6.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 6630,
+          "date_created": "2025-09-07T15:40:14",
+          "date_created_gmt": "2025-09-07T15:40:14",
+          "date_modified": "2025-09-07T15:40:14",
+          "date_modified_gmt": "2025-09-07T15:40:14",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/inkforall-group-buy-5.png",
+          "name": "inkforall-group-buy-5.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/inkforall-group-buy-5.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/inkforall-group-buy-5-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/inkforall-group-buy-5-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/inkforall-group-buy-5.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 6605,
+      "name": "Speechify Group Buy",
+      "slug": "speechify-group-buy",
+      "price": "8",
+      "regular_price": "8",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 6604,
+          "date_created": "2025-09-07T15:39:01",
+          "date_created_gmt": "2025-09-07T15:39:01",
+          "date_modified": "2025-09-07T15:39:01",
+          "date_modified_gmt": "2025-09-07T15:39:01",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/Speechify-group-buy-5.png",
+          "name": "Speechify-group-buy-5.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/Speechify-group-buy-5.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/Speechify-group-buy-5-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/Speechify-group-buy-5-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/Speechify-group-buy-5.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    },
+    {
+      "id": 6437,
+      "name": "Epidemic Sound Group Buy",
+      "slug": "epidemic-sound-group-buy",
+      "price": "1",
+      "regular_price": "1",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 6436,
+          "date_created": "2025-09-07T15:31:56",
+          "date_created_gmt": "2025-09-07T15:31:56",
+          "date_modified": "2025-09-07T15:31:56",
+          "date_modified_gmt": "2025-09-07T15:31:56",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/Epidemic-sound-group-Buy-Starting-just-5-per-month-Toolsurf-6.png",
+          "name": "Epidemic-sound-group-Buy-Starting-just-5-per-month-Toolsurf-6.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/Epidemic-sound-group-Buy-Starting-just-5-per-month-Toolsurf-6.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/Epidemic-sound-group-Buy-Starting-just-5-per-month-Toolsurf-6-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/Epidemic-sound-group-Buy-Starting-just-5-per-month-Toolsurf-6-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/Epidemic-sound-group-Buy-Starting-just-5-per-month-Toolsurf-6.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 21,
+          "name": "Ai tools",
+          "slug": "ai-tools"
+        }
+      ]
+    }
+  ],
+  "totalProducts": 24,
+  "category": "ai-tools",
+  "lastUpdated": "2025-10-12T18:44:13.503Z",
+  "note": "Products for ai-tools category - 24 products"
+}

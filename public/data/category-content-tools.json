@@ -1,0 +1,163 @@
+{
+  "products": [
+    {
+      "id": 7609,
+      "name": "Headlime Group Buy",
+      "slug": "headlime-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7608,
+          "date_created": "2025-09-07T16:32:25",
+          "date_created_gmt": "2025-09-07T16:32:25",
+          "date_modified": "2025-09-07T16:32:25",
+          "date_modified_gmt": "2025-09-07T16:32:25",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/maker-3.png",
+          "name": "maker-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/maker-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/maker-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/maker-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/maker-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 22,
+          "name": "Content tools",
+          "slug": "content-tools"
+        }
+      ]
+    },
+    {
+      "id": 7607,
+      "name": "Copysmith Group Buy",
+      "slug": "copysmith-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7606,
+          "date_created": "2025-09-07T16:32:21",
+          "date_created_gmt": "2025-09-07T16:32:21",
+          "date_modified": "2025-09-07T16:32:21",
+          "date_modified_gmt": "2025-09-07T16:32:21",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/path-3.png",
+          "name": "path-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/path-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/path-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/path-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/path-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 22,
+          "name": "Content tools",
+          "slug": "content-tools"
+        }
+      ]
+    },
+    {
+      "id": 7565,
+      "name": "Salesdoe Group Buy",
+      "slug": "salesdoe-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7564,
+          "date_created": "2025-09-07T16:29:57",
+          "date_created_gmt": "2025-09-07T16:29:57",
+          "date_modified": "2025-09-07T16:29:57",
+          "date_modified_gmt": "2025-09-07T16:29:57",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/add-3.png",
+          "name": "add-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/add-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/add-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/add-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/add-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 22,
+          "name": "Content tools",
+          "slug": "content-tools"
+        }
+      ]
+    },
+    {
+      "id": 7451,
+      "name": "Salesforce Group Buy",
+      "slug": "salesforce-group-buy",
+      "price": "5",
+      "regular_price": "5",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7450,
+          "date_created": "2025-09-07T16:22:21",
+          "date_created_gmt": "2025-09-07T16:22:21",
+          "date_modified": "2025-09-07T16:22:21",
+          "date_modified_gmt": "2025-09-07T16:22:21",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/easi-3.png",
+          "name": "easi-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/easi-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/easi-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/easi-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/easi-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 22,
+          "name": "Content tools",
+          "slug": "content-tools"
+        }
+      ]
+    },
+    {
+      "id": 6483,
+      "name": "Teamtreehouse Group Buy",
+      "slug": "teamtreehouse-group-buy",
+      "price": "1",
+      "regular_price": "1",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 6482,
+          "date_created": "2025-09-07T15:33:35",
+          "date_created_gmt": "2025-09-07T15:33:35",
+          "date_modified": "2025-09-07T15:33:35",
+          "date_modified_gmt": "2025-09-07T15:33:35",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/Teamtree-house-Group-Buy-Starting-just-4-per-month-Toolsurf-6.png",
+          "name": "Teamtree-house-Group-Buy-Starting-just-4-per-month-Toolsurf-6.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/Teamtree-house-Group-Buy-Starting-just-4-per-month-Toolsurf-6.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/Teamtree-house-Group-Buy-Starting-just-4-per-month-Toolsurf-6-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/Teamtree-house-Group-Buy-Starting-just-4-per-month-Toolsurf-6-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/Teamtree-house-Group-Buy-Starting-just-4-per-month-Toolsurf-6.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 22,
+          "name": "Content tools",
+          "slug": "content-tools"
+        }
+      ]
+    }
+  ],
+  "totalProducts": 5,
+  "category": "content-tools",
+  "lastUpdated": "2025-10-12T18:44:13.502Z",
+  "note": "Products for content-tools category - 5 products"
+}

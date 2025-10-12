@@ -1,0 +1,43 @@
+{
+  "categories": [
+    {
+      "id": 21,
+      "name": "Ai tools",
+      "slug": "ai-tools",
+      "count": 24
+    },
+    {
+      "id": 23,
+      "name": "Amazon tools",
+      "slug": "amazon-tools",
+      "count": 4
+    },
+    {
+      "id": 22,
+      "name": "Content tools",
+      "slug": "content-tools",
+      "count": 5
+    },
+    {
+      "id": 24,
+      "name": "Design tools",
+      "slug": "design-tools",
+      "count": 11
+    },
+    {
+      "id": 19,
+      "name": "seo",
+      "slug": "seo",
+      "count": 148
+    },
+    {
+      "id": 16,
+      "name": "Uncategorized",
+      "slug": "uncategorized",
+      "count": 432
+    }
+  ],
+  "totalCategories": 6,
+  "lastUpdated": "2025-10-12T18:44:13.496Z",
+  "note": "Lightweight categories - only essential fields, no SEO bloat"
+}

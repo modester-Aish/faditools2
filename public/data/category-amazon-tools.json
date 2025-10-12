@@ -1,0 +1,132 @@
+{
+  "products": [
+    {
+      "id": 7417,
+      "name": "Shopia Group Buy",
+      "slug": "shopia-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7416,
+          "date_created": "2025-09-07T16:19:46",
+          "date_created_gmt": "2025-09-07T16:19:46",
+          "date_modified": "2025-09-07T16:19:46",
+          "date_modified_gmt": "2025-09-07T16:19:46",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/pll-3.png",
+          "name": "pll-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/pll-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/pll-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/pll-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/pll-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 23,
+          "name": "Amazon tools",
+          "slug": "amazon-tools"
+        }
+      ]
+    },
+    {
+      "id": 7403,
+      "name": "Bishopi Group Buy",
+      "slug": "bishopi-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7402,
+          "date_created": "2025-09-07T16:18:51",
+          "date_created_gmt": "2025-09-07T16:18:51",
+          "date_modified": "2025-09-07T16:18:51",
+          "date_modified_gmt": "2025-09-07T16:18:51",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/vida-3.png",
+          "name": "vida-3.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/vida-3.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/vida-3-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/vida-3-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/vida-3.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 23,
+          "name": "Amazon tools",
+          "slug": "amazon-tools"
+        }
+      ]
+    },
+    {
+      "id": 7307,
+      "name": "Productioncrate Group Buy",
+      "slug": "productioncrate-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7306,
+          "date_created": "2025-09-07T16:13:38",
+          "date_created_gmt": "2025-09-07T16:13:38",
+          "date_modified": "2025-09-07T16:13:38",
+          "date_modified_gmt": "2025-09-07T16:13:38",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/pixeden-group-buy-2.png",
+          "name": "pixeden-group-buy-2.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/pixeden-group-buy-2.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/pixeden-group-buy-2-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/pixeden-group-buy-2-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/pixeden-group-buy-2.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 23,
+          "name": "Amazon tools",
+          "slug": "amazon-tools"
+        }
+      ]
+    },
+    {
+      "id": 7203,
+      "name": "Coursera Group Buy",
+      "slug": "coursera-group-buy",
+      "price": "3.99",
+      "regular_price": "3.99",
+      "sale_price": "",
+      "on_sale": false,
+      "images": [
+        {
+          "id": 7202,
+          "date_created": "2025-09-07T16:07:07",
+          "date_created_gmt": "2025-09-07T16:07:07",
+          "date_modified": "2025-09-07T16:07:07",
+          "date_modified_gmt": "2025-09-07T16:07:07",
+          "src": "https://app.faditools.com/wp-content/uploads/2025/09/textmetrics-group-buy-2.png",
+          "name": "textmetrics-group-buy-2.png",
+          "alt": "",
+          "srcset": "https://app.faditools.com/wp-content/uploads/2025/09/textmetrics-group-buy-2.png 200w, https://app.faditools.com/wp-content/uploads/2025/09/textmetrics-group-buy-2-150x150.png 150w, https://app.faditools.com/wp-content/uploads/2025/09/textmetrics-group-buy-2-100x100.png 100w",
+          "sizes": "(max-width: 200px) 100vw, 200px",
+          "thumbnail": "https://app.faditools.com/wp-content/uploads/2025/09/textmetrics-group-buy-2.png"
+        }
+      ],
+      "categories": [
+        {
+          "id": 23,
+          "name": "Amazon tools",
+          "slug": "amazon-tools"
+        }
+      ]
+    }
+  ],
+  "totalProducts": 4,
+  "category": "amazon-tools",
+  "lastUpdated": "2025-10-12T18:44:13.506Z",
+  "note": "Products for amazon-tools category - 4 products"
+}
