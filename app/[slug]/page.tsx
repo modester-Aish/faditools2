@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { wooCommerceService } from '@/lib/woocommerce-service'
 import ProductDetail from '@/components/ProductDetail'
 import { WooCommerceProduct } from '@/lib/woocommerce-api'
+import { loadProductBySlug, loadRelatedProducts } from '@/lib/static-product-detail'
 import { Product } from '@/types'
 import { generateCanonicalUrl } from '@/lib/canonical'
 import Header from '@/components/Header'
@@ -9,6 +10,9 @@ import { fetchPostBySlug, fetchPageBySlug, fetchBlogPosts } from '@/lib/api'
 import { WordPressPost, WordPressPage } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
+
+// Enable ISR for product detail pages - revalidate every 6 hours
+export const revalidate = 21600 // 6 hours
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
@@ -79,9 +83,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       }
     }
     
-    // If not a page, try to find a product
-    const wooCommerceData = await wooCommerceService.getWooCommerceData()
-    const product = wooCommerceData.products.find((p: WooCommerceProduct) => p.slug === params.slug)
+    // If not a page, try to find a product (ULTRA-FAST static loading!)
+    const product = await loadProductBySlug(params.slug)
     
     if (!product) {
       return {
@@ -826,9 +829,8 @@ export default async function DynamicPage({ params }: { params: { slug: string }
       )
     }
     
-    // If not a page, try to find a product
-    const wooCommerceData = await wooCommerceService.getWooCommerceData()
-    const product = wooCommerceData.products.find((p: WooCommerceProduct) => p.slug === params.slug)
+    // If not a page, try to find a product (ULTRA-FAST static loading!)
+    const product = await loadProductBySlug(params.slug)
     
     if (!product) {
       return (
@@ -902,16 +904,9 @@ export default async function DynamicPage({ params }: { params: { slug: string }
       }
     } as any
 
-    // Get related products (products in same category)
-    const relatedProducts = wooCommerceData.products
-      .filter((p: WooCommerceProduct) => 
-        p.id !== product.id && 
-        p.categories.some(cat => 
-          product.categories.some(prodCat => prodCat.id === cat.id)
-        )
-      )
-      .slice(0, 4)
-      .map((relatedProduct: WooCommerceProduct) => ({
+    // Get related products from static data (ULTRA-FAST!)
+    const relatedProductsData = await loadRelatedProducts(product.slug, 4)
+    const relatedProducts = relatedProductsData.map((relatedProduct: WooCommerceProduct) => ({
         id: relatedProduct.id,
         date: relatedProduct.date_created,
         modified: relatedProduct.date_modified,
