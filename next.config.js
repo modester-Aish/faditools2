@@ -107,7 +107,7 @@ const nextConfig = {
   // Output configuration for better deployment
   output: 'standalone',
   
-  // Headers for better caching
+  // Headers for better caching and performance
   async headers() {
     return [
       {
@@ -132,6 +132,20 @@ const nextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin'
+          }
+        ]
+      },
+      // Optimize CSS files for better performance
+      {
+        source: '/_next/static/css/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          },
+          {
+            key: 'Link',
+            value: '</_next/static/css/(.*)>; rel=preload; as=style'
           }
         ]
       },
@@ -177,6 +191,16 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      },
+      // Cache static data files
+      {
+        source: '/data/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, stale-while-revalidate=43200'
           }
         ]
       }

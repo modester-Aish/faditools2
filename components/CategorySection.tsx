@@ -266,14 +266,16 @@ export default function CategorySection({ categories, products = [] }: CategoryS
                 <div key={product.id} className="group relative bg-background backdrop-blur-xl rounded-3xl p-6 border border-emerald-200 hover:border-emerald-300 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 h-[400px] flex flex-col">
                   <div className="absolute inset-0 bg-[#FFFFFF] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10 flex flex-col h-full">
-                    {/* Image Section */}
-                    <div className="mb-4">
+                    {/* Image Section - Fixed height to prevent layout shifts */}
+                    <div className="mb-4 h-20">
                       {product.images && product.images.length > 0 ? (
-                        <div className="relative overflow-hidden rounded-2xl">
+                        <div className="relative overflow-hidden rounded-2xl h-full">
                           <img
                             src={product.images[0].src}
                             alt={product.images[0].alt || product.name}
-                            className="w-full h-20 object-cover group-hover:scale-110 transition-transform duration-500"
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            loading="lazy"
+                            decoding="async"
                           />
                           {/* Image Overlay */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -286,7 +288,7 @@ export default function CategorySection({ categories, products = [] }: CategoryS
                           )}
                         </div>
                       ) : (
-                        <div className="w-full h-20 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl flex items-center justify-center border-2 border-dashed border-emerald-500/30">
+                        <div className="w-full h-full bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl flex items-center justify-center border-2 border-dashed border-emerald-500/30">
                           <div className="text-center">
                             <svg className="w-8 h-8 text-emerald-500/50 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />

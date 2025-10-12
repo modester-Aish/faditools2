@@ -6,6 +6,8 @@ import { NavigationProvider } from '@/context/NavigationContext'
 import { AuthProvider } from '@/context/AuthContext'
 import { generateCanonicalUrl } from '@/lib/canonical'
 import dynamic from 'next/dynamic'
+import CriticalCSS from '@/components/CriticalCSS'
+import ServiceWorker from '@/components/ServiceWorker'
 
 // Lazy load non-critical components
 const FloatingChatButtons = dynamic(() => import('@/components/FloatingChatButtons'), {
@@ -111,6 +113,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <CriticalCSS />
+        {/* Preconnect to third-party domains for faster loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://upload.wikimedia.org" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="manifest" href="/manifest.json" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <meta name="google-site-verification" content="FLAscQ24VbDi1GaSCy0mIVHSFr6L8GOTXEK4yBN1tVk" />
         <meta name="msvalidate.01" content="CA9C80743C5C403924230A48CF321E7C" />
@@ -230,6 +239,7 @@ export default function RootLayout({
         <AuthProvider>
           <NavigationProvider>
             <CartProvider>
+              <ServiceWorker />
               {children}
               <FloatingChatButtons />
             </CartProvider>
