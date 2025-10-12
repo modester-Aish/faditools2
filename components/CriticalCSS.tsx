@@ -129,11 +129,43 @@ export default function CriticalCSS() {
           gap: 1rem;
         }
         
-        /* Critical mobile styles */
-        .mobile-optimized {
-          transform: translateZ(0);
-          will-change: transform;
+      /* Critical mobile styles */
+      .mobile-optimized {
+        transform: translateZ(0);
+        will-change: transform;
+      }
+      
+      /* Performance optimizations */
+      * {
+        box-sizing: border-box;
+      }
+      
+      html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      
+      /* Reduce layout shifts */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      
+      /* Optimize animations */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
         }
+      }
       }
       
       /* Mobile performance optimizations */

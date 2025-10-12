@@ -127,6 +127,9 @@ const nextConfig = {
     optimizeCss: true,
     serverComponentsExternalPackages: [],
     // Removed bundlePagesRouterDependencies - not supported by Turbopack
+    // Additional performance optimizations
+    optimizeServerReact: true,
+    webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB'],
   },
   
   // Image optimization
