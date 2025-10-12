@@ -25,7 +25,10 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   preload: true,
-  variable: '--font-inter'
+  variable: '--font-inter',
+  // Optimize font loading
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+  adjustFontFallback: false,
 })
 
 export const metadata: Metadata = {
@@ -114,11 +117,34 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <CriticalCSS />
-        {/* Preconnect to third-party domains for faster loading */}
+        {/* Advanced resource hints for maximum performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://upload.wikimedia.org" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="preconnect" href="https://app.faditools.com" />
+        
+        {/* DNS prefetch for additional domains */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://upload.wikimedia.org" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+        <link rel="dns-prefetch" href="https://app.faditools.com" />
+        
+        {/* Preload critical resources for mobile */}
+        <link rel="preload" href="/data/homepage-products.json" as="fetch" crossOrigin="anonymous" />
+        <link rel="preload" href="/data/homepage-categories.json" as="fetch" crossOrigin="anonymous" />
+        
+        {/* Mobile-specific optimizations */}
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="format-detection" content="telephone=no" />
+        
+        {/* Preload critical mobile resources */}
+        <link rel="modulepreload" href="/_next/static/chunks/pages/_app.js" />
+        <link rel="modulepreload" href="/_next/static/chunks/pages/_error.js" />
+        
         <link rel="manifest" href="/manifest.json" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <meta name="google-site-verification" content="FLAscQ24VbDi1GaSCy0mIVHSFr6L8GOTXEK4yBN1tVk" />

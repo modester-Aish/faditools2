@@ -53,6 +53,17 @@ export default function CriticalCSS() {
         src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
       }
       
+      /* System font fallback for instant text rendering */
+      body {
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-display: swap;
+      }
+      
+      /* Prevent font flash */
+      .font-loading {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      
       /* Critical button styles */
       .btn-primary {
         background: linear-gradient(135deg, #10b981 0%, #059669 100%);
@@ -78,6 +89,73 @@ export default function CriticalCSS() {
       @keyframes loading {
         0% { background-position: 200% 0; }
         100% { background-position: -200% 0; }
+      }
+      
+      /* Mobile-specific optimizations */
+      @media (max-width: 768px) {
+        .hero-section {
+          min-height: 70vh;
+          padding: 2rem 0;
+        }
+        
+        .product-card {
+          margin-bottom: 1rem;
+        }
+        
+        .image-container {
+          height: 4rem;
+        }
+        
+        /* Reduce font sizes for mobile */
+        h1 { font-size: 1.75rem; }
+        h2 { font-size: 1.5rem; }
+        h3 { font-size: 1.25rem; }
+        
+        /* Optimize button sizes for touch */
+        .btn-primary {
+          padding: 1rem 1.5rem;
+          font-size: 1rem;
+          min-height: 44px; /* Touch target size */
+        }
+        
+        /* Reduce spacing on mobile */
+        .category-section {
+          padding: 3rem 0;
+        }
+        
+        /* Optimize grid for mobile */
+        .product-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+        
+        /* Critical mobile styles */
+        .mobile-optimized {
+          transform: translateZ(0);
+          will-change: transform;
+        }
+      }
+      
+      /* Mobile performance optimizations */
+      @media (max-width: 480px) {
+        .hero-section {
+          min-height: 60vh;
+        }
+        
+        .product-grid {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+        }
+        
+        .image-container {
+          height: 3.5rem;
+        }
+        
+        /* Ultra-compact mobile layout */
+        .mobile-compact {
+          padding: 1rem;
+          margin: 0.5rem;
+        }
       }
     `
     }} />

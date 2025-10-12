@@ -34,7 +34,7 @@ const nextConfig = {
       }
     }
     
-    // CSS optimization for better performance
+    // Advanced optimization for maximum performance
     if (!isServer) {
       config.optimization = {
         ...config.optimization,
@@ -44,22 +44,52 @@ const nextConfig = {
           maxSize: 244000,
           cacheGroups: {
             ...config.optimization.splitChunks?.cacheGroups,
-            styles: {
-              name: 'styles',
+            // Critical CSS
+            critical: {
+              name: 'critical',
               test: /\.(css|scss)$/,
               chunks: 'all',
               enforce: true,
+              priority: 20,
             },
+            // Vendor libraries
             vendor: {
               test: /[\\/]node_modules[\\/]/,
               name: 'vendors',
               chunks: 'all',
-              priority: 10,
+              priority: 15,
               reuseExistingChunk: true,
+              enforce: true,
             },
+            // React and Next.js specific
+            react: {
+              test: /[\\/]node_modules[\\/](react|react-dom|next)[\\/]/,
+              name: 'react',
+              chunks: 'all',
+              priority: 18,
+              enforce: true,
+            },
+            // Mobile-specific chunks
+            mobile: {
+              test: /[\\/]components[\\/].*\.(js|jsx|ts|tsx)$/,
+              name: 'mobile',
+              chunks: 'all',
+              priority: 12,
+              enforce: true,
+            },
+            // Common components
             common: {
               name: 'common',
               minChunks: 2,
+              chunks: 'all',
+              priority: 10,
+              reuseExistingChunk: true,
+              enforce: true,
+            },
+            // Default chunks
+            default: {
+              name: 'default',
+              minChunks: 1,
               chunks: 'all',
               priority: 5,
               reuseExistingChunk: true,
@@ -68,6 +98,11 @@ const nextConfig = {
         },
         usedExports: true,
         sideEffects: false,
+        // Tree shaking optimization
+        providedExports: true,
+        concatenateModules: true,
+        // Minimize bundle size
+        minimize: true,
       }
     }
     
@@ -83,11 +118,15 @@ const nextConfig = {
   // Power optimizations
   poweredByHeader: false,
   
-  // Enable modern features
+  // Enable modern features and performance optimizations
   experimental: {
     forceSwcTransforms: true,
     esmExternals: true,
     optimizePackageImports: ['@/components', '@/lib'],
+    // Enable advanced optimizations
+    optimizeCss: true,
+    serverComponentsExternalPackages: [],
+    // Removed bundlePagesRouterDependencies - not supported by Turbopack
   },
   
   // Image optimization
@@ -98,7 +137,8 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 year cache
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    // Optimized sizes for mobile-first approach
+    deviceSizes: [320, 420, 768, 1024, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     // Enable modern image formats for better compression
     loader: 'default',
@@ -201,6 +241,38 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=86400, stale-while-revalidate=43200'
+          }
+        ]
+      },
+      // Mobile-specific headers
+      {
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          },
+          {
+            key: 'Vary',
+            value: 'Accept-Encoding'
+          }
+        ]
+      },
+      // Optimize for mobile
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin'
           }
         ]
       }

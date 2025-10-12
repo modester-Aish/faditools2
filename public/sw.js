@@ -9,13 +9,17 @@ const CACHE_NAME = 'faditools-v1.0.0'
 const STATIC_CACHE = 'faditools-static-v1.0.0'
 const DYNAMIC_CACHE = 'faditools-dynamic-v1.0.0'
 
-// Assets to cache immediately
+// Assets to cache immediately (mobile-optimized)
 const STATIC_ASSETS = [
   '/',
   '/favicon.ico',
   '/faditools-favicon.svg',
-  '/data/products.json',
-  '/data/categories.json',
+  '/data/homepage-products.json',
+  '/data/homepage-categories.json'
+]
+
+// Mobile-specific assets
+const MOBILE_ASSETS = [
   '/data/homepage-products.json',
   '/data/homepage-categories.json'
 ]
