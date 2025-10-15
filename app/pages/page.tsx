@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Resources & Guides 2025 - SEO Tools Learning Center | FadiTools',
-  description: 'Explore SEO tools guides, tutorials, pricing info & comprehensive resources. Learn how to use group buy tools effectively. Resources for beginners, agencies & professionals.',p
+  description: 'Explore SEO tools guides, tutorials, pricing info & comprehensive resources. Learn how to use group buy tools effectively. Resources for beginners, agencies & professionals.',
   openGraph: {
     title: 'Resources & Guides 2025 - SEO Tools Learning Center | FadiTools',
     description: 'Explore SEO tools guides, tutorials, pricing info & comprehensive resources. Learn how to use group buy tools effectively.',
