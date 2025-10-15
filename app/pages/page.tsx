@@ -7,11 +7,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export const metadata: Metadata = {
-  title: 'All Pages & Resources | FadiTools',
-  description: 'Explore all FadiTools pages and resources. Find SEO tools guides, pricing information, tutorials, and comprehensive digital marketing resources for beginners and professionals.',
+  title: 'Resources & Guides 2025 - SEO Tools Learning Center | FadiTools',
+  description: 'Explore SEO tools guides, tutorials, pricing info & comprehensive resources. Learn how to use group buy tools effectively. Resources for beginners, agencies & professionals.',p
   openGraph: {
-    title: 'All Pages & Resources | FadiTools',
-    description: 'Explore all FadiTools pages and resources. Find SEO tools guides, pricing information, tutorials, and comprehensive digital marketing resources for beginners and professionals.',
+    title: 'Resources & Guides 2025 - SEO Tools Learning Center | FadiTools',
+    description: 'Explore SEO tools guides, tutorials, pricing info & comprehensive resources. Learn how to use group buy tools effectively.',
     url: 'https://faditools.com/pages',
     siteName: 'FadiTools',
     locale: 'en_US',
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'All Pages & Resources | FadiTools',
-    description: 'Browse all available pages on FadiTools',
+    title: 'Resources & Guides 2025 - SEO Tools Learning Center | FadiTools',
+    description: 'Explore SEO tools guides, tutorials, pricing info & comprehensive resources. Learn how to use group buy tools effectively.',
   },
   alternates: {
     canonical: generateCanonicalUrl('/pages'),

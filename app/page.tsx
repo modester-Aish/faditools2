@@ -12,9 +12,9 @@ import Typewriter from '../components/Typewriter'
 import FAQSection from '../components/FAQSection'
 
 export const metadata: Metadata = {
-  title: 'Best SEO Tools 2024 | Ahrefs, SEMrush Group Buy | FadiTools',
-  description: 'Get Ahrefs group buy & SEMrush group buy at 90% discount! What is the best SEO tool? How to choose SEO tools? Which SEO tool is better? How much does Ahrefs cost? Find answers and save thousands on premium SEO tools!',
-  keywords: 'best SEO tools, keyword research tool, backlink checker, site audit tool, rank tracking tool, group buy SEO tools, Ahrefs group buy, SEMrush group buy, cheap SEO tools, affordable SEO tools, SEO tools pricing, SEO tools comparison, best SEO tools 2024, Ahrefs alternative, SEMrush alternative, best SEO tools for beginners, SEO tools for small business, free keyword research tools, Ahrefs vs SEMrush comparison, local SEO tools, beginner friendly SEO tools, affordable SEO tools for startups, best SEO tools for agencies, what is the best SEO tool, how to choose SEO tools, which SEO tool is better, how much does Ahrefs cost, what are the best SEO tools for 2024',
+  title: 'Best Group Buy SEO Tools 2025 - 50+ Premium Tools at 90% OFF | FadiTools',
+  description: 'Get shared access to 50+ premium SEO and digital marketing tools at 90% discount. Affordable subscription plans starting from $4.99/month. Join our trusted marketplace with 45,000+ users. Instant setup, 99% uptime guaranteed.',
+  keywords: 'premium seo tools, marketing tools group buy, affordable seo subscription, shared access tools, seo tools marketplace, digital marketing tools 2025, cheap seo tools, professional marketing software, group buy platform, seo tools discount, seo subscription service, affordable marketing tools, premium tools access, digital marketing subscription, seo tools 2025, marketing tools affordable, group buy seo services, shared seo tools access, premium group buy platform, marketing tools discount',
   authors: [{ name: 'FadiTools Team' }],
   creator: 'FadiTools',
   publisher: 'FadiTools',
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'FadiTools - Premium SEO Tools & Digital Marketing Solutions',
-    description: 'Get Ahrefs group buy & SEMrush group buy at 90% discount! What is the best SEO tool? How to choose SEO tools? Which SEO tool is better? Find answers and save thousands!',
+    title: 'Best Group Buy SEO Tools 2025 - 50+ Premium Tools at 90% OFF | FadiTools',
+    description: 'Get shared access to 50+ premium SEO and digital marketing tools at 90% discount. Join our trusted marketplace with 45,000+ users. Instant setup, 99% uptime. Starting $4.99/month.',
     url: 'https://faditools.com',
     siteName: 'FadiTools',
     images: [{ url: 'https://faditools.com/logo.png', width: 1200, height: 630, alt: 'FadiTools - Premium SEO Tools Platform' }],
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FadiTools - Premium SEO Tools & Digital Marketing Solutions',
-    description: 'Get Ahrefs group buy & SEMrush group buy at 90% discount! What is the best SEO tool? How to choose SEO tools? Which SEO tool is better? Find answers and save thousands!',
+    title: 'Best Group Buy SEO Tools 2025 - 50+ Premium Tools at 90% OFF | FadiTools',
+    description: 'Get shared access to 50+ premium SEO and digital marketing tools at 90% discount. Join 45,000+ users. Instant setup, 99% uptime. Starting $4.99/month.',
     images: ['https://faditools.com/logo.png'],
     creator: '@faditools',
     site: '@faditools',

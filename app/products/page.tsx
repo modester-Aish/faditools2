@@ -8,12 +8,12 @@ import { Product } from '@/types'
 import { generateCanonicalUrl } from '@/lib/canonical'
 
 export const metadata: Metadata = {
-  title: 'SEO Tools & Digital Marketing Products | FadiTools',
-  description: 'Get Ahrefs group buy & SEMrush group buy at 90% discount! Best SEO tools for beginners, small business & agencies. Free keyword research tools, Ahrefs vs SEMrush comparison, local SEO tools - save thousands!',
-  keywords: 'SEO tools pricing, SEO tools comparison, best SEO tools, keyword research tool, backlink checker, site audit tool, rank tracking tool, Ahrefs vs SEMrush comparison, local SEO tools, beginner friendly SEO tools, competitor analysis tools, content optimization tools, digital marketing tools, group buy SEO tools, Ahrefs group buy, SEMrush group buy, cheap SEO tools, affordable SEO tools, Ahrefs alternative, SEMrush alternative, discount SEO tools',
+  title: 'SEO Tools 2025 - 50+ Premium Group Buy Tools at 90% OFF | FadiTools',
+  description: 'Access 50+ premium SEO and digital marketing tools at 90% discount. Group buy subscription for keyword research, backlink analysis, site audits & more. Affordable pricing for agencies & businesses.',
+  keywords: 'seo tools 2025, group buy seo tools, premium seo tools, digital marketing tools, affordable seo tools, seo tools pricing, seo tools comparison, keyword research tool, backlink checker, site audit tool, rank tracking tool, competitor analysis tools, content optimization tools, cheap seo tools, seo tools discount, professional seo tools, marketing tools 2025',
   openGraph: {
-    title: 'SEO Tools & Digital Marketing Products | FadiTools',
-    description: 'Get Ahrefs group buy & SEMrush group buy at 90% discount! Best SEO tools for beginners, small business & agencies. Free keyword research tools, Ahrefs vs SEMrush comparison.',
+    title: 'SEO Tools 2025 - 50+ Premium Group Buy Tools at 90% OFF | FadiTools',
+    description: 'Access 50+ premium SEO and digital marketing tools at 90% discount. Group buy subscription for keyword research, backlink analysis, site audits & more.',
     url: 'https://faditools.com/products',
     siteName: 'FadiTools',
     locale: 'en_US',
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SEO Tools & Digital Marketing Products | FadiTools',
-    description: 'Get Ahrefs group buy & SEMrush group buy at 90% discount! Best SEO tools for beginners, small business & agencies. Free keyword research tools, Ahrefs vs SEMrush comparison.',
+    title: 'SEO Tools 2025 - 50+ Premium Group Buy Tools at 90% OFF | FadiTools',
+    description: 'Access 50+ premium SEO and digital marketing tools at 90% discount. Group buy subscription. Affordable pricing for agencies & businesses.',
   },
   alternates: {
     canonical: generateCanonicalUrl('/products'),

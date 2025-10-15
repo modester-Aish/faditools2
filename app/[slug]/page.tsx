@@ -101,8 +101,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     
     console.log(`✅ [METADATA] Product found: ${product.name}`)
     
-    const title = `${product.name} - ${product.price} | FadiTools`
-    const description = product.short_description || product.description
+    // SEO-optimized title with trending keywords
+    const title = `${product.name} 2025 - Group Buy at ${product.price}/mo | Save 90% | FadiTools`
+    const description = product.short_description 
+      ? `${product.short_description.replace(/<[^>]*>/g, '').substring(0, 140)} Get instant group buy access at ${product.price}/month. 99% uptime guaranteed.`
+      : `Get ${product.name} group buy access at ${product.price}/month. Premium SEO tool at 90% discount. Instant access, 99% uptime. Perfect for agencies & businesses.`
     
     return {
       title,
@@ -626,11 +629,14 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                           <Link key={product.id} href={`/${product.slug}`} className="block group">
                             <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
                               {product.images && product.images[0] && (
-                                <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                  <img
+                                <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                                  <Image
                                     src={product.images[0].src}
                                     alt={product.name}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                    fill
+                                    sizes="64px"
+                                    className="object-cover group-hover:scale-105 transition-transform"
+                                    loading="lazy"
                                   />
                                 </div>
                               )}

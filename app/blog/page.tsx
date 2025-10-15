@@ -7,11 +7,11 @@ import Image from 'next/image'
 import { generateCanonicalUrl } from '@/lib/canonical'
 
 export const metadata: Metadata = {
-  title: 'SEO Tips & Digital Marketing Blog | FadiTools',
-  description: 'Read our latest SEO tips and digital marketing blog posts. Learn how to use SEO tools, keyword research tips, backlink analysis guides, and SEO tools tutorials. Best SEO tools for agencies and startups.',
+  title: 'SEO Blog 2025 - Latest Tips, Guides & Tool Reviews | FadiTools',
+  description: 'Read latest SEO tips, digital marketing guides and tool reviews 2025. Learn keyword research, backlink analysis, site audits & more. Expert tutorials for agencies & businesses.',
   openGraph: {
-    title: 'SEO Tips & Digital Marketing Blog | FadiTools',
-    description: 'Read our latest SEO tips and digital marketing blog posts. Learn how to use SEO tools, keyword research tips, backlink analysis guides, and SEO tools tutorials.',
+    title: 'SEO Blog 2025 - Latest Tips, Guides & Tool Reviews | FadiTools',
+    description: 'Read latest SEO tips, digital marketing guides and tool reviews 2025. Learn keyword research, backlink analysis, site audits & more.',
     url: 'https://faditools.com/blog',
     siteName: 'FadiTools',
     locale: 'en_US',
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SEO Tips & Digital Marketing Blog | FadiTools',
-    description: 'Read our latest SEO tips and digital marketing blog posts. Learn how to use SEO tools, keyword research tips, backlink analysis guides, and SEO tools tutorials.',
+    title: 'SEO Blog 2025 - Latest Tips, Guides & Tool Reviews | FadiTools',
+    description: 'Read latest SEO tips, digital marketing guides and tool reviews 2025. Learn keyword research, backlink analysis, site audits & more.',
   },
   alternates: {
     canonical: generateCanonicalUrl('/blog'),

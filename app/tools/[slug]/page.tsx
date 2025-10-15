@@ -20,8 +20,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
   }
   
-  const title = `${tool.name} group buy - ${tool.price} ${tool.period} | FadiTools`
-  const description = tool.description || `Get ${tool.name} group buy access at 90% discount. ${tool.name} alternative with affordable pricing. Join thousands of marketers saving on premium SEO tools.`
+  // SEO-optimized title with trending keywords
+  const title = `${tool.name} Group Buy 2025 - ${tool.price}/${tool.period} | Save 90% | FadiTools`
+  const description = tool.description 
+    ? `${tool.description.substring(0, 140)} Get instant group buy access at ${tool.price}/${tool.period}. 99% uptime guaranteed.`
+    : `Get ${tool.name} group buy access at ${tool.price}/${tool.period}. Premium SEO tool at 90% discount. Instant access, 99% uptime. Perfect for agencies, marketers & businesses.`
   
   return {
     title,

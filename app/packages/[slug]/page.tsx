@@ -21,8 +21,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
   }
   
-  const title = `${pkg.name} - SEO Tools Bundle | FadiTools`
-  const description = pkg.description || `Get ${pkg.name} - premium SEO tools bundle at 90% discount. Affordable SEO packages for agencies and marketers. Save thousands on multiple tools.`
+  // SEO-optimized title with trending keywords
+  const title = `${pkg.name} 2025 - Premium SEO Tools Package | Save 90% | FadiTools`
+  const description = pkg.description 
+    ? `${pkg.description.substring(0, 140)} Get group buy access at discounted rates. Perfect for agencies & businesses.`
+    : `Get ${pkg.name} - premium SEO tools package at 90% discount. Group buy access to multiple tools. Instant setup, 99% uptime. Perfect for agencies, marketers & businesses.`
   
   return {
     title,

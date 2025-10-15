@@ -6,12 +6,12 @@ import ErrorBoundary from '@/components/ui/ErrorBoundary'
 import { generateCanonicalUrl } from '@/lib/canonical'
 
 export const metadata: Metadata = {
-  title: 'Customer Reviews & Testimonials | FadiTools',
-  description: 'Read what our customers say about FadiTools. Real testimonials from digital marketing professionals who have transformed their businesses with our tools.',
-  keywords: 'FadiTools reviews, customer testimonials, digital marketing success stories, SEO tool reviews',
+  title: 'Customer Reviews 2025 - 450+ Testimonials from Real Users | FadiTools',
+  description: 'Read 450+ verified customer reviews from 45,000+ users. Real success stories from agencies, marketers & businesses. See why users trust our group buy SEO tools platform.',
+  keywords: 'customer reviews 2025, faditools reviews, user testimonials, seo tools reviews, verified reviews, customer success stories, real user experiences, group buy reviews, agency testimonials, user feedback',
   openGraph: {
-    title: 'Customer Reviews & Testimonials | FadiTools',
-    description: 'Read what our customers say about FadiTools. Real testimonials from digital marketing professionals.',
+    title: 'Customer Reviews 2025 - 450+ Testimonials from Real Users | FadiTools',
+    description: 'Read 450+ verified customer reviews from 45,000+ users. Real success stories from agencies, marketers & businesses using our group buy SEO tools.',
     type: 'website',
   },
   alternates: {
