@@ -8,10 +8,10 @@ import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Resources & Guides 2025 - SEO Tools Learning Center | FadiTools',
-  description: 'Explore SEO tools guides, tutorials, pricing info & comprehensive resources. Learn how to use group buy tools effectively. Resources for beginners, agencies & professionals.',
+  description: 'Explore SEO tools guides, tutorials & pricing info. Learn how to use group buy tools effectively. Resources for beginners & agencies.',
   openGraph: {
     title: 'Resources & Guides 2025 - SEO Tools Learning Center | FadiTools',
-    description: 'Explore SEO tools guides, tutorials, pricing info & comprehensive resources. Learn how to use group buy tools effectively.',
+    description: 'Explore SEO tools guides, tutorials & pricing info. Learn how to use group buy tools effectively. Resources for beginners & agencies.',
     url: 'https://faditools.com/pages',
     siteName: 'FadiTools',
     locale: 'en_US',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Resources & Guides 2025 - SEO Tools Learning Center | FadiTools',
-    description: 'Explore SEO tools guides, tutorials, pricing info & comprehensive resources. Learn how to use group buy tools effectively.',
+    description: 'Explore SEO tools guides, tutorials & pricing info. Learn how to use group buy tools effectively. Resources for beginners & agencies.',
   },
   alternates: {
     canonical: generateCanonicalUrl('/pages'),
