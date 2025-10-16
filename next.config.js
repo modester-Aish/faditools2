@@ -134,8 +134,39 @@ const nextConfig = {
   
   // Image optimization
   images: {
-    domains: ['app.faditools.com', 'images.unsplash.com', 'img.icons8.com', 'cdn-icons-png.flaticon.com', 'upload.wikimedia.org'],
-    unoptimized: process.env.NODE_ENV === 'development',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'app.faditools.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.faditools.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.icons8.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn-icons-png.flaticon.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+        pathname: '/**',
+      },
+    ],
+    unoptimized: false, // Enable image optimization for better performance
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 31536000, // 1 year cache
     dangerouslyAllowSVG: true,

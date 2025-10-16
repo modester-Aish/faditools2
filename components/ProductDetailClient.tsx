@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { useCart } from '@/context/CartContext'
 import { WooCommerceProduct } from '@/lib/woocommerce-api'
 import { Product } from '@/types'
@@ -107,12 +108,16 @@ export default function ProductDetailClient({
           <div className="flex-1 order-2 lg:order-1">
             <div className="space-y-1">
               {/* Main Image - Ultra compact aspect ratio */}
-              <div className="aspect-[3/1] bg-gray-100 rounded-sm overflow-hidden border border-primary-500/20">
+              <div className="relative aspect-[3/1] bg-gray-100 rounded-sm overflow-hidden border border-primary-500/20">
                 {product.images && product.images.length > 0 ? (
-                  <img
+                  <Image
                     src={product.images[selectedImage].src}
                     alt={product.images[selectedImage].alt || product.name}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                    loading="eager"
+                    priority
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-primary-500">
@@ -130,16 +135,19 @@ export default function ProductDetailClient({
                     <button
                       key={index}
                       onClick={() => setSelectedImage(index)}
-                      className={`aspect-[3/1] rounded-sm overflow-hidden border transition-all ${
+                      className={`relative aspect-[3/1] rounded-sm overflow-hidden border transition-all ${
                         selectedImage === index 
                           ? 'border-primary-500 ring-1 ring-primary-500/20' 
                           : 'border-gray-200 hover:border-primary-500/50'
                       }`}
                     >
-                      <img
+                      <Image
                         src={image.src}
                         alt={image.alt || `${product.name} ${index + 1}`}
-                        className="w-full h-full object-cover"
+                        fill
+                        sizes="10vw"
+                        className="object-cover"
+                        loading="lazy"
                       />
                     </button>
                   ))}

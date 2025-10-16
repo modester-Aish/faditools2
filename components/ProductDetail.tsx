@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Product } from '@/types'
 import ProductCard from './ProductCard'
 
@@ -57,13 +58,17 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
             <div className="text-center">
               {/* Product Logo/Image - Larger size like source - Clickable for zoom */}
               <div 
-                className="w-64 h-64 bg-gray-50 rounded-xl overflow-hidden mb-6 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
+                className="relative w-64 h-64 bg-gray-50 rounded-xl overflow-hidden mb-6 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={handleImageZoom}
               >
-                <img
+                <Image
                   src={mainImage}
                   alt={product.title.rendered}
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="256px"
+                  className="object-cover"
+                  loading="eager"
+                  priority
                 />
               </div>
             </div>
@@ -261,12 +266,17 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
       {/* Zoom Modal */}
       {isImageZoomed && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50" onClick={() => setIsImageZoomed(false)}>
-          <div className="max-w-4xl max-h-full p-4">
-            <img
-              src={mainImage}
-              alt={product.title.rendered}
-              className="w-full h-auto object-contain"
-            />
+          <div className="relative max-w-4xl max-h-full p-4">
+            <div className="relative w-full h-[80vh]">
+              <Image
+                src={mainImage}
+                alt={product.title.rendered}
+                fill
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className="object-contain"
+                loading="lazy"
+              />
+            </div>
             <button
               onClick={() => setIsImageZoomed(false)}
               className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300"

@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   // SEO-optimized title with trending keywords
   const title = `${pkg.name} 2025 - Premium SEO Tools Package | Save 90% | FadiTools`
   const description = pkg.description 
-    ? `${pkg.description.substring(0, 140)} Get group buy access at discounted rates. Perfect for agencies & businesses.`
-    : `Get ${pkg.name} - premium SEO tools package at 90% discount. Group buy access to multiple tools. Instant setup, 99% uptime. Perfect for agencies, marketers & businesses.`
+    ? `${pkg.description.substring(0, 100)} Get group buy access at discounted rates.`
+    : `Get ${pkg.name} - premium SEO tools at 90% discount. Group buy access. Instant setup, 99% uptime.`
   
   return {
     title,
