@@ -95,7 +95,7 @@ const pricingData: PricingCard[] = [
   {
     name: 'LITE PLAN',
     price: '$10',
-    toolCount: 'SEMRUSH Combo, 100+ Tools',
+    toolCount: 'SEMRUSH Combo, 20+ Tools',
     description: 'Essential tools',
     icon: '⭐',
     iconBgColor: 'from-blue-500 to-blue-600',
