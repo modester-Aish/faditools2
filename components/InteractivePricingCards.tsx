@@ -42,7 +42,7 @@ const pricingData: PricingCard[] = [
   },
   {
     name: 'AHREF$ COMBO',
-    price: '$30',
+    price: '$25',
     toolCount: '60+ Tools',
     description: 'Best value package',
     icon: '⚡',
