@@ -44,7 +44,9 @@ export default function FloatingChatButtons() {
   const handleWhatsAppClick = () => {
     if (settings?.whatsapp.number) {
       const cleanNumber = settings.whatsapp.number.replace(/[^0-9]/g, '')
-      window.open(`https://wa.me/${cleanNumber}`, '_blank')
+      // Pre-filled message with website reference
+      const message = encodeURIComponent('I am coming from faditools.com ')
+      window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank')
     }
   }
 
