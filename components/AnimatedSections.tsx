@@ -279,7 +279,7 @@ export const PopularToolsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto px-4">
           {[
             {
-              name: 'Ahrefs',
+              name: 'AHREF$',
               id: 'ahrefs',
               price: '$30.00',
               originalPrice: '$99.00',
@@ -287,7 +287,7 @@ export const PopularToolsSection = () => {
               description: 'Comprehensive SEO toolkit for keyword research and backlink analysis'
             },
             {
-              name: 'SEMrush',
+              name: 'SEMRU$H',
               id: 'semrush',
               price: '$4.99',
               originalPrice: '$119.95',
