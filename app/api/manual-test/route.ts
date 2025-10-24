@@ -20,12 +20,12 @@ export async function POST(request: NextRequest) {
     // Test products with affiliate links
     const testProducts = [
       {
-        name: 'Ahrefs SEO Tools - Group Buy',
+        name: 'AHREF$ SEO Tools - Group Buy',
         price: '29.99',
         image: 'https://app.faditools.com/wp-content/uploads/2024/01/ahrefs-logo.svg'
       },
       {
-        name: 'SEMrush Premium - Group Buy',
+        name: 'SEMRU$H Premium - Group Buy',
         price: '39.99',
         image: 'https://app.faditools.com/wp-content/uploads/2024/01/semrush-logo.svg'
       },

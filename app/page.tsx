@@ -155,7 +155,7 @@ export default async function Home() {
               <div className="absolute inset-0">
                 <img 
                   src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=888&q=80&fm=webp" 
-                  alt="Best SEO Tools Group Buy - Ahrefs SEMrush at 90% Discount" 
+                  alt="Best SEO Tools Group Buy - AHREF$ SEMRU$H at 90% Discount" 
                   className="w-full h-full object-cover opacity-40"
                   loading="eager"
                   fetchPriority="high"
@@ -195,7 +195,7 @@ export default async function Home() {
                     </span> Group Buy,
                   </div>
                   <div className="text-white">
-                    Ahrefs & SEMrush at 90% Off.
+                    AHREF$ & SEMRU$H at 90% Off.
                   </div>
                 </h1>
                 
@@ -251,7 +251,7 @@ export default async function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <span className="text-black font-medium text-sm">Ahrefs, SEMrush & More</span>
+                  <span className="text-black font-medium text-sm">AHREF$, SEMRU$H & More</span>
                 </div>
                 
                 <div className="flex items-center">
@@ -347,8 +347,8 @@ export default async function Home() {
             <div>
               <h4 className="text-lg font-semibold text-white mb-4">Tools</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link href="#popular-tools" className="hover:text-emerald-600 transition-colors">Ahrefs</Link></li>
-                <li><Link href="#popular-tools" className="hover:text-emerald-600 transition-colors">SEMrush</Link></li>
+                <li><Link href="#popular-tools" className="hover:text-emerald-600 transition-colors">AHREF$</Link></li>
+                <li><Link href="#popular-tools" className="hover:text-emerald-600 transition-colors">SEMRU$H</Link></li>
                 <li><Link href="#popular-tools" className="hover:text-emerald-600 transition-colors">Moz Pro</Link></li>
                 <li><Link href="#popular-tools" className="hover:text-emerald-600 transition-colors">View All Tools</Link></li>
                 </ul>
@@ -381,7 +381,7 @@ export default async function Home() {
             "name": "FadiTools",
             "url": "https://faditools.com",
             "logo": "https://faditools.com/logo.png",
-            "description": "Premium SEO tools and digital marketing solutions provider offering access to 50+ tools including Ahrefs, SEMrush, and Moz Pro at discounted rates.",
+            "description": "Premium SEO tools and digital marketing solutions provider offering access to 50+ tools including AHREF$, SEMRU$H, and Moz Pro at discounted rates.",
             "foundingDate": "2020",
             "contactPoint": {
               "@type": "ContactPoint",
@@ -427,7 +427,7 @@ export default async function Home() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Premium SEO Tools Access",
-            "description": "Group buy access to premium SEO and digital marketing tools including Ahrefs, SEMrush, Moz Pro, and 50+ other tools",
+            "description": "Group buy access to premium SEO and digital marketing tools including AHREF$, SEMRU$H, Moz Pro, and 50+ other tools",
             "provider": {
               "@type": "Organization",
               "name": "FadiTools"

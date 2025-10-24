@@ -224,7 +224,7 @@ export default function ComprehensiveGuidePage() {
                     Analytics and Tracking
                   </h3>
                   <p className="text-gray-700 mb-4 leading-relaxed">
-                    Understanding your performance is crucial. Tools like Google Analytics, SEMrush, and Ahrefs help you track and analyze your marketing efforts.
+                    Understanding your performance is crucial. Tools like Google Analytics, SEMRU$H, and AHREF$ help you track and analyze your marketing efforts.
                   </p>
 
                   <h3 className="text-2xl font-bold text-gray-800 mb-3 mt-8">

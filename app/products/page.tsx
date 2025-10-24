@@ -182,7 +182,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
               Best SEO Tools & Digital Marketing Products
             </h1>
             <p className="text-base md:text-lg max-w-2xl mx-auto text-white/90 leading-relaxed">
-              Get Ahrefs group buy, SEMrush group buy, and 50+ premium SEO tools at 90% discount. Compare SEO tools pricing, find the best keyword research tools, and save thousands on digital marketing software.
+              Get AHREF$ group buy, SEMRU$H group buy, and 50+ premium SEO tools at 90% discount. Compare SEO tools pricing, find the best keyword research tools, and save thousands on digital marketing software.
             </p>
             <div className="mt-4 flex justify-center space-x-4">
               <div className="px-5 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
@@ -224,10 +224,10 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                 <h3 className="text-3xl font-bold text-text mb-4">No SEO Tools Found</h3>
                 <p className="text-lg text-secondary-500 mb-8">
                   {search 
-                    ? `No SEO tools found matching "${search}". Try searching for "Ahrefs", "SEMrush", "keyword research", or "backlink checker"`
+                    ? `No SEO tools found matching "${search}". Try searching for "AHREF$", "SEMRU$H", "keyword research", or "backlink checker"`
                     : category 
                     ? `No SEO tools found in this category. Browse our full collection of premium SEO tools and digital marketing software.`
-                    : 'Our SEO tools collection is being updated. Please check back soon for the latest premium tools including Ahrefs group buy, SEMrush group buy, and more.'
+                    : 'Our SEO tools collection is being updated. Please check back soon for the latest premium tools including AHREF$ group buy, SEMRU$H group buy, and more.'
                   }
                 </p>
                 <div className="bg-gradient-to-r from-primary-50 to-primary-100 border border-primary-200 rounded-2xl p-8 text-left shadow-lg">
@@ -236,8 +236,8 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                     <div className="space-y-2">
                       <p className="font-semibold">Keyword Research Tools:</p>
                       <ul className="space-y-1 text-sm">
-                        <li>• Ahrefs Keyword Explorer</li>
-                        <li>• SEMrush Keyword Magic Tool</li>
+                        <li>• AHREF$ Keyword Explorer</li>
+                        <li>• SEMRU$H Keyword Magic Tool</li>
                         <li>• Ubersuggest</li>
                         <li>• Answer The Public</li>
                       </ul>
@@ -245,8 +245,8 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                     <div className="space-y-2">
                       <p className="font-semibold">Backlink Analysis Tools:</p>
                       <ul className="space-y-1 text-sm">
-                        <li>• Ahrefs Site Explorer</li>
-                        <li>• SEMrush Backlink Analytics</li>
+                        <li>• AHREF$ Site Explorer</li>
+                        <li>• SEMRU$H Backlink Analytics</li>
                         <li>• Majestic SEO</li>
                         <li>• Moz Link Explorer</li>
                       </ul>
@@ -254,8 +254,8 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                     <div className="space-y-2">
                       <p className="font-semibold">Site Audit Tools:</p>
                       <ul className="space-y-1 text-sm">
-                        <li>• SEMrush Site Audit</li>
-                        <li>• Ahrefs Site Audit</li>
+                        <li>• SEMRU$H Site Audit</li>
+                        <li>• AHREF$ Site Audit</li>
                         <li>• Screaming Frog</li>
                         <li>• GTmetrix</li>
                       </ul>
