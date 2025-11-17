@@ -1,4 +1,5 @@
 import { getTools } from '@/lib/api'
+import { getAllPopularTools } from '@/data/popular-tools'
 
 export const dynamic = 'force-static'
 export const revalidate = 3600 // Revalidate every hour
@@ -7,14 +8,29 @@ export async function GET() {
   const baseUrl = 'https://faditools.com'
   
   try {
+    // Get tools from API
     const tools = await getTools()
     
-    const toolPages = tools.map(tool => ({
+    // Get popular tools from data file
+    const popularTools = getAllPopularTools()
+    
+    // Combine both: API tools and popular tools
+    const apiToolPages = tools.map(tool => ({
       url: `${baseUrl}/${tool.id}`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     }))
+    
+    // Popular tools pages (these are at /[slug] - direct slug, not /tools/[slug])
+    const popularToolPages = popularTools.map(tool => ({
+      url: `${baseUrl}/${tool.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9, // Higher priority for popular tools
+    }))
+    
+    const toolPages = [...apiToolPages, ...popularToolPages]
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

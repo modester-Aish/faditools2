@@ -1,5 +1,6 @@
 import { fetchPages, fetchBlogPosts } from '@/lib/api'
 import { MetadataRoute } from 'next'
+import { getAllPopularTools } from '@/data/popular-tools'
 
 // Direct WooCommerce API credentials for efficient product fetching
 const WOOCOMMERCE_BASE_URL = process.env.WOOCOMMERCE_BASE_URL || 'https://app.faditools.com'
@@ -51,7 +52,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  // Tool pages with clean URLs
+  // Popular tools pages (from popular-tools.ts) - these are at /[slug] (direct slug)
+  const popularTools = getAllPopularTools()
+  const popularToolPages = popularTools.map(tool => ({
+    url: `${baseUrl}/${tool.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.9, // Higher priority for popular tools
+  }))
+  
+  // Legacy tool pages with clean URLs (if any)
   const toolPages = [
     'ahrefs',
     'semrush', 
@@ -139,9 +149,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }
     }
 
-    return [...staticPages, ...toolPages, ...packagePages, ...wordPressPages, ...wordPressPosts, ...wordPressProducts]
+    return [...staticPages, ...popularToolPages, ...toolPages, ...packagePages, ...wordPressPages, ...wordPressPosts, ...wordPressProducts]
   } catch (error) {
     console.error('Error generating sitemap:', error)
-    return [...staticPages, ...toolPages, ...packagePages]
+    return [...staticPages, ...popularToolPages, ...toolPages, ...packagePages]
   }
 }

@@ -3,79 +3,27 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Product } from '@/types'
-import ProductCard from './ProductCard'
-import { getProductIdBySlug, getProductIdByName, generateBuyUrl } from '@/data/product-id-mapping'
+import { PopularTool } from '@/data/popular-tools'
+import { getAllPopularTools } from '@/data/popular-tools'
 
-interface ProductDetailProps {
-  product: Product
-  relatedProducts?: Product[]
+interface ToolDetailProps {
+  tool: PopularTool
+  relatedTools?: PopularTool[]
 }
 
-export default function ProductDetail({ product, relatedProducts = [] }: ProductDetailProps) {
-  const [selectedImage, setSelectedImage] = useState(0)
+export default function ToolDetail({ tool, relatedTools = [] }: ToolDetailProps) {
   const [isTableExpanded, setIsTableExpanded] = useState(false)
   const [isImageZoomed, setIsImageZoomed] = useState(false)
   const [purchaseCount, setPurchaseCount] = useState(0)
   const [soldCounts, setSoldCounts] = useState<number[]>([])
 
-  const handleAffiliatePurchase = () => {
-    // Priority: 1. Specific product ID from slug mapping, 2. Product ID from name matching, 3. affiliate_link, 4. product.id URL, 5. fallback signup
-    
-    console.log('🔍 Buy Now clicked - Product:', {
-      slug: product.slug,
-      name: product.title?.rendered,
-      id: product.id,
-      affiliate_link: product.affiliate_link
-    })
-    
-    // First check if we have a specific product ID mapping for this slug
-    // Also try without "group-buy" suffix
-    let mappedProductId = getProductIdBySlug(product.slug)
-    
-    // If slug has "group-buy" or similar, try without it
-    if (!mappedProductId && product.slug) {
-      const slugWithoutSuffix = product.slug
-        .replace(/-group-buy$/i, '')
-        .replace(/-group$/i, '')
-        .replace(/-buy$/i, '')
-      mappedProductId = getProductIdBySlug(slugWithoutSuffix)
-      console.log('🔍 Slug without suffix match:', slugWithoutSuffix, '→', mappedProductId)
+  const handlePurchase = () => {
+    // Open buy URL in new tab if available, otherwise fallback to signup
+    if (tool.buyUrl) {
+      window.open(tool.buyUrl, '_blank')
+    } else {
+      window.open('https://members.seotoolsgroupbuy.us/signup', '_blank')
     }
-    
-    console.log('✅ Slug match result:', mappedProductId)
-    
-    // If not found by slug, try matching by product name (fuzzy matching)
-    if (!mappedProductId && product.title?.rendered) {
-      mappedProductId = getProductIdByName(product.title.rendered)
-      console.log('✅ Name match result:', mappedProductId)
-    }
-    
-    if (mappedProductId) {
-      const buyUrl = generateBuyUrl(mappedProductId)
-      console.log('✅ Using mapped product ID URL:', buyUrl)
-      window.open(buyUrl, '_blank')
-      return
-    }
-    
-    // Second priority: Use existing affiliate_link (original behavior)
-    if (product.affiliate_link) {
-      console.log('✅ Using affiliate_link:', product.affiliate_link)
-      window.open(product.affiliate_link, '_blank')
-      return
-    }
-    
-    // Third priority: Generate buy URL using product.id
-    if (product.id) {
-      const buyUrl = `https://members.seotoolsgroupbuy.us/cart/index/product/id/${product.id}/c/`
-      console.log('✅ Using product.id URL:', buyUrl)
-      window.open(buyUrl, '_blank')
-      return
-    }
-    
-    // Fallback to signup page (original behavior)
-    console.log('⚠️ Using fallback signup page - No match found')
-    window.open('https://members.seotoolsgroupbuy.us/signup', '_blank')
   }
 
   const handleImageZoom = () => {
@@ -85,41 +33,39 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
   // Generate random numbers on client-side to avoid hydration errors
   useEffect(() => {
     setPurchaseCount(Math.floor(Math.random() * 70) + 1)
-    setSoldCounts(relatedProducts.slice(0, 8).map(() => Math.floor(Math.random() * 50) + 1))
-  }, [relatedProducts])
+    setSoldCounts(relatedTools.slice(0, 8).map(() => Math.floor(Math.random() * 50) + 1))
+  }, [relatedTools])
 
+  const price = parseFloat(tool.price.replace('$', ''))
+  const originalPrice = parseFloat(tool.originalPrice.replace('$', ''))
+  const savings = (originalPrice - price).toFixed(2)
+  const savingsPercent = Math.round(((originalPrice - price) / originalPrice) * 100)
 
-
-  const images = product.images || []
-  const mainImage = images[selectedImage]?.src || '/images/placeholder-product.jpg'
-  const price = product.on_sale && product.sale_price ? product.sale_price : product.price || product.regular_price
-  const regularPrice = product.regular_price
-  const isOnSale = product.on_sale && product.sale_price
-  
-  // Calculate savings
-  const savings = regularPrice && price ? (parseFloat(regularPrice) - parseFloat(price)).toFixed(2) : '0'
-  const savingsPercent = regularPrice && price ? Math.round(((parseFloat(regularPrice) - parseFloat(price)) / parseFloat(regularPrice)) * 100) : 0
+  // Get related tools if not provided
+  const displayRelatedTools = relatedTools.length > 0 
+    ? relatedTools 
+    : getAllPopularTools().filter(t => t.id !== tool.id).slice(0, 8)
 
   return (
     <div className="bg-white">
-      {/* Main Product Section - Source Style */}
+      {/* Main Tool Section - Source Style */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           
-          {/* Left Column - Product Logo */}
+          {/* Left Column - Tool Logo */}
           <div className="flex flex-col items-center justify-center pt-8">
             <div className="text-center">
-              {/* Product Logo/Image - Larger size like source - Clickable for zoom */}
+              {/* Tool Logo/Image - Larger size like source - Clickable for zoom */}
               <div 
                 className="relative w-64 h-64 bg-gray-50 rounded-xl overflow-hidden mb-6 mx-auto cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={handleImageZoom}
               >
                 <Image
-                  src={mainImage}
-                  alt={product.title.rendered}
+                  src={tool.image}
+                  alt={tool.name}
                   fill
                   sizes="256px"
-                  className="object-cover"
+                  className="object-contain p-4"
                   loading="eager"
                   priority
                 />
@@ -127,39 +73,31 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
             </div>
           </div>
 
-          {/* Right Column - Product Info & CTA */}
+          {/* Right Column - Tool Info & CTA */}
           <div className="flex flex-col justify-center">
             {/* Instant Access Badge */}
             <div className="inline-flex items-center px-3 py-1 bg-emerald-600 text-white text-xs font-bold rounded-full mb-4 w-fit mt-4">
               Instant Access!
             </div>
 
-            {/* Product Title */}
+            {/* Tool Title */}
             <h1 className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
-              {product.title.rendered}
+              {tool.name}
             </h1>
 
             {/* Pricing Section */}
             <div className="mb-4">
-              {isOnSale ? (
-                <div className="flex items-center space-x-3">
-                  <div className="text-lg text-gray-400 line-through">
-                    ${parseFloat(regularPrice || '0').toFixed(2)}
-                  </div>
-                  <div className="text-2xl font-bold text-gray-900">
-                    ${parseFloat(price || '0').toFixed(2)}
-                  </div>
+              <div className="flex items-center space-x-3">
+                <div className="text-lg text-gray-400 line-through">
+                  {tool.originalPrice}
                 </div>
-              ) : (
                 <div className="text-2xl font-bold text-gray-900">
-                  ${parseFloat(price || '0').toFixed(2)}
+                  {tool.price}
                 </div>
-              )}
-              {isOnSale && (
-                <div className="text-sm text-red-600 font-semibold mt-2">
-                  You Save: ${savings} ({savingsPercent}%)
-                </div>
-              )}
+              </div>
+              <div className="text-sm text-red-600 font-semibold mt-2">
+                You Save: ${savings} ({savingsPercent}%)
+              </div>
             </div>
 
             {/* Key Features Box - Clean like source */}
@@ -205,14 +143,13 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
             
 
             
-            {/* BUY NOW Button - Affiliate Link or Product ID */}
+            {/* BUY NOW Button */}
             <button
-              onClick={handleAffiliatePurchase}
+              onClick={handlePurchase}
               className="w-32 bg-emerald-600 hover:bg-emerald-700 text-white text-base font-bold py-2 px-4 rounded-lg transition-all duration-200 hover:scale-[1.02] shadow-lg mb-4"
             >
-              BUY NOW
+              {tool.buyUrl ? 'BUY NOW' : 'Coming Soon'}
             </button>
-
 
 
 
@@ -220,11 +157,11 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
         </div>
       </div>
 
-      {/* Content Section Below Product Info */}
+      {/* Content Section Below Tool Info */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         {/* Recent Purchases Banner */}
         <div className="bg-emerald-600 text-white text-center py-2 px-6 rounded-lg mb-8">
-          <span className="font-semibold">{purchaseCount} people purchased this product in last 24 hours</span>
+          <span className="font-semibold">{purchaseCount} people purchased this tool in last 24 hours</span>
         </div>
 
         {/* Description Separator */}
@@ -263,8 +200,14 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
               {/* Expandable Table of Contents */}
               {isTableExpanded && (
                 <div className="mt-4 pt-4 border-t border-gray-300">
-                  <div className="text-sm text-gray-600 py-2 px-2">
-                    Table of Contents content will appear here
+                  <div className="space-y-2 text-sm text-gray-600">
+                    <a href="#description" className="block py-1 hover:text-emerald-600">Description</a>
+                    {tool.features && tool.features.length > 0 && (
+                      <a href="#features" className="block py-1 hover:text-emerald-600">Features</a>
+                    )}
+                    {tool.useCases && tool.useCases.length > 0 && (
+                      <a href="#use-cases" className="block py-1 hover:text-emerald-600">Use Cases</a>
+                    )}
                   </div>
                 </div>
               )}
@@ -274,42 +217,102 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
           {/* Right Column - Main Content */}
           <div className="lg:col-span-3">
             <div className="text-left">
-              {/* Product Title from WooCommerce */}
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
-                {product.title.rendered}
+              {/* Tool Title */}
+              <h2 id="description" className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
+                {tool.name} - {tool.description}
               </h2>
               
-              {/* Main Content from WooCommerce */}
-              {product.content?.rendered && (
-                <div 
-                  className="prose prose-gray max-w-none text-gray-700"
-                  dangerouslySetInnerHTML={{ __html: product.content.rendered }}
-                />
+              {/* Main Description */}
+              {tool.longDescription && (
+                <div className="prose prose-gray max-w-none text-gray-700 mb-8">
+                  <p className="text-lg leading-relaxed whitespace-pre-line">
+                    {tool.longDescription}
+                  </p>
+                </div>
+              )}
+
+              {/* Features Section */}
+              {tool.features && tool.features.length > 0 && (
+                <div id="features" className="mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Key Features</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {tool.features.map((feature, index) => (
+                      <div key={index} className="flex items-start space-x-3 p-4 bg-gray-50 rounded-lg">
+                        <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Use Cases Section */}
+              {tool.useCases && tool.useCases.length > 0 && (
+                <div id="use-cases" className="mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Use Cases</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {tool.useCases.map((useCase, index) => (
+                      <div key={index} className="flex items-center space-x-2 p-3 bg-emerald-50 rounded-lg">
+                        <svg className="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-gray-700">{useCase}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Category Badge */}
+              {tool.category && (
+                <div className="mt-8">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-emerald-100 text-emerald-800">
+                    {tool.category}
+                  </span>
+                </div>
               )}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Related Products Section */}
-      {relatedProducts && relatedProducts.length > 0 && (
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      {/* Related Tools Section */}
+      {displayRelatedTools && displayRelatedTools.length > 0 && (
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Related Products</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Related Tools</h2>
             <p className="text-gray-600">You might also be interested in these tools</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {relatedProducts.slice(0, 8).map((relatedProduct, index) => (
-              <div 
-                key={relatedProduct.id}
-                className="animate-fade-in-up"
+            {displayRelatedTools.slice(0, 8).map((relatedTool, index) => (
+              <Link
+                key={relatedTool.id}
+                href={`/tools/${relatedTool.slug}`}
+                className="group relative bg-white rounded-lg p-6 border border-gray-200 hover:border-emerald-500 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <ProductCard 
-                  product={relatedProduct}
-                />
-              </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 relative">
+                    <Image
+                      src={relatedTool.image}
+                      alt={relatedTool.name}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                    {relatedTool.name}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-4">{relatedTool.description}</p>
+                  <div className="text-center">
+                    <span className="text-xl font-bold text-emerald-600">{relatedTool.price}</span>
+                    <div className="text-xs text-gray-500 line-through">{relatedTool.originalPrice}</div>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -321,8 +324,8 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
           <div className="relative max-w-4xl max-h-full p-4">
             <div className="relative w-full h-[80vh]">
               <Image
-                src={mainImage}
-                alt={product.title.rendered}
+                src={tool.image}
+                alt={tool.name}
                 fill
                 sizes="(max-width: 1200px) 100vw, 1200px"
                 className="object-contain"
@@ -341,3 +344,4 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
     </div>
   )
 }
+
