@@ -281,6 +281,7 @@ export const PopularToolsSection = () => {
             {
               name: 'AHREF$',
               id: 'ahrefs',
+              slug: 'ahrefs',
               price: '$30.00',
               originalPrice: '$99.00',
               image: '/images/tools/ahrefs-logo.svg',
@@ -289,6 +290,7 @@ export const PopularToolsSection = () => {
             {
               name: 'SEMRU$H',
               id: 'semrush',
+              slug: 'semrush',
               price: '$4.99',
               originalPrice: '$119.95',
               image: '/images/tools/semrush-logo.svg',
@@ -297,6 +299,7 @@ export const PopularToolsSection = () => {
             {
               name: 'Moz Pro',
               id: 'moz',
+              slug: 'moz',
               price: '$4.99',
               originalPrice: '$99.00',
               image: '/images/tools/moz-logo.svg',
@@ -305,6 +308,7 @@ export const PopularToolsSection = () => {
             {
               name: 'Canva Pro',
               id: 'canva',
+              slug: 'canva',
               price: '$4.99',
               originalPrice: '$12.99',
               image: 'https://img.icons8.com/color/96/canva.png',
@@ -313,6 +317,7 @@ export const PopularToolsSection = () => {
             {
               name: 'ChatGPT Plus',
               id: 'chatgpt-plus',
+              slug: 'chatgpt-plus',
               price: '$4.99',
               originalPrice: '$20.00',
               image: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg',
@@ -321,6 +326,7 @@ export const PopularToolsSection = () => {
             {
               name: 'RunwayML',
               id: 'runwayml',
+              slug: 'runwayml',
               price: '$4.99',
               originalPrice: '$35.00',
               image: 'https://img.icons8.com/color/96/runway.png',
@@ -329,6 +335,7 @@ export const PopularToolsSection = () => {
             {
               name: 'Netflix',
               id: 'netflix',
+              slug: 'netflix',
               price: '$4.99',
               originalPrice: '$15.99',
               image: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg',
@@ -337,15 +344,17 @@ export const PopularToolsSection = () => {
             {
               name: 'Claude',
               id: 'claude',
+              slug: 'claude',
               price: '$4.99',
               originalPrice: '$20.00',
               image: '/images/tools/claude-logo.svg',
               description: 'AI coding vibe'
             }
           ].map((tool, index) => (
-            <div 
-              key={index} 
-              className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden"
+            <Link
+              key={index}
+              href={`/tools/${tool.slug}`}
+              className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden block"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -363,18 +372,13 @@ export const PopularToolsSection = () => {
                   <span className="text-3xl font-bold text-emerald-600">{tool.price}</span>
                   <div className="text-sm text-gray-500">vs {tool.originalPrice}</div>
                 </div>
-                <a 
-                  href="https://members.seotoolsgroupbuy.us/signup" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold text-center block hover:bg-emerald-700 transition-all duration-300 transform group-hover:scale-105"
-                >
-                  Buy Now
-                </a>
+                <div className="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold text-center hover:bg-emerald-700 transition-all duration-300 transform group-hover:scale-105">
+                  View Details
+                </div>
               </div>
               {/* Shimmer effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
