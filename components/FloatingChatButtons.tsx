@@ -29,8 +29,18 @@ export default function FloatingChatButtons() {
 
   const fetchChatSettings = async () => {
     try {
-      const WORDPRESS_BASE_URL = 'https://app.faditools.com'
-      const response = await fetch(`${WORDPRESS_BASE_URL}/wp-json/faditools/v1/chat-settings`)
+      // Use API route instead of direct backend URL - backend URL is now hidden
+      const response = await fetch('/api/chat-settings', {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+        }
+      })
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      
       const data = await response.json()
       console.log('Chat settings fetched:', data)
       setSettings(data)

@@ -25,17 +25,18 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     }
 
     const title = post.title.rendered
-    const description = post.excerpt?.rendered 
-      ? post.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 160)
-      : 'Read this blog post on FadiTools'
+    const postUniqueId = post.id || slug || ''
+    const uniqueDescription = post.excerpt?.rendered 
+      ? `${post.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)} | FadiTools Blog`
+      : `Read this blog post on FadiTools - ${title}`
 
     return {
       title: `${title} - FadiTools Blog`,
-      description,
+      description: uniqueDescription,
       openGraph: {
         title,
-        description,
-        url: `https://faditools.com/blog/${slug}`,
+        description: uniqueDescription,
+        url: `https://faditools.com/${slug}`,
         siteName: 'FadiTools',
         locale: 'en_US',
         type: 'article',
@@ -45,10 +46,10 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       twitter: {
         card: 'summary_large_image',
         title,
-        description,
+        description: uniqueDescription,
       },
       alternates: {
-        canonical: generateCanonicalUrl(`/blog/${slug}`),
+        canonical: generateCanonicalUrl(`/${slug}`),
       },
       robots: { index: true, follow: true },
     }
@@ -286,7 +287,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                             )}
                             <div className="flex-1 min-w-0">
                               <h4 className="text-sm font-medium text-gray-900 truncate group-hover:text-primary-500 transition-colors">
-                                <a href={`/blog/${relatedPost.slug}`} className="hover:text-primary-500">
+                                <a href={`/${relatedPost.slug}`} className="hover:text-primary-500">
                                   {relatedPost.title.rendered}
                                 </a>
                               </h4>

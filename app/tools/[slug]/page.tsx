@@ -15,18 +15,20 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const popularTool = getPopularToolBySlug(params.slug)
   
   if (popularTool) {
-    const title = `${popularTool.name} Group Buy 2025 - ${popularTool.price} | Save ${Math.round(((parseFloat(popularTool.originalPrice.replace('$', '')) - parseFloat(popularTool.price.replace('$', ''))) / parseFloat(popularTool.originalPrice.replace('$', ''))) * 100)}% | FadiTools`
-    const description = popularTool.longDescription 
-      ? `${popularTool.longDescription.substring(0, 140)} Get instant group buy access at ${popularTool.price}. 99% uptime guaranteed.`
+    const savingsPercent = Math.round(((parseFloat(popularTool.originalPrice.replace('$', '')) - parseFloat(popularTool.price.replace('$', ''))) / parseFloat(popularTool.originalPrice.replace('$', ''))) * 100)
+    const uniqueId = popularTool.id || popularTool.slug || ''
+    const title = `${popularTool.name} Group Buy 2025 - ${popularTool.price} | Save ${savingsPercent}% | FadiTools`
+    const uniqueDescription = popularTool.longDescription 
+      ? `${popularTool.longDescription.substring(0, 120)} Get instant group buy access at ${popularTool.price}. Premium tool for agencies, marketers & businesses. 99% uptime guaranteed.`
       : `${popularTool.description} Get instant group buy access at ${popularTool.price}. Premium tool at 90% discount. Instant access, 99% uptime. Perfect for agencies, marketers & businesses.`
     
     return {
       title,
-      description,
+      description: uniqueDescription,
       openGraph: {
         title,
-        description,
-        url: `https://faditools.com/tools/${popularTool.slug}`,
+        description: uniqueDescription,
+        url: `https://faditools.com/${popularTool.slug}`,
         siteName: 'FadiTools',
         locale: 'en_US',
         type: 'website',
@@ -34,10 +36,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       twitter: {
         card: 'summary_large_image',
         title,
-        description,
+        description: uniqueDescription,
       },
       alternates: {
-        canonical: generateCanonicalUrl(`/tools/${popularTool.slug}`),
+        canonical: generateCanonicalUrl(`/${popularTool.slug}`),
       },
       robots: { index: true, follow: true },
       keywords: [popularTool.name, 'digital marketing', 'SEO', 'tools', 'marketing software', popularTool.category || ''],
@@ -58,19 +60,20 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
   }
   
-  // SEO-optimized title with trending keywords
+  // SEO-optimized title with trending keywords - unique per tool
+  const toolUniqueId = tool.id || tool.slug || ''
   const title = `${tool.name} Group Buy 2025 - ${tool.price}/${tool.period} | Save 90% | FadiTools`
-  const description = tool.description 
-    ? `${tool.description.substring(0, 140)} Get instant group buy access at ${tool.price}/${tool.period}. 99% uptime guaranteed.`
+  const uniqueDescription = tool.description 
+    ? `${tool.description.substring(0, 120)} Get instant group buy access at ${tool.price}/${tool.period}. Premium tool for agencies, marketers & businesses. 99% uptime guaranteed.`
     : `Get ${tool.name} group buy access at ${tool.price}/${tool.period}. Premium SEO tool at 90% discount. Instant access, 99% uptime. Perfect for agencies, marketers & businesses.`
   
   return {
     title,
-    description,
+    description: uniqueDescription,
     openGraph: {
       title,
-      description,
-      url: `https://faditools.com/tools/${tool.slug || tool.id}`,
+      description: uniqueDescription,
+      url: `https://faditools.com/${tool.slug || tool.id}`,
       siteName: 'FadiTools',
       locale: 'en_US',
       type: 'website',
@@ -78,10 +81,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     twitter: {
       card: 'summary_large_image',
       title,
-      description,
+      description: uniqueDescription,
     },
     alternates: {
-      canonical: generateCanonicalUrl(`/tools/${tool.slug || tool.id}`),
+      canonical: generateCanonicalUrl(`/${tool.slug || tool.id}`),
     },
     robots: { index: true, follow: true },
     keywords: [tool.name, 'digital marketing', 'SEO', 'tools', 'marketing software'],

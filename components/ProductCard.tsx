@@ -5,6 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Product } from '@/types'
 
+// Fallback placeholder image
+const PLACEHOLDER_IMAGE = '/images/placeholder-product.jpg'
+
 interface ProductCardProps {
   product: Product
 }
@@ -12,6 +15,7 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [isWishlisted, setIsWishlisted] = useState(false)
+  const [imageError, setImageError] = useState(false)
 
   const toggleWishlist = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -19,7 +23,13 @@ export default function ProductCard({ product }: ProductCardProps) {
     setIsWishlisted(!isWishlisted)
   }
 
-  const mainImage = product.images?.[0]?.src || '/images/placeholder-product.jpg'
+  const handleImageError = () => {
+    setImageError(true)
+  }
+
+  const mainImage = imageError || !product.images?.[0]?.src 
+    ? PLACEHOLDER_IMAGE 
+    : product.images[0].src
   const price = product.price || '0'
   const regularPrice = product.regular_price || product.price || '0'
   const isOnSale = product.on_sale || false
@@ -48,6 +58,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             className="object-cover transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
             priority={false}
+            onError={handleImageError}
           />
         </Link>
         

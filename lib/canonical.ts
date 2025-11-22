@@ -13,29 +13,9 @@ export function generateCanonicalUrl(pathname: string): string {
 }
 
 export function generateCanonicalUrlFromSlug(slug: string, type: 'product' | 'tool' | 'package' | 'blog' | 'page' = 'product'): string {
-  // For dynamic routes, construct the full path based on type
-  let path: string
-  
-  switch (type) {
-    case 'product':
-      path = `/${slug}`
-      break
-    case 'tool':
-      path = `/${slug}`
-      break
-    case 'package':
-      path = `/${slug}`
-      break
-    case 'blog':
-      path = `/${slug}`
-      break
-    case 'page':
-      path = `/pages/${slug}`
-      break
-    default:
-      path = `/${slug}`
-  }
-  
+  // All content types use direct slug without prefix - clean URLs
+  // faditools.com/slug (not faditools.com/tools/slug or faditools.com/blog/slug)
+  const path = `/${slug}`
   return generateCanonicalUrl(path)
 }
 

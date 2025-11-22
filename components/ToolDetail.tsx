@@ -290,7 +290,7 @@ export default function ToolDetail({ tool, relatedTools = [] }: ToolDetailProps)
             {displayRelatedTools.slice(0, 8).map((relatedTool, index) => (
               <Link
                 key={relatedTool.id}
-                href={`/tools/${relatedTool.slug}`}
+                href={`/${relatedTool.slug}`}
                 className="group relative bg-white rounded-lg p-6 border border-gray-200 hover:border-emerald-500 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >

@@ -353,7 +353,7 @@ export const PopularToolsSection = () => {
           ].map((tool, index) => (
             <Link
               key={index}
-              href={`/tools/${tool.slug}`}
+              href={`/${tool.slug}`}
               className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden block"
               style={{ animationDelay: `${index * 0.1}s` }}
             >

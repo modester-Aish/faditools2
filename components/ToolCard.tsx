@@ -60,7 +60,7 @@ export default function ToolCard({ tool }: ToolCardProps) {
         {/* Action Buttons */}
         <div className="space-y-3">
           <Link
-            href={`/tools/${slug}`}
+            href={`/${slug}`}
             className="block w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center py-3 px-4 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-200 transform hover:scale-105 shadow-md"
           >
             View Details

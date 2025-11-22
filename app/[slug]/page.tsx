@@ -22,16 +22,17 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     
     if (blogPost) {
       const title = blogPost.title.rendered
-      const description = blogPost.excerpt?.rendered 
-        ? blogPost.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 160)
-        : 'Read this blog post on FadiTools'
+      const blogUniqueId = blogPost.id || params.slug || ''
+      const uniqueDescription = blogPost.excerpt?.rendered 
+        ? `${blogPost.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)} | FadiTools Blog`
+        : `Read this blog post on FadiTools - ${title}`
       
       return {
         title: `${title} - FadiTools Blog`,
-        description,
+        description: uniqueDescription,
         openGraph: {
           title,
-          description,
+          description: uniqueDescription,
           url: `https://faditools.com/${params.slug}`,
           siteName: 'FadiTools',
           locale: 'en_US',
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         twitter: {
           card: 'summary_large_image',
           title,
-          description,
+          description: uniqueDescription,
         },
         alternates: {
           canonical: generateCanonicalUrl(`/${params.slug}`),
@@ -56,16 +57,17 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     
     if (page) {
       const title = page.title.rendered
-      const description = page.excerpt?.rendered 
-        ? page.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 160)
-        : 'Read this page on FadiTools'
+      const pageUniqueId = page.id || params.slug || ''
+      const uniqueDescription = page.excerpt?.rendered 
+        ? `${page.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)} | FadiTools`
+        : `Read this page on FadiTools - ${title}`
       
       return {
         title: `${title} - FadiTools`,
-        description,
+        description: uniqueDescription,
         openGraph: {
           title,
-          description,
+          description: uniqueDescription,
           url: `https://faditools.com/${params.slug}`,
           siteName: 'FadiTools',
           locale: 'en_US',
@@ -74,7 +76,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         twitter: {
           card: 'summary_large_image',
           title,
-          description,
+          description: uniqueDescription,
         },
         alternates: {
           canonical: generateCanonicalUrl(`/${params.slug}`),
@@ -101,18 +103,20 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     
     console.log(`✅ [METADATA] Product found: ${product.name}`)
     
-    // SEO-optimized title with trending keywords
-    const title = `${product.name} 2025 - Group Buy at ${product.price}/mo | Save 90% | FadiTools`
-    const description = product.short_description 
-      ? `${product.short_description.replace(/<[^>]*>/g, '').substring(0, 140)} Get instant group buy access at ${product.price}/month. 99% uptime guaranteed.`
-      : `Get ${product.name} group buy access at ${product.price}/month. Premium SEO tool at 90% discount. Instant access, 99% uptime. Perfect for agencies & businesses.`
+    // SEO-optimized title with trending keywords - unique per product using ID
+    const uniqueIdentifier = product.id || product.slug || ''
+    const priceDisplay = product.price || 'affordable'
+    const title = `${product.name} 2025 - Group Buy at ${priceDisplay}/mo | Save 90% | FadiTools`
+    const uniqueDescription = product.short_description 
+      ? `${product.short_description.replace(/<[^>]*>/g, '').substring(0, 120)} Get instant group buy access at ${priceDisplay}/month. Premium tool for agencies, marketers & businesses. 99% uptime guaranteed.`
+      : `Get ${product.name} group buy access at ${priceDisplay}/month. Premium SEO tool at 90% discount. Instant access, 99% uptime. Perfect for agencies & businesses.`
     
     return {
       title,
-      description,
+      description: uniqueDescription,
       openGraph: {
         title,
-        description,
+        description: uniqueDescription,
         url: `https://faditools.com/${product.slug}`,
         siteName: 'FadiTools',
         locale: 'en_US',
@@ -121,7 +125,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       twitter: {
         card: 'summary_large_image',
         title,
-        description,
+        description: uniqueDescription,
       },
       alternates: {
         canonical: generateCanonicalUrl(`/${product.slug}`),
