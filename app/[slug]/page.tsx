@@ -6,8 +6,10 @@ import { loadProductBySlug, loadRelatedProducts } from '@/lib/static-product-det
 import { Product } from '@/types'
 import { generateCanonicalUrl } from '@/lib/canonical'
 import Header from '@/components/Header'
-import { fetchPostBySlug, fetchPageBySlug, fetchBlogPosts } from '@/lib/api'
+import { fetchPostBySlug, fetchPageBySlug, fetchBlogPosts, getToolBySlug } from '@/lib/api'
 import { WordPressPost, WordPressPage } from '@/types'
+import { getPopularToolBySlug, getAllPopularTools } from '@/data/popular-tools'
+import ToolDetail from '@/components/ToolDetail'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -85,7 +87,75 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       }
     }
     
-    // If not a page, try to find a product (ULTRA-FAST static loading!)
+    // If not a page, try to find a tool (check popular tools first)
+    console.log(`🔍 [METADATA] Checking for tool: ${params.slug}`)
+    const popularTool = getPopularToolBySlug(params.slug)
+    
+    if (popularTool) {
+      const savingsPercent = Math.round(((parseFloat(popularTool.originalPrice.replace('$', '')) - parseFloat(popularTool.price.replace('$', ''))) / parseFloat(popularTool.originalPrice.replace('$', ''))) * 100)
+      const title = `${popularTool.name} Group Buy 2025 - ${popularTool.price} | Save ${savingsPercent}% | FadiTools`
+      const uniqueDescription = popularTool.longDescription 
+        ? `${popularTool.longDescription.substring(0, 120)} Get instant group buy access at ${popularTool.price}. Premium tool for agencies, marketers & businesses. 99% uptime guaranteed.`
+        : `${popularTool.description} Get instant group buy access at ${popularTool.price}. Premium tool at 90% discount. Instant access, 99% uptime. Perfect for agencies, marketers & businesses.`
+      
+      return {
+        title,
+        description: uniqueDescription,
+        openGraph: {
+          title,
+          description: uniqueDescription,
+          url: `https://faditools.com/${popularTool.slug}`,
+          siteName: 'FadiTools',
+          locale: 'en_US',
+          type: 'website',
+        },
+        twitter: {
+          card: 'summary_large_image',
+          title,
+          description: uniqueDescription,
+        },
+        alternates: {
+          canonical: generateCanonicalUrl(`/${popularTool.slug}`),
+        },
+        robots: { index: true, follow: true },
+        keywords: [popularTool.name, 'digital marketing', 'SEO', 'tools', 'marketing software', popularTool.category || ''],
+      }
+    }
+    
+    // Try regular tool API
+    const tool = await getToolBySlug(params.slug)
+    
+    if (tool) {
+      const title = `${tool.name} Group Buy 2025 - ${tool.price}/${tool.period} | Save 90% | FadiTools`
+      const uniqueDescription = tool.description 
+        ? `${tool.description.substring(0, 120)} Get instant group buy access at ${tool.price}/${tool.period}. Premium tool for agencies, marketers & businesses. 99% uptime guaranteed.`
+        : `Get ${tool.name} group buy access at ${tool.price}/${tool.period}. Premium SEO tool at 90% discount. Instant access, 99% uptime. Perfect for agencies, marketers & businesses.`
+      
+      return {
+        title,
+        description: uniqueDescription,
+        openGraph: {
+          title,
+          description: uniqueDescription,
+          url: `https://faditools.com/${tool.slug || tool.id}`,
+          siteName: 'FadiTools',
+          locale: 'en_US',
+          type: 'website',
+        },
+        twitter: {
+          card: 'summary_large_image',
+          title,
+          description: uniqueDescription,
+        },
+        alternates: {
+          canonical: generateCanonicalUrl(`/${tool.slug || tool.id}`),
+        },
+        robots: { index: true, follow: true },
+        keywords: [tool.name, 'digital marketing', 'SEO', 'tools', 'marketing software'],
+      }
+    }
+    
+    // If not a tool, try to find a product (ULTRA-FAST static loading!)
     console.log(`🔍 [METADATA] Loading product metadata for: ${params.slug}`)
     const product = await loadProductBySlug(params.slug)
     
@@ -843,7 +913,100 @@ export default async function DynamicPage({ params }: { params: { slug: string }
       )
     }
     
-    // If not a page, try to find a product (ULTRA-FAST static loading!)
+    // If not a page, try to find a tool (check popular tools first)
+    console.log(`🔍 [COMPONENT] Checking for tool: ${params.slug}`)
+    const popularTool = getPopularToolBySlug(params.slug)
+    
+    if (popularTool) {
+      // Get all popular tools for related tools
+      const allPopularTools = getAllPopularTools()
+      const relatedTools = allPopularTools
+        .filter((tool) => tool.id !== popularTool.id && tool.category === popularTool.category)
+        .slice(0, 6)
+      
+      return (
+        <div className="min-h-screen bg-[#FFFFFF]">
+          <Header />
+          <ToolDetail 
+            tool={{
+              id: popularTool.id,
+              name: popularTool.name,
+              slug: popularTool.slug,
+              price: popularTool.price,
+              period: 'month',
+              popular: true,
+              color: 'primary',
+              icon: popularTool.image,
+              description: popularTool.description,
+              buyUrl: popularTool.buyUrl,
+            }}
+            relatedTools={relatedTools.map(t => ({
+              id: t.id,
+              name: t.name,
+              slug: t.slug,
+              price: t.price,
+              period: 'month',
+              popular: true,
+              color: 'primary',
+              icon: t.image,
+              description: t.description,
+              buyUrl: t.buyUrl,
+            }))}
+            longDescription={popularTool.longDescription}
+            features={popularTool.features}
+            useCases={popularTool.useCases}
+            category={popularTool.category}
+          />
+        </div>
+      )
+    }
+    
+    // Try regular tool API
+    const tool = await getToolBySlug(params.slug)
+    
+    if (tool) {
+      // Convert Tool to PopularTool format for ToolDetail component
+      const allTools = await getTools()
+      const relatedTools = allTools
+        .filter((t) => t.id !== tool.id)
+        .slice(0, 6)
+      
+      // Convert regular tool to PopularTool format
+      const popularToolFormat = {
+        id: tool.id,
+        name: tool.name,
+        slug: tool.slug || tool.id,
+        price: tool.price,
+        originalPrice: `$${(parseFloat(tool.price.replace('$', '')) * 3).toFixed(2)}`,
+        image: tool.icon,
+        description: tool.description,
+        longDescription: tool.description,
+        category: 'SEO Tools',
+        buyUrl: tool.buyUrl,
+      }
+      
+      const relatedToolsFormatted = relatedTools.map(t => ({
+        id: t.id,
+        name: t.name,
+        slug: t.slug || t.id,
+        price: t.price,
+        originalPrice: `$${(parseFloat(t.price.replace('$', '')) * 3).toFixed(2)}`,
+        image: t.icon,
+        description: t.description,
+        longDescription: t.description,
+        category: 'SEO Tools',
+        buyUrl: t.buyUrl,
+      }))
+      
+      return (
+        <div className="min-h-screen bg-[#FFFFFF]">
+          <Header />
+          <ToolDetail tool={popularToolFormat} relatedTools={relatedToolsFormatted} />
+        </div>
+      )
+    }
+    
+    // If not a tool, try to find a product (ULTRA-FAST static loading!)
     console.log(`🔍 [COMPONENT] Loading product for rendering: ${params.slug}`)
     const product = await loadProductBySlug(params.slug)
     

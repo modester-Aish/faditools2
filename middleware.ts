@@ -16,7 +16,19 @@ export function middleware(request: NextRequest) {
   // Redirect old blog URLs to clean URLs
   if (pathname.startsWith('/blog/')) {
     const slug = pathname.replace('/blog/', '')
-    return NextResponse.redirect(new URL(`/${slug}`, request.url))
+    return NextResponse.redirect(new URL(`/${slug}`, request.url), 301)
+  }
+
+  // Redirect old tools URLs to clean URLs (remove /tools/ prefix)
+  if (pathname.startsWith('/tools/') && pathname !== '/tools') {
+    const slug = pathname.replace('/tools/', '')
+    return NextResponse.redirect(new URL(`/${slug}`, request.url), 301)
+  }
+
+  // Redirect old packages URLs to clean URLs (remove /packages/ prefix)
+  if (pathname.startsWith('/packages/') && pathname !== '/packages') {
+    const slug = pathname.replace('/packages/', '')
+    return NextResponse.redirect(new URL(`/${slug}`, request.url), 301)
   }
 
   // Add performance headers
