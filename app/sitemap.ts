@@ -21,18 +21,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${baseUrl}/tools`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/packages`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
@@ -133,9 +121,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }
     }
 
-    return [...staticPages, ...popularToolPages, ...apiToolPages, ...wordPressPages, ...wordPressPosts, ...wordPressProducts]
+    // Combine all pages and remove duplicates based on URL
+    const allPages = [...staticPages, ...popularToolPages, ...apiToolPages, ...wordPressPages, ...wordPressPosts, ...wordPressProducts]
+    
+    // Remove duplicates using a Map (keeps first occurrence, higher priority)
+    const uniquePagesMap = new Map<string, MetadataRoute.Sitemap[0]>()
+    
+    allPages.forEach(page => {
+      const url = page.url
+      // If URL already exists, keep the one with higher priority
+      if (!uniquePagesMap.has(url) || (uniquePagesMap.get(url)?.priority || 0) < (page.priority || 0)) {
+        uniquePagesMap.set(url, page)
+      }
+    })
+    
+    // Convert back to array
+    const uniquePages = Array.from(uniquePagesMap.values())
+    
+    return uniquePages
   } catch (error) {
     console.error('Error generating sitemap:', error)
-    return [...staticPages, ...popularToolPages, ...apiToolPages]
+    // Remove duplicates in error case too
+    const errorPages = [...staticPages, ...popularToolPages, ...apiToolPages]
+    const uniqueErrorPagesMap = new Map<string, MetadataRoute.Sitemap[0]>()
+    errorPages.forEach(page => {
+      const url = page.url
+      if (!uniqueErrorPagesMap.has(url) || (uniqueErrorPagesMap.get(url)?.priority || 0) < (page.priority || 0)) {
+        uniqueErrorPagesMap.set(url, page)
+      }
+    })
+    return Array.from(uniqueErrorPagesMap.values())
   }
 }

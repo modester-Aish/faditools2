@@ -30,7 +30,19 @@ export async function GET() {
       priority: 0.9, // Higher priority for popular tools
     }))
     
-    const toolPages = [...apiToolPages, ...popularToolPages]
+    // Combine and remove duplicates (keep higher priority)
+    const allToolPages = [...apiToolPages, ...popularToolPages]
+    const uniqueToolPagesMap = new Map<string, typeof apiToolPages[0]>()
+    
+    allToolPages.forEach(page => {
+      const url = page.url
+      // If URL already exists, keep the one with higher priority
+      if (!uniqueToolPagesMap.has(url) || (uniqueToolPagesMap.get(url)?.priority || 0) < (page.priority || 0)) {
+        uniqueToolPagesMap.set(url, page)
+      }
+    })
+    
+    const toolPages = Array.from(uniqueToolPagesMap.values())
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
