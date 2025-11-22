@@ -6,7 +6,7 @@ import { loadProductBySlug, loadRelatedProducts } from '@/lib/static-product-det
 import { Product } from '@/types'
 import { generateCanonicalUrl } from '@/lib/canonical'
 import Header from '@/components/Header'
-import { fetchPostBySlug, fetchPageBySlug, fetchBlogPosts, getToolBySlug } from '@/lib/api'
+import { fetchPostBySlug, fetchPageBySlug, fetchBlogPosts, getToolBySlug, getTools } from '@/lib/api'
 import { WordPressPost, WordPressPage } from '@/types'
 import { getPopularToolBySlug, getAllPopularTools } from '@/data/popular-tools'
 import ToolDetail from '@/components/ToolDetail'
@@ -928,34 +928,8 @@ export default async function DynamicPage({ params }: { params: { slug: string }
         <div className="min-h-screen bg-[#FFFFFF]">
           <Header />
           <ToolDetail 
-            tool={{
-              id: popularTool.id,
-              name: popularTool.name,
-              slug: popularTool.slug,
-              price: popularTool.price,
-              period: 'month',
-              popular: true,
-              color: 'primary',
-              icon: popularTool.image,
-              description: popularTool.description,
-              buyUrl: popularTool.buyUrl,
-            }}
-            relatedTools={relatedTools.map(t => ({
-              id: t.id,
-              name: t.name,
-              slug: t.slug,
-              price: t.price,
-              period: 'month',
-              popular: true,
-              color: 'primary',
-              icon: t.image,
-              description: t.description,
-              buyUrl: t.buyUrl,
-            }))}
-            longDescription={popularTool.longDescription}
-            features={popularTool.features}
-            useCases={popularTool.useCases}
-            category={popularTool.category}
+            tool={popularTool}
+            relatedTools={relatedTools}
           />
         </div>
       )
