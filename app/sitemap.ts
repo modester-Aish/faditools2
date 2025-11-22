@@ -1,4 +1,4 @@
-import { fetchPages, fetchBlogPosts } from '@/lib/api'
+import { fetchPages, fetchBlogPosts, getTools } from '@/lib/api'
 import { MetadataRoute } from 'next'
 import { getAllPopularTools } from '@/data/popular-tools'
 
@@ -61,43 +61,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9, // Higher priority for popular tools
   }))
   
-  // Legacy tool pages with clean URLs (if any)
-  const toolPages = [
-    'ahrefs',
-    'semrush', 
-    'moz',
-    'canva',
-    'grammarly',
-    'spyfu',
-    'majestic',
-    'buzzsumo'
-  ].map(tool => ({
-    url: `${baseUrl}/${tool}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }))
-
-  // Package pages with clean URLs
-  const packagePages = [
-    'seo-combo',
-    'heavy-pack',
-    'mega-pack',
-    'mega-combo'
-  ].map(pkg => ({
-    url: `${baseUrl}/${pkg}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }))
+  // Regular tools from API (use slug if available, otherwise id)
+  let apiToolPages: MetadataRoute.Sitemap = []
+  try {
+    const tools = await getTools()
+    apiToolPages = tools.map(tool => ({
+      url: `${baseUrl}/${tool.slug || tool.id}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    }))
+  } catch (error) {
+    console.error('Error fetching tools for sitemap:', error)
+  }
 
   try {
-    // Fetch WordPress pages
+    // Fetch WordPress pages (direct slug, no /pages/ prefix)
     const pages = await fetchPages()
     const wordPressPages = pages
       ?.filter(page => page.status === 'publish')
       .map(page => ({
-        url: `${baseUrl}/pages/${page.slug}`,
+        url: `${baseUrl}/${page.slug}`,
         lastModified: new Date(page.modified || page.date || new Date()),
         changeFrequency: 'monthly' as const,
         priority: 0.6,
@@ -149,9 +133,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }
     }
 
-    return [...staticPages, ...popularToolPages, ...toolPages, ...packagePages, ...wordPressPages, ...wordPressPosts, ...wordPressProducts]
+    return [...staticPages, ...popularToolPages, ...apiToolPages, ...wordPressPages, ...wordPressPosts, ...wordPressProducts]
   } catch (error) {
     console.error('Error generating sitemap:', error)
-    return [...staticPages, ...popularToolPages, ...toolPages, ...packagePages]
+    return [...staticPages, ...popularToolPages, ...apiToolPages]
   }
 }

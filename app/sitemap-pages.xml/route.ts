@@ -11,7 +11,7 @@ export async function GET() {
     const wordPressPages = pages
       ?.filter(page => page.status === 'publish' && page.slug)
       .map(page => ({
-        url: `${baseUrl}/pages/${page.slug}`,
+        url: `${baseUrl}/${page.slug}`,
         lastModified: new Date(page.modified || page.date || new Date()),
         changeFrequency: 'monthly' as const,
         priority: 0.6,

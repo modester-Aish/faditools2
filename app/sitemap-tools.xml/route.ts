@@ -14,9 +14,9 @@ export async function GET() {
     // Get popular tools from data file
     const popularTools = getAllPopularTools()
     
-    // Combine both: API tools and popular tools
+    // Combine both: API tools and popular tools (use slug if available, otherwise id)
     const apiToolPages = tools.map(tool => ({
-      url: `${baseUrl}/${tool.id}`,
+      url: `${baseUrl}/${tool.slug || tool.id}`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
