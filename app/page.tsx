@@ -12,8 +12,8 @@ import Typewriter from '../components/Typewriter'
 import FAQSection from '../components/FAQSection'
 
 export const metadata: Metadata = {
-  title: 'Best Group Buy SEO Tools 2025 - 50+ Premium Tools at 90% OFF | FadiTools',
-  description: 'Get shared access to 50+ premium SEO tools at 90% discount. Plans from $4.99/month. Join 45,000+ users. Instant setup, 99% uptime.',
+  title: 'Best SEO Tools Group Buy - AHREF$ & SEMRU$H 90% Off',
+  description: 'Best SEO tools group buy platform. Get AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with group buy savings. Join 45,000+ users.',
   keywords: 'premium seo tools, marketing tools group buy, affordable seo subscription, shared access tools, seo tools marketplace, digital marketing tools 2025, cheap seo tools, professional marketing software, group buy platform, seo tools discount, seo subscription service, affordable marketing tools, premium tools access, digital marketing subscription, seo tools 2025, marketing tools affordable, group buy seo services, shared seo tools access, premium group buy platform, marketing tools discount',
   authors: [{ name: 'FadiTools Team' }],
   creator: 'FadiTools',
@@ -32,18 +32,18 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Best Group Buy SEO Tools 2025 - 50+ Premium Tools at 90% OFF | FadiTools',
-    description: 'Get shared access to 50+ premium SEO tools at 90% discount. Join 45,000+ users. Instant setup, 99% uptime. Starting $4.99/month.',
+    title: 'Best SEO Tools Group Buy - AHREF$ & SEMRU$H 90% Off',
+    description: 'Best SEO tools group buy platform. Get AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with group buy savings. Join 45,000+ users.',
     url: 'https://faditools.com',
     siteName: 'FadiTools',
-    images: [{ url: 'https://faditools.com/logo.png', width: 1200, height: 630, alt: 'FadiTools - Premium SEO Tools Platform' }],
+    images: [{ url: 'https://faditools.com/logo.png', width: 1200, height: 630, alt: 'Best SEO Tools Group Buy - FadiTools Platform' }],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best Group Buy SEO Tools 2025 - 50+ Premium Tools at 90% OFF | FadiTools',
-    description: 'Get shared access to 50+ premium SEO tools at 90% discount. Join 45,000+ users. Instant setup, 99% uptime. Starting $4.99/month.',
+    title: 'Best SEO Tools Group Buy - AHREF$ & SEMRU$H 90% Off',
+    description: 'Best SEO tools group buy platform. Get AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with group buy savings. Join 45,000+ users.',
     images: ['https://faditools.com/logo.png'],
     creator: '@faditools',
     site: '@faditools',
@@ -186,29 +186,22 @@ export default async function Home() {
                         width={128}
                         height={40}
                         priority
-                        alt="FadiTools SEO Tools Platform" 
+                        alt="Best SEO Tools Group Buy - FadiTools Platform" 
                         className="absolute inset-0 w-full h-full object-cover rounded-xl"
                         style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
-                      <span className="relative z-10 text-white font-bold">Best SEO Tools</span>
-                    </span> Group Buy,
+                      <span className="relative z-10 text-white font-bold"><strong>Best SEO Tools</strong></span>
+                    </span> <strong>Group Buy</strong>,
                   </div>
                   <div className="text-white">
-                    AHREF$ & SEMRU$H at 90% Off.
+                    <strong>AHREF$ & SEMRU$H</strong> at 90% Off.
                   </div>
                 </h1>
                 
                 {/* Description */}
                 <p className="text-base text-gray-300 mb-5 leading-relaxed">
-                  <Typewriter 
-                    text="Get group buy access to premium SEO tools with massive discounts. Compare SEO tools pricing, find best alternatives, and save thousands on digital marketing software. Perfect for beginners, agencies, and small businesses." 
-                    speed={30} 
-                    delay={1000}
-                    className="text-gray-300"
-                    loop={true}
-                    loopDelay={8000}
-                  />
+                  <strong>Best SEO tools group buy</strong> platform offering <strong>AHREF$</strong> and <strong>SEMRU$H</strong> at 90% discount. Get group buy access to premium SEO tools with massive savings. Compare SEO tools pricing, find best alternatives, and save thousands on digital marketing software. Perfect for beginners, agencies, and small businesses.
                 </p>
                 
                 {/* CTA Buttons */}
@@ -410,7 +403,7 @@ export default async function Home() {
             "@type": "WebSite",
             "name": "FadiTools",
             "url": "https://faditools.com",
-            "description": "Access premium SEO tools and digital marketing solutions at affordable prices",
+            "description": "Best SEO tools group buy platform. Access premium SEO tools including AHREF$ and SEMRU$H at 90% discount. Digital marketing solutions at affordable prices",
             "potentialAction": {
               "@type": "SearchAction",
               "target": "https://faditools.com/tools?search={search_term_string}",
@@ -426,8 +419,8 @@ export default async function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Premium SEO Tools Access",
-            "description": "Group buy access to premium SEO and digital marketing tools including AHREF$, SEMRU$H, Moz Pro, and 50+ other tools",
+            "name": "Best SEO Tools Group Buy",
+            "description": "Best SEO tools group buy service. Group buy access to premium SEO and digital marketing tools including AHREF$, SEMRU$H, Moz Pro, and 50+ other tools at 90% discount",
             "provider": {
               "@type": "Organization",
               "name": "FadiTools"

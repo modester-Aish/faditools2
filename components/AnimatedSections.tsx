@@ -14,10 +14,10 @@ export const WhyChooseSection = () => {
         <div className="text-center mb-12 mt-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
             <span className="text-emerald-600">
-              Why Choose <span className="relative inline-block px-3 sm:px-4 py-2 min-h-[2.5rem] min-w-[8rem]">
+              Why Choose Our <strong>Best SEO Tools Group Buy</strong> Platform? <span className="relative inline-block px-3 sm:px-4 py-2 min-h-[2.5rem] min-w-[8rem]">
                 <Image 
                   src="/stroke-removebg-preview.png" 
-                  alt="Background" 
+                  alt="Best SEO Tools Group Buy - FadiTools Platform" 
                   className="absolute inset-0 w-full h-full object-cover rounded-xl"
                   style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
                   width={128}
@@ -26,7 +26,7 @@ export const WhyChooseSection = () => {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <span className="relative z-10 text-white font-bold">FadiTools</span>
-              </span>?
+              </span>
             </span>
           </h2>
           <p className="text-base text-gray-600 max-w-3xl mx-auto">
@@ -44,7 +44,7 @@ export const WhyChooseSection = () => {
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float">
                 <Image
                   src="https://cdn-icons-png.flaticon.com/512/2454/2454282.png"
-                  alt="Group Buy Discounts - Save 90% on SEO Tools"
+                  alt="Best SEO Tools Group Buy - Save 90% on SEO Tools"
                   className="w-full h-full object-contain p-2"
                   width={80}
                   height={80}
@@ -68,7 +68,7 @@ export const WhyChooseSection = () => {
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-1">
                 <Image
                   src="https://cdn-icons-png.flaticon.com/512/483/483408.png"
-                  alt="Premium SEO Tools Access - AHREF$ SEMRU$H Group Buy"
+                  alt="Best SEO Tools Group Buy - Premium SEO Tools Access AHREF$ SEMRU$H"
                   className="w-full h-full object-contain p-2"
                   width={80}
                   height={80}
@@ -263,16 +263,11 @@ export const PopularToolsSection = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             <span className="text-emerald-600">
-              <ModernReveal 
-                text="Most Popular Tools" 
-                delay={2500}
-                repeatDelay={3000}
-                className="text-emerald-600"
-              />
+              <strong>Best SEO Tools Group Buy</strong> - Most Popular Tools
             </span>
           </h2>
           <p className="text-base text-gray-600 max-w-3xl mx-auto">
-            Explore the same tools trusted by top digital marketing agencies worldwide
+            Explore the <strong>best SEO tools group buy</strong> platform with the same tools trusted by top digital marketing agencies worldwide. Get <strong>AHREF$</strong> and <strong>SEMRU$H</strong> at 90% discount.
           </p>
         </div>
 
@@ -1602,7 +1597,7 @@ export const HowToOrderSection = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             <span className="bg-gradient-to-r from-emerald-600 to-emerald-700 bg-clip-text text-transparent">
-              How to Place an Order?
+              How to Order from <strong>Best SEO Tools Group Buy</strong> Platform?
             </span>
           </h2>
           <p className="text-base text-gray-600 max-w-3xl mx-auto">

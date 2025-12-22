@@ -94,7 +94,7 @@ export const ToolsPackagesSection = () => {
         <div className="text-center mb-16 mt-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             <span className="text-emerald-600">
-              Tool Packages
+              <strong>Best SEO Tools Group Buy</strong> Packages
             </span>
           </h2>
           <p className="text-base text-gray-600 max-w-3xl mx-auto">
