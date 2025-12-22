@@ -310,6 +310,21 @@ export default async function Home() {
         </div>
       </nav>
 
+      {/* Why Choose FadiTools Section */}
+      <WhyChooseSection />
+
+      {/* Product Categories Section */}
+      {categories.length > 0 && <CategorySection categories={categories} products={products} />}
+
+      {/* Popular Tools Section */}
+      <PopularToolsSection />
+
+      {/* Tools Packages Section */}
+      <ToolsPackagesSection />
+
+      {/* Interactive Pricing Cards Section */}
+      <InteractivePricingCards />
+
       {/* What is Best SEO Tools Group Buy - Definition Format */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -482,21 +497,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-
-      {/* Why Choose FadiTools Section */}
-      <WhyChooseSection />
-
-      {/* Product Categories Section */}
-      {categories.length > 0 && <CategorySection categories={categories} products={products} />}
-
-      {/* Popular Tools Section */}
-      <PopularToolsSection />
-
-      {/* Tools Packages Section */}
-      <ToolsPackagesSection />
-
-      {/* Interactive Pricing Cards Section */}
-      <InteractivePricingCards />
 
       {/* Testimonials Section */}
       <TestimonialsSection />
