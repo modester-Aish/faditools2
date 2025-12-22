@@ -14,7 +14,7 @@ export const generateOrganizationSchema = () => {
       "width": 512,
       "height": 512
     },
-    "description": "Premium SEO tools and digital marketing solutions at 90% discount. Access Ahrefs, SEMrush, Moz Pro and 50+ tools.",
+    "description": "Premium SEO tools and digital marketing solutions at 90% discount. Access AHREF$, SEMRU$H, Moz Pro and 50+ tools.",
     "foundingDate": "2023",
     "contactPoint": {
       "@type": "ContactPoint",
@@ -42,7 +42,7 @@ export const generateWebSiteSchema = () => {
     "name": "FadiTools",
     "alternateName": "Fadi Tools",
     "url": "https://faditools.com",
-    "description": "Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount",
+    "description": "Access 50+ premium SEO tools including AHREF$, SEMRU$H, Moz Pro at 90% discount",
     "publisher": {
       "@type": "Organization",
       "name": "FadiTools",

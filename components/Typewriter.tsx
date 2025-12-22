@@ -21,11 +21,26 @@ export const Typewriter = ({
   loop = false,
   loopDelay = 2000
 }: TypewriterProps) => {
-  const [displayText, setDisplayText] = useState('')
-  const [currentIndex, setCurrentIndex] = useState(0)
+  // Start with full text to match server-side render
+  const [displayText, setDisplayText] = useState(text)
+  const [currentIndex, setCurrentIndex] = useState(text.length)
   const [isTyping, setIsTyping] = useState(false)
+  const [hasStarted, setHasStarted] = useState(false)
+
+  // Reset after mount to start animation
+  useEffect(() => {
+    // Small delay to ensure hydration completes
+    const timer = setTimeout(() => {
+      setHasStarted(true)
+      setDisplayText('')
+      setCurrentIndex(0)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
+    if (!hasStarted) return
+    
     if (delay > 0) {
       const timer = setTimeout(() => {
         setIsTyping(true)
@@ -34,10 +49,10 @@ export const Typewriter = ({
     } else {
       setIsTyping(true)
     }
-  }, [delay])
+  }, [delay, hasStarted])
 
   useEffect(() => {
-    if (!isTyping) return
+    if (!hasStarted || !isTyping) return
 
     if (currentIndex < text.length) {
       const timer = setTimeout(() => {
@@ -59,10 +74,10 @@ export const Typewriter = ({
         }, loopDelay)
       }
     }
-  }, [currentIndex, text, speed, isTyping, onComplete, loop, loopDelay])
+  }, [currentIndex, text, speed, isTyping, onComplete, loop, loopDelay, hasStarted])
 
   return (
-    <span className={className}>
+    <span className={className} suppressHydrationWarning>
       {displayText}
       {currentIndex < text.length && isTyping && (
         <span className="animate-pulse">|</span>

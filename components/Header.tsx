@@ -89,7 +89,26 @@ export default function Header() {
           </Link>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
+            {/* Search Bar */}
+            <form action="/products" method="get" className="flex items-center">
+              <input
+                type="search"
+                name="search"
+                placeholder="Search tools..."
+                className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+              />
+              <button
+                type="submit"
+                className="ml-2 p-2 text-gray-700 hover:text-emerald-600 transition-colors"
+                aria-label="Search"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </button>
+            </form>
+            
             <Link href="/" className="text-gray-700 hover:text-emerald-600 transition-colors text-lg font-medium">
               Home
             </Link>
@@ -160,6 +179,25 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-emerald-200">
             <div className="flex flex-col space-y-4 pt-4">
+              {/* Mobile Search */}
+              <form action="/products" method="get" className="flex items-center">
+                <input
+                  type="search"
+                  name="search"
+                  placeholder="Search tools..."
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                />
+                <button
+                  type="submit"
+                  className="ml-2 p-2 text-gray-700 hover:text-emerald-600 transition-colors"
+                  aria-label="Search"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
+              </form>
+              
               <Link 
                 href="/" 
                 className="text-gray-700 hover:text-emerald-600 transition-colors"

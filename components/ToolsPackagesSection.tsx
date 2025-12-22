@@ -13,9 +13,9 @@ export const ToolsPackagesSection = () => {
       price: '$30.00',
       description: 'Essential SEO tools for professionals',
       toolCount: 11,
-      tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
+      tools: ['SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic'],
       allTools: [
-        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
+        'SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic', 'SpyFu',
         'Screaming Frog', 'GTmetrix', 'Pingdom', 'Yoast SEO',
         'Rank Math', 'SEO PowerSuite'
       ],
@@ -30,9 +30,9 @@ export const ToolsPackagesSection = () => {
       price: '$40.00',
       description: 'Complete digital marketing solution',
       toolCount: 15,
-      tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
+      tools: ['SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic'],
       allTools: [
-        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
+        'SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic', 'SpyFu',
         'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
         'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
         'Google Analytics', 'Search Console'
@@ -48,9 +48,9 @@ export const ToolsPackagesSection = () => {
       price: '$50.00',
       description: 'Advanced tools for agencies',
       toolCount: 20,
-      tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
+      tools: ['SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic'],
       allTools: [
-        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
+        'SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic', 'SpyFu',
         'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
         'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
         'Google Analytics', 'Search Console', 'Ubersuggest',
@@ -67,9 +67,9 @@ export const ToolsPackagesSection = () => {
       price: '$65.00',
       description: 'All premium tools included',
       toolCount: 42,
-      tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
+      tools: ['SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic'],
       allTools: [
-        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
+        'SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic', 'SpyFu',
         'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
         'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
         'Google Analytics', 'Search Console', 'Ubersuggest',
@@ -164,10 +164,12 @@ export const ToolsPackagesSection = () => {
                         {pkg.tools.map((tool, toolIndex) => {
                           // Get the correct logo path for each tool
                           const getToolLogo = (toolName: string) => {
-                            const toolNameLower = toolName.toLowerCase().replace(' ', '-')
+                            const toolNameLower = toolName.toLowerCase().replace(/\$/g, '').replace(' ', '-')
                             switch (toolNameLower) {
+                              case 'semru$h':
                               case 'semrush':
                                 return '/images/tools/semrush-logo.svg'
+                              case 'ahref$':
                               case 'ahrefs':
                                 return '/images/tools/ahrefs-logo.svg'
                               case 'moz-pro':

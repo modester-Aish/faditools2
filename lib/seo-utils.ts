@@ -234,7 +234,7 @@ export function generateWebsiteStructuredData() {
     '@type': 'WebSite',
     name: 'FadiTools',
     url: 'https://faditools.com',
-    description: 'Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount',
+    description: 'Access 50+ premium SEO tools including AHREF$, SEMRU$H, Moz Pro at 90% discount',
     potentialAction: {
       '@type': 'SearchAction',
       target: 'https://faditools.com/search?q={search_term_string}',

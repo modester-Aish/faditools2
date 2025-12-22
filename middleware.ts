@@ -31,6 +31,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`/${slug}`, request.url), 301)
   }
 
+  // Redirect index.php to homepage
+  if (pathname === '/index.php' || pathname === '/index.php/') {
+    return NextResponse.redirect(new URL('/', request.url), 301)
+  }
+
   // Add performance headers
   response.headers.set('X-DNS-Prefetch-Control', 'on')
   response.headers.set('X-Frame-Options', 'DENY')

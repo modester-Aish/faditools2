@@ -7,15 +7,15 @@ export const SEO_CONFIG = {
   // Site Information
   siteName: 'FadiTools',
   siteUrl: 'https://faditools.com',
-  siteDescription: 'Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount. Trusted by 10,000+ marketers worldwide.',
+  siteDescription: 'Access 50+ premium SEO tools including AHREF$, SEMRU$H, Moz Pro at 90% discount. Trusted by 10,000+ marketers worldwide.',
   
   // Default SEO Settings
   defaultTitle: 'FadiTools - Premium SEO Tools & Digital Marketing Solutions',
-  defaultDescription: 'Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount. Trusted by 10,000+ marketers. 24/7 support, 99.9% uptime.',
+  defaultDescription: 'Access 50+ premium SEO tools including AHREF$, SEMRU$H, Moz Pro at 90% discount. Trusted by 10,000+ marketers. 24/7 support, 99.9% uptime.',
   defaultKeywords: [
     'SEO tools',
-    'Ahrefs group buy',
-    'SEMrush discount',
+    'AHREF$ group buy',
+    'SEMRU$H discount',
     'digital marketing tools',
     'keyword research',
     'backlink analysis',
@@ -82,15 +82,15 @@ export const SEO_CONFIG = {
 // SEO Page Templates
 export const SEO_TEMPLATES = {
   home: {
-    title: 'FadiTools - Premium SEO Tools & Digital Marketing Solutions | Save 90% on Ahrefs, SEMrush & More',
-    description: 'Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount. Trusted by 10,000+ marketers. 24/7 support, 99.9% uptime. Start your SEO journey today!',
-    keywords: ['SEO tools', 'Ahrefs group buy', 'SEMrush discount', 'digital marketing tools', 'keyword research', 'backlink analysis']
+    title: 'FadiTools - Premium SEO Tools & Digital Marketing Solutions | Save 90% on AHREF$, SEMRU$H & More',
+    description: 'Access 50+ premium SEO tools including AHREF$, SEMRU$H, Moz Pro at 90% discount. Trusted by 10,000+ marketers. 24/7 support, 99.9% uptime. Start your SEO journey today!',
+    keywords: ['SEO tools', 'AHREF$ group buy', 'SEMRU$H discount', 'digital marketing tools', 'keyword research', 'backlink analysis']
   },
   
   tools: {
     title: 'SEO Tools | Premium Digital Marketing Tools | FadiTools',
-    description: 'Browse our comprehensive collection of premium SEO tools. Get access to Ahrefs, SEMrush, Moz Pro, and 50+ other tools at 90% discount.',
-    keywords: ['SEO tools', 'digital marketing tools', 'Ahrefs', 'SEMrush', 'Moz Pro', 'keyword research tools']
+    description: 'Browse our comprehensive collection of premium SEO tools. Get access to AHREF$, SEMRU$H, Moz Pro, and 50+ other tools at 90% discount.',
+    keywords: ['SEO tools', 'digital marketing tools', 'AHREF$', 'SEMRU$H', 'Moz Pro', 'keyword research tools']
   },
   
   packages: {
@@ -190,7 +190,7 @@ export const STRUCTURED_DATA_TEMPLATES = {
     '@type': 'WebSite',
     name: 'FadiTools',
     url: 'https://faditools.com',
-    description: 'Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount',
+    description: 'Access 50+ premium SEO tools including AHREF$, SEMRU$H, Moz Pro at 90% discount',
     potentialAction: {
       '@type': 'SearchAction',
       target: 'https://faditools.com/search?q={search_term_string}',

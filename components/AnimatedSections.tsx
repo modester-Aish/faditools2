@@ -31,7 +31,7 @@ export const WhyChooseSection = () => {
           </h2>
           <p className="text-base text-gray-600 max-w-3xl mx-auto">
             <span className="inline-block">
-              Get group buy access to premium SEO tools including Ahrefs, SEMrush, and 50+ tools at 90% discount. Perfect for beginners, agencies, and small businesses.
+              Get group buy access to premium SEO tools including AHREF$, SEMRU$H, and 50+ tools at 90% discount. Perfect for beginners, agencies, and small businesses.
             </span>
           </p>
         </div>
@@ -68,7 +68,7 @@ export const WhyChooseSection = () => {
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-1">
                 <Image
                   src="https://cdn-icons-png.flaticon.com/512/483/483408.png"
-                  alt="Premium SEO Tools Access - Ahrefs SEMrush Group Buy"
+                  alt="Premium SEO Tools Access - AHREF$ SEMRU$H Group Buy"
                   className="w-full h-full object-contain p-2"
                   width={80}
                   height={80}
@@ -403,8 +403,8 @@ export const CustomPackSection = () => {
     const toolName = fileName.replace('-logo.svg', '').replace('-tools.svg', '')
     
     // Convert to proper case
-    if (toolName === 'semrush') return 'SEMrush'
-    if (toolName === 'ahrefs') return 'Ahrefs'
+    if (toolName === 'semrush') return 'SEMRU$H'
+    if (toolName === 'ahrefs') return 'AHREF$'
     if (toolName === 'moz') return 'Moz Pro'
     if (toolName === 'canva') return 'Canva Pro'
     if (toolName === 'chatgpt') return 'ChatGPT'
@@ -705,7 +705,7 @@ export const TestimonialsSection = () => {
                   {
                     name: 'Freelancer Shamim',
                     rating: 5,
-                    review: 'SEMrush niyechilam. satisfied (y).',
+                    review: 'SEMRU$H niyechilam. satisfied (y).',
                     icon: '👷‍♂️'
                   },
                   {
@@ -862,7 +862,7 @@ export const TestimonialsSection = () => {
                   {
                     name: 'Freelancer Shamim',
                     rating: 5,
-                    review: 'SEMrush niyechilam. satisfied (y).',
+                    review: 'SEMRU$H niyechilam. satisfied (y).',
                     icon: '👷‍♂️'
                   },
                   {
@@ -1042,13 +1042,13 @@ export const TestimonialsSection = () => {
                 {
                   name: 'Lisa Thompson',
                   rating: 5,
-                  review: 'I\'m amazed by FadiTools\'s Semrush package! The comprehensive analytics and keyword research tools have completely transformed how we approach SEO. Worth every penny!',
+                  review: 'I\'m amazed by FadiTools\'s SEMRU$H package! The comprehensive analytics and keyword research tools have completely transformed how we approach SEO. Worth every penny!',
                   icon: '👩‍🦰'
                 },
                 {
                   name: 'David Wilson',
                   rating: 5,
-                  review: 'The Ahrefs package is incredible! I\'ve improved my website\'s ranking significantly. FadiTools makes premium tools accessible.',
+                  review: 'The AHREF$ package is incredible! I\'ve improved my website\'s ranking significantly. FadiTools makes premium tools accessible.',
                   icon: '👨‍💼'
                 },
                 {
@@ -1330,13 +1330,13 @@ export const TestimonialsSection = () => {
                   {
                     name: 'Lisa Thompson',
                     rating: 5,
-                    review: 'I\'m amazed by FadiTools\'s Semrush package! The comprehensive analytics and keyword research tools have completely transformed how we approach SEO. Worth every penny!',
+                    review: 'I\'m amazed by FadiTools\'s SEMRU$H package! The comprehensive analytics and keyword research tools have completely transformed how we approach SEO. Worth every penny!',
                     icon: '👩‍🦰'
                   },
                   {
                     name: 'David Wilson',
                     rating: 5,
-                    review: 'The Ahrefs package is incredible! I\'ve improved my website\'s ranking significantly. FadiTools makes premium tools accessible.',
+                    review: 'The AHREF$ package is incredible! I\'ve improved my website\'s ranking significantly. FadiTools makes premium tools accessible.',
                     icon: '👨‍💼'
                   },
                   {

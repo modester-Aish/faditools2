@@ -9,8 +9,8 @@ export default function Footer() {
   const footerLinks = {
     tools: [
       { name: 'All Tools', href: '/tools' },
-      { name: 'Ahrefs', href: '/ahrefs' },
-      { name: 'SEMrush', href: '/semrush' },
+      { name: 'AHREF$', href: '/ahrefs' },
+      { name: 'SEMRU$H', href: '/semrush' },
       { name: 'Moz Pro', href: '/moz' },
       { name: 'Canva Pro', href: '/canva' }
     ],
@@ -26,7 +26,11 @@ export default function Footer() {
       { name: 'Contact', href: '/pages/contact' },
       { name: 'Blog', href: '/blog' },
       { name: 'Testimonials', href: '/testimonials' },
-      { name: 'Privacy Policy', href: '/pages/privacy-policy' }
+      { name: 'Privacy Policy', href: '/pages/privacy-policy' },
+      { name: 'Terms of Service', href: '/pages/terms-of-service' },
+      { name: 'Authors/Team', href: '/pages/authors-team' },
+      { name: 'Editorial Guidelines', href: '/pages/editorial-guidelines' },
+      { name: 'HTML Sitemap', href: '/sitemap' }
     ],
   }
 
@@ -169,16 +173,19 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-600 text-sm mb-4 md:mb-0">
               © {currentYear} FadiTools. All rights reserved.
+              <a href="https://www.dmca.com/Protection/Status.aspx?ID=YOUR_DMCA_ID" target="_blank" rel="noopener noreferrer" className="ml-4">
+                <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=YOUR_DMCA_ID" alt="DMCA.com Protection Status" className="inline-block h-4" />
+              </a>
             </div>
             <div className="flex space-x-6 text-sm">
-              <Link href="/privacy" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
+              <Link href="/pages/privacy-policy" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
+              <Link href="/pages/terms-of-service" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
                 Terms of Service
               </Link>
-              <Link href="/cookies" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
-                Cookie Policy
+              <Link href="/sitemap" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
+                Sitemap
               </Link>
             </div>
           </div>

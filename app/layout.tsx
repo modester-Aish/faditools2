@@ -8,6 +8,7 @@ import { generateCanonicalUrl } from '@/lib/canonical'
 import dynamic from 'next/dynamic'
 import CriticalCSS from '@/components/CriticalCSS'
 import ServiceWorker from '@/components/ServiceWorker'
+import BackToTop from '@/components/BackToTop'
 
 // Lazy load non-critical components
 const FloatingChatButtons = dynamic(() => import('@/components/FloatingChatButtons'), {
@@ -268,6 +269,7 @@ export default function RootLayout({
               <ServiceWorker />
               {children}
               <FloatingChatButtons />
+              <BackToTop />
             </CartProvider>
           </NavigationProvider>
         </AuthProvider>

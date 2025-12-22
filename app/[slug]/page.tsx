@@ -1142,8 +1142,8 @@ export default async function DynamicPage({ params }: { params: { slug: string }
               <div>
                 <h4 className="text-lg font-semibold text-white mb-4">Tools</h4>
                 <ul className="space-y-2 text-gray-400">
-                  <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Ahrefs</Link></li>
-                  <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">SEMrush</Link></li>
+                  <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">AHREF$</Link></li>
+                  <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">SEMRU$H</Link></li>
                   <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Moz Pro</Link></li>
                   <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">View All Tools</Link></li>
                 </ul>

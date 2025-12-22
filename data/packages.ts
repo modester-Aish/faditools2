@@ -8,7 +8,7 @@ export const packages: Package[] = [
     description: 'Essential SEO tools for professionals',
     toolCount: 11,
     tools: [
-      'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
+      'SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic', 'SpyFu',
       'Screaming Frog', 'GTmetrix', 'Pingdom', 'Yoast SEO',
       'Rank Math', 'SEO PowerSuite'
     ],
@@ -24,7 +24,7 @@ export const packages: Package[] = [
     toolCount: 15,
     popular: true,
     tools: [
-      'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
+      'SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic', 'SpyFu',
       'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
       'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
       'Google Analytics', 'Search Console'
@@ -40,7 +40,7 @@ export const packages: Package[] = [
     description: 'Advanced tools for agencies',
     toolCount: 20,
     tools: [
-      'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
+      'SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic', 'SpyFu',
       'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
       'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
       'Google Analytics', 'Search Console', 'Ubersuggest',
@@ -57,7 +57,7 @@ export const packages: Package[] = [
     description: 'All premium tools included',
     toolCount: 42,
     tools: [
-      'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
+      'SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic', 'SpyFu',
       'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
       'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
       'Google Analytics', 'Search Console', 'Ubersuggest',

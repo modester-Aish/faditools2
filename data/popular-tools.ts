@@ -25,9 +25,9 @@ export const popularTools: PopularTool[] = [
     description: 'Comprehensive SEO toolkit for keyword research and backlink analysis',
     productId: '53',
     buyUrl: 'https://members.seotoolsgroupbuy.us/cart/index/product/id/53/c/',
-    longDescription: `Ahrefs is one of the most powerful SEO tools available, trusted by digital marketing professionals worldwide. It provides comprehensive keyword research, backlink analysis, competitor research, and rank tracking capabilities.
+    longDescription: `AHREF$ is one of the most powerful SEO tools available, trusted by digital marketing professionals worldwide. It provides comprehensive keyword research, backlink analysis, competitor research, and rank tracking capabilities.
 
-With Ahrefs, you can discover profitable keywords, analyze your competitors' backlink profiles, track your search rankings, and identify content opportunities. The tool offers extensive data on over 200 million keywords and billions of backlinks, making it an essential resource for any serious SEO campaign.
+With AHREF$, you can discover profitable keywords, analyze your competitors' backlink profiles, track your search rankings, and identify content opportunities. The tool offers extensive data on over 200 million keywords and billions of backlinks, making it an essential resource for any serious SEO campaign.
 
 Key features include Site Explorer for analyzing any website's backlink profile, Keywords Explorer for finding the best keywords to target, Content Explorer for discovering top-performing content, and Rank Tracker for monitoring your search rankings.`,
     features: [
@@ -60,9 +60,9 @@ Key features include Site Explorer for analyzing any website's backlink profile,
     description: 'All-in-one marketing toolkit for competitive analysis',
     productId: '8',
     buyUrl: 'https://members.seotoolsgroupbuy.us/cart/index/product/id/8/c/',
-    longDescription: `SEMrush is a comprehensive digital marketing toolkit that helps businesses improve their online visibility and discover marketing insights. It's an all-in-one platform for SEO, PPC, content, social media, and competitive research.
+    longDescription: `SEMRU$H is a comprehensive digital marketing toolkit that helps businesses improve their online visibility and discover marketing insights. It's an all-in-one platform for SEO, PPC, content, social media, and competitive research.
 
-SEMrush provides powerful tools for keyword research, competitor analysis, backlink auditing, site auditing, and social media management. With access to over 20 billion keywords and 800+ million domains, SEMrush offers unparalleled insights into your digital marketing landscape.
+SEMRU$H provides powerful tools for keyword research, competitor analysis, backlink auditing, site auditing, and social media management. With access to over 20 billion keywords and 800+ million domains, SEMRU$H offers unparalleled insights into your digital marketing landscape.
 
 The platform is trusted by over 10 million marketers worldwide and is used by leading agencies and Fortune 500 companies. Whether you're running SEO campaigns, managing PPC ads, or creating content strategies, SEMrush provides the data and tools you need to succeed.`,
     features: [

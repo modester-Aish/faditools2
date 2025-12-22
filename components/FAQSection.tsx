@@ -11,7 +11,7 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     question: "What kind of services do you offer?",
-    answer: "We offer premium SEO tools including Ahrefs, SEMrush, Moz Pro, and 50+ other professional tools at up to 90% discount. Our services include keyword research, backlink analysis, competitor analysis, and comprehensive SEO solutions."
+    answer: "We offer premium SEO tools including AHREF$, SEMRU$H, Moz Pro, and 50+ other professional tools at up to 90% discount. Our services include keyword research, backlink analysis, competitor analysis, and comprehensive SEO solutions."
   },
   {
     question: "Is it safe to use FadiTools services?",

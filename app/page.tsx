@@ -452,6 +452,109 @@ export default async function Home() {
           })
         }}
       />
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What kind of services do you offer?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We offer premium SEO tools including AHREF$, SEMRU$H, Moz Pro, and 50+ other professional tools at up to 90% discount. Our services include keyword research, backlink analysis, competitor analysis, and comprehensive SEO solutions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is it safe to use FadiTools services?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, absolutely! We are a registered company with thousands of satisfied customers. All our tools are legitimate and we provide 24/7 support with 99.9% uptime guarantee."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What payment methods do you accept?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We accept all major payment methods including credit cards, PayPal, Stripe, and bank transfers. All payments are secure and encrypted for your safety."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you offer a free trial?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We offer a 24-hour free trial for new users to test our tools. This allows you to experience the full functionality before making a purchase decision."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How long does the delivery take?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Access to tools is granted instantly upon successful payment. You'll receive login credentials within 5-10 minutes of your order confirmation."
+                }
+              }
+            ]
+          })
+        }}
+      />
+
+      {/* SiteNavigation Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SiteNavigationElement",
+            "name": "Main Navigation",
+            "url": "https://faditools.com",
+            "hasPart": [
+              {
+                "@type": "SiteNavigationElement",
+                "name": "Home",
+                "url": "https://faditools.com"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "name": "Tools",
+                "url": "https://faditools.com/tools"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "name": "Packages",
+                "url": "https://faditools.com/packages"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "name": "Blog",
+                "url": "https://faditools.com/blog"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "name": "Products",
+                "url": "https://faditools.com/products"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "name": "About Us",
+                "url": "https://faditools.com/pages/about-us"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "name": "Contact",
+                "url": "https://faditools.com/pages/contact"
+              }
+            ]
+          })
+        }}
+      />
     </div>
   )
 }
