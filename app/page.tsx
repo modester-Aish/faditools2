@@ -12,8 +12,8 @@ import Typewriter from '../components/Typewriter'
 import FAQSection from '../components/FAQSection'
 
 export const metadata: Metadata = {
-  title: 'Best SEO Tools Group Buy - AHREF$ SEMRU$H 90% Off | FadiTools',
-  description: 'Best SEO tools group buy platform offering AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with massive group buy savings. Join 45,000+ users.',
+  title: 'Best SEO Tools Group Buy 2025 [AHREF$ SEMRU$H 90% Off]',
+  description: 'Best SEO tools group buy platform offering AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with massive group buy savings. Join 45K users.',
   keywords: 'premium seo tools, marketing tools group buy, affordable seo subscription, shared access tools, seo tools marketplace, digital marketing tools 2025, cheap seo tools, professional marketing software, group buy platform, seo tools discount, seo subscription service, affordable marketing tools, premium tools access, digital marketing subscription, seo tools 2025, marketing tools affordable, group buy seo services, shared seo tools access, premium group buy platform, marketing tools discount',
   authors: [{ name: 'FadiTools Team' }],
   creator: 'FadiTools',
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Best SEO Tools Group Buy - AHREF$ & SEMRU$H 90% Off',
-    description: 'Best SEO tools group buy platform offering AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with massive group buy savings. Join 45,000+ users.',
+    title: 'Best SEO Tools Group Buy 2025 [AHREF$ SEMRU$H 90% Off]',
+    description: 'Best SEO tools group buy platform offering AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with massive group buy savings. Join 45K users.',
     url: 'https://faditools.com',
     siteName: 'FadiTools',
     images: [{ url: 'https://faditools.com/logo.png', width: 1200, height: 630, alt: 'Best SEO Tools Group Buy - FadiTools Platform' }],
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best SEO Tools Group Buy - AHREF$ & SEMRU$H 90% Off',
-    description: 'Best SEO tools group buy platform offering AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with massive group buy savings. Join 45,000+ users.',
+    title: 'Best SEO Tools Group Buy 2025 [AHREF$ SEMRU$H 90% Off]',
+    description: 'Best SEO tools group buy platform offering AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with massive group buy savings. Join 45K users.',
     images: ['https://faditools.com/logo.png'],
     creator: '@faditools',
     site: '@faditools',
