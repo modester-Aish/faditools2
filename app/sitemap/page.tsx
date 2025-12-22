@@ -40,12 +40,12 @@ export default async function SitemapPage() {
             <section>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Important Pages</h2>
               <ul className="space-y-2">
-                <li><Link href="/pages/about-us" className="text-emerald-600 hover:text-emerald-700 hover:underline">About Us</Link></li>
-                <li><Link href="/pages/contact" className="text-emerald-600 hover:text-emerald-700 hover:underline">Contact Us</Link></li>
-                <li><Link href="/pages/privacy-policy" className="text-emerald-600 hover:text-emerald-700 hover:underline">Privacy Policy</Link></li>
-                <li><Link href="/pages/terms-of-service" className="text-emerald-600 hover:text-emerald-700 hover:underline">Terms of Service</Link></li>
-                <li><Link href="/pages/authors-team" className="text-emerald-600 hover:text-emerald-700 hover:underline">Authors/Team</Link></li>
-                <li><Link href="/pages/editorial-guidelines" className="text-emerald-600 hover:text-emerald-700 hover:underline">Editorial Guidelines</Link></li>
+                <li><Link href="/about-us" className="text-emerald-600 hover:text-emerald-700 hover:underline">About Us</Link></li>
+                <li><Link href="/contact" className="text-emerald-600 hover:text-emerald-700 hover:underline">Contact Us</Link></li>
+                <li><Link href="/privacy-policy" className="text-emerald-600 hover:text-emerald-700 hover:underline">Privacy Policy</Link></li>
+                <li><Link href="/terms-of-service" className="text-emerald-600 hover:text-emerald-700 hover:underline">Terms of Service</Link></li>
+                <li><Link href="/authors-team" className="text-emerald-600 hover:text-emerald-700 hover:underline">Authors/Team</Link></li>
+                <li><Link href="/editorial-guidelines" className="text-emerald-600 hover:text-emerald-700 hover:underline">Editorial Guidelines</Link></li>
               </ul>
             </section>
 

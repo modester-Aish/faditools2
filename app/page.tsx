@@ -544,12 +544,12 @@ export default async function Home() {
               {
                 "@type": "SiteNavigationElement",
                 "name": "About Us",
-                "url": "https://faditools.com/pages/about-us"
+                "url": "https://faditools.com/about-us"
               },
               {
                 "@type": "SiteNavigationElement",
                 "name": "Contact",
-                "url": "https://faditools.com/pages/contact"
+                "url": "https://faditools.com/contact"
               }
             ]
           })

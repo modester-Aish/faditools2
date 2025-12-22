@@ -22,14 +22,14 @@ export default function Footer() {
       { name: 'Mega Combo', href: '/mega-combo' }
     ],
     company: [
-      { name: 'About Us', href: '/pages/about-us' },
-      { name: 'Contact', href: '/pages/contact' },
+      { name: 'About Us', href: '/about-us' },
+      { name: 'Contact', href: '/contact' },
       { name: 'Blog', href: '/blog' },
       { name: 'Testimonials', href: '/testimonials' },
-      { name: 'Privacy Policy', href: '/pages/privacy-policy' },
-      { name: 'Terms of Service', href: '/pages/terms-of-service' },
-      { name: 'Authors/Team', href: '/pages/authors-team' },
-      { name: 'Editorial Guidelines', href: '/pages/editorial-guidelines' },
+      { name: 'Privacy Policy', href: '/privacy-policy' },
+      { name: 'Terms of Service', href: '/terms-of-service' },
+      { name: 'Authors/Team', href: '/authors-team' },
+      { name: 'Editorial Guidelines', href: '/editorial-guidelines' },
       { name: 'HTML Sitemap', href: '/sitemap' }
     ],
   }
@@ -178,10 +178,10 @@ export default function Footer() {
               </a>
             </div>
             <div className="flex space-x-6 text-sm">
-              <Link href="/pages/privacy-policy" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
+              <Link href="/privacy-policy" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
                 Privacy Policy
               </Link>
-              <Link href="/pages/terms-of-service" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
+              <Link href="/terms-of-service" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
                 Terms of Service
               </Link>
               <Link href="/sitemap" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
