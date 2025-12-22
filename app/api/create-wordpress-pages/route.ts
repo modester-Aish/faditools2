@@ -166,7 +166,7 @@ const pagesToCreate = [
   <li>Tool name and version</li>
 </ul>
     `.trim(),
-    excerpt: 'Contact FadiTools for support, questions, or business inquiries. We're here to help 24/7.'
+    excerpt: 'Contact FadiTools for support, questions, or business inquiries. We are here to help 24/7.'
   },
   {
     title: 'Authors & Team',
