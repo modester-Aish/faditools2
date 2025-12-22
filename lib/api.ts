@@ -77,20 +77,39 @@ function extractSEOData(item: any) {
 async function fetchWithPluginFields(endpoint: string, params: string = '') {
   // Add cache-busting timestamp to prevent CDN caching
   const timestamp = Date.now()
-  const separator = params ? '&' : ''
-  const response = await fetch(`${API_BASE}/${endpoint}?${params}${separator}_embed&acf=1&_t=${timestamp}`, {
-    cache: 'no-store',
-    headers: {
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-      'Pragma': 'no-cache',
-    }
-  })
   
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`)
+  // Build URL with proper parameter separation
+  let url = `${API_BASE}/${endpoint}?`
+  if (params) {
+    url += `${params}&`
   }
+  url += `_embed&acf=1&_t=${timestamp}`
   
-  return response.json()
+  console.log(`🔍 Fetching WordPress API: ${url}`)
+  
+  try {
+    const response = await fetch(url, {
+      cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+      }
+    })
+    
+    if (!response.ok) {
+      const errorText = await response.text()
+      console.error(`❌ WordPress API Error (${response.status}):`, errorText)
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText.substring(0, 200)}`)
+    }
+    
+    const data = await response.json()
+    console.log(`✅ WordPress API Success: ${endpoint}, fetched ${Array.isArray(data) ? data.length : 1} items`)
+    return data
+  } catch (error) {
+    console.error(`❌ WordPress API Fetch Error for ${endpoint}:`, error)
+    throw error
+  }
 }
 
 // WooCommerce fetch function with SEO data
@@ -201,20 +220,37 @@ export async function fetchWooCommerceProducts(params: string = '') {
   return productsWithSEO
 }
 
-// 1. Get Blog Posts (exclude Products category) with all plugin fields
+// 1. Get Blog Posts - Show all posts from WordPress
 export async function fetchBlogPosts(): Promise<WordPressPost[]> {
   try {
-    const productCategoryId = await getProductsCategoryId()
-    const excludeParam = productCategoryId ? `&categories_exclude=${productCategoryId}` : ''
+    // Fetch all posts without any category exclusion
+    const posts = await fetchWithPluginFields('posts', 'per_page=100')
+    console.log(`✅ [fetchBlogPosts] Fetched ${Array.isArray(posts) ? posts.length : 0} posts`)
     
-    const posts = await fetchWithPluginFields('posts', `per_page=100${excludeParam}`)
+    if (!Array.isArray(posts) || posts.length === 0) {
+      console.warn('⚠️ [fetchBlogPosts] No posts found from API')
+      return []
+    }
     
-    return posts.map((post: any) => ({
+    if (posts.length > 0) {
+      console.log(`📝 [fetchBlogPosts] Sample post:`, {
+        id: posts[0].id,
+        title: posts[0].title?.rendered,
+        slug: posts[0].slug,
+        categories: posts[0].categories,
+        status: posts[0].status
+      })
+    }
+    
+    const mappedPosts = posts.map((post: any) => ({
       ...post,
       seo: extractSEOData(post)
     }))
+    
+    console.log(`✅ [fetchBlogPosts] Returning ${mappedPosts.length} mapped posts`)
+    return mappedPosts
   } catch (error) {
-    console.error('Error fetching blog posts:', error)
+    console.error('❌ Error fetching blog posts:', error)
     return []
   }
 }
