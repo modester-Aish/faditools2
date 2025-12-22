@@ -16,7 +16,7 @@ export const WhyChooseSection = () => {
             <span className="text-emerald-600">
               Why Choose Our <strong>Best SEO Tools Group Buy</strong> Platform? <span className="relative inline-block px-3 sm:px-4 py-2 min-h-[2.5rem] min-w-[8rem]">
                 <Image 
-                  src="/stroke-removebg-preview.png" 
+                  src="/best-seo-tools-group-buy-hero-badge.png" 
                   alt="Best SEO Tools Group Buy - FadiTools Platform" 
                   className="absolute inset-0 w-full h-full object-cover rounded-xl"
                   style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
@@ -436,7 +436,7 @@ export const CustomPackSection = () => {
             <span className="text-emerald-600">
               Make your own <span className="text-emerald-600 font-bold">pack</span> by <span className="relative inline-block px-3 sm:px-4 py-2">
                 <img 
-                  src="/stroke-removebg-preview.png" 
+                  src="/best-seo-tools-group-buy-hero-badge.png" 
                   alt="Background" 
                   className="absolute inset-0 w-full h-full object-cover rounded-xl"
                   style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
@@ -661,7 +661,7 @@ export const TestimonialsSection = () => {
             <span className="text-emerald-600">
               What Our <span className="relative inline-block px-3 sm:px-4 py-2">
                 <img 
-                  src="/stroke-removebg-preview.png" 
+                  src="/best-seo-tools-group-buy-hero-badge.png" 
                   alt="Background" 
                   className="absolute inset-0 w-full h-full object-cover rounded-xl"
                   style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}

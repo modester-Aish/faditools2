@@ -71,7 +71,7 @@ export default function FAQSection() {
             <span className="text-emerald-600">
               Frequently Asked <span className="relative inline-block px-3 sm:px-4 py-2">
                 <Image 
-                  src="/stroke-removebg-preview.png"
+                  src="/best-seo-tools-group-buy-hero-badge.png"
                   width={128}
                   height={40}
                   priority
