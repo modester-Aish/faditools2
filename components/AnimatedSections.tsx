@@ -52,9 +52,9 @@ export const WhyChooseSection = () => {
                   sizes="80px"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Group Buy Discounts</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300"><strong>Best SEO Tools Group Buy</strong> Discounts</h3>
               <p className="text-sm text-gray-600 text-center">
-                Get premium SEO tools at <span className="text-emerald-600 font-semibold">90% off retail prices</span> with our group buy access.
+                Get premium SEO tools at <span className="text-emerald-600 font-semibold">90% off retail prices</span> with our <strong>best SEO tools group buy</strong> access.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -76,9 +76,9 @@ export const WhyChooseSection = () => {
                   sizes="80px"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Premium Tools Access</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300"><strong>Best SEO Tools Group Buy</strong> Access</h3>
               <p className="text-sm text-gray-600 text-center">
-                Access <span className="text-emerald-600 font-semibold">shared SEO tools</span> through our unique in-house developed system.
+                Access <span className="text-emerald-600 font-semibold">shared SEO tools</span> through our unique <strong>best SEO tools group buy</strong> system.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -100,9 +100,9 @@ export const WhyChooseSection = () => {
                   sizes="80px"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Reliable Service</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300"><strong>Best SEO Tools Group Buy</strong> Service</h3>
               <p className="text-sm text-gray-600 text-center">
-                <span className="text-emerald-600 font-semibold">99.9% uptime</span> with our unique system for accessing premium SEO tools.
+                <span className="text-emerald-600 font-semibold">99.9% uptime</span> with our unique <strong>best SEO tools group buy</strong> system for accessing premium SEO tools.
               </p>
             </div>
             {/* Shimmer effect */}
@@ -124,9 +124,9 @@ export const WhyChooseSection = () => {
                   sizes="80px"
                 />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Safe & Secure</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-emerald-600 transition-colors duration-300">Safe & Secure <strong>Best SEO Tools Group Buy</strong></h3>
               <p className="text-sm text-gray-600 text-center">
-                <span className="text-emerald-600 font-semibold">100% secure</span> group buy access - no software installation required, clean and safe.
+                <span className="text-emerald-600 font-semibold">100% secure</span> <strong>best SEO tools group buy</strong> access - no software installation required, clean and safe.
               </p>
             </div>
             {/* Shimmer effect */}
