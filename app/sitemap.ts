@@ -7,7 +7,15 @@ const WOOCOMMERCE_BASE_URL = process.env.WOOCOMMERCE_BASE_URL || 'https://app.fa
 const WOO_CONSUMER_KEY = process.env.WC_CONSUMER_KEY || process.env.WOO_CONSUMER_KEY || ''
 const WOO_CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || process.env.WOO_CONSUMER_SECRET || ''
 
-export const revalidate = 3600 // Revalidate every hour
+/**
+ * Sitemap Auto-Update System:
+ * - Revalidates every 5 minutes (300 seconds)
+ * - Automatically includes ALL new WordPress pages when published
+ * - Automatically includes ALL new blog posts when published
+ * - Automatically includes ALL new WooCommerce products when published
+ * - No manual intervention needed - fully automatic!
+ */
+export const revalidate = 300 // Revalidate every 5 minutes for faster updates
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://faditools.com'
@@ -118,10 +126,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.6,
       })) || []
 
-    // Fetch WordPress posts
+    // Fetch WordPress posts - AUTO-UPDATES when new posts are published
     const posts = await fetchBlogPosts()
     const wordPressPosts = posts
-      ?.filter(post => post.status === 'publish')
+      ?.filter(post => post.status === 'publish' && post.slug) // Only published posts with slugs
       .map(post => ({
         url: `${baseUrl}/${post.slug}`,
         lastModified: new Date(post.modified || post.date || new Date()),
@@ -144,7 +152,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
               'Authorization': `Basic ${auth}`,
               'Content-Type': 'application/json',
             },
-            next: { revalidate: 3600 }
+            next: { revalidate: 300 } // 5 minutes for faster product updates
           }
         )
         

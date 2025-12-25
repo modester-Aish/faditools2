@@ -4,7 +4,7 @@ const WOO_CONSUMER_KEY = process.env.WC_CONSUMER_KEY || process.env.WOO_CONSUMER
 const WOO_CONSUMER_SECRET = process.env.WC_CONSUMER_SECRET || process.env.WOO_CONSUMER_SECRET || ''
 
 export const dynamic = 'force-static'
-export const revalidate = 3600 // Revalidate every hour
+export const revalidate = 300 // Revalidate every 5 minutes for faster updates
 
 export async function GET() {
   const baseUrl = 'https://faditools.com'
