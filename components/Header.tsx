@@ -91,12 +91,13 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {/* Search Bar */}
-            <form action="/products" method="get" className="flex items-center">
+            <form action="/products" method="get" role="search" className="flex items-center" aria-label="Site search">
               <input
                 type="search"
                 name="search"
                 placeholder="Search tools..."
                 className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                aria-label="Search tools and products"
               />
               <button
                 type="submit"
@@ -180,12 +181,13 @@ export default function Header() {
           <div className="md:hidden mt-4 pb-4 border-t border-emerald-200">
             <div className="flex flex-col space-y-4 pt-4">
               {/* Mobile Search */}
-              <form action="/products" method="get" className="flex items-center">
+              <form action="/products" method="get" role="search" className="flex items-center" aria-label="Site search">
                 <input
                   type="search"
                   name="search"
                   placeholder="Search tools..."
                   className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                  aria-label="Search tools and products"
                 />
                 <button
                   type="submit"

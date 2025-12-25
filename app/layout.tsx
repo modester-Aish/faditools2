@@ -147,6 +147,7 @@ export default function RootLayout({
         <link rel="modulepreload" href="/_next/static/chunks/pages/_error.js" />
         
         <link rel="manifest" href="/manifest.json" />
+        <link rel="alternate" type="application/rss+xml" title="FadiTools RSS Feed" href="https://faditools.com/feed.xml" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <meta name="google-site-verification" content="FLAscQ24VbDi1GaSCy0mIVHSFr6L8GOTXEK4yBN1tVk" />
         <meta name="msvalidate.01" content="CA9C80743C5C403924230A48CF321E7C" />

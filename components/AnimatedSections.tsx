@@ -14,19 +14,7 @@ export const WhyChooseSection = () => {
         <div className="text-center mb-12 mt-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
             <span className="text-emerald-600">
-              Why Choose Our <strong>Best SEO Tools Group Buy</strong> Platform? <span className="relative inline-block px-3 sm:px-4 py-2 min-h-[2.5rem] min-w-[8rem]">
-                <Image 
-                  src="/best-seo-tools-group-buy-hero-badge.png" 
-                  alt="Best SEO Tools Group Buy - FadiTools Platform" 
-                  className="absolute inset-0 w-full h-full object-cover rounded-xl"
-                  style={{ filter: 'hue-rotate(120deg) saturate(1.2) brightness(0.9)' }}
-                  width={128}
-                  height={40}
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <span className="relative z-10 text-white font-bold">FadiTools</span>
-              </span>
+              Why Choose Our <strong>Best SEO Tools Group Buy</strong> Platform?
             </span>
           </h2>
           <p className="text-base text-gray-600 max-w-3xl mx-auto">
