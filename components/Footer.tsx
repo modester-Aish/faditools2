@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 // Custom icon components
 const YoutubeIcon = ({ className }: { className?: string }) => (
@@ -24,6 +25,33 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const [facebookLink, setFacebookLink] = useState<string>('https://m.me/102189354923483')
+
+  // Fetch Facebook link from chat settings (same as chat button)
+  useEffect(() => {
+    const fetchChatSettings = async () => {
+      try {
+        const response = await fetch('/api/chat-settings', {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+          }
+        })
+        if (response.ok) {
+          const data = await response.json()
+          if (data?.facebook?.link) {
+            setFacebookLink(data.facebook.link)
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching chat settings for footer:', error)
+        // Keep default link if fetch fails
+      }
+    }
+
+    fetchChatSettings()
+  }, [])
 
   const footerLinks = {
     tools: [
@@ -54,7 +82,7 @@ export default function Footer() {
   }
 
   const socialLinks = [
-    { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/faditools' },
+    { name: 'Facebook', icon: Facebook, href: facebookLink },
     { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/faditools' },
     { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/faditools' },
     { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/faditools' },
@@ -64,7 +92,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-background text-gray-800">
+    <footer className="bg-[#1A1A1A] text-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
@@ -74,31 +102,31 @@ export default function Footer() {
               <div className="w-10 h-10 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg flex items-center justify-center mr-3">
                 <span className="text-white font-bold text-xl">F</span>
               </div>
-              <h3 className="text-2xl font-bold text-emerald-600">FadiTools</h3>
+              <h3 className="text-2xl font-bold text-emerald-500">FadiTools</h3>
             </div>
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <p className="text-gray-400 mb-6 leading-relaxed">
               The leading group buy SEO tools service provider. Access 130+ premium digital marketing tools 
               at unbeatable prices. Trusted by thousands of professionals worldwide.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3">
-              <div className="flex items-center text-gray-600">
-                <Mail className="w-4 h-4 mr-3 text-emerald-600" />
+              <div className="flex items-center text-gray-400">
+                <Mail className="w-4 h-4 mr-3 text-emerald-500" />
                 <span>support@faditools.com</span>
               </div>
-              <div className="flex items-center text-gray-600">
-                <Phone className="w-4 h-4 mr-3 text-emerald-600" />
+              <div className="flex items-center text-gray-400">
+                <Phone className="w-4 h-4 mr-3 text-emerald-500" />
                 <span>+1 (555) 123-4567</span>
               </div>
-              <div className="flex items-center text-gray-600">
-                <MapPin className="w-4 h-4 mr-3 text-emerald-600" />
+              <div className="flex items-center text-gray-400">
+                <MapPin className="w-4 h-4 mr-3 text-emerald-500" />
                 <span>Global Service Provider</span>
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="flex space-x-4 mt-6">
+            {/* Social Links - All 7 Platforms */}
+            <div className="flex flex-wrap gap-3 mt-6">
               {socialLinks.map((social) => {
                 const IconComponent = social.icon
                 return (
@@ -107,10 +135,11 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
-                    aria-label={social.name}
+                    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition-all duration-300 shadow-lg hover:shadow-xl flex-shrink-0 group"
+                    aria-label={`Follow us on ${social.name}`}
+                    title={social.name}
                   >
-                    <IconComponent className="w-5 h-5" />
+                    <IconComponent className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-300" />
                   </a>
                 )
               })}
@@ -119,13 +148,13 @@ export default function Footer() {
 
           {/* Tools Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-emerald-600">Tools</h4>
+            <h4 className="text-lg font-semibold mb-4 text-emerald-500">Tools</h4>
             <ul className="space-y-2">
               {footerLinks.tools.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 hover:text-emerald-600 transition-colors duration-200"
+                    className="text-gray-400 hover:text-emerald-500 transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -136,13 +165,13 @@ export default function Footer() {
 
           {/* Packages Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-emerald-600">Packages</h4>
+            <h4 className="text-lg font-semibold mb-4 text-emerald-500">Packages</h4>
             <ul className="space-y-2">
               {footerLinks.packages.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 hover:text-emerald-600 transition-colors duration-200"
+                    className="text-gray-400 hover:text-emerald-500 transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -151,66 +180,65 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Company Links */}
+          {/* Company Links - Renamed to Pages */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-emerald-600">Company</h4>
+            <h4 className="text-lg font-semibold mb-4 text-emerald-500">Pages</h4>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 hover:text-emerald-600 transition-colors duration-200"
+                    className="text-gray-400 hover:text-emerald-500 transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
-
           </div>
         </div>
       </div>
 
       {/* Newsletter Section */}
-              <div className="border-t border-emerald-200 py-8">
+      <div className="border-t border-gray-700 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h4 className="text-xl font-semibold mb-2 text-emerald-600">Stay Updated</h4>
-            <p className="text-gray-600 mb-6">
+            <h4 className="text-xl font-semibold mb-2 text-emerald-500">Stay Updated</h4>
+            <p className="text-gray-400 mb-6">
               Get the latest updates on new tools, features, and digital marketing tips.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-white border border-emerald-300 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-200"
+                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-200"
               />
-                              <button className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg font-semibold hover:from-emerald-700 hover:to-emerald-800 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                  Subscribe
-                </button>
+              <button className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg font-semibold hover:from-emerald-700 hover:to-emerald-800 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                Subscribe
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-              <div className="border-t border-emerald-200 py-6">
+      <div className="border-t border-gray-700 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-600 text-sm mb-4 md:mb-0">
+            <div className="text-gray-400 text-sm mb-4 md:mb-0">
               © {currentYear} FadiTools. All rights reserved.
               <a href="https://www.dmca.com/Protection/Status.aspx?ID=faditools" target="_blank" rel="noopener noreferrer" className="ml-4">
                 <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=faditools" alt="DMCA.com Protection Status" className="inline-block h-4" />
               </a>
             </div>
             <div className="flex space-x-6 text-sm">
-              <Link href="/privacy-policy" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
+              <Link href="/privacy-policy" className="text-gray-400 hover:text-emerald-500 transition-colors duration-200">
                 Privacy Policy
               </Link>
-              <Link href="/terms-of-service" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
+              <Link href="/terms-of-service" className="text-gray-400 hover:text-emerald-500 transition-colors duration-200">
                 Terms of Service
               </Link>
-              <Link href="/sitemap" className="text-gray-600 hover:text-emerald-600 transition-colors duration-200">
+              <Link href="/sitemap" className="text-gray-400 hover:text-emerald-500 transition-colors duration-200">
                 Sitemap
               </Link>
             </div>
