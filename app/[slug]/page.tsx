@@ -27,17 +27,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       const title = blogPost.title.rendered
       const blogUniqueId = blogPost.id || params.slug || ''
       const uniqueDescription = blogPost.excerpt?.rendered 
-        ? `${blogPost.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)} | FadiTools Blog`
-        : `Read this blog post on FadiTools - ${title}`
+        ? `${blogPost.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)}`
+        : `Read this blog post - ${title}`
       
       return {
-        title: `${title} - FadiTools Blog`,
+        title: `${title} | Blog`,
         description: uniqueDescription,
         openGraph: {
           title,
           description: uniqueDescription,
           url: `https://faditools.com/${params.slug}`,
-          siteName: 'FadiTools',
           locale: 'en_US',
           type: 'article',
           publishedTime: blogPost.date,
@@ -62,17 +61,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       const title = page.title.rendered
       const pageUniqueId = page.id || params.slug || ''
       const uniqueDescription = page.excerpt?.rendered 
-        ? `${page.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)} | FadiTools`
-        : `Read this page on FadiTools - ${title}`
+        ? `${page.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)}`
+        : `Read this page - ${title}`
       
       return {
-        title: `${title} - FadiTools`,
+        title: `${title}`,
         description: uniqueDescription,
         openGraph: {
           title,
           description: uniqueDescription,
           url: `https://faditools.com/${params.slug}`,
-          siteName: 'FadiTools',
           locale: 'en_US',
           type: 'website',
         },
@@ -94,7 +92,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     
     if (popularTool) {
       const savingsPercent = Math.round(((parseFloat(popularTool.originalPrice.replace('$', '')) - parseFloat(popularTool.price.replace('$', ''))) / parseFloat(popularTool.originalPrice.replace('$', ''))) * 100)
-      const title = `${popularTool.name} Group Buy 2025 - ${popularTool.price} | Save ${savingsPercent}% | FadiTools`
+      const title = `${popularTool.name} Group Buy 2025 - ${popularTool.price} | Save ${savingsPercent}%`
       const uniqueDescription = popularTool.longDescription 
         ? `${popularTool.longDescription.substring(0, 120)} Get instant group buy access at ${popularTool.price}. Premium tool for agencies, marketers & businesses. 99% uptime guaranteed.`
         : `${popularTool.description} Get instant group buy access at ${popularTool.price}. Premium tool at 90% discount. Instant access, 99% uptime. Perfect for agencies, marketers & businesses.`
@@ -106,7 +104,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
           title,
           description: uniqueDescription,
           url: `https://faditools.com/${popularTool.slug}`,
-          siteName: 'FadiTools',
           locale: 'en_US',
           type: 'website',
         },
@@ -127,7 +124,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const tool = await getToolBySlug(params.slug)
     
     if (tool) {
-      const title = `${tool.name} Group Buy 2025 - ${tool.price}/${tool.period} | Save 90% | FadiTools`
+      const title = `${tool.name} Group Buy 2025 - ${tool.price}/${tool.period} | Save 90%`
       const uniqueDescription = tool.description 
         ? `${tool.description.substring(0, 120)} Get instant group buy access at ${tool.price}/${tool.period}. Premium tool for agencies, marketers & businesses. 99% uptime guaranteed.`
         : `Get ${tool.name} group buy access at ${tool.price}/${tool.period}. Premium SEO tool at 90% discount. Instant access, 99% uptime. Perfect for agencies, marketers & businesses.`
@@ -139,7 +136,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
           title,
           description: uniqueDescription,
           url: `https://faditools.com/${tool.slug || tool.id}`,
-          siteName: 'FadiTools',
           locale: 'en_US',
           type: 'website',
         },
@@ -163,7 +159,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     if (!product) {
       console.log(`❌ [METADATA] Product not found: ${params.slug}`)
       return {
-        title: 'Page Not Found | FadiTools',
+        title: 'Page Not Found',
         description: 'The requested page could not be found.',
         robots: {
           index: false,
@@ -177,7 +173,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     // SEO-optimized title with trending keywords - unique per product using ID
     const uniqueIdentifier = product.id || product.slug || ''
     const priceDisplay = product.price || 'affordable'
-    const title = `${product.name} 2025 - Group Buy at ${priceDisplay}/mo | Save 90% | FadiTools`
+    const title = `${product.name} 2025 - Group Buy at ${priceDisplay}/mo | Save 90%`
     const uniqueDescription = product.short_description 
       ? `${product.short_description.replace(/<[^>]*>/g, '').substring(0, 120)} Get instant group buy access at ${priceDisplay}/month. Premium tool for agencies, marketers & businesses. 99% uptime guaranteed.`
       : `Get ${product.name} group buy access at ${priceDisplay}/month. Premium SEO tool at 90% discount. Instant access, 99% uptime. Perfect for agencies & businesses.`
@@ -189,7 +185,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         title,
         description: uniqueDescription,
         url: `https://faditools.com/${product.slug}`,
-        siteName: 'FadiTools',
         locale: 'en_US',
         type: 'website',
       },
@@ -206,7 +201,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
   } catch (error) {
     return {
-      title: 'Page | FadiTools',
+      title: 'Page',
       description: 'Page details',
     }
   }

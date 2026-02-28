@@ -8,20 +8,19 @@ import { Product } from '@/types'
 import { generateCanonicalUrl } from '@/lib/canonical'
 
 export const metadata: Metadata = {
-  title: 'SEO Tools 2025 - 50+ Premium Group Buy Tools at 90% OFF | FadiTools',
+  title: 'SEO Tools 2025 - 50+ Premium Group Buy Tools at 90% OFF',
   description: 'Access 50+ premium SEO tools at 90% discount. Group buy subscription for keyword research, backlink analysis & site audits. Affordable pricing.',
   keywords: 'seo tools 2025, group buy seo tools, premium seo tools, digital marketing tools, affordable seo tools, seo tools pricing, seo tools comparison, keyword research tool, backlink checker, site audit tool, rank tracking tool, competitor analysis tools, content optimization tools, cheap seo tools, seo tools discount, professional seo tools, marketing tools 2025',
   openGraph: {
-    title: 'SEO Tools 2025 - 50+ Premium Group Buy Tools at 90% OFF | FadiTools',
+    title: 'SEO Tools 2025 - 50+ Premium Group Buy Tools at 90% OFF',
     description: 'Access 50+ premium SEO tools at 90% discount. Group buy subscription for keyword research, backlink analysis & site audits. Affordable pricing.',
     url: 'https://faditools.com/products',
-    siteName: 'FadiTools',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SEO Tools 2025 - 50+ Premium Group Buy Tools at 90% OFF | FadiTools',
+    title: 'SEO Tools 2025 - 50+ Premium Group Buy Tools at 90% OFF',
     description: 'Access 50+ premium SEO tools at 90% discount. Group buy subscription. Affordable pricing for agencies & businesses.',
   },
   alternates: {

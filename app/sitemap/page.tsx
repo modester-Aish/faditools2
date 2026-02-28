@@ -4,7 +4,7 @@ import Header from '@/components/Header'
 import { getAllPopularTools } from '@/data/popular-tools'
 
 export const metadata: Metadata = {
-  title: 'HTML Sitemap - FadiTools',
+  title: 'HTML Sitemap',
   description: 'Complete sitemap of all pages, tools, and resources available on FadiTools',
   robots: {
     index: true,

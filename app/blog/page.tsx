@@ -7,19 +7,18 @@ import Image from 'next/image'
 import { generateCanonicalUrl } from '@/lib/canonical'
 
 export const metadata: Metadata = {
-  title: 'SEO Blog 2025 - Latest Tips, Guides & Tool Reviews | FadiTools',
+  title: 'SEO Blog 2025 - Latest Tips, Guides & Tool Reviews',
   description: 'Read latest SEO tips, digital marketing guides & tool reviews 2025. Learn keyword research, backlink analysis & site audits. Expert tutorials.',
   openGraph: {
-    title: 'SEO Blog 2025 - Latest Tips, Guides & Tool Reviews | FadiTools',
+    title: 'SEO Blog 2025 - Latest Tips, Guides & Tool Reviews',
     description: 'Read latest SEO tips, digital marketing guides & tool reviews 2025. Learn keyword research, backlink analysis & site audits. Expert tutorials.',
     url: 'https://faditools.com/blog',
-    siteName: 'FadiTools',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SEO Blog 2025 - Latest Tips, Guides & Tool Reviews | FadiTools',
+    title: 'SEO Blog 2025 - Latest Tips, Guides & Tool Reviews',
     description: 'Read latest SEO tips, digital marketing guides & tool reviews 2025. Learn keyword research, backlink analysis & site audits. Expert tutorials.',
   },
   alternates: {

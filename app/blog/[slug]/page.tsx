@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     const post = await fetchPostBySlug(slug)
     if (!post) {
       return {
-        title: 'Post Not Found - FadiTools',
+        title: 'Post Not Found',
         description: 'The requested blog post could not be found.',
       }
     }
@@ -27,17 +27,16 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     const title = post.title.rendered
     const postUniqueId = post.id || slug || ''
     const uniqueDescription = post.excerpt?.rendered 
-      ? `${post.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)} | FadiTools Blog`
-      : `Read this blog post on FadiTools - ${title}`
+      ? `${post.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)}`
+      : `Read this blog post - ${title}`
 
     return {
-      title: `${title} - FadiTools Blog`,
+      title: `${title} | Blog`,
       description: uniqueDescription,
       openGraph: {
         title,
         description: uniqueDescription,
         url: `https://faditools.com/${slug}`,
-        siteName: 'FadiTools',
         locale: 'en_US',
         type: 'article',
         publishedTime: post.date,
@@ -55,7 +54,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     }
   } catch (error) {
     return {
-      title: 'Blog Post - FadiTools',
+      title: 'Blog Post',
       description: 'Read our latest blog posts and insights.',
     }
   }

@@ -34,7 +34,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://faditools.com'),
-  title: 'FadiTools - Premium SEO Tools & Digital Marketing Solutions',
+  title: 'Premium SEO Tools & Digital Marketing Solutions',
   description: 'Access 50+ premium SEO tools including AHREF$, SEMRU$H, Moz Pro at 90% discount. Trusted by 10,000+ marketers. 24/7 support, 99.9% uptime.',
   keywords: 'SEO tools, AHREF$ group buy, SEMRU$H discount, digital marketing tools, keyword research, backlink analysis, competitor analysis, SEO software, marketing automation, content optimization',
   authors: [{ name: 'FadiTools Team' }],
@@ -61,24 +61,23 @@ export const metadata: Metadata = {
     ]
   },
   openGraph: {
-    title: 'FadiTools - Premium SEO Tools & Digital Marketing Solutions',
+    title: 'Premium SEO Tools & Digital Marketing Solutions',
     description: 'Access 50+ premium SEO tools including AHREF$, SEMRU$H, Moz Pro at 90% discount. Trusted by 10,000+ marketers worldwide.',
     type: 'website',
     locale: 'en_US',
     url: 'https://faditools.com',
-    siteName: 'FadiTools',
     images: [
       {
         url: '/seo-tools-illustration.svg',
         width: 1200,
         height: 630,
-        alt: 'FadiTools - Premium SEO Tools Platform'
+        alt: 'Premium SEO Tools Platform'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FadiTools - Premium SEO Tools & Digital Marketing Solutions',
+    title: 'Premium SEO Tools & Digital Marketing Solutions',
     description: 'Access 50+ premium SEO tools including AHREF$, SEMRU$H, Moz Pro at 90% discount. Trusted by 10,000+ marketers worldwide.',
     images: ['/seo-tools-illustration.svg']
   },
@@ -96,8 +95,8 @@ export const metadata: Metadata = {
   other: {
     'theme-color': '#D4B896',
     'msapplication-TileColor': '#D4B896',
-    'application-name': 'FadiTools',
-    'apple-mobile-web-app-title': 'FadiTools',
+    'application-name': 'SEO Tools',
+    'apple-mobile-web-app-title': 'SEO Tools',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
     'apple-mobile-web-app-orientations': 'portrait',
@@ -147,7 +146,7 @@ export default function RootLayout({
         <link rel="modulepreload" href="/_next/static/chunks/pages/_error.js" />
         
         <link rel="manifest" href="/manifest.json" />
-        <link rel="alternate" type="application/rss+xml" title="FadiTools RSS Feed" href="https://faditools.com/feed.xml" />
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://faditools.com/feed.xml" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <meta name="google-site-verification" content="FLAscQ24VbDi1GaSCy0mIVHSFr6L8GOTXEK4yBN1tVk" />
         <meta name="msvalidate.01" content="CA9C80743C5C403924230A48CF321E7C" />

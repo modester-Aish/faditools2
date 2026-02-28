@@ -4,7 +4,7 @@ import Header from '../../components/Header'
 import { generateCanonicalUrl } from '@/lib/canonical'
 
 export const metadata: Metadata = {
-  title: 'WordPress API Test - FadiTools',
+  title: 'WordPress API Test',
   description: 'Testing WordPress API integration',
   alternates: {
     canonical: generateCanonicalUrl('/test-wordpress'),

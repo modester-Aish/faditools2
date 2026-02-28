@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import { generateCanonicalUrl } from '@/lib/canonical'
 
 export const metadata: Metadata = {
-  title: 'Page Not Found - FadiTools',
+  title: 'Page Not Found',
   description: 'The page you are looking for could not be found.',
   alternates: {
     canonical: generateCanonicalUrl('/404'),

@@ -34,15 +34,15 @@ export async function GET() {
   xmlns:dc="http://purl.org/dc/elements/1.1/"
   xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>FadiTools Blog</title>
+    <title>Blog</title>
     <link>${baseUrl}</link>
-    <description>Latest blog posts and SEO tools guides from FadiTools</description>
+    <description>Latest blog posts and SEO tools guides</description>
     <language>en-US</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${baseUrl}/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>${baseUrl}/faditools-favicon.svg</url>
-      <title>FadiTools</title>
+      <title>SEO Blog</title>
       <link>${baseUrl}</link>
     </image>
 ${rssItems}
@@ -57,7 +57,7 @@ ${rssItems}
     })
   } catch (error) {
     console.error('Error generating RSS feed:', error)
-    return new Response('<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>FadiTools Blog</title></channel></rss>', {
+    return new Response('<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Blog</title></channel></rss>', {
       headers: {
         'Content-Type': 'application/rss+xml',
       },

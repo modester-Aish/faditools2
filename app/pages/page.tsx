@@ -7,19 +7,18 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export const metadata: Metadata = {
-  title: 'Resources & Guides 2025 - SEO Tools Learning Center | FadiTools',
+  title: 'Resources & Guides 2025 - SEO Tools Learning Center',
   description: 'Explore SEO tools guides, tutorials & pricing info. Learn how to use group buy tools effectively. Resources for beginners & agencies.',
   openGraph: {
-    title: 'Resources & Guides 2025 - SEO Tools Learning Center | FadiTools',
+    title: 'Resources & Guides 2025 - SEO Tools Learning Center',
     description: 'Explore SEO tools guides, tutorials & pricing info. Learn how to use group buy tools effectively. Resources for beginners & agencies.',
     url: 'https://faditools.com/pages',
-    siteName: 'FadiTools',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Resources & Guides 2025 - SEO Tools Learning Center | FadiTools',
+    title: 'Resources & Guides 2025 - SEO Tools Learning Center',
     description: 'Explore SEO tools guides, tutorials & pricing info. Learn how to use group buy tools effectively. Resources for beginners & agencies.',
   },
   alternates: {

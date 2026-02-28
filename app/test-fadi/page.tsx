@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { generateCanonicalUrl } from '@/lib/canonical'
 
 export const metadata: Metadata = {
-  title: 'Test Fadi Route - FadiTools',
+  title: 'Test Fadi Route',
   description: 'Test page to verify routing',
   alternates: {
     canonical: generateCanonicalUrl('/test-fadi'),
