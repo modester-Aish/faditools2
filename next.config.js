@@ -34,78 +34,6 @@ const nextConfig = {
       }
     }
     
-    // Advanced optimization for maximum performance
-    if (!isServer) {
-      config.optimization = {
-        ...config.optimization,
-        splitChunks: {
-          chunks: 'all',
-          minSize: 20000,
-          maxSize: 244000,
-          cacheGroups: {
-            ...config.optimization.splitChunks?.cacheGroups,
-            // Critical CSS
-            critical: {
-              name: 'critical',
-              test: /\.(css|scss)$/,
-              chunks: 'all',
-              enforce: true,
-              priority: 20,
-            },
-            // Vendor libraries
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendors',
-              chunks: 'all',
-              priority: 15,
-              reuseExistingChunk: true,
-              enforce: true,
-            },
-            // React and Next.js specific
-            react: {
-              test: /[\\/]node_modules[\\/](react|react-dom|next)[\\/]/,
-              name: 'react',
-              chunks: 'all',
-              priority: 18,
-              enforce: true,
-            },
-            // Mobile-specific chunks
-            mobile: {
-              test: /[\\/]components[\\/].*\.(js|jsx|ts|tsx)$/,
-              name: 'mobile',
-              chunks: 'all',
-              priority: 12,
-              enforce: true,
-            },
-            // Common components
-            common: {
-              name: 'common',
-              minChunks: 2,
-              chunks: 'all',
-              priority: 10,
-              reuseExistingChunk: true,
-              enforce: true,
-            },
-            // Default chunks
-            default: {
-              name: 'default',
-              minChunks: 1,
-              chunks: 'all',
-              priority: 5,
-              reuseExistingChunk: true,
-            },
-          },
-        },
-        usedExports: true,
-        sideEffects: false,
-        // Tree shaking optimization
-        providedExports: true,
-        concatenateModules: true,
-        // Minimize bundle size
-        minimize: true,
-      }
-    }
-    
     return config
   },
   
@@ -122,13 +50,11 @@ const nextConfig = {
   experimental: {
     forceSwcTransforms: true,
     esmExternals: true,
-    optimizePackageImports: ['@/components', '@/lib'],
     // Enable advanced optimizations
     optimizeCss: true,
     serverComponentsExternalPackages: [],
     // Removed bundlePagesRouterDependencies - not supported by Turbopack
     // Additional performance optimizations
-    optimizeServerReact: true,
     webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB'],
   },
   

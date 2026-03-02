@@ -243,15 +243,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {/* Center - Main Content */}
               <div className="lg:col-span-6 order-1 lg:order-2">
                 <article className="prose prose-lg max-w-none">
-                  {/* Excerpt */}
-                  {post.excerpt?.rendered && (
-                    <div className="bg-primary-50 border-l-4 border-primary-500 p-6 rounded-r-lg mb-8">
-                      <p className="text-lg text-gray-700 italic m-0">
-                        {post.excerpt.rendered.replace(/<[^>]*>/g, '')}
-                      </p>
-                    </div>
-                  )}
-
                   {/* Main Content */}
                   <div 
                     className="text-gray-800 leading-relaxed"

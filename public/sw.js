@@ -5,9 +5,10 @@
  * Caches static assets and API responses
  */
 
-const CACHE_NAME = 'faditools-v1.0.0'
-const STATIC_CACHE = 'faditools-static-v1.0.0'
-const DYNAMIC_CACHE = 'faditools-dynamic-v1.0.0'
+// Bump version when changing caching strategy
+const CACHE_NAME = 'faditools-v1.0.1'
+const STATIC_CACHE = 'faditools-static-v1.0.1'
+const DYNAMIC_CACHE = 'faditools-dynamic-v1.0.1'
 
 // Assets to cache immediately (mobile-optimized)
 const STATIC_ASSETS = [
@@ -64,7 +65,7 @@ self.addEventListener('activate', (event) => {
   )
 })
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - control caching strategy
 self.addEventListener('fetch', (event) => {
   const { request } = event
   const url = new URL(request.url)
@@ -78,46 +79,77 @@ self.addEventListener('fetch', (event) => {
   if (!url.protocol.startsWith('http')) {
     return
   }
-  
-  event.respondWith(
-    caches.match(request)
-      .then((cachedResponse) => {
-        // Return cached version if available
-        if (cachedResponse) {
-          console.log('Service Worker: Serving from cache:', url.pathname)
-          return cachedResponse
-        }
-        
-        // Otherwise fetch from network
-        console.log('Service Worker: Fetching from network:', url.pathname)
-        return fetch(request)
-          .then((networkResponse) => {
-            // Don't cache non-successful responses
-            if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-              return networkResponse
-            }
-            
-            // Cache successful responses
-            const responseToCache = networkResponse.clone()
-            
-            caches.open(DYNAMIC_CACHE)
-              .then((cache) => {
-                cache.put(request, responseToCache)
-              })
-            
+
+  // Always use network-first for navigation requests (HTML pages)
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then((networkResponse) => {
+          // Optionally keep a fallback copy for offline use
+          const responseToCache = networkResponse.clone()
+          caches.open(DYNAMIC_CACHE).then((cache) => {
+            cache.put(request, responseToCache)
+          })
+          return networkResponse
+        })
+        .catch((error) => {
+          console.log('Service Worker: Navigation network error:', error)
+          // Fallback to cached page or home when offline
+          return caches.match(request).then((cached) => cached || caches.match('/'))
+        })
+    )
+    return
+  }
+
+  // Network-first strategy for /data/ JSON (homepage data etc.)
+  if (url.pathname.startsWith('/data/')) {
+    event.respondWith(
+      fetch(request)
+        .then((networkResponse) => {
+          if (!networkResponse || networkResponse.status !== 200) {
             return networkResponse
+          }
+          const responseToCache = networkResponse.clone()
+          caches.open(DYNAMIC_CACHE).then((cache) => {
+            cache.put(request, responseToCache)
           })
-          .catch((error) => {
-            console.log('Service Worker: Network error:', error)
-            
-            // Return offline page for navigation requests
-            if (request.mode === 'navigate') {
-              return caches.match('/')
-            }
-            
-            throw error
+          return networkResponse
+        })
+        .catch((error) => {
+          console.log('Service Worker: Network error for /data/ request:', error)
+          return caches.match(request)
+        })
+    )
+    return
+  }
+
+  // Default: cache-first for static assets and other GET requests
+  event.respondWith(
+    caches.match(request).then((cachedResponse) => {
+      if (cachedResponse) {
+        console.log('Service Worker: Serving from cache:', url.pathname)
+        return cachedResponse
+      }
+
+      console.log('Service Worker: Fetching from network:', url.pathname)
+      return fetch(request)
+        .then((networkResponse) => {
+          if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+            return networkResponse
+          }
+
+          const responseToCache = networkResponse.clone()
+          caches.open(DYNAMIC_CACHE).then((cache) => {
+            cache.put(request, responseToCache)
           })
-      })
+
+          return networkResponse
+        })
+        .catch((error) => {
+          console.log('Service Worker: Network error:', error)
+          throw error
+        })
+    })
   )
 })
 

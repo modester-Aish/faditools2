@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
-    "dev:windows": "set CHOKIDAR_USEPOLLING=true && set WATCHPACK_POLLING=true && next dev --turbo",
+    "dev": "next dev",
+    "dev:windows": "set CHOKIDAR_USEPOLLING=true && set WATCHPACK_POLLING=true && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

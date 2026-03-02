@@ -435,9 +435,10 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                     {/* Excerpt */}
                     {blogPost.excerpt?.rendered && (
                       <div className="bg-primary-50 border-l-4 border-primary-500 p-6 rounded-r-lg mb-8">
-                        <p className="text-lg text-gray-700 italic m-0">
-                          {blogPost.excerpt.rendered.replace(/<[^>]*>/g, '')}
-                        </p>
+                        <div
+                          className="text-lg text-gray-700 italic m-0"
+                          dangerouslySetInnerHTML={{ __html: blogPost.excerpt.rendered }}
+                        />
                       </div>
                     )}
 
@@ -546,16 +547,6 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Content Section */}
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-              <article className="prose prose-lg max-w-none">
-                <div 
-                  className="text-gray-800 leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: blogPost.content.rendered }}
-                />
-              </article>
             </div>
 
             {/* Back to Blog Button */}
@@ -837,21 +828,11 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                 {/* Center - Main Content */}
                 <div className="lg:col-span-6 order-1 lg:order-2">
                   <article className="prose prose-lg max-w-none">
-                    {/* Excerpt */}
-                    {page.excerpt?.rendered && (
-                      <div className="bg-primary-50 border-l-4 border-primary-500 p-6 rounded-r-lg mb-8">
-                        <p className="text-lg text-gray-700 italic m-0">
-                          {page.excerpt.rendered.replace(/<[^>]*>/g, '')}
-                        </p>
-                      </div>
-                    )}
-
-                    {/* Main Content */}
+                    {/* Main Content only (no separate excerpt box to avoid duplicate text) */}
                     <div 
                       className="text-gray-800 leading-relaxed"
                       dangerouslySetInnerHTML={{ 
                         __html: (() => {
-                          // Function to add IDs to headings in content
                           const addHeadingIds = (content: string) => {
                             return content.replace(
                               /<h([1-6])([^>]*)>(.*?)<\/h[1-6]>/g,
@@ -862,7 +843,6 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                             )
                           }
                           
-                          // Add IDs to content and log for debugging
                           const processedContent = addHeadingIds(page.content.rendered)
                           console.log('Processed Content with IDs:', processedContent.substring(0, 300) + '...')
                           
