@@ -2,11 +2,10 @@ import { Metadata } from 'next'
 import { wooCommerceService } from '@/lib/woocommerce-service'
 import ProductDetail from '@/components/ProductDetail'
 import { WooCommerceProduct } from '@/lib/woocommerce-api'
-import { loadProductBySlug, loadRelatedProducts } from '@/lib/static-product-detail'
 import { Product } from '@/types'
 import { generateCanonicalUrl } from '@/lib/canonical'
 import Header from '@/components/Header'
-import { fetchPostBySlug, fetchPageBySlug, fetchBlogPosts, getToolBySlug, getTools } from '@/lib/api'
+import { fetchPostBySlug, fetchPageBySlug, fetchBlogPosts, fetchSEOBySlug, getToolBySlug, getTools } from '@/lib/api'
 import { WordPressPost, WordPressPage } from '@/types'
 import { getPopularToolBySlug, getAllPopularTools } from '@/data/popular-tools'
 import ToolDetail from '@/components/ToolDetail'
@@ -14,8 +13,56 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { generateOrganizationSchema, generateWebSiteSchema, generateBreadcrumbSchema } from '@/components/StructuredData'
 
-// Enable ISR for product detail pages - revalidate every 6 hours
-export const revalidate = 21600 // 6 hours
+// Live fetch from WordPress/WooCommerce
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
+function getWooConfig() {
+  const baseUrl = process.env.WOOCOMMERCE_BASE_URL || process.env.WORDPRESS_BASE_URL || 'https://app.faditools.com'
+  const key = process.env.WC_CONSUMER_KEY || process.env.WOO_CONSUMER_KEY || ''
+  const secret = process.env.WC_CONSUMER_SECRET || process.env.WOO_CONSUMER_SECRET || ''
+  return { baseUrl, key, secret }
+}
+
+async function fetchWooProductBySlugLive(slug: string): Promise<WooCommerceProduct | null> {
+  const { baseUrl, key, secret } = getWooConfig()
+  if (!key || !secret) return null
+
+  const params = new URLSearchParams()
+  params.set('consumer_key', key)
+  params.set('consumer_secret', secret)
+  params.set('slug', slug)
+  params.set('status', 'publish')
+  params.set('per_page', '1')
+
+  const url = `${baseUrl}/wp-json/wc/v3/products?${params.toString()}`
+  const res = await fetch(url, { cache: 'no-store' })
+  if (!res.ok) return null
+  const data = (await res.json()) as WooCommerceProduct[]
+  return Array.isArray(data) && data.length > 0 ? data[0] : null
+}
+
+async function fetchRelatedWooProductsLive(product: WooCommerceProduct, limit: number): Promise<WooCommerceProduct[]> {
+  const { baseUrl, key, secret } = getWooConfig()
+  if (!key || !secret) return []
+
+  const categoryId = product.categories?.[0]?.id
+  if (!categoryId) return []
+
+  const params = new URLSearchParams()
+  params.set('consumer_key', key)
+  params.set('consumer_secret', secret)
+  params.set('status', 'publish')
+  params.set('per_page', String(limit + 1))
+  params.set('category', String(categoryId))
+  params.set('exclude', String(product.id))
+
+  const url = `${baseUrl}/wp-json/wc/v3/products?${params.toString()}`
+  const res = await fetch(url, { cache: 'no-store' })
+  if (!res.ok) return []
+  const data = (await res.json()) as WooCommerceProduct[]
+  return Array.isArray(data) ? data.slice(0, limit) : []
+}
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
@@ -24,14 +71,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const blogPost = await fetchPostBySlug(params.slug)
     
     if (blogPost) {
-      const title = blogPost.title.rendered
-      const blogUniqueId = blogPost.id || params.slug || ''
-      const uniqueDescription = blogPost.excerpt?.rendered 
-        ? `${blogPost.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)}`
-        : `Read this blog post - ${title}`
+      const seo = (blogPost as any).seo
+      const title = seo?.title || blogPost.title.rendered
+      const uniqueDescription =
+        seo?.description ||
+        (blogPost.excerpt?.rendered
+          ? `${blogPost.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)}`
+          : `Read this blog post - ${title}`)
       
       return {
-        title: `${title} | Blog`,
+        title: seo?.title ? title : `${title} | Blog`,
         description: uniqueDescription,
         openGraph: {
           title,
@@ -58,14 +107,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const page = await fetchPageBySlug(params.slug)
     
     if (page) {
-      const title = page.title.rendered
-      const pageUniqueId = page.id || params.slug || ''
-      const uniqueDescription = page.excerpt?.rendered 
-        ? `${page.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)}`
-        : `Read this page - ${title}`
+      const seo = (page as any).seo
+      const title = seo?.title || page.title.rendered
+      const uniqueDescription =
+        seo?.description ||
+        (page.excerpt?.rendered
+          ? `${page.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)}`
+          : `Read this page - ${title}`)
       
       return {
-        title: `${title}`,
+        title,
         description: uniqueDescription,
         openGraph: {
           title,
@@ -152,9 +203,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       }
     }
     
-    // If not a tool, try to find a product (ULTRA-FAST static loading!)
+    // If not a tool, try to find a product (live from WooCommerce)
     console.log(`🔍 [METADATA] Loading product metadata for: ${params.slug}`)
-    const product = await loadProductBySlug(params.slug)
+    const product = await fetchWooProductBySlugLive(params.slug)
     
     if (!product) {
       console.log(`❌ [METADATA] Product not found: ${params.slug}`)
@@ -170,13 +221,15 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     
     console.log(`✅ [METADATA] Product found: ${product.name}`)
     
-    // SEO-optimized title with trending keywords - unique per product using ID
-    const uniqueIdentifier = product.id || product.slug || ''
+    const wpSeo = await fetchSEOBySlug(params.slug)
     const priceDisplay = product.price || 'affordable'
-    const title = `${product.name} 2025 - Group Buy at ${priceDisplay}/mo | Save 90%`
-    const uniqueDescription = product.short_description 
-      ? `${product.short_description.replace(/<[^>]*>/g, '').substring(0, 120)} Get instant group buy access at ${priceDisplay}/month. Premium tool for agencies, marketers & businesses. 99% uptime guaranteed.`
-      : `Get ${product.name} group buy access at ${priceDisplay}/month. Premium SEO tool at 90% discount. Instant access, 99% uptime. Perfect for agencies & businesses.`
+    const title =
+      wpSeo?.title || `${product.name} 2025 - Group Buy at ${priceDisplay}/mo | Save 90%`
+    const uniqueDescription =
+      wpSeo?.description ||
+      (product.short_description
+        ? `${product.short_description.replace(/<[^>]*>/g, '').substring(0, 155)}`
+        : `Get ${product.name} group buy access at ${priceDisplay}/month. Premium tool at 90% discount. Instant access.`)
     
     return {
       title,
@@ -1009,9 +1062,9 @@ export default async function DynamicPage({ params }: { params: { slug: string }
       )
     }
     
-    // If not a tool, try to find a product (ULTRA-FAST static loading!)
+    // If not a tool, try to find a product (live from WooCommerce)
     console.log(`🔍 [COMPONENT] Loading product for rendering: ${params.slug}`)
-    const product = await loadProductBySlug(params.slug)
+    const product = await fetchWooProductBySlugLive(params.slug)
     
     if (!product) {
       console.log(`❌ [COMPONENT] Product not found: ${params.slug}`)
@@ -1086,8 +1139,8 @@ export default async function DynamicPage({ params }: { params: { slug: string }
       }
     } as any
 
-    // Get related products from static data (ULTRA-FAST!)
-    const relatedProductsData = await loadRelatedProducts(product.slug, 4)
+    // Get related products (live)
+    const relatedProductsData = await fetchRelatedWooProductsLive(product, 4)
     const relatedProducts = relatedProductsData.map((relatedProduct: WooCommerceProduct) => ({
         id: relatedProduct.id,
         date: relatedProduct.date_created,

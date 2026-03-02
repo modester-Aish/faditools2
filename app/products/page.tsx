@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { loadStaticProducts, loadStaticCategories } from '@/lib/static-products'
+import { fetchPageBySlug } from '@/lib/api'
 import Header from '../../components/Header'
 import ProductGrid from '../../components/ProductGrid'
 import ProductSearch from '../../components/ProductSearch'
@@ -7,32 +7,79 @@ import { WooCommerceProduct } from '@/lib/woocommerce-api'
 import { Product } from '@/types'
 import { generateCanonicalUrl } from '@/lib/canonical'
 
-export const metadata: Metadata = {
+const FALLBACK = {
   title: 'SEO Tools 2025 - 50+ Premium Group Buy Tools at 90% OFF',
-  description: 'Access 50+ premium SEO tools at 90% discount. Group buy subscription for keyword research, backlink analysis & site audits. Affordable pricing.',
-  keywords: 'seo tools 2025, group buy seo tools, premium seo tools, digital marketing tools, affordable seo tools, seo tools pricing, seo tools comparison, keyword research tool, backlink checker, site audit tool, rank tracking tool, competitor analysis tools, content optimization tools, cheap seo tools, seo tools discount, professional seo tools, marketing tools 2025',
-  openGraph: {
-    title: 'SEO Tools 2025 - 50+ Premium Group Buy Tools at 90% OFF',
-    description: 'Access 50+ premium SEO tools at 90% discount. Group buy subscription for keyword research, backlink analysis & site audits. Affordable pricing.',
-    url: 'https://faditools.com/products',
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'SEO Tools 2025 - 50+ Premium Group Buy Tools at 90% OFF',
-    description: 'Access 50+ premium SEO tools at 90% discount. Group buy subscription. Affordable pricing for agencies & businesses.',
-  },
-  alternates: {
-    canonical: generateCanonicalUrl('/products'),
-  },
+  description:
+    'Access 50+ premium SEO tools at 90% discount. Group buy subscription for keyword research, backlink analysis & site audits. Affordable pricing.',
+  keywords:
+    'seo tools 2025, group buy seo tools, premium seo tools, digital marketing tools, affordable seo tools, seo tools pricing, seo tools comparison, keyword research tool, backlink checker, site audit tool, rank tracking tool, competitor analysis tools, content optimization tools, cheap seo tools, seo tools discount, professional seo tools, marketing tools 2025',
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const wpPage = await fetchPageBySlug('products')
+  const seo = (wpPage as any)?.seo
+  const title = seo?.title || FALLBACK.title
+  const description = seo?.description || FALLBACK.description
+
+  return {
+    title,
+    description,
+    keywords: FALLBACK.keywords,
+    openGraph: {
+      title,
+      description,
+      url: 'https://faditools.com/products',
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+    alternates: {
+      canonical: generateCanonicalUrl('/products'),
+    },
+    robots: { index: true, follow: true },
+  }
 }
 
 // Enable ISR (Incremental Static Regeneration) for better performance
-// Products will be statically generated and revalidated every 6 hours
-// This means the page is built once and served from cache for 6 hours
-export const revalidate = 21600 // Revalidate every 6 hours (21600 seconds)
-// Removed dynamic = 'force-dynamic' to enable static generation with ISR
+// Live fetch from WooCommerce (no static JSON)
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
+function getWooConfig() {
+  const baseUrl = process.env.WOOCOMMERCE_BASE_URL || process.env.WORDPRESS_BASE_URL || 'https://app.faditools.com'
+  const key = process.env.WC_CONSUMER_KEY || process.env.WOO_CONSUMER_KEY || ''
+  const secret = process.env.WC_CONSUMER_SECRET || process.env.WOO_CONSUMER_SECRET || ''
+  return { baseUrl, key, secret }
+}
+
+function mapWooToProduct(wooProduct: any): Product {
+  return {
+    id: wooProduct.id,
+    date: wooProduct.date_created,
+    modified: wooProduct.date_modified,
+    slug: wooProduct.slug,
+    status: wooProduct.status as any,
+    link: wooProduct.permalink,
+    title: { rendered: wooProduct.name },
+    content: { rendered: wooProduct.description },
+    excerpt: { rendered: wooProduct.short_description },
+    featured_media: wooProduct.images?.[0]?.id || 0,
+    price: wooProduct.price,
+    regular_price: wooProduct.regular_price,
+    sale_price: wooProduct.sale_price,
+    on_sale: wooProduct.on_sale,
+    stock_status: wooProduct.stock_status,
+    stock_quantity: wooProduct.stock_quantity,
+    images: wooProduct.images,
+    attributes: wooProduct.attributes,
+    categories: wooProduct.categories?.map((cat: any) => cat.id) || [],
+    tags: wooProduct.tags?.map((tag: any) => tag.id) || [],
+  } as any
+}
 
 interface ProductsPageProps {
   searchParams: {
@@ -50,104 +97,62 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   let products: Product[] = []
   let totalProducts = 0
   let categories: Array<{ id: number; name: string; slug: string }> = []
+  let totalPages = 0
   
   try {
-    // Load products from static JSON file (ultra-fast! 0.01s)
-    // No API calls - data loaded from public/data/products.json
-    const staticProducts = await loadStaticProducts()
-    const staticCategories = await loadStaticCategories()
-    
-    console.log(`📦 Loaded ${staticProducts.length} products from static file (Solution 3: Static + Webhooks)`)
-    
-    // Get categories for search component
-    categories = staticCategories.map(cat => ({
-      id: cat.id,
-      name: cat.name,
-      slug: cat.slug
-    }))
-    
-    // Apply filters to products
-    let filteredProducts = staticProducts
-    
-    if (category) {
-      filteredProducts = filteredProducts.filter((product: WooCommerceProduct) => 
-        product.categories.some(cat => cat.slug === category)
-      )
+    const { baseUrl, key, secret } = getWooConfig()
+    if (!key || !secret) {
+      throw new Error('WooCommerce credentials missing. Set WC_CONSUMER_KEY/WC_CONSUMER_SECRET in env.')
     }
-    
-    if (search) {
-      const searchLower = search.toLowerCase()
-      filteredProducts = filteredProducts.filter((product: WooCommerceProduct) =>
-        product.name.toLowerCase().includes(searchLower) ||
-        product.short_description.toLowerCase().includes(searchLower) ||
-        product.description.toLowerCase().includes(searchLower)
-      )
-    }
-    
-    totalProducts = filteredProducts.length
-    
-    // Apply pagination - increased to 24 products per page for better UX
+
+    // Fetch categories for filter (slug -> id)
+    const catsUrl = `${baseUrl}/wp-json/wc/v3/products/categories?consumer_key=${encodeURIComponent(
+      key
+    )}&consumer_secret=${encodeURIComponent(secret)}&per_page=100`
+    const catsRes = await fetch(catsUrl, { cache: 'no-store' })
+    const catsJson = await catsRes.json()
+    categories = Array.isArray(catsJson)
+      ? catsJson.map((cat: any) => ({ id: cat.id, name: cat.name, slug: cat.slug }))
+      : []
+
     const productsPerPage = 24
-    const startIndex = (page - 1) * productsPerPage
-    const endIndex = startIndex + productsPerPage
-    const paginatedProducts = filteredProducts.slice(startIndex, endIndex)
-    
-    // Convert WooCommerce products to Product format for compatibility
-    products = paginatedProducts.map(wooProduct => ({
-      id: wooProduct.id,
-      date: wooProduct.date_created,
-      modified: wooProduct.date_modified,
-      slug: wooProduct.slug,
-      status: wooProduct.status as any,
-      link: wooProduct.permalink,
-      title: { rendered: wooProduct.name },
-      content: { rendered: wooProduct.description },
-      excerpt: { rendered: wooProduct.short_description },
-      featured_media: wooProduct.images?.[0]?.id || 0,
-      // WooCommerce specific fields
-      price: wooProduct.price,
-      regular_price: wooProduct.regular_price,
-      sale_price: wooProduct.sale_price,
-      on_sale: wooProduct.on_sale,
-      stock_status: wooProduct.stock_status,
-      stock_quantity: wooProduct.stock_quantity,
-      images: wooProduct.images,
-      attributes: wooProduct.attributes,
-      // Additional fields
-      categories: wooProduct.categories.map(cat => cat.id),
-      tags: wooProduct.tags.map(tag => tag.id),
-      meta: {
-        sku: wooProduct.sku,
-        total_sales: wooProduct.total_sales,
-        average_rating: wooProduct.average_rating,
-        rating_count: wooProduct.rating_count,
-        featured: wooProduct.featured,
-        virtual: wooProduct.virtual,
-        downloadable: wooProduct.downloadable,
-        weight: wooProduct.weight,
-        dimensions: wooProduct.dimensions,
-        manage_stock: wooProduct.manage_stock,
-        stock_quantity: wooProduct.stock_quantity,
-        backorders: wooProduct.backorders,
-        sold_individually: wooProduct.sold_individually,
-        purchase_note: wooProduct.purchase_note,
-        reviews_allowed: wooProduct.reviews_allowed,
-        upsell_ids: wooProduct.upsell_ids,
-        cross_sell_ids: wooProduct.cross_sell_ids,
-        parent_id: wooProduct.parent_id,
-        grouped_products: wooProduct.grouped_products,
-        menu_order: wooProduct.menu_order
-      }
-    })) as any
+    const params = new URLSearchParams()
+    params.set('consumer_key', key)
+    params.set('consumer_secret', secret)
+    params.set('status', 'publish')
+    params.set('per_page', String(productsPerPage))
+    params.set('page', String(page))
+
+    if (search) params.set('search', search)
+
+    if (category) {
+      const match = categories.find((c) => c.slug === category)
+      if (match?.id) params.set('category', String(match.id))
+    }
+
+    const productsUrl = `${baseUrl}/wp-json/wc/v3/products?${params.toString()}`
+    const productsRes = await fetch(productsUrl, { cache: 'no-store' })
+    if (!productsRes.ok) {
+      throw new Error(`WooCommerce API error: ${productsRes.status}`)
+    }
+
+    const totalHeader = productsRes.headers.get('x-wp-total') || productsRes.headers.get('X-WP-Total') || '0'
+    const totalPagesHeader =
+      productsRes.headers.get('x-wp-totalpages') || productsRes.headers.get('X-WP-TotalPages') || '0'
+
+    totalProducts = parseInt(totalHeader, 10) || 0
+    totalPages = parseInt(totalPagesHeader, 10) || 0
+
+    const wooProducts = (await productsRes.json()) as WooCommerceProduct[]
+    products = Array.isArray(wooProducts) ? wooProducts.map(mapWooToProduct) : []
     
   } catch (error) {
     console.error('Error fetching WooCommerce products:', error)
     products = []
     totalProducts = 0
     categories = []
+    totalPages = 0
   }
-
-  const totalPages = Math.ceil(totalProducts / 24)
 
   return (
     <div className="min-h-screen bg-background">
