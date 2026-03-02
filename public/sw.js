@@ -6,9 +6,9 @@
  */
 
 // Bump version when changing caching strategy
-const CACHE_NAME = 'faditools-v1.0.1'
-const STATIC_CACHE = 'faditools-static-v1.0.1'
-const DYNAMIC_CACHE = 'faditools-dynamic-v1.0.1'
+const CACHE_NAME = 'faditools-v1.0.2'
+const STATIC_CACHE = 'faditools-static-v1.0.2'
+const DYNAMIC_CACHE = 'faditools-dynamic-v1.0.2'
 
 // Assets to cache immediately (mobile-optimized)
 const STATIC_ASSETS = [
@@ -80,16 +80,18 @@ self.addEventListener('fetch', (event) => {
     return
   }
 
+  // IMPORTANT: Don't intercept cross-origin requests.
+  // This prevents CORS preflight issues (e.g. cache-control header) for WordPress/WooCommerce API calls.
+  if (url.origin !== self.location.origin) {
+    return
+  }
+
   // Always use network-first for navigation requests (HTML pages)
   if (request.mode === 'navigate') {
     event.respondWith(
       fetch(request)
         .then((networkResponse) => {
-          // Optionally keep a fallback copy for offline use
-          const responseToCache = networkResponse.clone()
-          caches.open(DYNAMIC_CACHE).then((cache) => {
-            cache.put(request, responseToCache)
-          })
+          // Do not cache HTML navigations; we want the freshest content on normal refresh.
           return networkResponse
         })
         .catch((error) => {
@@ -123,7 +125,28 @@ self.addEventListener('fetch', (event) => {
     return
   }
 
-  // Default: cache-first for static assets and other GET requests
+  // Cache-first ONLY for static build assets (avoid caching app routes/API responses)
+  const isStaticAsset =
+    url.pathname.startsWith('/_next/static/') ||
+    url.pathname.startsWith('/_next/image') ||
+    url.pathname === '/favicon.ico' ||
+    url.pathname.endsWith('.svg') ||
+    url.pathname.endsWith('.png') ||
+    url.pathname.endsWith('.jpg') ||
+    url.pathname.endsWith('.jpeg') ||
+    url.pathname.endsWith('.webp') ||
+    url.pathname.endsWith('.gif') ||
+    url.pathname.endsWith('.ico') ||
+    url.pathname.endsWith('.css') ||
+    url.pathname.endsWith('.js')
+
+  if (!isStaticAsset) {
+    // Network-only for everything else (ensures normal refresh never shows old cached HTML/data)
+    event.respondWith(fetch(request))
+    return
+  }
+
+  // Default: cache-first for static assets
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
       if (cachedResponse) {

@@ -143,10 +143,6 @@ const nextConfig = {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable'
           },
-          {
-            key: 'Link',
-            value: '</_next/static/css/(.*)>; rel=preload; as=style'
-          }
         ]
       },
       {
