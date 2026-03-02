@@ -8,10 +8,12 @@ export const revalidate = 0
 export async function GET() {
   try {
     const pages = await fetchPages()
-    const simplifiedPages = pages.map(page => ({
+    const simplifiedPages = pages.map((page: { id: number; title?: { rendered?: string }; slug: string; status?: string; menu_order?: number }) => ({
       id: page.id,
-      title: page.title,
-      slug: page.slug
+      title: typeof page.title === 'object' && page.title?.rendered != null ? page.title.rendered : String(page.title ?? ''),
+      slug: page.slug,
+      status: page.status ?? 'publish',
+      menu_order: page.menu_order ?? 0,
     }))
     
     // Return response with cache control headers to prevent CDN caching

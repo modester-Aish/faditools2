@@ -31,35 +31,68 @@ let navigationCache: NavigationItem[] | null = null
 let cacheTimestamp: number = 0
 const CACHE_DURATION = 60 * 1000 // 1 minute (reduced from 5 minutes for faster updates)
 
+/** Page shape returned by our /api/pages proxy (avoids CORS from direct WP fetch in browser) */
+interface ApiPage {
+  id: number
+  title: string
+  slug: string
+  status?: string
+  menu_order?: number
+}
+
+function toNavigationItems(pages: ApiPage[]): NavigationItem[] {
+  return pages
+    .filter(page => {
+      if ((page.status ?? 'publish') !== 'publish') return false
+      if (EXCLUDED_SLUGS.includes(page.slug)) return false
+      if (page.slug.includes('draft') || page.slug.includes('private')) return false
+      return true
+    })
+    .map(page => ({
+      title: page.title,
+      slug: page.slug,
+      url: `/pages/${page.slug}`,
+      menu_order: page.menu_order ?? 0,
+      id: page.id,
+      status: page.status ?? 'publish',
+    }))
+    .sort((a, b) => {
+      if (a.menu_order !== b.menu_order) return a.menu_order - b.menu_order
+      return a.title.localeCompare(b.title)
+    })
+}
+
 export async function fetchNavigationData(): Promise<NavigationItem[]> {
-  // Return cached data if still valid
   if (navigationCache && Date.now() - cacheTimestamp < CACHE_DURATION) {
     return navigationCache
   }
 
   try {
+    // In the browser, use our API proxy to avoid CORS (direct WP fetch sends Cache-Control and WP blocks it).
+    if (typeof window !== 'undefined') {
+      const res = await fetch('/api/pages', { cache: 'no-store' })
+      if (!res.ok) return []
+      const pages: ApiPage[] = await res.json()
+      const items = toNavigationItems(Array.isArray(pages) ? pages : [])
+      navigationCache = items
+      cacheTimestamp = Date.now()
+      return items
+    }
+
     const { data: pages, error } = await fetchAllPages()
-    
     if (error || !pages) {
       console.error('Error fetching navigation data:', error)
       return []
     }
 
-    // Filter and format pages for navigation
     const navigationItems: NavigationItem[] = pages
-      .filter(page => {
-        // Only published pages
+      .filter((page: WordPressPage) => {
         if (page.status !== 'publish') return false
-        
-        // Exclude specific slugs
         if (EXCLUDED_SLUGS.includes(page.slug)) return false
-        
-        // Exclude pages with certain patterns
         if (page.slug.includes('draft') || page.slug.includes('private')) return false
-        
         return true
       })
-      .map(page => ({
+      .map((page: WordPressPage) => ({
         title: getTitle(page),
         slug: page.slug,
         url: `/pages/${page.slug}`,
@@ -68,17 +101,12 @@ export async function fetchNavigationData(): Promise<NavigationItem[]> {
         status: page.status || 'publish',
       }))
       .sort((a, b) => {
-        // Sort by menu_order first, then by title
-        if (a.menu_order !== b.menu_order) {
-          return a.menu_order - b.menu_order
-        }
+        if (a.menu_order !== b.menu_order) return a.menu_order - b.menu_order
         return a.title.localeCompare(b.title)
       })
 
-    // Cache the result
     navigationCache = navigationItems
     cacheTimestamp = Date.now()
-
     return navigationItems
   } catch (error) {
     console.error('Error fetching navigation data:', error)

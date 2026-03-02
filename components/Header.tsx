@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 
 interface WordPressPage {
   id: number
-  title: { rendered: string }
+  title: { rendered?: string } | string
   slug: string
 }
 
@@ -141,7 +141,7 @@ export default function Header() {
                         href={`/${page.slug}`} 
                         className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors"
                       >
-                        {page.title.rendered}
+                        {typeof page.title === 'object' && page.title?.rendered != null ? page.title.rendered : String(page.title ?? '')}
                       </Link>
                     ))
                   ) : (
@@ -241,7 +241,7 @@ export default function Header() {
                           className="block text-gray-700 hover:text-primary-500 transition-colors"
                           onClick={() => setIsMenuOpen(false)}
                         >
-                          {page.title.rendered}
+                          {typeof page.title === 'object' && page.title?.rendered != null ? page.title.rendered : String(page.title ?? '')}
                         </Link>
                       ))
                     ) : (

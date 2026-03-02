@@ -432,17 +432,6 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                 {/* Center - Main Content */}
                 <div className="lg:col-span-6 order-1 lg:order-2">
                   <article className="max-w-none">
-                    {/* Excerpt */}
-                    {blogPost.excerpt?.rendered && (
-                      <div className="bg-primary-50 border-l-4 border-primary-500 p-6 rounded-r-lg mb-8">
-                        <div
-                          className="text-lg text-gray-700 italic m-0"
-                          dangerouslySetInnerHTML={{ __html: blogPost.excerpt.rendered }}
-                        />
-                      </div>
-                    )}
-
-                    {/* Main Content */}
                     <div 
                       className="wordpress-content"
                       dangerouslySetInnerHTML={{ 

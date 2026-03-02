@@ -1001,3 +1001,57 @@ html {
 .prose pre code {
   @apply bg-transparent p-0;
 }
+
+/* If a content block has BOTH `prose` and `wordpress-content`,
+   prefer the WordPress page styling (headings/tables like Pages). */
+.wordpress-content.prose h1,
+.wordpress-content.prose h2,
+.wordpress-content.prose h3,
+.wordpress-content.prose h4,
+.wordpress-content.prose h5,
+.wordpress-content.prose h6 {
+  @apply font-bold text-gray-900 mb-6 mt-8;
+  scroll-margin-top: 100px;
+}
+
+.wordpress-content.prose h1 { 
+  @apply text-4xl border-b-2 border-primary-500/30 pb-4;
+}
+.wordpress-content.prose h2 { 
+  @apply text-3xl border-b border-gray-200 pb-2;
+}
+.wordpress-content.prose h3 { 
+  @apply text-2xl;
+}
+.wordpress-content.prose h4 { 
+  @apply text-xl;
+}
+.wordpress-content.prose h5 { 
+  @apply text-lg;
+}
+.wordpress-content.prose h6 { 
+  @apply text-base;
+}
+
+.wordpress-content.prose p {
+  @apply mb-4 text-gray-700 leading-relaxed;
+}
+
+.wordpress-content.prose table {
+  @apply w-full border-collapse border border-gray-300 mb-4;
+}
+
+.wordpress-content.prose th,
+.wordpress-content.prose td {
+  @apply border border-gray-300 px-4 py-2 text-left;
+}
+
+.wordpress-content.prose th {
+  @apply bg-gray-100 font-semibold;
+}
+
+/* Gutenberg table wrapper */
+.wordpress-content figure.wp-block-table {
+  @apply mb-4;
+  overflow-x: auto;
+}

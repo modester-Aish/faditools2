@@ -47,14 +47,9 @@ const nextConfig = {
   poweredByHeader: false,
   
   // Enable modern features and performance optimizations
+  // Keep experimental flags minimal to avoid dev-time webpack/runtime issues.
   experimental: {
-    forceSwcTransforms: true,
-    esmExternals: true,
-    // Enable advanced optimizations
-    optimizeCss: true,
-    serverComponentsExternalPackages: [],
-    // Removed bundlePagesRouterDependencies - not supported by Turbopack
-    // Additional performance optimizations
+    // Attribution for Web Vitals in dev tools – safe to keep enabled.
     webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB'],
   },
   

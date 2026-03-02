@@ -141,10 +141,6 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="format-detection" content="telephone=no" />
         
-        {/* Preload critical mobile resources */}
-        <link rel="modulepreload" href="/_next/static/chunks/pages/_app.js" />
-        <link rel="modulepreload" href="/_next/static/chunks/pages/_error.js" />
-        
         <link rel="manifest" href="/manifest.json" />
         <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://faditools.com/feed.xml" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
@@ -175,7 +171,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
         {/* Performance hints */}
         <link rel="preload" href="/faditools-favicon.svg" as="image" type="image/svg+xml" />
-        <link rel="modulepreload" href="/_next/static/chunks/pages/_app.js" />
         {/* Critical resource hints */}
         <link rel="prefetch" href="/tools" />
         <link rel="prefetch" href="/packages" />
@@ -244,22 +239,7 @@ export default function RootLayout({
           `
         }} />
         
-        {/* Service Worker Registration */}
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            if ('serviceWorker' in navigator) {
-              window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                  .then((registration) => {
-                    console.log('SW registered: ', registration);
-                  })
-                  .catch((registrationError) => {
-                    console.log('SW registration failed: ', registrationError);
-                  });
-              });
-            }
-          `
-        }} />
+        {/* Service Worker disabled so pages always load fresh from server (no SW cache). */}
       </head>
       <body className={`${inter.variable} ${inter.className}`}>
         <SEOMonitor />
