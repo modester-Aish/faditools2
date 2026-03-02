@@ -242,10 +242,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
               {/* Center - Main Content */}
               <div className="lg:col-span-6 order-1 lg:order-2">
-                <article className="prose prose-lg max-w-none">
+                <article className="max-w-none">
                   {/* Main Content */}
                   <div 
-                    className="text-gray-800 leading-relaxed"
+                    className="wordpress-content"
                     dangerouslySetInnerHTML={{ __html: contentWithIds }}
                   />
                 </article>
