@@ -73,6 +73,34 @@ function extractSEOData(item: any) {
   }
 }
 
+/**
+ * Fetch SEO (Yoast/RankMath) data by slug for any WP content type.
+ * Used to drive ONLY meta title/description (URLs/canonicals stay in Next.js).
+ */
+export async function fetchSEOBySlug(slug: string) {
+  const safeSlug = encodeURIComponent(slug)
+
+  const candidates: Array<{ endpoint: string; params: string }> = [
+    // WooCommerce product post type (common)
+    { endpoint: 'product', params: `slug=${safeSlug}` },
+    // Regular WP content
+    { endpoint: 'pages', params: `slug=${safeSlug}` },
+    { endpoint: 'posts', params: `slug=${safeSlug}` },
+  ]
+
+  for (const c of candidates) {
+    try {
+      const items = await fetchWithPluginFields(c.endpoint, c.params)
+      const item = Array.isArray(items) ? items[0] : null
+      if (item) return extractSEOData(item)
+    } catch {
+      // continue
+    }
+  }
+
+  return null
+}
+
 // Enhanced fetch function with all plugin fields
 async function fetchWithPluginFields(endpoint: string, params: string = '') {
   // Add cache-busting timestamp to prevent CDN caching
