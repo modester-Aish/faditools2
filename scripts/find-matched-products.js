@@ -121,7 +121,7 @@ productsData.products.forEach(product => {
       slug: product.slug,
       wcId: product.id,
       mappedProductId: matchedId,
-      url: `https://members.seotoolsgroupbuy.us/cart/index/product/id/${matchedId}/c/`
+      url: `https://members.buyseo.org/cart/index/product/id/${matchedId}/c/`
     });
   } else {
     unmatchedProducts.push({

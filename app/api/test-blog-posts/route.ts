@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { fetchBlogPosts } from '@/lib/api'
+import { fetchBlogPosts } from '@/lib/local-wp'
 
 const WORDPRESS_BASE_URL = process.env.WORDPRESS_BASE_URL || 'https://app.faditools.com'
 const API_BASE = `${WORDPRESS_BASE_URL}/wp-json/wp/v2`

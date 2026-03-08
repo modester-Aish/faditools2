@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useRef } from 'react'
 import { WordPressPost } from '@/types'
-import { fetchBlogPosts } from '@/lib/api'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -25,10 +24,30 @@ export default function BlogPostLayout({ post }: BlogPostLayoutProps) {
   useEffect(() => {
     const fetchRelatedPosts = async () => {
       try {
-        const allPosts = await fetchBlogPosts()
-        // Get related posts (excluding current post)
-        const filteredPosts = allPosts.filter(p => p.slug !== post.slug).slice(0, 4)
-        setRelatedPosts(filteredPosts)
+        const res = await fetch('/api/posts', { cache: 'no-store' })
+        if (!res.ok) return
+        const all = (await res.json()) as Array<{
+          id: number
+          slug: string
+          title: string
+          excerpt: string
+          date: string
+          featured_image: string | null
+        }>
+        const filtered = all.filter(p => p.slug !== post.slug).slice(0, 4)
+        // Convert to minimal WordPressPost shape used by this component
+        const mapped = filtered.map(p => ({
+          id: p.id,
+          slug: p.slug,
+          date: p.date,
+          title: { rendered: p.title },
+          excerpt: { rendered: p.excerpt },
+          content: { rendered: '' },
+          _embedded: p.featured_image
+            ? { 'wp:featuredmedia': [{ id: 0, source_url: p.featured_image }] }
+            : undefined,
+        })) as any as WordPressPost[]
+        setRelatedPosts(mapped)
       } catch (error) {
         console.error('Error fetching related posts:', error)
       }

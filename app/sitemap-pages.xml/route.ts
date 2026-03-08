@@ -1,4 +1,4 @@
-import { fetchPages } from '@/lib/api'
+import { fetchPages } from '@/lib/local-wp'
 
 export const dynamic = 'force-static'
 export const revalidate = 300 // Revalidate every 5 minutes for faster updates

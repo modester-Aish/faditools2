@@ -1,68 +1,21 @@
 import { Metadata } from 'next'
-import { wooCommerceService } from '@/lib/woocommerce-service'
 import ProductDetail from '@/components/ProductDetail'
-import { WooCommerceProduct } from '@/lib/woocommerce-api'
 import { Product } from '@/types'
 import { generateCanonicalUrl } from '@/lib/canonical'
 import Header from '@/components/Header'
-import { fetchPostBySlug, fetchPageBySlug, fetchBlogPosts, fetchSEOBySlug, getToolBySlug, getTools } from '@/lib/api'
+import Footer from '@/components/Footer'
+import { fetchPostBySlug, fetchPageBySlug, fetchBlogPosts, fetchSEOBySlug, fetchProductBySlug, fetchProducts } from '@/lib/local-wp'
+import { getToolBySlug, getTools } from '@/lib/api'
 import { WordPressPost, WordPressPage } from '@/types'
 import { getPopularToolBySlug, getAllPopularTools } from '@/data/popular-tools'
 import ToolDetail from '@/components/ToolDetail'
 import Image from 'next/image'
 import Link from 'next/link'
-import { generateOrganizationSchema, generateWebSiteSchema, generateBreadcrumbSchema } from '@/components/StructuredData'
+import { generateSchemaGraph, getOrganizationEntity, getWebSiteEntity, getBreadcrumbEntity, getProductEntity, generateOrganizationSchema, generateWebSiteSchema, generateBreadcrumbSchema } from '@/components/StructuredData'
 
-// Live fetch from WordPress/WooCommerce
+// Runtime reads local JSON (synced by script)
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
-
-function getWooConfig() {
-  const baseUrl = process.env.WOOCOMMERCE_BASE_URL || process.env.WORDPRESS_BASE_URL || 'https://app.faditools.com'
-  const key = process.env.WC_CONSUMER_KEY || process.env.WOO_CONSUMER_KEY || ''
-  const secret = process.env.WC_CONSUMER_SECRET || process.env.WOO_CONSUMER_SECRET || ''
-  return { baseUrl, key, secret }
-}
-
-async function fetchWooProductBySlugLive(slug: string): Promise<WooCommerceProduct | null> {
-  const { baseUrl, key, secret } = getWooConfig()
-  if (!key || !secret) return null
-
-  const params = new URLSearchParams()
-  params.set('consumer_key', key)
-  params.set('consumer_secret', secret)
-  params.set('slug', slug)
-  params.set('status', 'publish')
-  params.set('per_page', '1')
-
-  const url = `${baseUrl}/wp-json/wc/v3/products?${params.toString()}`
-  const res = await fetch(url, { cache: 'no-store' })
-  if (!res.ok) return null
-  const data = (await res.json()) as WooCommerceProduct[]
-  return Array.isArray(data) && data.length > 0 ? data[0] : null
-}
-
-async function fetchRelatedWooProductsLive(product: WooCommerceProduct, limit: number): Promise<WooCommerceProduct[]> {
-  const { baseUrl, key, secret } = getWooConfig()
-  if (!key || !secret) return []
-
-  const categoryId = product.categories?.[0]?.id
-  if (!categoryId) return []
-
-  const params = new URLSearchParams()
-  params.set('consumer_key', key)
-  params.set('consumer_secret', secret)
-  params.set('status', 'publish')
-  params.set('per_page', String(limit + 1))
-  params.set('category', String(categoryId))
-  params.set('exclude', String(product.id))
-
-  const url = `${baseUrl}/wp-json/wc/v3/products?${params.toString()}`
-  const res = await fetch(url, { cache: 'no-store' })
-  if (!res.ok) return []
-  const data = (await res.json()) as WooCommerceProduct[]
-  return Array.isArray(data) ? data.slice(0, limit) : []
-}
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
@@ -203,9 +156,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       }
     }
     
-    // If not a tool, try to find a product (live from WooCommerce)
+    // If not a tool, try to find a product (local JSON)
     console.log(`🔍 [METADATA] Loading product metadata for: ${params.slug}`)
-    const product = await fetchWooProductBySlugLive(params.slug)
+    const product = await fetchProductBySlug(params.slug)
     
     if (!product) {
       console.log(`❌ [METADATA] Product not found: ${params.slug}`)
@@ -219,17 +172,17 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       }
     }
     
-    console.log(`✅ [METADATA] Product found: ${product.name}`)
+    console.log(`✅ [METADATA] Product found: ${product.title?.rendered}`)
     
     const wpSeo = await fetchSEOBySlug(params.slug)
     const priceDisplay = product.price || 'affordable'
     const title =
-      wpSeo?.title || `${product.name} 2025 - Group Buy at ${priceDisplay}/mo | Save 90%`
+      wpSeo?.title || `${product.title?.rendered || 'Product'} 2025 - Group Buy at ${priceDisplay}/mo | Save 90%`
     const uniqueDescription =
       wpSeo?.description ||
-      (product.short_description
-        ? `${product.short_description.replace(/<[^>]*>/g, '').substring(0, 155)}`
-        : `Get ${product.name} group buy access at ${priceDisplay}/month. Premium tool at 90% discount. Instant access.`)
+      (product.excerpt?.rendered
+        ? `${product.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)}`
+        : `Get ${product.title?.rendered || 'Product'} group buy access at ${priceDisplay}/month. Premium tool at 90% discount. Instant access.`)
     
     return {
       title,
@@ -250,7 +203,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         canonical: generateCanonicalUrl(`/${product.slug}`),
       },
       robots: { index: true, follow: true },
-      keywords: [product.name, 'digital products', 'online shopping', 'ecommerce'],
+      keywords: [product.title?.rendered || 'Product', 'digital products', 'online shopping', 'ecommerce'],
     }
   } catch (error) {
     return {
@@ -436,7 +389,8 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                       className="wordpress-content"
                       dangerouslySetInnerHTML={{ 
                         __html: (() => {
-                          // Function to add IDs to headings in content
+                          const downgradeContentH1ToH2 = (html: string) =>
+                            html.replace(/<h1/gi, '<h2').replace(/<\/h1>/gi, '</h2>')
                           const addHeadingIds = (content: string) => {
                             return content.replace(
                               /<h([1-6])([^>]*)>(.*?)<\/h[1-6]>/g,
@@ -446,8 +400,7 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                               }
                             )
                           }
-                          
-                          return addHeadingIds(blogPost.content.rendered)
+                          return addHeadingIds(downgradeContentH1ToH2(blogPost.content.rendered))
                         })()
                       }}
                     />
@@ -554,61 +507,7 @@ export default async function DynamicPage({ params }: { params: { slug: string }
             </div>
           </div>
           
-          {/* Footer */}
-          <footer className="bg-[#1A1A1A] text-white py-16">
-            <div className="max-w-7xl mx-auto px-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div>
-                  <h4 className="text-lg font-semibold text-primary-500 mb-4">FadiTools</h4>
-                  <p className="text-gray-400 mb-4">Premium SEO tools made accessible. Save up to 90% on industry-leading tools.</p>
-                  <div className="flex space-x-4">
-                    <Link href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                      </svg>
-                    </Link>
-                    <Link href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                      </svg>
-                    </Link>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-4">Tools</h4>
-                  <ul className="space-y-2 text-gray-400">
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">AHREF$</Link></li>
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">SEMRU$H</Link></li>
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Moz Pro</Link></li>
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">View All Tools</Link></li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-4">Packages</h4>
-                  <ul className="space-y-2 text-gray-400">
-                    <li><Link href="#tool-packages" className="hover:text-primary-500 transition-colors">All Packages</Link></li>
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Medium Pack</Link></li>
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Heavy Pack</Link></li>
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Mega Pack</Link></li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-4">Support</h4>
-                  <ul className="space-y-2 text-gray-400">
-                    <li><Link href="/contact" className="hover:text-primary-500 transition-colors">Help Center</Link></li>
-                    <li><Link href="/contact" className="hover:text-primary-500 transition-colors">Contact Support</Link></li>
-                    <li><Link href="/contact" className="hover:text-primary-500 transition-colors">System Status</Link></li>
-                  </ul>
-                </div>
-              </div>
-              <div className="border-t border-primary-500/10 mt-8 pt-8 text-center text-gray-600">
-                <p>&copy; 2024 FadiTools. All rights reserved.</p>
-              </div>
-            </div>
-          </footer>
+          <Footer />
         </div>
       )
     }
@@ -643,7 +542,18 @@ export default async function DynamicPage({ params }: { params: { slug: string }
         return headings
       }
 
-      // Function to add IDs to headings in content
+      const downgradeContentH1ToH2 = (html: string) =>
+        html.replace(/<h1/gi, '<h2').replace(/<\/h1>/gi, '</h2>')
+      /** Remove duplicate title (first h2 matching page title) and "Last updated" paragraph from start of content */
+      const stripLeadingTitleAndDate = (html: string, pageTitle: string) => {
+        const titleClean = pageTitle.replace(/<[^>]*>/g, '').trim()
+        if (!titleClean) return html
+        let out = html
+        const h2TitleRegex = new RegExp(`<h2[^>]*>\\s*${titleClean.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*</h2>\\s*`, 'i')
+        out = out.replace(h2TitleRegex, '')
+        out = out.replace(/^\s*<p[^>]*>\s*Last updated:\s*[^<]*<\/p>\s*/i, '')
+        return out.trim()
+      }
       const addHeadingIds = (content: string) => {
         return content.replace(
           /<h([1-6])([^>]*)>(.*?)<\/h[1-6]>/g,
@@ -654,9 +564,10 @@ export default async function DynamicPage({ params }: { params: { slug: string }
         )
       }
 
-      // Extract headings and add IDs to content
-      const headings = extractHeadings(page.content.rendered)
-      const contentWithIds = addHeadingIds(page.content.rendered)
+      const pageContentNoH1 = downgradeContentH1ToH2(page.content.rendered)
+      const pageContentStripped = stripLeadingTitleAndDate(pageContentNoH1, page.title?.rendered || '')
+      const headings = extractHeadings(pageContentStripped)
+      const contentWithIds = addHeadingIds(pageContentStripped)
 
       // Debug: Log page data and headings
       console.log('Page Data:', {
@@ -666,9 +577,18 @@ export default async function DynamicPage({ params }: { params: { slug: string }
         headingsCount: headings.length
       })
 
-      // Get recommended products for left sidebar
-      const wooCommerceData = await wooCommerceService.getWooCommerceData()
-      const recommendedProducts = wooCommerceData.products.slice(0, 6) // Show 6 products
+      // Get recommended products for left sidebar (local JSON)
+      const allProducts = await fetchProducts()
+      const recommendedProducts = allProducts.slice(0, 6).map(p => ({
+        id: p.id,
+        slug: p.slug,
+        name: p.title?.rendered || '',
+        images: p.images || [],
+        on_sale: p.on_sale,
+        sale_price: p.sale_price,
+        regular_price: p.regular_price,
+        price: p.price,
+      }))
 
       // Generate schema markup for page
       const pageSchema = [
@@ -708,26 +628,23 @@ export default async function DynamicPage({ params }: { params: { slug: string }
           <Header />
           
           <div className="pt-16">
-            {/* Hero Section */}
+            {/* Hero Section - sirf page name (title), baaki sab niche content me */}
             <div className="relative bg-primary-500 text-white overflow-hidden">
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute inset-0" style={{
                   backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
                 }}></div>
               </div>
-              
-              <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="text-center">
-                  <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4 text-white">
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    Page
-                  </div>
-                  <h1 className="text-4xl md:text-4xl font-bold mb-4 leading-tight">
-                    {page.title.rendered}
-                  </h1>
+              <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col items-center justify-center text-center">
+                <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4 text-white">
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Page
                 </div>
+                <h1 className="text-4xl md:text-4xl font-bold leading-tight">
+                  {page.title.rendered}
+                </h1>
               </div>
             </div>
 
@@ -820,24 +737,7 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                     {/* Main Content only (no separate excerpt box to avoid duplicate text) */}
                     <div 
                       className="wordpress-content"
-                      dangerouslySetInnerHTML={{ 
-                        __html: (() => {
-                          const addHeadingIds = (content: string) => {
-                            return content.replace(
-                              /<h([1-6])([^>]*)>(.*?)<\/h[1-6]>/g,
-                              (match, level, attrs, text) => {
-                                const id = text.replace(/<[^>]*>/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
-                                return `<h${level}${attrs} id="${id}">${text}</h${level}>`
-                              }
-                            )
-                          }
-                          
-                          const processedContent = addHeadingIds(page.content.rendered)
-                          console.log('Processed Content with IDs:', processedContent.substring(0, 300) + '...')
-                          
-                          return processedContent
-                        })()
-                      }}
+                      dangerouslySetInnerHTML={{ __html: contentWithIds }}
                     />
                   </article>
                 </div>
@@ -905,61 +805,7 @@ export default async function DynamicPage({ params }: { params: { slug: string }
             </div>
           </div>
           
-          {/* Footer */}
-          <footer className="bg-[#1A1A1A] text-white py-16">
-            <div className="max-w-7xl mx-auto px-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div>
-                  <h4 className="text-lg font-semibold text-primary-500 mb-4">FadiTools</h4>
-                  <p className="text-gray-400 mb-4">Premium SEO tools made accessible. Save up to 90% on industry-leading tools.</p>
-                  <div className="flex space-x-4">
-                    <Link href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                      </svg>
-                    </Link>
-                    <Link href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                      </svg>
-                    </Link>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-4">Tools</h4>
-                  <ul className="space-y-2 text-gray-400">
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">AHREF$</Link></li>
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">SEMRU$H</Link></li>
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Moz Pro</Link></li>
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">View All Tools</Link></li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-4">Packages</h4>
-                  <ul className="space-y-2 text-gray-400">
-                    <li><Link href="#tool-packages" className="hover:text-primary-500 transition-colors">All Packages</Link></li>
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Medium Pack</Link></li>
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Heavy Pack</Link></li>
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Mega Pack</Link></li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-4">Support</h4>
-                  <ul className="space-y-2 text-gray-400">
-                    <li><Link href="/contact" className="hover:text-primary-500 transition-colors">Help Center</Link></li>
-                    <li><Link href="/contact" className="hover:text-primary-500 transition-colors">Contact Support</Link></li>
-                    <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">System Status</Link></li>
-                  </ul>
-                </div>
-              </div>
-              <div className="border-t border-primary-500/10 mt-8 pt-8 text-center text-gray-600">
-                <p>&copy; 2024 FadiTools. All rights reserved.</p>
-              </div>
-            </div>
-          </footer>
+          <Footer />
         </div>
       )
     }
@@ -969,19 +815,41 @@ export default async function DynamicPage({ params }: { params: { slug: string }
     const popularTool = getPopularToolBySlug(params.slug)
     
     if (popularTool) {
-      // Get all popular tools for related tools
+      // Related tools: hamesha 8 dikhane ke liye (pehle same category, phir baaki se fill)
       const allPopularTools = getAllPopularTools()
-      const relatedTools = allPopularTools
-        .filter((tool) => tool.id !== popularTool.id && tool.category === popularTool.category)
-        .slice(0, 6)
+      const others = allPopularTools.filter((tool) => tool.id !== popularTool.id)
+      const sameCategory = others.filter((t) => t.category === popularTool.category)
+      const rest = others.filter((t) => t.category !== popularTool.category)
+      const relatedTools = [...sameCategory, ...rest].slice(0, 8)
+
+      // Single @graph: Organization, WebSite, Breadcrumb, Product (no duplicate, full description)
+      const toolGraph = generateSchemaGraph([
+        getOrganizationEntity(),
+        getWebSiteEntity(),
+        getBreadcrumbEntity([
+          { name: 'Home', url: 'https://faditools.com' },
+          { name: popularTool.name, url: `https://faditools.com/${popularTool.slug}` }
+        ]),
+        getProductEntity({
+          name: popularTool.name,
+          description: (popularTool.longDescription || popularTool.description || '').replace(/\s+/g, ' ').trim() || popularTool.name,
+          slug: popularTool.slug,
+          price: popularTool.price.replace(/[^0-9.]/g, '') || popularTool.price,
+          originalPrice: popularTool.originalPrice,
+          image: popularTool.image?.startsWith('http') ? popularTool.image : (popularTool.image ? `https://faditools.com${popularTool.image.startsWith('/') ? '' : '/'}${popularTool.image}` : undefined),
+          category: 'SEO Tools',
+        }),
+      ])
       
       return (
         <div className="min-h-screen bg-[#FFFFFF]">
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolGraph, null, 0) }} />
           <Header />
           <ToolDetail 
             tool={popularTool}
             relatedTools={relatedTools}
           />
+          <Footer />
         </div>
       )
     }
@@ -990,11 +858,11 @@ export default async function DynamicPage({ params }: { params: { slug: string }
     const tool = await getToolBySlug(params.slug)
     
     if (tool) {
-      // Convert Tool to PopularTool format for ToolDetail component
+      // Related tools: hamesha 8 dikhane ke liye
       const allTools = await getTools()
       const relatedTools = allTools
         .filter((t) => t.id !== tool.id)
-        .slice(0, 6)
+        .slice(0, 8)
       
       // Convert regular tool to PopularTool format
       const popularToolFormat = {
@@ -1022,20 +890,41 @@ export default async function DynamicPage({ params }: { params: { slug: string }
         category: 'SEO Tools',
         buyUrl: t.buyUrl,
       }))
+
+      // Single @graph for API tool page
+      const apiToolGraph = generateSchemaGraph([
+        getOrganizationEntity(),
+        getWebSiteEntity(),
+        getBreadcrumbEntity([
+          { name: 'Home', url: 'https://faditools.com' },
+          { name: popularToolFormat.name, url: `https://faditools.com/${popularToolFormat.slug}` }
+        ]),
+        getProductEntity({
+          name: popularToolFormat.name,
+          description: (popularToolFormat.longDescription || popularToolFormat.description || '').replace(/\s+/g, ' ').trim() || popularToolFormat.name,
+          slug: popularToolFormat.slug,
+          price: popularToolFormat.price.replace(/[^0-9.]/g, '') || popularToolFormat.price,
+          originalPrice: popularToolFormat.originalPrice,
+          image: popularToolFormat.image?.startsWith('http') ? popularToolFormat.image : (popularToolFormat.image ? `https://faditools.com${popularToolFormat.image.startsWith('/') ? '' : '/'}${popularToolFormat.image}` : undefined),
+          category: 'SEO Tools',
+        }),
+      ])
       
       return (
         <div className="min-h-screen bg-[#FFFFFF]">
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(apiToolGraph, null, 0) }} />
           <Header />
           <ToolDetail tool={popularToolFormat} relatedTools={relatedToolsFormatted} />
+          <Footer />
         </div>
       )
     }
     
-    // If not a tool, try to find a product (live from WooCommerce)
+    // If not a tool, try to find a product (local JSON)
     console.log(`🔍 [COMPONENT] Loading product for rendering: ${params.slug}`)
-    const product = await fetchWooProductBySlugLive(params.slug)
+    const productData = await fetchProductBySlug(params.slug)
     
-    if (!product) {
+    if (!productData) {
       console.log(`❌ [COMPONENT] Product not found: ${params.slug}`)
       return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -1058,107 +947,40 @@ export default async function DynamicPage({ params }: { params: { slug: string }
       )
     }
 
-    // Convert WooCommerce product to Product format
-    const productData: Product = {
-      id: product.id,
-      date: product.date_created,
-      modified: product.date_modified,
-      slug: product.slug,
-      status: product.status as any,
-      link: product.permalink,
-      title: { rendered: product.name },
-      content: { rendered: product.description },
-      excerpt: { rendered: product.short_description },
-      featured_media: product.images?.[0]?.id || 0,
-      // WooCommerce specific fields
-      price: product.price,
-      regular_price: product.regular_price,
-      sale_price: product.sale_price,
-      on_sale: product.on_sale,
-      stock_status: product.stock_status,
-      stock_quantity: product.stock_quantity,
-      images: product.images,
-      attributes: product.attributes,
-      // Extract affiliate link from WooCommerce external product URL or meta_data
-      affiliate_link: product.external_url || getAffiliateLinkFromMeta(product.meta_data) || undefined,
-      // Additional fields
-      categories: product.categories.map(cat => cat.id),
-      tags: product.tags.map(tag => tag.id),
-      meta: {
-        sku: product.sku,
-        total_sales: product.total_sales,
-        average_rating: product.average_rating,
-        rating_count: product.rating_count,
-        featured: product.featured,
-        virtual: product.virtual,
-        downloadable: product.downloadable,
-        weight: product.weight,
-        dimensions: product.dimensions,
-        manage_stock: product.manage_stock,
-        stock_quantity: product.stock_quantity,
-        backorders: product.backorders,
-        sold_individually: product.sold_individually,
-        purchase_note: product.purchase_note,
-        reviews_allowed: product.reviews_allowed,
-        upsell_ids: product.upsell_ids,
-        cross_sell_ids: product.cross_sell_ids,
-        parent_id: product.parent_id,
-        grouped_products: product.grouped_products,
-        menu_order: product.menu_order
-      }
-    } as any
+    // Related products: hamesha 8 dikhane ke liye (pehle same category, phir baaki se fill)
+    const allProducts = await fetchProducts()
+    const others = allProducts.filter(p => p.slug !== productData.slug)
+    const firstCategoryId = Array.isArray(productData.categories) ? productData.categories[0] : undefined
+    const sameCategory = firstCategoryId
+      ? others.filter(p => Array.isArray(p.categories) && p.categories.includes(firstCategoryId))
+      : []
+    const rest = others.filter(p => !sameCategory.includes(p))
+    const relatedProducts = [...sameCategory, ...rest].slice(0, 8)
 
-    // Get related products (live)
-    const relatedProductsData = await fetchRelatedWooProductsLive(product, 4)
-    const relatedProducts = relatedProductsData.map((relatedProduct: WooCommerceProduct) => ({
-        id: relatedProduct.id,
-        date: relatedProduct.date_created,
-        modified: relatedProduct.date_modified,
-        slug: relatedProduct.slug,
-        status: relatedProduct.status as any,
-        link: relatedProduct.permalink,
-        title: { rendered: relatedProduct.name },
-        content: { rendered: relatedProduct.description },
-        excerpt: { rendered: relatedProduct.short_description },
-        featured_media: relatedProduct.images?.[0]?.id || 0,
-        price: relatedProduct.price,
-        regular_price: relatedProduct.regular_price,
-        sale_price: relatedProduct.sale_price,
-        on_sale: relatedProduct.on_sale,
-        stock_status: relatedProduct.stock_status,
-        stock_quantity: relatedProduct.stock_quantity,
-        images: relatedProduct.images,
-        attributes: relatedProduct.attributes,
-        // Extract affiliate link from WooCommerce external product URL
-        affiliate_link: relatedProduct.external_url || undefined,
-        categories: relatedProduct.categories.map(cat => cat.id),
-        tags: relatedProduct.tags.map(tag => tag.id),
-        meta: {
-          sku: relatedProduct.sku,
-          total_sales: relatedProduct.total_sales,
-          average_rating: relatedProduct.average_rating,
-          rating_count: relatedProduct.rating_count,
-          featured: relatedProduct.featured,
-          virtual: relatedProduct.virtual,
-          downloadable: relatedProduct.downloadable,
-          weight: relatedProduct.weight,
-          dimensions: relatedProduct.dimensions,
-          manage_stock: relatedProduct.manage_stock,
-          stock_quantity: relatedProduct.stock_quantity,
-          backorders: relatedProduct.backorders,
-          sold_individually: relatedProduct.sold_individually,
-          purchase_note: relatedProduct.purchase_note,
-          reviews_allowed: relatedProduct.reviews_allowed,
-          upsell_ids: relatedProduct.upsell_ids,
-          cross_sell_ids: relatedProduct.cross_sell_ids,
-          parent_id: relatedProduct.parent_id,
-          grouped_products: relatedProduct.grouped_products,
-          menu_order: relatedProduct.menu_order
-        }
-      })) as any[]
+    // Single @graph: Organization, WebSite, Breadcrumb, Product (full description, image required)
+    const productDesc = (productData.excerpt?.rendered || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()
+    const productGraph = generateSchemaGraph([
+      getOrganizationEntity(),
+      getWebSiteEntity(),
+      getBreadcrumbEntity([
+        { name: 'Home', url: 'https://faditools.com' },
+        { name: 'Products', url: 'https://faditools.com/products' },
+        { name: productData.title?.rendered || 'Product', url: `https://faditools.com/${productData.slug}` }
+      ]),
+      getProductEntity({
+        name: productData.title?.rendered || 'Product',
+        description: productDesc || (productData.title?.rendered || 'Product'),
+        slug: productData.slug,
+        price: productData.price,
+        image: productData.images?.[0]?.src,
+        availability: productData.stock_status === 'outofstock' ? 'outofstock' : undefined,
+        category: 'SEO Tools',
+      }),
+    ])
 
     return (
       <div className="min-h-screen bg-background">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productGraph, null, 0) }} />
         <Header />
         
         {/* Product Detail Section */}
@@ -1169,61 +991,7 @@ export default async function DynamicPage({ params }: { params: { slug: string }
           />
         </div>
         
-        {/* Footer */}
-        <footer className="bg-[#1A1A1A] text-white py-16">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div>
-                <h4 className="text-lg font-semibold text-primary-500 mb-4">FadiTools</h4>
-                <p className="text-gray-400 mb-4">Premium SEO tools made accessible. Save up to 90% on industry-leading tools.</p>
-                <div className="flex space-x-4">
-                  <a href="https://twitter.com/faditools" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary-500 transition-colors" aria-label="Twitter">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                    </svg>
-                  </a>
-                  <a href="https://linkedin.com/company/faditools" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary-500 transition-colors" aria-label="LinkedIn">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-semibold text-white mb-4">Tools</h4>
-                <ul className="space-y-2 text-gray-400">
-                  <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">AHREF$</Link></li>
-                  <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">SEMRU$H</Link></li>
-                  <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Moz Pro</Link></li>
-                  <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">View All Tools</Link></li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-lg font-semibold text-white mb-4">Packages</h4>
-                <ul className="space-y-2 text-gray-400">
-                  <li><Link href="#tool-packages" className="hover:text-primary-500 transition-colors">All Packages</Link></li>
-                  <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Medium Pack</Link></li>
-                  <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Heavy Pack</Link></li>
-                  <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">Mega Pack</Link></li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-lg font-semibold text-white mb-4">Support</h4>
-                <ul className="space-y-2 text-gray-400">
-                  <li><Link href="/contact" className="hover:text-primary-500 transition-colors">Help Center</Link></li>
-                  <li><Link href="/contact" className="hover:text-primary-500 transition-colors">Contact Support</Link></li>
-                  <li><Link href="#popular-tools" className="hover:text-primary-500 transition-colors">System Status</Link></li>
-                </ul>
-              </div>
-            </div>
-            <div className="border-t border-primary-500/10 mt-8 pt-8 text-center text-gray-600">
-              <p>&copy; 2024 FadiTools. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     )
     

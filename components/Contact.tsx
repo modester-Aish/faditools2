@@ -33,8 +33,8 @@ const Contact = () => {
     },
     {
       icon: Phone,
-      text: '+1 (555) 123-4567',
-      href: 'tel:+15551234567'
+      text: '+44 7845 432224',
+      href: 'tel:+447845432224'
     },
     {
       icon: MapPin,

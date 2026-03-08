@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { fetchPages } from '@/lib/api'
+import { fetchPages } from '@/lib/local-wp'
 import { WordPressPage } from '@/types'
 import Header from '@/components/Header'
 import { generateCanonicalUrl } from '@/lib/canonical'
@@ -46,9 +46,10 @@ export default async function PagesPage() {
     })
   }
 
-  const getReadingTime = (content: string) => {
+  const getReadingTime = (content?: string) => {
     const wordsPerMinute = 200
-    const words = content.replace(/<[^>]*>/g, '').split(' ').length
+    const safe = content || ''
+    const words = safe.replace(/<[^>]*>/g, '').split(' ').length
     return Math.ceil(words / wordsPerMinute)
   }
 

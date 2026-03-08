@@ -35,8 +35,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://faditools.com'),
   title: 'Premium SEO Tools & Digital Marketing Solutions',
-  description: 'Access 50+ premium SEO tools including AHREF$, SEMRU$H, Moz Pro at 90% discount. Trusted by 10,000+ marketers. 24/7 support, 99.9% uptime.',
-  keywords: 'SEO tools, AHREF$ group buy, SEMRU$H discount, digital marketing tools, keyword research, backlink analysis, competitor analysis, SEO software, marketing automation, content optimization',
+  description: 'Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount. Trusted by 10,000+ marketers. 24/7 support, 99.9% uptime.',
+  keywords: 'SEO tools, Ahrefs group buy, SEMrush discount, digital marketing tools, keyword research, backlink analysis, competitor analysis, SEO software, marketing automation, content optimization',
   authors: [{ name: 'FadiTools Team' }],
   creator: 'FadiTools',
   publisher: 'FadiTools',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Premium SEO Tools & Digital Marketing Solutions',
-    description: 'Access 50+ premium SEO tools including AHREF$, SEMRU$H, Moz Pro at 90% discount. Trusted by 10,000+ marketers worldwide.',
+    description: 'Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount. Trusted by 10,000+ marketers worldwide.',
     type: 'website',
     locale: 'en_US',
     url: 'https://faditools.com',
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Premium SEO Tools & Digital Marketing Solutions',
-    description: 'Access 50+ premium SEO tools including AHREF$, SEMRU$H, Moz Pro at 90% discount. Trusted by 10,000+ marketers worldwide.',
+    description: 'Access 50+ premium SEO tools including Ahrefs, SEMrush, Moz Pro at 90% discount. Trusted by 10,000+ marketers worldwide.',
     images: ['/seo-tools-illustration.svg']
   },
   robots: {

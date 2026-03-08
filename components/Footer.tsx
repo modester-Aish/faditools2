@@ -1,247 +1,41 @@
 'use client'
 
-import Link from 'next/link'
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
-import { useState, useEffect } from 'react'
-
-// Custom icon components
-const YoutubeIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-  </svg>
-)
-
-const PinterestIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.619 11.174-.105-.949-.2-2.403.042-3.441.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
-  </svg>
-)
-
-const TikTokIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-  </svg>
-)
-
 export default function Footer() {
   const currentYear = new Date().getFullYear()
-  const [facebookLink, setFacebookLink] = useState<string>('https://m.me/102189354923483')
-
-  // Fetch Facebook link from chat settings (same as chat button)
-  useEffect(() => {
-    const fetchChatSettings = async () => {
-      try {
-        const response = await fetch('/api/chat-settings', {
-          cache: 'no-store',
-          headers: {
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            'Pragma': 'no-cache',
-          }
-        })
-        if (response.ok) {
-          const data = await response.json()
-          if (data?.facebook?.link) {
-            setFacebookLink(data.facebook.link)
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching chat settings for footer:', error)
-        // Keep default link if fetch fails
-      }
-    }
-
-    fetchChatSettings()
-  }, [])
-
-  const footerLinks = {
-    tools: [
-      { name: 'All Tools', href: '/tools' },
-      { name: 'AHREF$', href: '/ahrefs' },
-      { name: 'SEMRU$H', href: '/semrush' },
-      { name: 'Moz Pro', href: '/moz' },
-      { name: 'Canva Pro', href: '/canva' }
-    ],
-    packages: [
-      { name: 'All Packages', href: '/packages' },
-      { name: 'SEO Combo', href: '/seo-combo' },
-      { name: 'Heavy Pack', href: '/heavy-pack' },
-      { name: 'Mega Pack', href: '/mega-pack' },
-      { name: 'Mega Combo', href: '/mega-combo' }
-    ],
-    company: [
-      { name: 'About Us', href: '/about-us' },
-      { name: 'Contact', href: '/contact' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'Testimonials', href: '/testimonials' },
-      { name: 'Privacy Policy', href: '/privacy-policy' },
-      { name: 'Terms of Service', href: '/terms-of-service' },
-      { name: 'Authors/Team', href: '/authors-team' },
-      { name: 'Editorial Guidelines', href: '/editorial-guidelines' },
-      { name: 'HTML Sitemap', href: '/sitemap' }
-    ],
-  }
-
-  const socialLinks = [
-    { name: 'Facebook', icon: Facebook, href: facebookLink },
-    { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/faditools' },
-    { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/faditools' },
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/faditools' },
-    { name: 'YouTube', icon: YoutubeIcon, href: 'https://youtube.com/@faditools' },
-    { name: 'Pinterest', icon: PinterestIcon, href: 'https://pinterest.com/faditools' },
-    { name: 'TikTok', icon: TikTokIcon, href: 'https://tiktok.com/@faditools' }
-  ]
 
   return (
     <footer className="bg-[#1A1A1A] text-white">
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center mb-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-xl">F</span>
-              </div>
-              <h3 className="text-2xl font-bold text-emerald-500">FadiTools</h3>
-            </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              The leading group buy SEO tools service provider. Access 130+ premium digital marketing tools 
-              at unbeatable prices. Trusted by thousands of professionals worldwide.
-            </p>
-            
-            {/* Contact Info */}
-            <div className="space-y-3">
-              <div className="flex items-center text-gray-400">
-                <Mail className="w-4 h-4 mr-3 text-emerald-500" />
-                <span>support@faditools.com</span>
-              </div>
-              <div className="flex items-center text-gray-400">
-                <Phone className="w-4 h-4 mr-3 text-emerald-500" />
-                <span>+1 (555) 123-4567</span>
-              </div>
-              <div className="flex items-center text-gray-400">
-                <MapPin className="w-4 h-4 mr-3 text-emerald-500" />
-                <span>Global Service Provider</span>
-              </div>
-            </div>
-
-            {/* Social Links - All 7 Platforms */}
-            <div className="flex flex-wrap gap-3 mt-6">
-              {socialLinks.map((social) => {
-                const IconComponent = social.icon
-                return (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition-all duration-300 shadow-lg hover:shadow-xl flex-shrink-0 group"
-                    aria-label={`Follow us on ${social.name}`}
-                    title={social.name}
-                  >
-                    <IconComponent className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-300" />
-                  </a>
-                )
-              })}
-            </div>
+      {/* Brand + Description - centered, balanced */}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="w-10 h-10 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg flex items-center justify-center shrink-0">
+            <span className="text-white font-bold text-xl">F</span>
           </div>
-
-          {/* Tools Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-emerald-500">Tools</h4>
-            <ul className="space-y-2">
-              {footerLinks.tools.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-emerald-500 transition-colors duration-200"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Packages Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-emerald-500">Packages</h4>
-            <ul className="space-y-2">
-              {footerLinks.packages.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-emerald-500 transition-colors duration-200"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company Links - Renamed to Pages */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-emerald-500">Pages</h4>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-emerald-500 transition-colors duration-200"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <h3 className="text-2xl font-bold text-emerald-500">FadiTools</h3>
         </div>
+        <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+          The leading group buy SEO tools service provider. Access 130+ premium digital marketing tools at unbeatable prices. Trusted by thousands of professionals worldwide.
+        </p>
       </div>
 
-      {/* Newsletter Section */}
-      <div className="border-t border-gray-700 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h4 className="text-xl font-semibold mb-2 text-emerald-500">Stay Updated</h4>
-            <p className="text-gray-400 mb-6">
-              Get the latest updates on new tools, features, and digital marketing tips.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-200"
+      {/* Bottom: Copyright + DMCA - same width, aligned */}
+      <div className="border-t border-gray-700">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-gray-400 text-sm text-center">
+            <span>© {currentYear} FadiTools. All rights reserved.</span>
+            <a
+              href="https://www.dmca.com/Protection/Status.aspx?ID=faditools"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center"
+              aria-label="DMCA.com Protection Status"
+            >
+              <img
+                src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=faditools"
+                alt="DMCA.com Protection Status"
+                className="h-4 w-auto"
               />
-              <button className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg font-semibold hover:from-emerald-700 hover:to-emerald-800 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-700 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © {currentYear} FadiTools. All rights reserved.
-              <a href="https://www.dmca.com/Protection/Status.aspx?ID=faditools" target="_blank" rel="noopener noreferrer" className="ml-4">
-                <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=faditools" alt="DMCA.com Protection Status" className="inline-block h-4" />
-              </a>
-            </div>
-            <div className="flex space-x-6 text-sm">
-              <Link href="/privacy-policy" className="text-gray-400 hover:text-emerald-500 transition-colors duration-200">
-                Privacy Policy
-              </Link>
-              <Link href="/terms-of-service" className="text-gray-400 hover:text-emerald-500 transition-colors duration-200">
-                Terms of Service
-              </Link>
-              <Link href="/sitemap" className="text-gray-400 hover:text-emerald-500 transition-colors duration-200">
-                Sitemap
-              </Link>
-            </div>
+            </a>
           </div>
         </div>
       </div>

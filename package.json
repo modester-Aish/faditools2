@@ -12,7 +12,8 @@
     "clean-dev": "powershell -ExecutionPolicy Bypass -File scripts/clean-dev.ps1",
     "fetch-products": "node scripts/initial-products-fetch.js && node scripts/optimize-homepage-data.js",
     "fetch-products-legacy": "node scripts/fetch-and-save-products.js",
-    "optimize-homepage": "node scripts/optimize-homepage-data.js"
+    "optimize-homepage": "node scripts/optimize-homepage-data.js",
+    "sync-wp": "node scripts/syncFromWP.mjs"
   },
   "dependencies": {
     "@types/xml2js": "^0.4.14",

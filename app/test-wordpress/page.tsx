@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { fetchBlogPosts, fetchPages, fetchProducts, fetchPostBySlug, fetchPageBySlug, fetchProductBySlug } from '@/lib/api'
+import { fetchBlogPosts, fetchPages, fetchProducts, fetchPostBySlug, fetchPageBySlug, fetchProductBySlug } from '@/lib/local-wp'
 import Header from '../../components/Header'
 import { generateCanonicalUrl } from '@/lib/canonical'
 

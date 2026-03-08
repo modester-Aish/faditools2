@@ -118,7 +118,7 @@ const pagesToCreate = [
 
 <h3>What We Offer</h3>
 <ul>
-  <li><strong>Group Buy Access:</strong> Get access to premium tools like AHREF$, SEMRU$H, Moz Pro, and more at up to 90% discount</li>
+  <li><strong>Group Buy Access:</strong> Get access to premium tools like Ahrefs, SEMrush, Moz Pro, and more at up to 90% discount</li>
   <li><strong>99% Uptime:</strong> We guarantee reliable access to all tools</li>
   <li><strong>Instant Access:</strong> Start using tools immediately after purchase</li>
   <li><strong>24/7 Support:</strong> Our team is always ready to help</li>

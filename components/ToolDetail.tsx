@@ -5,6 +5,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { PopularTool } from '@/data/popular-tools'
 import { getAllPopularTools } from '@/data/popular-tools'
+import ProductCard from './ProductCard'
+import { Product } from '@/types'
 
 interface ToolDetailProps {
   tool: PopularTool
@@ -22,7 +24,7 @@ export default function ToolDetail({ tool, relatedTools = [] }: ToolDetailProps)
     if (tool.buyUrl) {
       window.open(tool.buyUrl, '_blank')
     } else {
-      window.open('https://members.seotoolsgroupbuy.us/signup', '_blank')
+      window.open('https://members.buyseo.org/signup', '_blank')
     }
   }
 
@@ -278,42 +280,35 @@ export default function ToolDetail({ tool, relatedTools = [] }: ToolDetailProps)
         </div>
       </div>
 
-      {/* Related Tools Section */}
+      {/* Related Tools Section - same card as Related Products (ProductCard) */}
       {displayRelatedTools && displayRelatedTools.length > 0 && (
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Related Tools</h2>
             <p className="text-gray-600">You might also be interested in these tools</p>
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {displayRelatedTools.slice(0, 8).map((relatedTool, index) => (
-              <Link
-                key={relatedTool.id}
-                href={`/${relatedTool.slug}`}
-                className="group relative bg-white rounded-lg p-6 border border-gray-200 hover:border-emerald-500 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 relative">
-                    <Image
-                      src={relatedTool.image}
-                      alt={relatedTool.name}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
-                    {relatedTool.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-4">{relatedTool.description}</p>
-                  <div className="text-center">
-                    <span className="text-xl font-bold text-emerald-600">{relatedTool.price}</span>
-                    <div className="text-xs text-gray-500 line-through">{relatedTool.originalPrice}</div>
-                  </div>
+            {displayRelatedTools.slice(0, 8).map((relatedTool, index) => {
+              const productLike: Product = {
+                id: parseInt(relatedTool.productId || String(10000 + index), 10) || 10000 + index,
+                date: new Date().toISOString(),
+                slug: relatedTool.slug,
+                title: { rendered: relatedTool.name },
+                content: { rendered: '' },
+                excerpt: { rendered: relatedTool.description || '' },
+                images: [{ id: 0, src: relatedTool.image, name: '', alt: relatedTool.name }],
+                price: relatedTool.price.replace(/^\$/, ''),
+                regular_price: relatedTool.originalPrice.replace(/^\$/, ''),
+                on_sale: true,
+                stock_status: 'instock',
+                meta: {},
+              } as Product
+              return (
+                <div key={relatedTool.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <ProductCard product={productLike} />
                 </div>
-              </Link>
-            ))}
+              )
+            })}
           </div>
         </div>
       )}

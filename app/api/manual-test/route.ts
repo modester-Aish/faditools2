@@ -9,7 +9,7 @@ const WOOCOMMERCE_CONFIG = {
 };
 
 // Affiliate link
-const AFFILIATE_LINK = 'https://members.seotoolsgroupbuy.us/signup';
+const AFFILIATE_LINK = 'https://members.buyseo.org/signup';
 
 export async function POST(request: NextRequest) {
   try {
@@ -20,12 +20,12 @@ export async function POST(request: NextRequest) {
     // Test products with affiliate links
     const testProducts = [
       {
-        name: 'AHREF$ SEO Tools - Group Buy',
+        name: 'Ahrefs SEO Tools - Group Buy',
         price: '29.99',
         image: 'https://app.faditools.com/wp-content/uploads/2024/01/ahrefs-logo.svg'
       },
       {
-        name: 'SEMRU$H Premium - Group Buy',
+        name: 'SEMrush Premium - Group Buy',
         price: '39.99',
         image: 'https://app.faditools.com/wp-content/uploads/2024/01/semrush-logo.svg'
       },

@@ -42,14 +42,14 @@ export default function ModernProductCard({ product, onAddToCart }: ModernProduc
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Header Section */}
+      {/* Header Section - H2 so page can keep single H1 */}
       <div className="mb-6 md:mb-8">
-        <h1 className="text-3xl md:text-5xl font-bold text-[#D4B896] leading-tight mb-2">
+        <h2 className="text-3xl md:text-5xl font-bold text-[#D4B896] leading-tight mb-2">
           {product.name || "Every type of asset,"}
-        </h1>
-        <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight mb-3 md:mb-4">
-          for any type of project.
         </h2>
+        <p className="text-2xl md:text-4xl font-bold text-white leading-tight mb-3 md:mb-4">
+          for any type of project.
+        </p>
         <p className="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl">
           {product.short_description || "With our full AI stack, generate images, videos, music, and more – all included in your subscription."}
         </p>

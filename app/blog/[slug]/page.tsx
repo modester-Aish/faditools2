@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { fetchPostBySlug, fetchBlogPosts } from '@/lib/api'
-import { WordPressPost } from '@/types'
+import { findPostBySlug, getPosts, SyncedPost } from '@/lib/local-content'
 import Header from '../../../components/Header'
+import Footer from '../../../components/Footer'
 import Image from 'next/image'
 import { generateCanonicalUrl } from '@/lib/canonical'
 
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const { slug } = params
   
   try {
-    const post = await fetchPostBySlug(slug)
+    const post = findPostBySlug(slug) as SyncedPost | undefined
     if (!post) {
       return {
         title: 'Post Not Found',
@@ -24,11 +24,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       }
     }
 
-    const title = post.title.rendered
-    const postUniqueId = post.id || slug || ''
-    const uniqueDescription = post.excerpt?.rendered 
-      ? `${post.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 155)}`
-      : `Read this blog post - ${title}`
+    const yoast = post.yoast_head_json || {}
+    const title = yoast.title || post.title
+    const rawExcerpt = post.excerpt || ''
+    const yoastDesc = yoast.description || ''
+    const uniqueDescription =
+      (yoastDesc || rawExcerpt.replace(/<[^>]*>/g, '')).substring(0, 155) ||
+      `Read this blog post - ${title}`
 
     return {
       title: `${title} | Blog`,
@@ -64,7 +66,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = params
   
   try {
-    const post = await fetchPostBySlug(slug)
+    const post = findPostBySlug(slug) as SyncedPost | undefined
     
     if (!post) {
       notFound()
@@ -84,12 +86,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       return Math.ceil(words / wordsPerMinute)
     }
 
-    const getFeaturedImageUrl = (post: WordPressPost): string | null => {
-      if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0]) {
-        const media = post._embedded['wp:featuredmedia'][0]
-        return media.source_url || media.guid?.rendered || null
-      }
-      return null
+    const getFeaturedImageUrl = (post: SyncedPost): string | null => {
+      return post.featured_image || null
     }
 
     // Function to extract headings for table of contents
@@ -109,7 +107,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       return headings
     }
 
-    // Function to add IDs to headings in content
+    const downgradeContentH1ToH2 = (html: string) =>
+      html.replace(/<h1/gi, '<h2').replace(/<\/h1>/gi, '</h2>')
     const addHeadingIds = (content: string) => {
       return content.replace(
         /<h([1-6])([^>]*)>(.*?)<\/h[1-6]>/g,
@@ -120,12 +119,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       )
     }
 
-    // Extract headings and add IDs to content
-    const headings = extractHeadings(post.content.rendered)
-    const contentWithIds = addHeadingIds(post.content.rendered)
+    const postContentNoH1 = downgradeContentH1ToH2(post.content)
+    const headings = extractHeadings(postContentNoH1)
+    const contentWithIds = addHeadingIds(postContentNoH1)
 
     // Get related posts for left sidebar (exclude current post)
-    const allPosts = await fetchBlogPosts()
+    const allPosts = getPosts()
     const relatedPosts = allPosts
       .filter(blogPost => blogPost.id !== post.id)
       .slice(0, 6) // Show 6 related posts
@@ -154,12 +153,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     Blog Post
                   </div>
                   <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-                    {post.title.rendered}
+                    {post.title}
                   </h1>
                   <div className="flex items-center space-x-4 text-sm text-white/80 mb-4">
                     <span>{formatDate(post.date)}</span>
                     <span>•</span>
-                    <span>{getReadingTime(post.content.rendered)} min read</span>
+                    <span>{getReadingTime(post.content)} min read</span>
                   </div>
                   {/* Breadcrumbs */}
                   <div className="text-sm text-white/70">
@@ -167,7 +166,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <span className="mx-2">›</span>
                     <span>{post.categories && post.categories.length > 0 ? 'Category' : 'General'}</span>
                     <span className="mx-2">›</span>
-                    <span className="text-white/90">{post.title.rendered}</span>
+                    <span className="text-white/90">{post.title}</span>
                   </div>
                 </div>
                 
@@ -177,7 +176,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl">
                       <Image
                         src={getFeaturedImageUrl(post)!}
-                        alt={post.title.rendered}
+                        alt={post.title}
                         fill
                         className="object-cover"
                       />
@@ -266,11 +265,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       {relatedPosts.map((relatedPost) => (
                         <div key={relatedPost.id} className="group">
                           <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                            {getFeaturedImageUrl(relatedPost) && (
+                            {getFeaturedImageUrl(relatedPost as SyncedPost) && (
                               <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                                 <img
-                                  src={getFeaturedImageUrl(relatedPost)!}
-                                  alt={relatedPost.title.rendered}
+                                src={getFeaturedImageUrl(relatedPost as SyncedPost)!}
+                                alt={relatedPost.title}
                                   className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                                 />
                               </div>
@@ -278,13 +277,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                             <div className="flex-1 min-w-0">
                               <h4 className="text-sm font-medium text-gray-900 truncate group-hover:text-primary-500 transition-colors">
                                 <a href={`/${relatedPost.slug}`} className="hover:text-primary-500">
-                                  {relatedPost.title.rendered}
+                                  {relatedPost.title}
                                 </a>
                               </h4>
                               <div className="flex items-center space-x-2 mt-1 text-xs text-gray-500">
                                 <span>{formatDate(relatedPost.date)}</span>
                                 <span>•</span>
-                                <span>{getReadingTime(relatedPost.content.rendered)} min read</span>
+                                <span>{getReadingTime(relatedPost.content)} min read</span>
                               </div>
                             </div>
                           </div>
@@ -320,6 +319,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </a>
             </div>
           </div>
+          <Footer />
         </div>
       </div>
     )

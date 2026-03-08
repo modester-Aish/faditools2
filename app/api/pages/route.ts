@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { fetchPages } from '@/lib/api'
+import { getPages } from '@/lib/local-content'
 
 // Force dynamic rendering and disable caching
 export const dynamic = 'force-dynamic'
@@ -7,13 +7,13 @@ export const revalidate = 0
 
 export async function GET() {
   try {
-    const pages = await fetchPages()
-    const simplifiedPages = pages.map((page: { id: number; title?: { rendered?: string }; slug: string; status?: string; menu_order?: number }) => ({
+    const pages = getPages()
+    const simplifiedPages = pages.map(page => ({
       id: page.id,
-      title: typeof page.title === 'object' && page.title?.rendered != null ? page.title.rendered : String(page.title ?? ''),
+      title: page.title,
       slug: page.slug,
       status: page.status ?? 'publish',
-      menu_order: page.menu_order ?? 0,
+      menu_order: (page as any).menu_order ?? 0,
     }))
     
     // Return response with cache control headers to prevent CDN caching

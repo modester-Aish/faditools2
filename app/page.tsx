@@ -4,18 +4,14 @@ import Footer from '../components/Footer'
 import Link from 'next/link'
 import Image from 'next/image'
 import { generateCanonicalUrl } from '@/lib/canonical'
-import { loadHomepageProducts, loadHomepageCategories } from '@/lib/homepage-products'
-import CategorySection from '../components/CategorySection'
-import { WhyChooseSection, PopularToolsSection, TestimonialsSection, HowToOrderSection, TrustSection } from '../components/AnimatedSections'
-import InteractivePricingCards from '../components/InteractivePricingCards'
+import { fetchProducts } from '@/lib/local-wp'
+import { PopularToolsSection, TestimonialsSection, TrustSection } from '../components/AnimatedSections'
 import { ToolsPackagesSection } from '../components/ToolsPackagesSection'
-import Typewriter from '../components/Typewriter'
 import FAQSection from '../components/FAQSection'
-import SocialSharing from '../components/SocialSharing'
 
 export const metadata: Metadata = {
-  title: 'Best SEO Tools Group Buy 2025 [AHREF$ SEMRU$H 90%]',
-  description: 'Best SEO tools group buy platform offering AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with massive group buy savings. Join 45K users.',
+  title: 'Best SEO Tools Group Buy 2025 [Ahrefs SEMrush 90%]',
+  description: 'Best SEO tools group buy platform offering Ahrefs and SEMrush at 90% discount. Access 50+ premium SEO tools with massive group buy savings. Join 45K users.',
   keywords: 'premium seo tools, marketing tools group buy, affordable seo subscription, shared access tools, seo tools marketplace, digital marketing tools 2025, cheap seo tools, professional marketing software, group buy platform, seo tools discount, seo subscription service, affordable marketing tools, premium tools access, digital marketing subscription, seo tools 2025, marketing tools affordable, group buy seo services, shared seo tools access, premium group buy platform, marketing tools discount',
   authors: [{ name: 'FadiTools Team' }],
   creator: 'FadiTools',
@@ -34,8 +30,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Best SEO Tools Group Buy 2025 [AHREF$ SEMRU$H 90%]',
-    description: 'Best SEO tools group buy platform offering AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with massive group buy savings.',
+    title: 'Best SEO Tools Group Buy 2025 [Ahrefs SEMrush 90%]',
+    description: 'Best SEO tools group buy platform offering Ahrefs and SEMrush at 90% discount. Access 50+ premium SEO tools with massive group buy savings.',
     url: 'https://faditools.com',
     images: [{ url: 'https://faditools.com/logo.png', width: 1200, height: 630, alt: 'Best SEO Tools Group Buy Platform' }],
     locale: 'en_US',
@@ -43,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best SEO Tools Group Buy 2025 [AHREF$ SEMRU$H 90%]',
-    description: 'Best SEO tools group buy platform offering AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with massive group buy savings.',
+    title: 'Best SEO Tools Group Buy 2025 [Ahrefs SEMrush 90%]',
+    description: 'Best SEO tools group buy platform offering Ahrefs and SEMrush at 90% discount. Access 50+ premium SEO tools with massive group buy savings.',
     images: ['https://faditools.com/logo.png'],
     creator: '@faditools',
     site: '@faditools',
@@ -65,80 +61,15 @@ export const metadata: Metadata = {
 export const revalidate = 21600 // 6 hours
 
 export default async function Home() {
-  // Fetch categories and products for the homepage
-  let categories: Array<{ id: number; name: string; slug: string; count: number }> = []
-  let products: Array<{
-    id: number
-    name: string
-    slug: string
-    price: string
-    regular_price: string
-    sale_price?: string
-    on_sale: boolean
-    images: Array<{ src: string; alt: string }>
-    categories: Array<{ id: number; name: string; slug: string }>
-  }> = []
-  
+  let popularProducts: Awaited<ReturnType<typeof fetchProducts>> = []
+  let totalProducts = 0
   try {
-    // Load ULTRA-LIGHTWEIGHT homepage data (15 KB instead of 7.7 MB!)
-    // Products: 13.68 KB (12 products) + Categories: 0.77 KB = instant loading!
-    const [homepageProducts, homepageCategories] = await Promise.all([
-      loadHomepageProducts(),
-      loadHomepageCategories()
-    ])
-    
-    console.log(`⚡ Homepage: Ultra-fast loading (15 KB total - 99.8% lighter!)`)
-    
-    // Process categories
-    if (homepageCategories && homepageCategories.length > 0) {
-      categories = homepageCategories.map(cat => ({
-        id: cat.id,
-        name: cat.name === 'Uncategorized' ? 'All Plan' : cat.name,
-        slug: cat.slug,
-        count: cat.count || 0
-      }))
-      
-      // Move "All Plan" (Uncategorized) to the beginning
-      const allPlanIndex = categories.findIndex(cat => cat.name === 'All Plan')
-      if (allPlanIndex > -1) {
-        const allPlanCategory = categories.splice(allPlanIndex, 1)[0]
-        categories.unshift(allPlanCategory)
-      }
-    }
-    
-    // Products already optimized - just map to correct format
-    if (homepageProducts && homepageProducts.length > 0) {
-      products = homepageProducts.map(product => ({
-        id: product.id,
-        name: product.name,
-        slug: product.slug,
-        price: product.price,
-        regular_price: product.regular_price,
-        sale_price: product.sale_price,
-        on_sale: product.on_sale,
-        images: product.images || [],
-        categories: product.categories
-      }))
-    }
-  } catch (error) {
-    console.error('Error loading homepage data:', error)
-    // Continue with fallback data - don't break the page
-  }
-  
-  // Always provide fallback data to ensure page renders
-  if (categories.length === 0) {
-    categories = [
-      { id: 6, name: 'All Plan', slug: 'uncategorized', count: 1200 },
-      { id: 1, name: 'AI Tools', slug: 'ai-tools', count: 3450 },
-      { id: 2, name: 'Amazon Tools', slug: 'amazon-tools', count: 2720 },
-      { id: 3, name: 'Content Tools', slug: 'content-tools', count: 1560 },
-      { id: 4, name: 'SEO Tools', slug: 'seo-tools', count: 2100 },
-      { id: 5, name: 'Design Tools', slug: 'design-tools', count: 1800 }
-    ]
-  }
-  
-  if (products.length === 0) {
-    products = []
+    const all = await fetchProducts()
+    const filtered = all.filter((p: any) => (p.status || 'publish') === 'publish')
+    totalProducts = filtered.length
+    popularProducts = filtered.slice(0, 20)
+  } catch (e) {
+    console.error('Home: fetch products for PopularToolsSection failed', e)
   }
 
   return (
@@ -156,7 +87,7 @@ export default async function Home() {
               <div className="absolute inset-0">
                 <img 
                   src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=888&q=80&fm=webp" 
-                  alt="Best SEO Tools Group Buy - AHREF$ SEMRU$H at 90% Discount" 
+                  alt="Best SEO Tools Group Buy - Ahrefs SEMrush at 90% Discount" 
                   className="w-full h-full object-cover opacity-40"
                   loading="eager"
                   fetchPriority="high"
@@ -196,18 +127,18 @@ export default async function Home() {
                     </span> <strong>Group Buy</strong>,
                   </div>
                   <div className="text-white">
-                    <strong>AHREF$ & SEMRU$H</strong> at 90% Off.
+                    <strong>Ahrefs & SEMrush</strong> at 90% Off.
                   </div>
                 </h1>
                 
                 {/* Description */}
                 <p className="text-base text-gray-300 mb-5 leading-relaxed">
-                  <strong>Best SEO tools group buy</strong> platform offering <strong>AHREF$</strong> and <strong>SEMRU$H</strong> at 90% discount. Get group buy access to premium SEO tools with massive savings. Compare SEO tools pricing, find best alternatives, and save thousands on digital marketing software. Perfect for beginners, agencies, and small businesses.
+                  <strong>Best SEO tools group buy</strong> platform offering <strong>Ahrefs</strong> and <strong>SEMrush</strong> at 90% discount. Get group buy access to premium SEO tools with massive savings. Compare SEO tools pricing, find best alternatives, and save thousands on digital marketing software. Perfect for beginners, agencies, and small businesses.
                 </p>
                 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 mb-4">
-                  <Link href="https://members.seotoolsgroupbuy.us/signup" target="_blank" rel="noopener noreferrer" className="group relative px-5 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg font-bold text-base hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/25">
+                  <Link href="https://members.buyseo.org/signup" target="_blank" rel="noopener noreferrer" className="group relative px-5 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg font-bold text-base hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/25">
                     <span className="flex items-center justify-center">
                       Browse SEO Tools Packages
                       <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -216,7 +147,7 @@ export default async function Home() {
                     </span>
                   </Link>
                   
-                  <Link href="https://members.seotoolsgroupbuy.us/signup" target="_blank" rel="noopener noreferrer" className="group px-5 py-3 border-2 border-emerald-600 text-emerald-600 rounded-lg font-bold text-base hover:bg-emerald-600 hover:text-white transition-all duration-300 transform hover:scale-105">
+                  <Link href="https://members.buyseo.org/signup" target="_blank" rel="noopener noreferrer" className="group px-5 py-3 border-2 border-emerald-600 text-emerald-600 rounded-lg font-bold text-base hover:bg-emerald-600 hover:text-white transition-all duration-300 transform hover:scale-105">
                     <span className="flex items-center justify-center">
                       Compare SEO Tools
                       <svg className="w-4 h-4 ml-2 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -224,11 +155,6 @@ export default async function Home() {
                       </svg>
                     </span>
                   </Link>
-                </div>
-
-                {/* Social Sharing Buttons */}
-                <div className="mt-4">
-                  <SocialSharing />
                 </div>
               </div>
             </div>
@@ -250,7 +176,7 @@ export default async function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <span className="text-black font-medium text-sm">AHREF$, SEMRU$H & More</span>
+                  <span className="text-black font-medium text-sm">Ahrefs, SEMrush & More</span>
                 </div>
                 
                 <div className="flex items-center">
@@ -283,7 +209,7 @@ export default async function Home() {
 
               {/* CTA Button */}
               <a 
-                href="https://members.seotoolsgroupbuy.us/signup" 
+                href="https://members.buyseo.org/signup" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full bg-emerald-600 text-white rounded-lg font-bold text-sm py-2 px-3 text-center block hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-md"
@@ -295,274 +221,20 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Why Choose FadiTools Section */}
-      <WhyChooseSection />
-
-      {/* Product Categories Section */}
-      {categories.length > 0 && <CategorySection categories={categories} products={products} />}
-
-      {/* Popular Tools Section */}
-      <PopularToolsSection />
+      {/* Popular Tools Section - same products as /products, 20 per load, See more */}
+      <PopularToolsSection initialProducts={popularProducts} totalProducts={totalProducts} />
 
       {/* Tools Packages Section */}
       <ToolsPackagesSection />
 
-      {/* Interactive Pricing Cards Section */}
-      <InteractivePricingCards />
-
-      {/* What is Best SEO Tools Group Buy - Definition Format */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Author Link */}
-          <div className="mb-6 flex items-center text-sm text-gray-600">
-            <span>By</span>
-            <Link href="/authors-team" className="ml-2 text-emerald-600 hover:text-emerald-700 font-medium underline">
-              FadiTools Team
-            </Link>
-            <span className="mx-2">•</span>
-            <span>Published: January 2023</span>
-            <span className="mx-2">•</span>
-            <span>Updated: January 2025</span>
-          </div>
-          
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            What is Best SEO Tools Group Buy?
-          </h2>
-          <p className="text-lg text-gray-700 leading-relaxed mb-8">
-            <strong>Best SEO tools group buy</strong> is a cost-effective service that allows multiple users to share access to premium SEO and digital marketing tools at a fraction of the individual subscription cost. Instead of paying hundreds of dollars monthly for tools like AHREF$, SEMRU$H, Moz Pro, and others, users can access these same professional-grade tools through a shared group buy platform for as low as $4.99/month, saving up to 90% on retail prices.
-          </p>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            This <strong>best SEO tools group buy</strong> model makes enterprise-level SEO tools accessible to freelancers, small businesses, agencies, and digital marketers who need powerful tools but cannot afford individual subscriptions. The platform provides instant access, 99.9% uptime, and 24/7 support, making it the ideal solution for anyone looking to optimize their SEO strategy without breaking the bank.
-          </p>
-        </div>
-      </section>
-
-      {/* SEO Tools Comparison Table */}
-      <section className="py-12 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
-            Best SEO Tools Group Buy - Price Comparison
-          </h2>
-          <div className="overflow-x-auto">
-            <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-lg">
-              <thead className="bg-emerald-600 text-white">
-                <tr>
-                  <th className="px-6 py-4 text-left text-sm font-bold uppercase">SEO Tool</th>
-                  <th className="px-6 py-4 text-center text-sm font-bold uppercase">Individual Price</th>
-                  <th className="px-6 py-4 text-center text-sm font-bold uppercase">Group Buy Price</th>
-                  <th className="px-6 py-4 text-center text-sm font-bold uppercase">Savings</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                <tr className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 text-sm font-medium text-gray-900">AHREF$</td>
-                  <td className="px-6 py-4 text-sm text-center text-gray-700">$99/month</td>
-                  <td className="px-6 py-4 text-sm text-center text-emerald-600 font-bold">$4.99/month</td>
-                  <td className="px-6 py-4 text-sm text-center text-emerald-600 font-bold">95% Off</td>
-                </tr>
-                <tr className="hover:bg-gray-50 transition-colors bg-gray-50">
-                  <td className="px-6 py-4 text-sm font-medium text-gray-900">SEMRU$H</td>
-                  <td className="px-6 py-4 text-sm text-center text-gray-700">$119/month</td>
-                  <td className="px-6 py-4 text-sm text-center text-emerald-600 font-bold">$4.99/month</td>
-                  <td className="px-6 py-4 text-sm text-center text-emerald-600 font-bold">96% Off</td>
-                </tr>
-                <tr className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 text-sm font-medium text-gray-900">Moz Pro</td>
-                  <td className="px-6 py-4 text-sm text-center text-gray-700">$99/month</td>
-                  <td className="px-6 py-4 text-sm text-center text-emerald-600 font-bold">$4.99/month</td>
-                  <td className="px-6 py-4 text-sm text-center text-emerald-600 font-bold">95% Off</td>
-                </tr>
-                <tr className="hover:bg-gray-50 transition-colors bg-gray-50">
-                  <td className="px-6 py-4 text-sm font-medium text-gray-900">Majestic SEO</td>
-                  <td className="px-6 py-4 text-sm text-center text-gray-700">$49/month</td>
-                  <td className="px-6 py-4 text-sm text-center text-emerald-600 font-bold">$4.99/month</td>
-                  <td className="px-6 py-4 text-sm text-center text-emerald-600 font-bold">90% Off</td>
-                </tr>
-                <tr className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 text-sm font-medium text-gray-900">Screaming Frog</td>
-                  <td className="px-6 py-4 text-sm text-center text-gray-700">$209/year</td>
-                  <td className="px-6 py-4 text-sm text-center text-emerald-600 font-bold">$4.99/month</td>
-                  <td className="px-6 py-4 text-sm text-center text-emerald-600 font-bold">71% Off</td>
-                </tr>
-                <tr className="hover:bg-gray-50 transition-colors bg-gray-50">
-                  <td className="px-6 py-4 text-sm font-medium text-gray-900 font-bold">Total (All Tools)</td>
-                  <td className="px-6 py-4 text-sm text-center text-gray-700 font-bold">$500+/month</td>
-                  <td className="px-6 py-4 text-sm text-center text-emerald-600 font-bold">$4.99/month</td>
-                  <td className="px-6 py-4 text-sm text-center text-emerald-600 font-bold">99% Off</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="text-center text-gray-600 mt-6 text-sm">
-            <strong>Best SEO tools group buy</strong> platform offering access to 50+ premium SEO tools at 90% discount
-          </p>
-        </div>
-      </section>
-
-      {/* Key Takeaways / Summary Section */}
-      <section className="py-12 bg-gradient-to-br from-emerald-50 to-emerald-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10 border-l-4 border-emerald-600">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              <strong>Best SEO Tools Group Buy</strong> - Key Takeaways
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center mr-4 mt-1">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-2">Save Up to 90%</h3>
-                  <p className="text-gray-700 text-sm">Access premium SEO tools like AHREF$ and SEMRU$H at just $4.99/month instead of $99-119/month per tool.</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center mr-4 mt-1">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-2">50+ Premium Tools</h3>
-                  <p className="text-gray-700 text-sm">Get access to AHREF$, SEMRU$H, Moz Pro, Majestic SEO, Screaming Frog, and 45+ other professional SEO tools.</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center mr-4 mt-1">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-2">Instant Access</h3>
-                  <p className="text-gray-700 text-sm">Receive login credentials within 5-10 minutes after payment. No waiting, no delays - start using tools immediately.</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center mr-4 mt-1">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-2">99.9% Uptime</h3>
-                  <p className="text-gray-700 text-sm">Reliable service with 99.9% uptime guarantee. Your tools are always available when you need them.</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center mr-4 mt-1">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-2">24/7 Support</h3>
-                  <p className="text-gray-700 text-sm">Get help anytime with our dedicated 24/7 customer support team. We're here to assist you round the clock.</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center mr-4 mt-1">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-2">Perfect for Everyone</h3>
-                  <p className="text-gray-700 text-sm">Ideal for freelancers, small businesses, agencies, and digital marketers who need professional tools at affordable prices.</p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-8 pt-6 border-t border-gray-200">
-              <p className="text-gray-700 text-base leading-relaxed">
-                <strong>Summary:</strong> Our <strong>best SEO tools group buy</strong> platform offers access to 50+ premium SEO tools including AHREF$, SEMRU$H, and Moz Pro at up to 90% discount. Starting at just $4.99/month, you can save hundreds of dollars while getting instant access, 99.9% uptime, and 24/7 support. Perfect for beginners, agencies, and businesses looking to optimize their SEO strategy without breaking the bank.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Testimonials Section */}
       <TestimonialsSection />
-
-      {/* How to Place an Order Section */}
-      <HowToOrderSection />
 
       {/* FAQ Section */}
       <FAQSection />
 
       {/* Trust Section */}
       <TrustSection />
-
-      {/* Sources and References Section */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            Sources and References
-          </h2>
-          <div className="bg-white rounded-lg shadow-md p-6 md:p-8">
-            <p className="text-gray-700 mb-4">
-              This article on <strong>best SEO tools group buy</strong> is based on industry research, tool pricing data, and user testimonials. The following sources were referenced:
-            </p>
-            <ul className="space-y-3 text-gray-700">
-              <li className="flex items-start">
-                <span className="text-emerald-600 mr-3 font-bold">1.</span>
-                <div>
-                  <strong>AHREF$ Official Pricing:</strong> Retrieved from AHREF$ website pricing page. Individual subscription costs $99/month for Lite plan.
-                  <Link href="https://ahrefs.com/pricing" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 ml-2 underline">
-                    View Source
-                  </Link>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <span className="text-emerald-600 mr-3 font-bold">2.</span>
-                <div>
-                  <strong>SEMRU$H Pricing Information:</strong> Based on SEMRU$H official pricing structure. Pro plan starts at $119/month.
-                  <Link href="https://www.semrush.com/prices/" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 ml-2 underline">
-                    View Source
-                  </Link>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <span className="text-emerald-600 mr-3 font-bold">3.</span>
-                <div>
-                  <strong>Moz Pro Pricing:</strong> Moz Pro Standard plan pricing information from official Moz website.
-                  <Link href="https://moz.com/products/pro/pricing" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 ml-2 underline">
-                    View Source
-                  </Link>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <span className="text-emerald-600 mr-3 font-bold">4.</span>
-                <div>
-                  <strong>SEO Tools Market Research:</strong> Industry analysis of SEO tools market and pricing trends (2024-2025).
-                </div>
-              </li>
-              <li className="flex items-start">
-                <span className="text-emerald-600 mr-3 font-bold">5.</span>
-                <div>
-                  <strong>User Testimonials:</strong> Based on verified customer reviews and feedback from FadiTools users.
-                </div>
-              </li>
-              <li className="flex items-start">
-                <span className="text-emerald-600 mr-3 font-bold">6.</span>
-                <div>
-                  <strong>Group Buy Industry Standards:</strong> Research on group buy service models and pricing structures in the digital marketing tools industry.
-                </div>
-              </li>
-            </ul>
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <p className="text-sm text-gray-600">
-                <strong>Last Updated:</strong> January 2025 | <strong>Author:</strong>{' '}
-                <Link href="/authors-team" className="text-emerald-600 hover:text-emerald-700 underline">
-                  FadiTools Team
-                </Link>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Footer Component with All Social Links and Pages */}
       <Footer />
@@ -577,11 +249,11 @@ export default async function Home() {
             "name": "FadiTools",
             "url": "https://faditools.com",
             "logo": "https://faditools.com/logo.png",
-            "description": "Premium SEO tools and digital marketing solutions provider offering access to 50+ tools including AHREF$, SEMRU$H, and Moz Pro at discounted rates.",
+            "description": "Premium SEO tools and digital marketing solutions provider offering access to 50+ tools including Ahrefs, SEMrush, and Moz Pro at discounted rates.",
             "foundingDate": "2020",
             "contactPoint": {
               "@type": "ContactPoint",
-              "telephone": "+1-555-0123",
+              "telephone": "+447845432224",
               "contactType": "Customer Service",
               "email": "admin@faditools.com",
               "availableLanguage": ["English"]
@@ -606,7 +278,7 @@ export default async function Home() {
             "@type": "WebSite",
             "name": "FadiTools",
             "url": "https://faditools.com",
-            "description": "Best SEO tools group buy platform. Access premium SEO tools including AHREF$ and SEMRU$H at 90% discount. Digital marketing solutions at affordable prices",
+            "description": "Best SEO tools group buy platform. Access premium SEO tools including Ahrefs and SEMrush at 90% discount. Digital marketing solutions at affordable prices",
             "potentialAction": {
               "@type": "SearchAction",
               "target": "https://faditools.com/tools?search={search_term_string}",
@@ -623,7 +295,7 @@ export default async function Home() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Best SEO Tools Group Buy",
-            "description": "Best SEO tools group buy service. Group buy access to premium SEO and digital marketing tools including AHREF$, SEMRU$H, Moz Pro, and 50+ other tools at 90% discount",
+            "description": "Best SEO tools group buy service. Group buy access to premium SEO and digital marketing tools including Ahrefs, SEMrush, Moz Pro, and 50+ other tools at 90% discount",
             "provider": {
               "@type": "Organization",
               "name": "FadiTools"
@@ -656,8 +328,8 @@ export default async function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
-            "headline": "Best SEO Tools Group Buy 2025 - AHREF$ SEMRU$H 90%",
-            "description": "Best SEO tools group buy platform offering AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with massive group buy savings. Join 45K users.",
+            "headline": "Best SEO Tools Group Buy 2025 - Ahrefs SEMrush 90%",
+            "description": "Best SEO tools group buy platform offering Ahrefs and SEMrush at 90% discount. Access 50+ premium SEO tools with massive group buy savings. Join 45K users.",
             "image": "https://faditools.com/logo.png",
             "author": {
               "@type": "Organization",
@@ -694,8 +366,8 @@ export default async function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            "headline": "Best SEO Tools Group Buy 2025 - AHREF$ SEMRU$H 90%",
-            "description": "Best SEO tools group buy platform offering AHREF$ and SEMRU$H at 90% discount. Access 50+ premium SEO tools with massive group buy savings. Join 45K users.",
+            "headline": "Best SEO Tools Group Buy 2025 - Ahrefs SEMrush 90%",
+            "description": "Best SEO tools group buy platform offering Ahrefs and SEMrush at 90% discount. Access 50+ premium SEO tools with massive group buy savings. Join 45K users.",
             "image": {
               "@type": "ImageObject",
               "url": "https://faditools.com/logo.png",
@@ -744,7 +416,7 @@ export default async function Home() {
                 "name": "What kind of services do you offer?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "We offer the best SEO tools group buy service. Premium SEO tools including AHREF$, SEMRU$H, Moz Pro, and 50+ other professional tools at up to 90% discount. Our best SEO tools group buy services include keyword research, backlink analysis, competitor analysis, and comprehensive SEO solutions."
+                  "text": "We offer the best SEO tools group buy service. Premium SEO tools including Ahrefs, SEMrush, Moz Pro, and 50+ other professional tools at up to 90% discount. Our best SEO tools group buy services include keyword research, backlink analysis, competitor analysis, and comprehensive SEO solutions."
                 }
               },
               {

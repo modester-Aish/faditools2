@@ -28,7 +28,7 @@ const pricingData: PricingCard[] = [
       'Design & Graphics'
     ],
     tools: [
-      'SEMRU$H Guru', 'MOZ Pro', 'Majestic', 'Kwfinder', 'Keywordtool io', 'Ubersuggest', 'SerpState', 
+      'SEMrush Guru', 'MOZ Pro', 'Majestic', 'Kwfinder', 'Keywordtool io', 'Ubersuggest', 'SerpState', 
       'Answer the public', 'Woorank', 'Spyfu', 'SEOptimer', 'ChatGPT 4', 'Grammarly', 'WordAi', 
       'Quillbot', 'Spin Rewriter', 'WordHero', 'WordTune', 'SmartCopy', 'CloserCopy', 'Copy ai', 
       'Copymatic ai', 'Jasper Ai', 'WriteSonic', 'Rytr me', 'Jenni ai', 'CANVA pro', 'Crello', 
@@ -41,7 +41,7 @@ const pricingData: PricingCard[] = [
     ]
   },
   {
-    name: 'AHREF$ COMBO',
+    name: 'Ahrefs COMBO',
     price: '$25',
     toolCount: '60+ Tools',
     description: 'Best value package',
@@ -53,7 +53,7 @@ const pricingData: PricingCard[] = [
       'Content Creation'
     ],
     tools: [
-      'AHREF$', 'SEMRU$H Guru', 'MOZ Pro', 'Majestic', 'Kwfinder', 'Keywordtool io', 'Ubersuggest', 
+      'Ahrefs', 'SEMrush Guru', 'MOZ Pro', 'Majestic', 'Kwfinder', 'Keywordtool io', 'Ubersuggest', 
       'SerpState', 'Answer the public', 'Woorank', 'Spyfu', 'SEOptimer', 'ChatGPT 4', 'Bypass GPT', 
       'Grammarly', 'Quetext premium', 'WordAi', 'Hix ai', 'Quillbot', 'Spin Rewriter', 'WordHero', 
       'WordTune', 'SmartCopy', 'CloserCopy', 'Copymatic ai', 'Jasper Ai', 'WriteSonic', 'Rytr me', 
@@ -79,7 +79,7 @@ const pricingData: PricingCard[] = [
       'Learning Platform'
     ],
     tools: [
-      'AHREF$', 'SEMRU$H Guru', 'MOZ Pro', 'Majestic', 'Kwfinder', 'Keywordtool io', 'Ubersuggest', 
+      'Ahrefs', 'SEMrush Guru', 'MOZ Pro', 'Majestic', 'Kwfinder', 'Keywordtool io', 'Ubersuggest', 
       'SerpState', 'Answer the public', 'Woorank', 'Spyfu', 'SEOptimer', 'SEOSITECHECKUP', 'ChatGPT 4', 
       'Bypass GPT', 'Grammarly', 'Quetext premium', 'WordAi', 'You Ai', 'Claude Ai', 'Hix Ai', 'Copy Ai', 
       'Jasper Ai', 'Copymatic Ai', 'Stealthwriter Ai', 'Jenni ai', 'Quillbot', 'Spin Rewriter', 'WordHero', 
@@ -95,7 +95,7 @@ const pricingData: PricingCard[] = [
   {
     name: 'LITE PLAN',
     price: '$10',
-    toolCount: 'SEMRU$H Combo, 20+ Tools',
+    toolCount: 'SEMrush Combo, 20+ Tools',
     description: 'Essential tools',
     icon: '⭐',
     iconBgColor: 'from-blue-500 to-blue-600',
@@ -105,7 +105,7 @@ const pricingData: PricingCard[] = [
       'Entertainment'
     ],
     tools: [
-      'SEMRU$H Guru', 'MOZ Pro', 'Ubersuggest', 'Woorank', 'Grammarly', 'WordAi', 'Quillbot', 'Canva', 
+      'SEMrush Guru', 'MOZ Pro', 'Ubersuggest', 'Woorank', 'Grammarly', 'WordAi', 'Quillbot', 'Canva', 
       'Crello', 'Envato Elements', 'FotoJet', 'Invideo io', 'Netflix', 'Prime Video', 'Buzzsumo', 
       'Picmonkey', 'Motionarray', 'SkillShare', 'Turnitin', 'Linkedin Learning'
     ]
@@ -255,7 +255,7 @@ export default function InteractivePricingCards() {
 
                   {/* Get Access Button */}
                   <a
-                    href="https://members.seotoolsgroupbuy.us/signup"
+                    href="https://members.buyseo.org/signup"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`w-full py-3 rounded-lg font-semibold text-center transition-all duration-300 relative z-10 transform group-hover:scale-105 shadow-lg ${

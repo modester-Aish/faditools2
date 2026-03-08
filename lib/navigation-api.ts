@@ -1,5 +1,4 @@
-import { fetchAllPages, getTitle } from '@/lib/wordpress-api'
-import { WordPressPage } from '@/types/wordpress'
+import { getPages } from '@/lib/local-content'
 
 export interface NavigationItem {
   title: string
@@ -68,7 +67,7 @@ export async function fetchNavigationData(): Promise<NavigationItem[]> {
   }
 
   try {
-    // In the browser, use our API proxy to avoid CORS (direct WP fetch sends Cache-Control and WP blocks it).
+    // In the browser, use our API proxy which now serves from local JSON.
     if (typeof window !== 'undefined') {
       const res = await fetch('/api/pages', { cache: 'no-store' })
       if (!res.ok) return []
@@ -79,24 +78,20 @@ export async function fetchNavigationData(): Promise<NavigationItem[]> {
       return items
     }
 
-    const { data: pages, error } = await fetchAllPages()
-    if (error || !pages) {
-      console.error('Error fetching navigation data:', error)
-      return []
-    }
+    const pages = getPages()
 
     const navigationItems: NavigationItem[] = pages
-      .filter((page: WordPressPage) => {
+      .filter(page => {
         if (page.status !== 'publish') return false
         if (EXCLUDED_SLUGS.includes(page.slug)) return false
         if (page.slug.includes('draft') || page.slug.includes('private')) return false
         return true
       })
-      .map((page: WordPressPage) => ({
-        title: getTitle(page),
+      .map(page => ({
+        title: page.title,
         slug: page.slug,
         url: `/pages/${page.slug}`,
-        menu_order: page.menu_order || 0,
+        menu_order: (page as any).menu_order || 0,
         id: page.id,
         status: page.status || 'publish',
       }))

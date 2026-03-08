@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
-import { fetchBlogPosts } from '@/lib/api'
-import { WordPressPost } from '@/types'
+import { getPosts, SyncedPost } from '@/lib/local-content'
 import Link from 'next/link'
 import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 import Image from 'next/image'
 import { generateCanonicalUrl } from '@/lib/canonical'
 
@@ -28,11 +28,11 @@ export const metadata: Metadata = {
 }
 
 export default async function BlogPage() {
-  let posts: WordPressPost[] = []
+  let posts: SyncedPost[] = []
   let loading = false
 
   try {
-    posts = await fetchBlogPosts()
+    posts = getPosts()
   } catch (error) {
     console.error('Error fetching posts:', error)
     loading = true
@@ -46,19 +46,16 @@ export default async function BlogPage() {
     })
   }
 
-  const getReadingTime = (content: string) => {
+  const getReadingTime = (content?: string) => {
     const wordsPerMinute = 200
-    const words = content.replace(/<[^>]*>/g, '').split(' ').length
+    const safe = content || ''
+    const words = safe.replace(/<[^>]*>/g, '').split(' ').length
     return Math.ceil(words / wordsPerMinute)
   }
 
   // Function to get featured image URL from embedded data
-  const getFeaturedImageUrl = (post: WordPressPost): string | null => {
-    if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0]) {
-      const media = post._embedded['wp:featuredmedia'][0]
-      return media.source_url || media.guid?.rendered || null
-    }
-    return null
+  const getFeaturedImageUrl = (post: SyncedPost): string | null => {
+    return post.featured_image || null
   }
 
   if (loading) {
@@ -153,7 +150,7 @@ export default async function BlogPage() {
                     <div className="relative h-48 overflow-hidden">
                       <Image
                         src={getFeaturedImageUrl(post)!}
-                        alt={post.title.rendered}
+                        alt={post.title}
                         fill
                         className="object-cover"
                       />
@@ -175,19 +172,19 @@ export default async function BlogPage() {
                         href={`/${post.slug}`}
                         className="hover:text-primary-500 transition-colors"
                       >
-                        {post.title.rendered}
+                        {post.title}
                       </Link>
                     </h2>
                     
-                    {post.excerpt?.rendered && (
+                    {post.excerpt && (
                       <p className="text-black mb-4 line-clamp-3">
-                        {post.excerpt.rendered.replace(/<[^>]*>/g, '')}
+                        {post.excerpt.replace(/<[^>]*>/g, '')}
                       </p>
                     )}
                     
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-500">
-                        {getReadingTime(post.content.rendered)} min read
+                        {getReadingTime(post.content)} min read
                       </span>
                       <Link
                         href={`/${post.slug}`}
@@ -206,6 +203,7 @@ export default async function BlogPage() {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

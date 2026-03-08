@@ -1,0 +1,609 @@
+[
+  {
+    "id": 7650,
+    "slug": "editorial-guidelines",
+    "title": "Editorial Guidelines",
+    "content": "<h2>Editorial Guidelines</h2>\n<p>At FadiTools, we maintain high standards for all our content. These guidelines ensure that our articles, guides, and tutorials are accurate, helpful, and trustworthy.</p>\n<h3>Content Standards</h3>\n<ul>\n<li><strong>Accuracy:</strong> All information must be factually correct and up-to-date</li>\n<li><strong>Relevance:</strong> Content must be relevant to our audience of SEO professionals and digital marketers</li>\n<li><strong>Clarity:</strong> Articles should be well-structured and easy to understand</li>\n<li><strong>Originality:</strong> All content must be original or properly attributed</li>\n</ul>\n<h3>Writing Style</h3>\n<ul>\n<li>Use clear, concise language</li>\n<li>Avoid jargon unless necessary, and always explain technical terms</li>\n<li>Use headings and subheadings to organize content</li>\n<li>Include examples and practical tips when possible</li>\n</ul>\n<h3>Research Requirements</h3>\n<ul>\n<li>All claims must be backed by reliable sources</li>\n<li>Cite sources when referencing statistics or studies</li>\n<li>Test tools and methods before recommending them</li>\n<li>Update content regularly to reflect changes</li>\n</ul>\n<h3>SEO Best Practices</h3>\n<ul>\n<li>Optimize content for relevant keywords</li>\n<li>Use descriptive headings and meta descriptions</li>\n<li>Include internal and external links where appropriate</li>\n<li>Optimize images with alt text</li>\n</ul>\n<h3>Review Process</h3>\n<p>All content goes through a rigorous review process:</p>\n<ol>\n<li>Initial draft by author</li>\n<li>Fact-checking and editing</li>\n<li>SEO review</li>\n<li>Final approval</li>\n</ol>\n<h3>Updates and Corrections</h3>\n<p>We regularly review and update our content to ensure accuracy. If you notice any errors or outdated information, please contact us.</p>\n<h3>Contact</h3>\n<p>For questions about our editorial guidelines or to submit content, please contact: editorial@faditools.com</p>\n",
+    "excerpt": "<p>Our editorial guidelines ensure that all FadiTools content is accurate, helpful, and trustworthy.</p>\n",
+    "date": "2025-12-22T16:23:13",
+    "modified": "2025-12-22T16:23:13",
+    "status": "publish",
+    "type": "page",
+    "menu_order": 0,
+    "featured_image": null,
+    "meta_title": "Editorial Guidelines - Faditools.com",
+    "meta_description": null,
+    "yoast_head_json": {
+      "title": "Editorial Guidelines - Faditools.com",
+      "robots": {
+        "index": "noindex",
+        "follow": "follow",
+        "max-snippet": "max-snippet:-1",
+        "max-image-preview": "max-image-preview:large",
+        "max-video-preview": "max-video-preview:-1"
+      },
+      "og_locale": "en_US",
+      "og_type": "article",
+      "og_title": "Editorial Guidelines - Faditools.com",
+      "og_description": "Our editorial guidelines ensure that all FadiTools content is accurate, helpful, and trustworthy.",
+      "og_url": "https://app.faditools.com/editorial-guidelines/",
+      "og_site_name": "Faditools.com",
+      "twitter_card": "summary_large_image",
+      "twitter_misc": {
+        "Est. reading time": "1 minute"
+      },
+      "schema": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://app.faditools.com/editorial-guidelines/",
+            "url": "https://app.faditools.com/editorial-guidelines/",
+            "name": "Editorial Guidelines - Faditools.com",
+            "isPartOf": {
+              "@id": "https://app.faditools.com/#website"
+            },
+            "datePublished": "2025-12-22T16:23:13+00:00",
+            "breadcrumb": {
+              "@id": "https://app.faditools.com/editorial-guidelines/#breadcrumb"
+            },
+            "inLanguage": "en-US",
+            "potentialAction": [
+              {
+                "@type": "ReadAction",
+                "target": [
+                  "https://app.faditools.com/editorial-guidelines/"
+                ]
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://app.faditools.com/editorial-guidelines/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://app.faditools.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Editorial Guidelines"
+              }
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://app.faditools.com/#website",
+            "url": "https://app.faditools.com/",
+            "name": "Faditools.com",
+            "description": "My WordPress Blog",
+            "potentialAction": [
+              {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://app.faditools.com/?s={search_term_string}"
+                },
+                "query-input": {
+                  "@type": "PropertyValueSpecification",
+                  "valueRequired": true,
+                  "valueName": "search_term_string"
+                }
+              }
+            ],
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 7649,
+    "slug": "authors-team",
+    "title": "Authors & Team",
+    "content": "<h2>Our Authors &#038; Team</h2>\n<p>Meet the talented individuals behind FadiTools who work tirelessly to bring you the best SEO tools and content.</p>\n<h3>Editorial Team</h3>\n<p>Our editorial team consists of experienced SEO professionals, digital marketers, and content creators who are passionate about helping you succeed.</p>\n<h3>Content Writers</h3>\n<p>Our content writers have years of experience in SEO, digital marketing, and technology. They create comprehensive guides, tutorials, and blog posts to help you make the most of your tools.</p>\n<h3>Technical Team</h3>\n<p>Our technical team ensures that all tools are running smoothly and that you have the best possible experience using our platform.</p>\n<h3>Support Team</h3>\n<p>Our support team is available 24/7 to help you with any questions or issues. They&#8217;re knowledgeable, friendly, and always ready to assist.</p>\n<h3>Contributing Authors</h3>\n<p>We work with industry experts and guest authors who share their knowledge and insights on our blog.</p>\n<h3>Join Our Team</h3>\n<p>Interested in joining our team? We&#8217;re always looking for talented individuals who are passionate about SEO and digital marketing. Contact us at: careers@faditools.com</p>\n<h3>Editorial Guidelines</h3>\n<p>Our content follows strict editorial guidelines to ensure accuracy, relevance, and value. Learn more about our <a href=\"/pages/editorial-guidelines\">Editorial Guidelines</a>.</p>\n",
+    "excerpt": "<p>Meet the FadiTools team of SEO experts, content creators, and support professionals dedicated to your success.</p>\n",
+    "date": "2025-12-22T16:23:10",
+    "modified": "2025-12-22T16:23:10",
+    "status": "publish",
+    "type": "page",
+    "menu_order": 0,
+    "featured_image": null,
+    "meta_title": "Authors & Team - Faditools.com",
+    "meta_description": null,
+    "yoast_head_json": {
+      "title": "Authors & Team - Faditools.com",
+      "robots": {
+        "index": "noindex",
+        "follow": "follow",
+        "max-snippet": "max-snippet:-1",
+        "max-image-preview": "max-image-preview:large",
+        "max-video-preview": "max-video-preview:-1"
+      },
+      "og_locale": "en_US",
+      "og_type": "article",
+      "og_title": "Authors & Team - Faditools.com",
+      "og_description": "Meet the FadiTools team of SEO experts, content creators, and support professionals dedicated to your success.",
+      "og_url": "https://app.faditools.com/authors-team/",
+      "og_site_name": "Faditools.com",
+      "twitter_card": "summary_large_image",
+      "twitter_misc": {
+        "Est. reading time": "1 minute"
+      },
+      "schema": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://app.faditools.com/authors-team/",
+            "url": "https://app.faditools.com/authors-team/",
+            "name": "Authors & Team - Faditools.com",
+            "isPartOf": {
+              "@id": "https://app.faditools.com/#website"
+            },
+            "datePublished": "2025-12-22T16:23:10+00:00",
+            "breadcrumb": {
+              "@id": "https://app.faditools.com/authors-team/#breadcrumb"
+            },
+            "inLanguage": "en-US",
+            "potentialAction": [
+              {
+                "@type": "ReadAction",
+                "target": [
+                  "https://app.faditools.com/authors-team/"
+                ]
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://app.faditools.com/authors-team/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://app.faditools.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Authors &#038; Team"
+              }
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://app.faditools.com/#website",
+            "url": "https://app.faditools.com/",
+            "name": "Faditools.com",
+            "description": "My WordPress Blog",
+            "potentialAction": [
+              {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://app.faditools.com/?s={search_term_string}"
+                },
+                "query-input": {
+                  "@type": "PropertyValueSpecification",
+                  "valueRequired": true,
+                  "valueName": "search_term_string"
+                }
+              }
+            ],
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 7648,
+    "slug": "contact",
+    "title": "Contact Us",
+    "content": "<h2>Contact Us</h2>\n<p>We&#8217;d love to hear from you! Get in touch with our team using any of the methods below.</p>\n<h3>Get in Touch</h3>\n<p>Whether you have a question about our services, need technical support, or want to provide feedback, we&#8217;re here to help.</p>\n<h3>Contact Methods</h3>\n<ul>\n<li><strong>Email:</strong> support@faditools.com</li>\n<li><strong>Live Chat:</strong> Available on our website (bottom right corner)</li>\n<li><strong>Response Time:</strong> We typically respond within 24 hours</li>\n</ul>\n<h3>Support Hours</h3>\n<p>Our support team is available 24/7 to assist you with any questions or issues.</p>\n<h3>Frequently Asked Questions</h3>\n<p>Before contacting us, you might find answers to common questions in our <a href=\"/blog\">Blog</a> or check our FAQ section.</p>\n<h3>Business Inquiries</h3>\n<p>For business partnerships, bulk orders, or enterprise solutions, please email us at: business@faditools.com</p>\n<h3>Technical Support</h3>\n<p>If you&#8217;re experiencing technical issues with any of our tools, please include:</p>\n<ul>\n<li>Your account email</li>\n<li>Description of the issue</li>\n<li>Screenshots (if applicable)</li>\n<li>Tool name and version</li>\n</ul>\n",
+    "excerpt": "<p>Contact FadiTools for support, questions, or business inquiries. We are here to help 24/7.</p>\n",
+    "date": "2025-12-22T16:23:07",
+    "modified": "2025-12-22T16:23:07",
+    "status": "publish",
+    "type": "page",
+    "menu_order": 0,
+    "featured_image": null,
+    "meta_title": "Contact Us - Faditools.com",
+    "meta_description": null,
+    "yoast_head_json": {
+      "title": "Contact Us - Faditools.com",
+      "robots": {
+        "index": "noindex",
+        "follow": "follow",
+        "max-snippet": "max-snippet:-1",
+        "max-image-preview": "max-image-preview:large",
+        "max-video-preview": "max-video-preview:-1"
+      },
+      "og_locale": "en_US",
+      "og_type": "article",
+      "og_title": "Contact Us - Faditools.com",
+      "og_description": "Contact FadiTools for support, questions, or business inquiries. We are here to help 24/7.",
+      "og_url": "https://app.faditools.com/contact/",
+      "og_site_name": "Faditools.com",
+      "twitter_card": "summary_large_image",
+      "twitter_misc": {
+        "Est. reading time": "1 minute"
+      },
+      "schema": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://app.faditools.com/contact/",
+            "url": "https://app.faditools.com/contact/",
+            "name": "Contact Us - Faditools.com",
+            "isPartOf": {
+              "@id": "https://app.faditools.com/#website"
+            },
+            "datePublished": "2025-12-22T16:23:07+00:00",
+            "breadcrumb": {
+              "@id": "https://app.faditools.com/contact/#breadcrumb"
+            },
+            "inLanguage": "en-US",
+            "potentialAction": [
+              {
+                "@type": "ReadAction",
+                "target": [
+                  "https://app.faditools.com/contact/"
+                ]
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://app.faditools.com/contact/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://app.faditools.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Contact Us"
+              }
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://app.faditools.com/#website",
+            "url": "https://app.faditools.com/",
+            "name": "Faditools.com",
+            "description": "My WordPress Blog",
+            "potentialAction": [
+              {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://app.faditools.com/?s={search_term_string}"
+                },
+                "query-input": {
+                  "@type": "PropertyValueSpecification",
+                  "valueRequired": true,
+                  "valueName": "search_term_string"
+                }
+              }
+            ],
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 7647,
+    "slug": "privacy-policy",
+    "title": "Privacy Policy",
+    "content": "<h2>Privacy Policy</h2>\n<p>Last updated: 12/22/2025</p>\n<h3>1. Information We Collect</h3>\n<p>We collect information that you provide directly to us when you:</p>\n<ul>\n<li>Create an account</li>\n<li>Make a purchase</li>\n<li>Subscribe to our newsletter</li>\n<li>Contact us for support</li>\n</ul>\n<h3>2. How We Use Your Information</h3>\n<p>We use the information we collect to:</p>\n<ul>\n<li>Provide, maintain, and improve our services</li>\n<li>Process transactions and send related information</li>\n<li>Send you technical notices and support messages</li>\n<li>Respond to your comments and questions</li>\n</ul>\n<h3>3. Information Sharing</h3>\n<p>We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:</p>\n<ul>\n<li>With your consent</li>\n<li>To comply with legal obligations</li>\n<li>To protect our rights and safety</li>\n</ul>\n<h3>4. Data Security</h3>\n<p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>\n<h3>5. Your Rights</h3>\n<p>You have the right to:</p>\n<ul>\n<li>Access your personal data</li>\n<li>Correct inaccurate data</li>\n<li>Request deletion of your data</li>\n<li>Object to processing of your data</li>\n</ul>\n<h3>6. Contact Us</h3>\n<p>If you have questions about this Privacy Policy, please contact us at: <a href=\"/pages/contact\">Contact Page</a></p>\n",
+    "excerpt": "<p>Our Privacy Policy explains how we collect, use, and protect your personal information when you use our services.</p>\n",
+    "date": "2025-12-22T16:23:00",
+    "modified": "2025-12-22T16:23:00",
+    "status": "publish",
+    "type": "page",
+    "menu_order": 0,
+    "featured_image": null,
+    "meta_title": "Privacy Policy - Faditools.com",
+    "meta_description": null,
+    "yoast_head_json": {
+      "title": "Privacy Policy - Faditools.com",
+      "robots": {
+        "index": "noindex",
+        "follow": "follow",
+        "max-snippet": "max-snippet:-1",
+        "max-image-preview": "max-image-preview:large",
+        "max-video-preview": "max-video-preview:-1"
+      },
+      "og_locale": "en_US",
+      "og_type": "article",
+      "og_title": "Privacy Policy - Faditools.com",
+      "og_description": "Our Privacy Policy explains how we collect, use, and protect your personal information when you use our services.",
+      "og_url": "https://app.faditools.com/privacy-policy/",
+      "og_site_name": "Faditools.com",
+      "twitter_card": "summary_large_image",
+      "twitter_misc": {
+        "Est. reading time": "1 minute"
+      },
+      "schema": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://app.faditools.com/privacy-policy/",
+            "url": "https://app.faditools.com/privacy-policy/",
+            "name": "Privacy Policy - Faditools.com",
+            "isPartOf": {
+              "@id": "https://app.faditools.com/#website"
+            },
+            "datePublished": "2025-12-22T16:23:00+00:00",
+            "breadcrumb": {
+              "@id": "https://app.faditools.com/privacy-policy/#breadcrumb"
+            },
+            "inLanguage": "en-US",
+            "potentialAction": [
+              {
+                "@type": "ReadAction",
+                "target": [
+                  "https://app.faditools.com/privacy-policy/"
+                ]
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://app.faditools.com/privacy-policy/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://app.faditools.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Privacy Policy"
+              }
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://app.faditools.com/#website",
+            "url": "https://app.faditools.com/",
+            "name": "Faditools.com",
+            "description": "My WordPress Blog",
+            "potentialAction": [
+              {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://app.faditools.com/?s={search_term_string}"
+                },
+                "query-input": {
+                  "@type": "PropertyValueSpecification",
+                  "valueRequired": true,
+                  "valueName": "search_term_string"
+                }
+              }
+            ],
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 26,
+    "slug": "terms-of-service",
+    "title": "Terms of Service",
+    "content": "<p>Please read these terms and conditions carefully before using our services. By using ToolsHub, you agree to these terms.</p>\n",
+    "excerpt": "<p>Please read these terms and conditions carefully before using our services. By using ToolsHub, you agree to these terms.</p>\n",
+    "date": "2025-08-22T18:17:56",
+    "modified": "2025-08-22T18:17:56",
+    "status": "publish",
+    "type": "page",
+    "menu_order": 0,
+    "featured_image": null,
+    "meta_title": "Terms of Service - Faditools.com",
+    "meta_description": null,
+    "yoast_head_json": {
+      "title": "Terms of Service - Faditools.com",
+      "robots": {
+        "index": "noindex",
+        "follow": "follow",
+        "max-snippet": "max-snippet:-1",
+        "max-image-preview": "max-image-preview:large",
+        "max-video-preview": "max-video-preview:-1"
+      },
+      "og_locale": "en_US",
+      "og_type": "article",
+      "og_title": "Terms of Service - Faditools.com",
+      "og_description": "Please read these terms and conditions carefully before using our services. By using ToolsHub, you agree to these terms.",
+      "og_url": "https://app.faditools.com/terms-of-service/",
+      "og_site_name": "Faditools.com",
+      "twitter_card": "summary_large_image",
+      "schema": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://app.faditools.com/terms-of-service/",
+            "url": "https://app.faditools.com/terms-of-service/",
+            "name": "Terms of Service - Faditools.com",
+            "isPartOf": {
+              "@id": "https://app.faditools.com/#website"
+            },
+            "datePublished": "2025-08-22T18:17:56+00:00",
+            "breadcrumb": {
+              "@id": "https://app.faditools.com/terms-of-service/#breadcrumb"
+            },
+            "inLanguage": "en-US",
+            "potentialAction": [
+              {
+                "@type": "ReadAction",
+                "target": [
+                  "https://app.faditools.com/terms-of-service/"
+                ]
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://app.faditools.com/terms-of-service/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://app.faditools.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Terms of Service"
+              }
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://app.faditools.com/#website",
+            "url": "https://app.faditools.com/",
+            "name": "Faditools.com",
+            "description": "My WordPress Blog",
+            "potentialAction": [
+              {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://app.faditools.com/?s={search_term_string}"
+                },
+                "query-input": {
+                  "@type": "PropertyValueSpecification",
+                  "valueRequired": true,
+                  "valueName": "search_term_string"
+                }
+              }
+            ],
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 24,
+    "slug": "about-us",
+    "title": "About Faditools.com",
+    "content": "<p data-start=\"120\" data-end=\"404\"><strong data-start=\"120\" data-end=\"212\">Faditools.com is the best and number 1 group buy SEO tools provider for the last 2 years</strong>, offering affordable access to premium SEO tools, digital marketing tools, keyword research tools, and competitor analysis tools for bloggers, freelancers, agencies, and businesses worldwide.</p>\n<table>\n<thead>\n<tr>\n<th>Feature</th>\n<th>Details</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Brand Name</td>\n<td>Faditools.com</td>\n</tr>\n<tr>\n<td>Service Type</td>\n<td>Group Buy SEO Tools Provider</td>\n</tr>\n<tr>\n<td>Experience</td>\n<td>2+ Years</td>\n</tr>\n<tr>\n<td>Specialty</td>\n<td>Premium SEO Tools at Low Prices</td>\n</tr>\n<tr>\n<td>Tools Category</td>\n<td>SEO, Keyword Research, Backlink Analysis, Digital Marketing</td>\n</tr>\n<tr>\n<td>Target Users</td>\n<td>Bloggers, Freelancers, Agencies, Businesses</td>\n</tr>\n<tr>\n<td>Mission</td>\n<td>Provide affordable access to the best SEO tools</td>\n</tr>\n</tbody>\n</table>\n",
+    "excerpt": "<p>Faditools.com is the best and number 1 group buy SEO tools provider for the last 2 years, offering affordable access to premium SEO tools, digital marketing tools, keyword research tools, and competitor analysis tools for bloggers, freelancers, agencies, and businesses worldwide. Feature Details Brand Name Faditools.com Service Type Group Buy SEO Tools Provider Experience 2+ [&hellip;]</p>\n",
+    "date": "2025-08-22T18:17:56",
+    "modified": "2026-03-02T19:29:11",
+    "status": "publish",
+    "type": "page",
+    "menu_order": 0,
+    "featured_image": null,
+    "meta_title": "About Faditools.com",
+    "meta_description": "Faditools.com is the best and number 1 group buy SEO tools provider for the last 2 years, offering affordable access to premium SEO tools, digital marketing tools, keyword research tools, and competitor analysis tools for bloggers, freelancers, agencies, and businesses worldwide.",
+    "yoast_head_json": {
+      "title": "About Faditools.com",
+      "description": "Faditools.com is the best and number 1 group buy SEO tools provider for the last 2 years, offering affordable access to premium SEO tools, digital marketing tools, keyword research tools, and competitor analysis tools for bloggers, freelancers, agencies, and businesses worldwide.",
+      "robots": {
+        "index": "noindex",
+        "follow": "follow",
+        "max-snippet": "max-snippet:-1",
+        "max-image-preview": "max-image-preview:large",
+        "max-video-preview": "max-video-preview:-1"
+      },
+      "og_locale": "en_US",
+      "og_type": "article",
+      "og_title": "About Faditools.com",
+      "og_description": "Faditools.com is the best and number 1 group buy SEO tools provider for the last 2 years, offering affordable access to premium SEO tools, digital marketing tools, keyword research tools, and competitor analysis tools for bloggers, freelancers, agencies, and businesses worldwide.",
+      "og_url": "https://app.faditools.com/about-us/",
+      "og_site_name": "Faditools.com",
+      "article_modified_time": "2026-03-02T19:29:11+00:00",
+      "twitter_card": "summary_large_image",
+      "twitter_misc": {
+        "Est. reading time": "1 minute"
+      },
+      "schema": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://app.faditools.com/about-us/",
+            "url": "https://app.faditools.com/about-us/",
+            "name": "About Faditools.com",
+            "isPartOf": {
+              "@id": "https://app.faditools.com/#website"
+            },
+            "datePublished": "2025-08-22T18:17:56+00:00",
+            "dateModified": "2026-03-02T19:29:11+00:00",
+            "description": "Faditools.com is the best and number 1 group buy SEO tools provider for the last 2 years, offering affordable access to premium SEO tools, digital marketing tools, keyword research tools, and competitor analysis tools for bloggers, freelancers, agencies, and businesses worldwide.",
+            "breadcrumb": {
+              "@id": "https://app.faditools.com/about-us/#breadcrumb"
+            },
+            "inLanguage": "en-US",
+            "potentialAction": [
+              {
+                "@type": "ReadAction",
+                "target": [
+                  "https://app.faditools.com/about-us/"
+                ]
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://app.faditools.com/about-us/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://app.faditools.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About Faditools.com"
+              }
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://app.faditools.com/#website",
+            "url": "https://app.faditools.com/",
+            "name": "Faditools.com",
+            "description": "My WordPress Blog",
+            "potentialAction": [
+              {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://app.faditools.com/?s={search_term_string}"
+                },
+                "query-input": {
+                  "@type": "PropertyValueSpecification",
+                  "valueRequired": true,
+                  "valueName": "search_term_string"
+                }
+              }
+            ],
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    }
+  }
+]

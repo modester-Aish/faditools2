@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { fetchBlogPosts } from '@/lib/api'
+import { fetchBlogPosts } from '@/lib/local-wp'
 
 export const revalidate = 3600 // Revalidate every hour
 

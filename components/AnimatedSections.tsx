@@ -5,6 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Typewriter from './Typewriter'
 import ModernReveal from './ModernReveal'
+import { Product } from '@/types'
+
+const PRODUCT_PLACEHOLDER_IMAGE = '/images/tools/seo-tools.svg'
 
 // Why Choose FadiTools Section - Animations removed
 export const WhyChooseSection = () => {
@@ -19,7 +22,7 @@ export const WhyChooseSection = () => {
           </h2>
           <p className="text-base text-gray-600 max-w-3xl mx-auto">
             <span className="inline-block">
-              Get group buy access to premium SEO tools including AHREF$, SEMRU$H, and 50+ tools at 90% discount. Perfect for beginners, agencies, and small businesses.
+              Get group buy access to premium SEO tools including Ahrefs, SEMrush, and 50+ tools at 90% discount. Perfect for beginners, agencies, and small businesses.
             </span>
           </p>
         </div>
@@ -56,7 +59,7 @@ export const WhyChooseSection = () => {
               <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-1">
                 <Image
                   src="https://cdn-icons-png.flaticon.com/512/483/483408.png"
-                  alt="Best SEO Tools Group Buy - Premium SEO Tools Access AHREF$ SEMRU$H"
+                  alt="Best SEO Tools Group Buy - Premium SEO Tools Access Ahrefs SEMrush"
                   className="w-full h-full object-contain p-2"
                   width={80}
                   height={80}
@@ -243,8 +246,52 @@ export const WhyChooseSection = () => {
   )
 }
 
-// Most Popular Tools Section - Animations removed
-export const PopularToolsSection = () => {
+// Pehle se maujood 8 popular tools - hamesha upar
+const TOP_POPULAR_TOOLS = [
+  { name: 'Ahrefs', slug: 'ahrefs', price: '$30.00', originalPrice: '$99.00', image: '/images/tools/ahrefs-logo.svg', description: 'Comprehensive SEO toolkit for keyword research and backlink analysis' },
+  { name: 'SEMrush', slug: 'semrush', price: '$4.99', originalPrice: '$119.95', image: '/images/tools/semrush-logo.svg', description: 'All-in-one marketing toolkit for competitive analysis' },
+  { name: 'Moz Pro', slug: 'moz', price: '$4.99', originalPrice: '$99.00', image: '/images/tools/moz-logo.svg', description: 'Professional SEO software for rank tracking and optimization' },
+  { name: 'Canva Pro', slug: 'canva', price: '$4.99', originalPrice: '$12.99', image: 'https://img.icons8.com/color/96/canva.png', description: 'Professional design platform with premium templates' },
+  { name: 'ChatGPT Plus', slug: 'chatgpt-plus', price: '$4.99', originalPrice: '$20.00', image: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg', description: 'Best text Based AI Co pilot' },
+  { name: 'RunwayML', slug: 'runwayml', price: '$4.99', originalPrice: '$35.00', image: 'https://img.icons8.com/color/96/runway.png', description: 'Best AI video Maker' },
+  { name: 'Netflix', slug: 'netflix', price: '$4.99', originalPrice: '$15.99', image: '/images/tools/netflix-logo.svg', description: 'Entertainment from TV series' },
+  { name: 'Claude', slug: 'claude', price: '$4.99', originalPrice: '$20.00', image: '/images/tools/claude-logo.svg', description: 'AI coding vibe' },
+]
+
+// Most Popular Tools Section - Upar 8 tools, unke niche saari /products products (See more = 20 per load)
+export const PopularToolsSection = ({
+  initialProducts = [],
+  totalProducts: totalFromServer = 0,
+}: {
+  initialProducts?: Product[]
+  totalProducts?: number
+} = {}) => {
+  const [products, setProducts] = useState<Product[]>(initialProducts)
+  const [totalProducts] = useState(totalFromServer)
+  const [page, setPage] = useState(1)
+  const [loading, setLoading] = useState(false)
+  const perPage = 20
+  const hasMore = totalProducts > 0 && products.length < totalProducts
+  const showAllProducts = initialProducts.length > 0 || totalProducts > 0
+
+  const loadMore = async () => {
+    if (loading || !hasMore) return
+    setLoading(true)
+    try {
+      const nextPage = page + 1
+      const res = await fetch(`/api/products?page=${nextPage}&per_page=${perPage}`)
+      const data = await res.json()
+      if (data?.products?.length) {
+        setProducts((prev) => [...prev, ...data.products])
+        setPage(nextPage)
+      }
+    } catch (e) {
+      console.error('Load more products failed:', e)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <section id="popular-tools" className="py-12 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -255,99 +302,23 @@ export const PopularToolsSection = () => {
             </span>
           </h2>
           <p className="text-base text-gray-600 max-w-3xl mx-auto">
-            Explore the <strong>best SEO tools group buy</strong> platform with the same tools trusted by top digital marketing agencies worldwide. Get <strong>AHREF$</strong> and <strong>SEMRU$H</strong> at 90% discount.
+            Explore the <strong>best SEO tools group buy</strong> platform with the same tools trusted by top digital marketing agencies worldwide. Get <strong>Ahrefs</strong> and <strong>SEMrush</strong> at 90% discount.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto px-4">
-          {[
-            {
-              name: 'AHREF$',
-              id: 'ahrefs',
-              slug: 'ahrefs',
-              price: '$30.00',
-              originalPrice: '$99.00',
-              image: '/images/tools/ahrefs-logo.svg',
-              description: 'Comprehensive SEO toolkit for keyword research and backlink analysis'
-            },
-            {
-              name: 'SEMRU$H',
-              id: 'semrush',
-              slug: 'semrush',
-              price: '$4.99',
-              originalPrice: '$119.95',
-              image: '/images/tools/semrush-logo.svg',
-              description: 'All-in-one marketing toolkit for competitive analysis'
-            },
-            {
-              name: 'Moz Pro',
-              id: 'moz',
-              slug: 'moz',
-              price: '$4.99',
-              originalPrice: '$99.00',
-              image: '/images/tools/moz-logo.svg',
-              description: 'Professional SEO software for rank tracking and optimization'
-            },
-            {
-              name: 'Canva Pro',
-              id: 'canva',
-              slug: 'canva',
-              price: '$4.99',
-              originalPrice: '$12.99',
-              image: 'https://img.icons8.com/color/96/canva.png',
-              description: 'Professional design platform with premium templates'
-            },
-            {
-              name: 'ChatGPT Plus',
-              id: 'chatgpt-plus',
-              slug: 'chatgpt-plus',
-              price: '$4.99',
-              originalPrice: '$20.00',
-              image: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg',
-              description: 'Best text Based AI Co pilot'
-            },
-            {
-              name: 'RunwayML',
-              id: 'runwayml',
-              slug: 'runwayml',
-              price: '$4.99',
-              originalPrice: '$35.00',
-              image: 'https://img.icons8.com/color/96/runway.png',
-              description: 'Best AI video Maker'
-            },
-            {
-              name: 'Netflix',
-              id: 'netflix',
-              slug: 'netflix',
-              price: '$4.99',
-              originalPrice: '$15.99',
-              image: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg',
-              description: 'Entertainment from TV series'
-            },
-            {
-              name: 'Claude',
-              id: 'claude',
-              slug: 'claude',
-              price: '$4.99',
-              originalPrice: '$20.00',
-              image: '/images/tools/claude-logo.svg',
-              description: 'AI coding vibe'
-            }
-          ].map((tool, index) => (
+        {/* Pehle se maujood 8 tools - hamesha upar */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto px-4 mb-14">
+          {TOP_POPULAR_TOOLS.map((tool, index) => (
             <Link
-              key={index}
+              key={tool.slug}
               href={`/${tool.slug}`}
               className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden block"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
-                <div className={`w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 animate-float-delay-${index % 3}`}>
-                  <img
-                    src={tool.image}
-                    alt={tool.name}
-                    className="w-full h-full object-contain p-2"
-                  />
+                <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <img src={tool.image} alt={tool.name} className="w-full h-full object-contain p-2" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center group-hover:text-emerald-600 transition-colors duration-300">{tool.name}</h3>
                 <p className="text-gray-600 text-sm text-center mb-6">{tool.description}</p>
@@ -359,11 +330,61 @@ export const PopularToolsSection = () => {
                   View Details
                 </div>
               </div>
-              {/* Shimmer effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             </Link>
           ))}
         </div>
+
+        {/* Unke niche saari products - wahi card design jo upar 8 ka hai, See more = 20 per load */}
+        {showAllProducts && (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto px-4">
+              {products.map((product, index) => {
+                const imgSrc = product.images?.[0]?.src || PRODUCT_PLACEHOLDER_IMAGE
+                const name = product.title?.rendered || product.slug || 'Product'
+                const description = (product.excerpt?.rendered || '').replace(/<[^>]*>/g, '').slice(0, 100) || 'View details for this SEO tool.'
+                const priceStr = (product.price || '').toString().trim()
+                const price = priceStr ? (priceStr.startsWith('$') ? priceStr : `$${priceStr}`) : '$4.99'
+                const regStr = (product.regular_price || '').toString().trim()
+                const originalPrice = regStr ? (regStr.startsWith('$') ? regStr : `$${regStr}`) : ''
+                return (
+                  <Link
+                    key={product.id}
+                    href={`/${product.slug}`}
+                    className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden block"
+                    style={{ animationDelay: `${index * 0.05}s` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative z-10">
+                      <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 bg-white/80 flex items-center justify-center">
+                        <img src={imgSrc} alt={name} className="w-full h-full object-contain p-2" loading="lazy" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center group-hover:text-emerald-600 transition-colors duration-300 line-clamp-2">{name}</h3>
+                      <p className="text-gray-600 text-sm text-center mb-6 line-clamp-2 min-h-[2.5rem]">{description}</p>
+                      <div className="text-center mb-6">
+                        <span className="text-3xl font-bold text-emerald-600">{price}</span>
+                        {originalPrice && <div className="text-sm text-gray-500">vs {originalPrice}</div>}
+                      </div>
+                      <div className="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold text-center hover:bg-emerald-700 transition-all duration-300 transform group-hover:scale-105">
+                        View Details
+                      </div>
+                    </div>
+                  </Link>
+                )
+              })}
+            </div>
+            {hasMore && (
+              <div className="text-center mt-10">
+                <button
+                  onClick={loadMore}
+                  disabled={loading}
+                  className="px-8 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 disabled:opacity-70 transition-all duration-300 transform hover:scale-105"
+                >
+                  {loading ? 'Loading...' : `See more (${products.length} of ${totalProducts})`}
+                </button>
+              </div>
+            )}
+          </>
+        )}
       </div>
     </section>
   )
@@ -386,8 +407,8 @@ export const CustomPackSection = () => {
     const toolName = fileName.replace('-logo.svg', '').replace('-tools.svg', '')
     
     // Convert to proper case
-    if (toolName === 'semrush') return 'SEMRU$H'
-    if (toolName === 'ahrefs') return 'AHREF$'
+    if (toolName === 'semrush') return 'SEMrush'
+    if (toolName === 'ahrefs') return 'Ahrefs'
     if (toolName === 'moz') return 'Moz Pro'
     if (toolName === 'canva') return 'Canva Pro'
     if (toolName === 'chatgpt') return 'ChatGPT'
@@ -616,7 +637,7 @@ export const CustomPackSection = () => {
                 {/* Action Buttons */}
                 <div className="mt-auto pt-4">
                   <a 
-                    href="https://members.seotoolsgroupbuy.us/signup" 
+                    href="https://members.buyseo.org/signup" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className={`w-full py-2 px-4 font-medium text-center block transition-colors rounded-lg transform group-hover:scale-105 ${pack.isPopular ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-emerald-600 text-white hover:bg-emerald-700'}`}
@@ -688,7 +709,7 @@ export const TestimonialsSection = () => {
                   {
                     name: 'Freelancer Shamim',
                     rating: 5,
-                    review: 'SEMRU$H niyechilam. satisfied (y).',
+                    review: 'SEMrush niyechilam. satisfied (y).',
                     icon: '👷‍♂️'
                   },
                   {
@@ -845,7 +866,7 @@ export const TestimonialsSection = () => {
                   {
                     name: 'Freelancer Shamim',
                     rating: 5,
-                    review: 'SEMRU$H niyechilam. satisfied (y).',
+                    review: 'SEMrush niyechilam. satisfied (y).',
                     icon: '👷‍♂️'
                   },
                   {
@@ -1025,13 +1046,13 @@ export const TestimonialsSection = () => {
                 {
                   name: 'Lisa Thompson',
                   rating: 5,
-                  review: 'I\'m amazed by FadiTools\'s SEMRU$H package! The comprehensive analytics and keyword research tools have completely transformed how we approach SEO. Worth every penny!',
+                  review: 'I\'m amazed by FadiTools\'s SEMrush package! The comprehensive analytics and keyword research tools have completely transformed how we approach SEO. Worth every penny!',
                   icon: '👩‍🦰'
                 },
                 {
                   name: 'David Wilson',
                   rating: 5,
-                  review: 'The AHREF$ package is incredible! I\'ve improved my website\'s ranking significantly. FadiTools makes premium tools accessible.',
+                  review: 'The Ahrefs package is incredible! I\'ve improved my website\'s ranking significantly. FadiTools makes premium tools accessible.',
                   icon: '👨‍💼'
                 },
                 {
@@ -1313,13 +1334,13 @@ export const TestimonialsSection = () => {
                   {
                     name: 'Lisa Thompson',
                     rating: 5,
-                    review: 'I\'m amazed by FadiTools\'s SEMRU$H package! The comprehensive analytics and keyword research tools have completely transformed how we approach SEO. Worth every penny!',
+                    review: 'I\'m amazed by FadiTools\'s SEMrush package! The comprehensive analytics and keyword research tools have completely transformed how we approach SEO. Worth every penny!',
                     icon: '👩‍🦰'
                   },
                   {
                     name: 'David Wilson',
                     rating: 5,
-                    review: 'The AHREF$ package is incredible! I\'ve improved my website\'s ranking significantly. FadiTools makes premium tools accessible.',
+                    review: 'The Ahrefs package is incredible! I\'ve improved my website\'s ranking significantly. FadiTools makes premium tools accessible.',
                     icon: '👨‍💼'
                   },
                   {

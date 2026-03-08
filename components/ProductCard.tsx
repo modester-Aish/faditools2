@@ -5,8 +5,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Product } from '@/types'
 
-// Fallback placeholder image
-const PLACEHOLDER_IMAGE = '/images/placeholder-product.jpg'
+// Fallback when product has no image (file exists in public)
+const PLACEHOLDER_IMAGE = '/images/tools/seo-tools.svg'
 
 interface ProductCardProps {
   product: Product

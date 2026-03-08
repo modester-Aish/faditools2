@@ -3,7 +3,7 @@ import { Tool } from '../types'
 export const tools: Tool[] = [
   {
     id: 'semrush',
-    name: 'SEMRU$H',
+    name: 'SEMrush',
     price: '$4.99',
     period: 'Per user/month',
     popular: true,
@@ -13,7 +13,7 @@ export const tools: Tool[] = [
   },
   {
     id: 'ahrefs',
-    name: 'AHREF$',
+    name: 'Ahrefs',
     price: '$30.00',
     period: 'Per user/month',
     color: 'from-orange-500 to-red-500',

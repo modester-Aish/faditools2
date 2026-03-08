@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Product } from '@/types'
 import ProductCard from './ProductCard'
-import { getProductIdBySlug, getProductIdByName, generateBuyUrl } from '@/data/product-id-mapping'
+import { getProductIdBySlug, getProductIdByName, generateBuyUrl, SIGNUP_URL } from '@/data/product-id-mapping'
 
 interface ProductDetailProps {
   product: Product
@@ -58,24 +58,16 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
       return
     }
     
-    // Second priority: Use existing affiliate_link (original behavior)
+    // Second: affiliate_link if present
     if (product.affiliate_link) {
       console.log('✅ Using affiliate_link:', product.affiliate_link)
       window.open(product.affiliate_link, '_blank')
       return
     }
     
-    // Third priority: Generate buy URL using product.id
-    if (product.id) {
-      const buyUrl = `https://members.seotoolsgroupbuy.us/cart/index/product/id/${product.id}/c/`
-      console.log('✅ Using product.id URL:', buyUrl)
-      window.open(buyUrl, '_blank')
-      return
-    }
-    
-    // Fallback to signup page (original behavior)
-    console.log('⚠️ Using fallback signup page - No match found')
-    window.open('https://members.seotoolsgroupbuy.us/signup', '_blank')
+    // No mapping: signup only (cart link only for IDs 1–60 from mapping)
+    console.log('⚠️ No mapped ID – using signup')
+    window.open(SIGNUP_URL, '_blank')
   }
 
   const handleImageZoom = () => {

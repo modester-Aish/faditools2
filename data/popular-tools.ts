@@ -17,17 +17,17 @@ export interface PopularTool {
 export const popularTools: PopularTool[] = [
   {
     id: 'ahrefs',
-    name: 'AHREF$',
+    name: 'Ahrefs',
     slug: 'ahrefs',
     price: '$30.00',
     originalPrice: '$99.00',
     image: '/images/tools/ahrefs-logo.svg',
     description: 'Comprehensive SEO toolkit for keyword research and backlink analysis',
-    productId: '53',
-    buyUrl: 'https://members.seotoolsgroupbuy.us/cart/index/product/id/53/c/',
-    longDescription: `AHREF$ is one of the most powerful SEO tools available, trusted by digital marketing professionals worldwide. It provides comprehensive keyword research, backlink analysis, competitor research, and rank tracking capabilities.
+    productId: '7',
+    buyUrl: 'https://members.buyseo.org/cart/index/product/id/7/c/',
+    longDescription: `Ahrefs is one of the most powerful SEO tools available, trusted by digital marketing professionals worldwide. It provides comprehensive keyword research, backlink analysis, competitor research, and rank tracking capabilities.
 
-With AHREF$, you can discover profitable keywords, analyze your competitors' backlink profiles, track your search rankings, and identify content opportunities. The tool offers extensive data on over 200 million keywords and billions of backlinks, making it an essential resource for any serious SEO campaign.
+With Ahrefs, you can discover profitable keywords, analyze your competitors' backlink profiles, track your search rankings, and identify content opportunities. The tool offers extensive data on over 200 million keywords and billions of backlinks, making it an essential resource for any serious SEO campaign.
 
 Key features include Site Explorer for analyzing any website's backlink profile, Keywords Explorer for finding the best keywords to target, Content Explorer for discovering top-performing content, and Rank Tracker for monitoring your search rankings.`,
     features: [
@@ -52,17 +52,17 @@ Key features include Site Explorer for analyzing any website's backlink profile,
   },
   {
     id: 'semrush',
-    name: 'SEMRU$H',
+    name: 'SEMrush',
     slug: 'semrush',
     price: '$4.99',
     originalPrice: '$119.95',
     image: '/images/tools/semrush-logo.svg',
     description: 'All-in-one marketing toolkit for competitive analysis',
-    productId: '8',
-    buyUrl: 'https://members.seotoolsgroupbuy.us/cart/index/product/id/8/c/',
-    longDescription: `SEMRU$H is a comprehensive digital marketing toolkit that helps businesses improve their online visibility and discover marketing insights. It's an all-in-one platform for SEO, PPC, content, social media, and competitive research.
+    productId: '4',
+    buyUrl: 'https://members.buyseo.org/cart/index/product/id/4/c/',
+    longDescription: `SEMrush is a comprehensive digital marketing toolkit that helps businesses improve their online visibility and discover marketing insights. It's an all-in-one platform for SEO, PPC, content, social media, and competitive research.
 
-SEMRU$H provides powerful tools for keyword research, competitor analysis, backlink auditing, site auditing, and social media management. With access to over 20 billion keywords and 800+ million domains, SEMRU$H offers unparalleled insights into your digital marketing landscape.
+SEMrush provides powerful tools for keyword research, competitor analysis, backlink auditing, site auditing, and social media management. With access to over 20 billion keywords and 800+ million domains, SEMrush offers unparalleled insights into your digital marketing landscape.
 
 The platform is trusted by over 10 million marketers worldwide and is used by leading agencies and Fortune 500 companies. Whether you're running SEO campaigns, managing PPC ads, or creating content strategies, SEMrush provides the data and tools you need to succeed.`,
     features: [
@@ -93,8 +93,8 @@ The platform is trusted by over 10 million marketers worldwide and is used by le
     originalPrice: '$99.00',
     image: '/images/tools/moz-logo.svg',
     description: 'Professional SEO software for rank tracking and optimization',
-    productId: '19',
-    buyUrl: 'https://members.seotoolsgroupbuy.us/cart/index/product/id/19/c/',
+    productId: '14',
+    buyUrl: 'https://members.buyseo.org/cart/index/product/id/14/c/',
     longDescription: `Moz Pro is a comprehensive SEO software suite designed to help businesses improve their search engine rankings and online visibility. It's one of the most trusted SEO tools in the industry, known for its user-friendly interface and powerful features.
 
 Moz Pro offers tools for keyword research, link building, site auditing, rank tracking, and local SEO. The platform provides access to the Moz Keyword Explorer, which includes search volume data, difficulty scores, and opportunity metrics for millions of keywords.
@@ -128,8 +128,8 @@ With Moz Pro, you can track your search rankings, analyze your backlink profile,
     originalPrice: '$12.99',
     image: 'https://img.icons8.com/color/96/canva.png',
     description: 'Professional design platform with premium templates',
-    productId: '65',
-    buyUrl: 'https://members.seotoolsgroupbuy.us/cart/index/product/id/65/c/',
+    productId: '12',
+    buyUrl: 'https://members.buyseo.org/cart/index/product/id/12/c/',
     longDescription: `Canva Pro is a powerful graphic design platform that makes it easy for anyone to create professional-quality designs. With millions of templates, photos, fonts, and design elements, Canva Pro empowers users to create stunning visuals for social media, marketing materials, presentations, and more.
 
 Canva Pro includes access to premium templates, stock photos, fonts, and design elements. It also offers advanced features like background removal, brand kit management, magic resize, and access to over 100 million premium stock photos and videos.
@@ -163,8 +163,8 @@ Whether you're creating social media posts, marketing materials, presentations, 
     originalPrice: '$20.00',
     image: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg',
     description: 'Best text Based AI Co pilot',
-    productId: '29',
-    buyUrl: 'https://members.seotoolsgroupbuy.us/cart/index/product/id/29/c/',
+    productId: '11',
+    buyUrl: 'https://members.buyseo.org/cart/index/product/id/11/c/',
     longDescription: `ChatGPT Plus is the premium version of OpenAI's revolutionary AI assistant. It provides access to GPT-4, the most advanced language model available, along with faster response times, priority access during peak times, and access to new features and improvements.
 
 ChatGPT Plus is an essential tool for content creators, marketers, developers, and professionals who need AI assistance for writing, coding, research, analysis, and more. With GPT-4, you get more accurate responses, better reasoning capabilities, and the ability to handle complex tasks.
@@ -198,8 +198,8 @@ The platform can help with a wide range of tasks including content writing, code
     originalPrice: '$35.00',
     image: 'https://img.icons8.com/color/96/runway.png',
     description: 'Best AI video Maker',
-    productId: '127',
-    buyUrl: 'https://members.seotoolsgroupbuy.us/cart/index/product/id/127/c/',
+    productId: '',
+    buyUrl: 'https://members.buyseo.org/signup',
     longDescription: `RunwayML is a cutting-edge AI-powered video creation platform that makes professional video editing accessible to everyone. It uses advanced machine learning to provide powerful video editing tools, effects, and features that were previously only available to professional video editors.
 
 With RunwayML, you can create stunning videos using AI-powered tools like green screen removal, object removal, motion tracking, style transfer, and more. The platform offers both web-based and desktop applications, making it easy to create professional videos from anywhere.
@@ -231,10 +231,10 @@ RunwayML is perfect for content creators, marketers, filmmakers, and anyone who 
     slug: 'netflix',
     price: '$4.99',
     originalPrice: '$15.99',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg',
+    image: '/images/tools/netflix-logo.svg',
     description: 'Entertainment from TV series',
-    productId: '52',
-    buyUrl: 'https://members.seotoolsgroupbuy.us/cart/index/product/id/52/c/',
+    productId: '21',
+    buyUrl: 'https://members.buyseo.org/cart/index/product/id/21/c/',
     longDescription: `Netflix is the world's leading streaming entertainment service, offering thousands of movies, TV shows, documentaries, and original content. With a Netflix subscription, you get unlimited access to a vast library of content that you can watch anytime, anywhere, on any device.
 
 Netflix offers content in multiple languages and genres, including original series and movies that you can't find anywhere else. The platform uses advanced algorithms to recommend content based on your viewing history, making it easy to discover new shows and movies you'll love.
@@ -268,8 +268,8 @@ Whether you're looking for the latest blockbuster movies, binge-worthy TV series
     originalPrice: '$20.00',
     image: '/images/tools/claude-logo.svg',
     description: 'AI coding vibe',
-    productId: '113',
-    buyUrl: 'https://members.seotoolsgroupbuy.us/cart/index/product/id/113/c/',
+    productId: '46',
+    buyUrl: 'https://members.buyseo.org/cart/index/product/id/46/c/',
     longDescription: `Claude is an advanced AI assistant developed by Anthropic, designed to be helpful, harmless, and honest. It's particularly powerful for coding, analysis, writing, and complex reasoning tasks. Claude offers a more nuanced understanding of context and can handle longer conversations and documents.
 
 Claude is known for its excellent coding capabilities, making it a favorite among developers. It can help with code generation, debugging, code review, documentation, and explaining complex code. The AI is also excellent at analysis, research, writing, and creative tasks.

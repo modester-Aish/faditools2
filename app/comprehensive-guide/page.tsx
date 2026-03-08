@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { fetchProducts } from '@/lib/api'
 import { Product } from '@/types'
 import Link from 'next/link'
 import Header from '../../components/Header'
@@ -31,9 +30,20 @@ export default function ComprehensiveGuidePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productsData = await fetchProducts()
-        console.log('Comprehensive Guide - Products fetched from API:', productsData)
-        console.log('Comprehensive Guide - Products length:', productsData?.length)
+        const res = await fetch('/api/products', { cache: 'no-store' })
+        const productsJson = res.ok ? await res.json() : []
+        const productsData = (Array.isArray(productsJson) ? productsJson : []).map((p: any) => ({
+          id: p.id,
+          slug: p.slug,
+          title: { rendered: p.name || '' },
+          excerpt: { rendered: p.short_description || '' },
+          content: { rendered: '' },
+          price: p.price != null ? String(p.price) : '',
+          regular_price: p.regular_price != null ? String(p.regular_price) : '',
+          sale_price: p.sale_price != null ? String(p.sale_price) : '',
+          on_sale: Boolean(p.on_sale),
+          images: Array.isArray(p.images) ? p.images : [],
+        })) as any as Product[]
         
         // Randomize products and take first 6
         const shuffledProducts = productsData
@@ -148,10 +158,10 @@ export default function ComprehensiveGuidePage() {
             <div className="lg:col-span-6">
               <article className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl border border-white/20 p-8 md:p-12">
                 <div ref={contentRef}>
-                  {/* Introduction */}
-                  <h1 className="text-4xl font-bold text-gray-900 mb-6">
+                  {/* Introduction - H2 to avoid double H1 (page already has H1 in hero) */}
+                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
                     The Ultimate Digital Marketing Guide
-                  </h1>
+                  </h2>
                   <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                     In today's digital landscape, mastering digital marketing is essential for business success. This comprehensive guide will walk you through every aspect of digital marketing, from foundational concepts to advanced strategies.
                   </p>
@@ -224,7 +234,7 @@ export default function ComprehensiveGuidePage() {
                     Analytics and Tracking
                   </h3>
                   <p className="text-gray-700 mb-4 leading-relaxed">
-                    Understanding your performance is crucial. Tools like Google Analytics, SEMRU$H, and AHREF$ help you track and analyze your marketing efforts.
+                    Understanding your performance is crucial. Tools like Google Analytics, SEMrush, and Ahrefs help you track and analyze your marketing efforts.
                   </p>
 
                   <h3 className="text-2xl font-bold text-gray-800 mb-3 mt-8">

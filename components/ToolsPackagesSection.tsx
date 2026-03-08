@@ -13,9 +13,9 @@ export const ToolsPackagesSection = () => {
       price: '$30.00',
       description: 'Essential SEO tools for professionals',
       toolCount: 11,
-      tools: ['SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic'],
+      tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
       allTools: [
-        'SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic', 'SpyFu',
+        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
         'Screaming Frog', 'GTmetrix', 'Pingdom', 'Yoast SEO',
         'Rank Math', 'SEO PowerSuite'
       ],
@@ -30,9 +30,9 @@ export const ToolsPackagesSection = () => {
       price: '$40.00',
       description: 'Complete digital marketing solution',
       toolCount: 15,
-      tools: ['SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic'],
+      tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
       allTools: [
-        'SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic', 'SpyFu',
+        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
         'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
         'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
         'Google Analytics', 'Search Console'
@@ -48,9 +48,9 @@ export const ToolsPackagesSection = () => {
       price: '$50.00',
       description: 'Advanced tools for agencies',
       toolCount: 20,
-      tools: ['SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic'],
+      tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
       allTools: [
-        'SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic', 'SpyFu',
+        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
         'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
         'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
         'Google Analytics', 'Search Console', 'Ubersuggest',
@@ -67,9 +67,9 @@ export const ToolsPackagesSection = () => {
       price: '$65.00',
       description: 'All premium tools included',
       toolCount: 42,
-      tools: ['SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic'],
+      tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
       allTools: [
-        'SEMRU$H', 'AHREF$', 'Moz Pro', 'Majestic', 'SpyFu',
+        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
         'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
         'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
         'Google Analytics', 'Search Console', 'Ubersuggest',
@@ -205,7 +205,7 @@ export const ToolsPackagesSection = () => {
                     {/* Action Buttons - Fixed at bottom */}
                     <div className="pt-4">
                       <a 
-                        href="https://members.seotoolsgroupbuy.us/signup" 
+                        href="https://members.buyseo.org/signup" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="w-full py-3 px-4 bg-emerald-600 text-white rounded-lg font-semibold text-center block hover:bg-emerald-700 transition-colors transform group-hover:scale-105 shadow-lg"
