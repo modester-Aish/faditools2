@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         locale: 'en_US',
         type: 'article',
         publishedTime: post.date,
-        modifiedTime: post.modified,
+        modifiedTime: post.modified ?? post.date,
       },
       twitter: {
         card: 'summary_large_image',

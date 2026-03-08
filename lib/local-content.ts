@@ -41,6 +41,7 @@ export type SyncedPost = {
   content: string
   excerpt: string
   date: string
+  modified?: string
   status: string
   type: string
   featured_image?: string | null
