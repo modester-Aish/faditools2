@@ -44,6 +44,7 @@ export type SyncedPost = {
   modified?: string
   status: string
   type: string
+  categories?: Array<{ id?: number; name?: string }>
   featured_image?: string | null
   meta_title: string | null
   meta_description: string | null

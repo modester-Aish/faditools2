@@ -1,4 +1,5 @@
 import { getPages } from '@/lib/local-content'
+import type { WordPressPage } from '@/types'
 
 export interface NavigationItem {
   title: string
