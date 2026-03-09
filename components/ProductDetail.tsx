@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Product } from '@/types'
 import ProductCard from './ProductCard'
-import { getProductIdBySlug, getProductIdByName, generateBuyUrl, SIGNUP_URL } from '@/data/product-id-mapping'
+import { getBuyOrSignupUrl, SIGNUP_URL } from '@/data/product-id-mapping'
 
 interface ProductDetailProps {
   product: Product
@@ -20,54 +20,13 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
   const [soldCounts, setSoldCounts] = useState<number[]>([])
 
   const handleAffiliatePurchase = () => {
-    // Priority: 1. Specific product ID from slug mapping, 2. Product ID from name matching, 3. affiliate_link, 4. product.id URL, 5. fallback signup
-    
-    console.log('🔍 Buy Now clicked - Product:', {
-      slug: product.slug,
-      name: product.title?.rendered,
-      id: product.id,
-      affiliate_link: product.affiliate_link
-    })
-    
-    // First check if we have a specific product ID mapping for this slug
-    // Also try without "group-buy" suffix
-    let mappedProductId = getProductIdBySlug(product.slug)
-    
-    // If slug has "group-buy" or similar, try without it
-    if (!mappedProductId && product.slug) {
-      const slugWithoutSuffix = product.slug
-        .replace(/-group-buy$/i, '')
-        .replace(/-group$/i, '')
-        .replace(/-buy$/i, '')
-      mappedProductId = getProductIdBySlug(slugWithoutSuffix)
-      console.log('🔍 Slug without suffix match:', slugWithoutSuffix, '→', mappedProductId)
-    }
-    
-    console.log('✅ Slug match result:', mappedProductId)
-    
-    // If not found by slug, try matching by product name (fuzzy matching)
-    if (!mappedProductId && product.title?.rendered) {
-      mappedProductId = getProductIdByName(product.title.rendered)
-      console.log('✅ Name match result:', mappedProductId)
-    }
-    
-    if (mappedProductId) {
-      const buyUrl = generateBuyUrl(mappedProductId)
-      console.log('✅ Using mapped product ID URL:', buyUrl)
-      window.open(buyUrl, '_blank')
-      return
-    }
-    
-    // Second: affiliate_link if present
+    // Sirf 60 mapped: slug se 1-by-1 cart link; baaki signup (name match nahi, isi se galat link bahut jagah lag raha tha)
     if (product.affiliate_link) {
-      console.log('✅ Using affiliate_link:', product.affiliate_link)
       window.open(product.affiliate_link, '_blank')
       return
     }
-    
-    // No mapping: signup only (cart link only for IDs 1–60 from mapping)
-    console.log('⚠️ No mapped ID – using signup')
-    window.open(SIGNUP_URL, '_blank')
+    const url = getBuyOrSignupUrl(product.slug || '')
+    window.open(url, '_blank')
   }
 
   const handleImageZoom = () => {
@@ -87,7 +46,7 @@ export default function ProductDetail({ product, relatedProducts = [] }: Product
   const price = product.on_sale && product.sale_price ? product.sale_price : product.price || product.regular_price
   const regularPrice = product.regular_price
   const isOnSale = product.on_sale && product.sale_price
-  
+
   // Calculate savings
   const savings = regularPrice && price ? (parseFloat(regularPrice) - parseFloat(price)).toFixed(2) : '0'
   const savingsPercent = regularPrice && price ? Math.round(((parseFloat(regularPrice) - parseFloat(price)) / parseFloat(regularPrice)) * 100) : 0

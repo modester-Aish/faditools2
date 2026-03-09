@@ -4,6 +4,7 @@ import TestimonialCard from '@/components/TestimonialCard'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 import ErrorBoundary from '@/components/ui/ErrorBoundary'
 import { generateCanonicalUrl } from '@/lib/canonical'
+import { SEO_CONFIG } from '@/lib/seo-config'
 
 export const metadata: Metadata = {
   title: 'Customer Reviews 2025 - 450+ Testimonials from Real Users',
@@ -12,7 +13,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Customer Reviews 2025 - 450+ Testimonials from Real Users',
     description: 'Read 450+ verified customer reviews from 45,000+ users. Real success stories from agencies, marketers & businesses using our group buy SEO tools.',
+    url: 'https://faditools.com/testimonials',
+    locale: 'en_US',
     type: 'website',
+    images: [SEO_CONFIG.defaultOgImage],
   },
   alternates: {
     canonical: generateCanonicalUrl('/testimonials'),

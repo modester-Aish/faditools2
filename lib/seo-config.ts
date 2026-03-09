@@ -29,6 +29,14 @@ export const SEO_CONFIG = {
     'affordable SEO tools'
   ],
   
+  // Default Open Graph image (required for complete OG)
+  defaultOgImage: {
+    url: '/seo-tools-illustration.svg',
+    width: 1200,
+    height: 630,
+    alt: 'FadiTools - Premium SEO Tools & Digital Marketing',
+  },
+
   // Social Media
   social: {
     twitter: '@faditools',

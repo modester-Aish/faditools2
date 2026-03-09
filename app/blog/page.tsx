@@ -5,6 +5,7 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Image from 'next/image'
 import { generateCanonicalUrl } from '@/lib/canonical'
+import { SEO_CONFIG } from '@/lib/seo-config'
 
 export const metadata: Metadata = {
   title: 'SEO Blog 2025 - Latest Tips, Guides & Tool Reviews',
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     url: 'https://faditools.com/blog',
     locale: 'en_US',
     type: 'website',
+    images: [SEO_CONFIG.defaultOgImage],
   },
   twitter: {
     card: 'summary_large_image',

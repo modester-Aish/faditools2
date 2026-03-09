@@ -246,31 +246,24 @@ export const WhyChooseSection = () => {
   )
 }
 
-// Pehle se maujood 8 popular tools - hamesha upar
-const TOP_POPULAR_TOOLS = [
-  { name: 'Ahrefs', slug: 'ahrefs', price: '$30.00', originalPrice: '$99.00', image: '/images/tools/ahrefs-logo.svg', description: 'Comprehensive SEO toolkit for keyword research and backlink analysis' },
-  { name: 'SEMrush', slug: 'semrush', price: '$4.99', originalPrice: '$119.95', image: '/images/tools/semrush-logo.svg', description: 'All-in-one marketing toolkit for competitive analysis' },
-  { name: 'Moz Pro', slug: 'moz', price: '$4.99', originalPrice: '$99.00', image: '/images/tools/moz-logo.svg', description: 'Professional SEO software for rank tracking and optimization' },
-  { name: 'Canva Pro', slug: 'canva', price: '$4.99', originalPrice: '$12.99', image: 'https://img.icons8.com/color/96/canva.png', description: 'Professional design platform with premium templates' },
-  { name: 'ChatGPT Plus', slug: 'chatgpt-plus', price: '$4.99', originalPrice: '$20.00', image: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg', description: 'Best text Based AI Co pilot' },
-  { name: 'RunwayML', slug: 'runwayml', price: '$4.99', originalPrice: '$35.00', image: 'https://img.icons8.com/color/96/runway.png', description: 'Best AI video Maker' },
-  { name: 'Netflix', slug: 'netflix', price: '$4.99', originalPrice: '$15.99', image: '/images/tools/netflix-logo.svg', description: 'Entertainment from TV series' },
-  { name: 'Claude', slug: 'claude', price: '$4.99', originalPrice: '$20.00', image: '/images/tools/claude-logo.svg', description: 'AI coding vibe' },
-]
+const normSlug = (s: string) => (s || '').replace(/-group-buy$/i, '').replace(/-group$/i, '').replace(/-buy$/i, '')
 
-// Most Popular Tools Section - Upar 8 tools, unke niche saari /products products (See more = 20 per load)
+// Most Popular Tools Section - Upar 8 tools sequence me, phir baaki; See more = 20 per load
 export const PopularToolsSection = ({
   initialProducts = [],
   totalProducts: totalFromServer = 0,
+  excludeSlugs = [],
 }: {
   initialProducts?: Product[]
   totalProducts?: number
+  excludeSlugs?: string[]
 } = {}) => {
   const [products, setProducts] = useState<Product[]>(initialProducts)
   const [totalProducts] = useState(totalFromServer)
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
   const perPage = 20
+  const excludeSet = new Set(excludeSlugs)
   const hasMore = totalProducts > 0 && products.length < totalProducts
   const showAllProducts = initialProducts.length > 0 || totalProducts > 0
 
@@ -282,8 +275,16 @@ export const PopularToolsSection = ({
       const res = await fetch(`/api/products?page=${nextPage}&per_page=${perPage}`)
       const data = await res.json()
       if (data?.products?.length) {
-        setProducts((prev) => [...prev, ...data.products])
-        setPage(nextPage)
+        const incoming = excludeSet.size
+          ? data.products.filter((p: Product) => {
+              const s = p.slug || ''
+              return !excludeSet.has(s) && !excludeSet.has(normSlug(s))
+            })
+          : data.products
+        if (incoming.length) {
+          setProducts((prev) => [...prev, ...incoming])
+          setPage(nextPage)
+        }
       }
     } catch (e) {
       console.error('Load more products failed:', e)
@@ -306,39 +307,9 @@ export const PopularToolsSection = ({
           </p>
         </div>
 
-        {/* Pehle se maujood 8 tools - hamesha upar */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto px-4 mb-14">
-          {TOP_POPULAR_TOOLS.map((tool, index) => (
-            <Link
-              key={tool.slug}
-              href={`/${tool.slug}`}
-              className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden block"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative z-10">
-                <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                  <img src={tool.image} alt={tool.name} className="w-full h-full object-contain p-2" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center group-hover:text-emerald-600 transition-colors duration-300">{tool.name}</h3>
-                <p className="text-gray-600 text-sm text-center mb-6">{tool.description}</p>
-                <div className="text-center mb-6">
-                  <span className="text-3xl font-bold text-emerald-600">{tool.price}</span>
-                  <div className="text-sm text-gray-500">vs {tool.originalPrice}</div>
-                </div>
-                <div className="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold text-center hover:bg-emerald-700 transition-all duration-300 transform group-hover:scale-105">
-                  View Details
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* Unke niche saari products - wahi card design jo upar 8 ka hai, See more = 20 per load */}
-        {showAllProducts && (
-          <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto px-4">
-              {products.map((product, index) => {
+        {/* Upar sirf matched tools (60) – server sort se pehle aate hain, phir baaki products */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto px-4 items-stretch">
+          {showAllProducts && products.map((product, index) => {
                 const imgSrc = product.images?.[0]?.src || PRODUCT_PLACEHOLDER_IMAGE
                 const name = product.title?.rendered || product.slug || 'Product'
                 const description = (product.excerpt?.rendered || '').replace(/<[^>]*>/g, '').slice(0, 100) || 'View details for this SEO tool.'
@@ -350,40 +321,38 @@ export const PopularToolsSection = ({
                   <Link
                     key={product.id}
                     href={`/${product.slug}`}
-                    className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden block"
+                    className="group relative bg-gradient-to-br from-emerald-25 to-emerald-50 backdrop-blur-xl rounded-3xl p-6 border border-emerald-500/15 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/20 animate-fade-in-up overflow-hidden block h-full flex flex-col"
                     style={{ animationDelay: `${index * 0.05}s` }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="relative z-10">
-                      <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 bg-white/80 flex items-center justify-center">
+                    <div className="relative z-10 flex flex-col flex-1 min-h-0">
+                      <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 bg-white/80 flex items-center justify-center flex-shrink-0">
                         <img src={imgSrc} alt={name} className="w-full h-full object-contain p-2" loading="lazy" />
                       </div>
                       <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center group-hover:text-emerald-600 transition-colors duration-300 line-clamp-2">{name}</h3>
-                      <p className="text-gray-600 text-sm text-center mb-6 line-clamp-2 min-h-[2.5rem]">{description}</p>
-                      <div className="text-center mb-6">
+                      <p className="text-gray-600 text-sm text-center mb-6 line-clamp-2 min-h-[2.5rem] flex-shrink-0">{description}</p>
+                      <div className="text-center mb-6 flex-shrink-0">
                         <span className="text-3xl font-bold text-emerald-600">{price}</span>
                         {originalPrice && <div className="text-sm text-gray-500">vs {originalPrice}</div>}
                       </div>
-                      <div className="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold text-center hover:bg-emerald-700 transition-all duration-300 transform group-hover:scale-105">
+                      <div className="mt-auto w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold text-center hover:bg-emerald-700 transition-all duration-300 transform group-hover:scale-105 flex-shrink-0">
                         View Details
                       </div>
                     </div>
                   </Link>
                 )
-              })}
-            </div>
-            {hasMore && (
-              <div className="text-center mt-10">
-                <button
-                  onClick={loadMore}
-                  disabled={loading}
-                  className="px-8 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 disabled:opacity-70 transition-all duration-300 transform hover:scale-105"
-                >
-                  {loading ? 'Loading...' : `See more (${products.length} of ${totalProducts})`}
-                </button>
-              </div>
-            )}
-          </>
+          })}
+        </div>
+        {showAllProducts && hasMore && (
+          <div className="text-center mt-10">
+            <button
+              onClick={loadMore}
+              disabled={loading}
+              className="px-8 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 disabled:opacity-70 transition-all duration-300 transform hover:scale-105"
+            >
+              {loading ? 'Loading...' : `See more (${products.length} of ${totalProducts})`}
+            </button>
+          </div>
         )}
       </div>
     </section>

@@ -6,6 +6,9 @@ import { getAllPopularTools } from '@/data/popular-tools'
 export const metadata: Metadata = {
   title: 'HTML Sitemap',
   description: 'Complete sitemap of all pages, tools, and resources available on FadiTools',
+  alternates: {
+    canonical: 'https://faditools.com/sitemap',
+  },
   robots: {
     index: true,
     follow: true,

@@ -2,6 +2,46 @@
 
 import { useState } from 'react'
 
+const TOOL_LOGO_MAP: Record<string, string> = {
+  semrush: '/images/tools/semrush-logo.svg',
+  ahrefs: '/images/tools/ahrefs-logo.svg',
+  moz: '/images/tools/moz-logo.svg',
+  majestic: '/images/tools/seo-tools.svg',
+  kwfinder: '/images/tools/seo-tools.svg',
+  ubersuggest: '/images/tools/seo-tools.svg',
+  spyfu: '/images/tools/seo-tools.svg',
+  woorank: '/images/tools/seo-tools.svg',
+  chatgpt: '/images/tools/chatgpt-logo.svg',
+  grammarly: '/images/tools/content-tools.svg',
+  quillbot: '/images/tools/content-tools.svg',
+  jasper: '/images/tools/ai-tools.svg',
+  writesonic: '/images/tools/ai-tools.svg',
+  rytr: '/images/tools/ai-tools.svg',
+  canva: '/images/tools/canva-logo.svg',
+  crello: '/images/tools/design-tools.svg',
+  netflix: '/images/tools/netflix-logo.svg',
+  claude: '/images/tools/claude-logo.svg',
+  leonardo: '/images/tools/ai-tools.svg',
+  prezi: '/images/tools/design-tools.svg',
+  coursera: '/images/tools/content-tools.svg',
+  udemy: '/images/tools/content-tools.svg',
+  skillshare: '/images/tools/content-tools.svg',
+  turnitin: '/images/tools/content-tools.svg',
+}
+
+function getToolLogo(toolName: string): string {
+  const key = toolName
+    .toLowerCase()
+    .replace(/[@$]/g, (m) => (m === '@' ? 'a' : 's'))
+    .replace(/\s+/g, ' ')
+    .trim()
+  const slug = key.replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+  for (const [name, logo] of Object.entries(TOOL_LOGO_MAP)) {
+    if (slug.includes(name) || key.includes(name)) return logo
+  }
+  return '/images/tools/seo-tools.svg'
+}
+
 export const ToolsPackagesSection = () => {
   const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({})
   
@@ -10,80 +50,69 @@ export const ToolsPackagesSection = () => {
     {
       id: 'seo-combo',
       name: 'SEO Combo',
-      price: '$30.00',
+      price: '$25.00',
       description: 'Essential SEO tools for professionals',
-      toolCount: 11,
-      tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
       allTools: [
-        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
-        'Screaming Frog', 'GTmetrix', 'Pingdom', 'Yoast SEO',
-        'Rank Math', 'SEO PowerSuite'
+        'Ahrefs', 'SEMrush Guru', 'MOZ Pro', 'Majestic', 'Kwfinder', 'Keywordtool io', 'Ubersuggest', 'SerpState', 'Answer the public', 'Woorank', 'Spyfu', 'SEOptimer',
+        'ChatGPT 4', 'Bypass GPT', 'Grammarly', 'Quetext premium', 'WordAi', 'Hix ai', 'Quillbot', 'Spin Rewriter', 'WordHero', 'WordTune', 'SmartCopy', 'CloserCopy', 'Copymatic ai', 'Jasper Ai', 'WriteSonic', 'Rytr me', 'Jenni ai',
+        'CANVA pro', 'Crello', 'Envato Elements', 'Leonardo.AI', 'Freepik', 'Vecteezy', 'Designs ai', 'CAPCUT Pro', 'PicsArt', 'Fotojet', 'IconScout', 'Renderforest', 'Invideo io',
+        'GPL Themes/Plugins',
+        'Netflix', 'Prime Video', 'Chaupal tv',
+        'Indexification', 'Ecomhunt', 'Sell the trend', 'Niche Scraper', 'Helium 10', 'Semscoop', 'Buzzsumo', 'Picmonkey', 'Word Tracker',
+        'Epidemicsound', 'Slidebean', 'Motionarray', 'Prezi', 'Udemy', 'Skill Share', 'Turnitin', 'Coursera', 'Scribd Premium'
       ],
       savings: 'Save $30',
       popular: false,
-      mainLogo: '/images/tools/semrush-logo.svg',
       icon: 'SEO Combo icon'
     },
     {
       id: 'heavy-pack',
-      name: 'Heavy Pack',
-      price: '$40.00',
+      name: 'Small Pack',
+      price: '$15.00',
       description: 'Complete digital marketing solution',
-      toolCount: 15,
-      tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
       allTools: [
-        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
-        'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
-        'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
-        'Google Analytics', 'Search Console'
+        'SEMrush Guru', 'MOZ Pro', 'Majestic', 'Kwfinder', 'Keywordtool io', 'Ubersuggest', 'SerpState', 'Answer the public', 'Woorank', 'Spyfu', 'SEOptimer',
+        'ChatGPT 4', 'Grammarly', 'WordAi', 'Quillbot', 'Spin Rewriter', 'WordHero', 'WordTune', 'SmartCopy', 'CloserCopy', 'Copy ai', 'Copymatic ai', 'Jasper Ai', 'WriteSonic', 'Rytr me', 'Jenni ai',
+        'CANVA pro', 'Crello', 'Envato Elements', 'Leonardo.AI', 'Freepik', 'Vecteezy', 'StoryBlocks', 'Designs ai', 'PicsArt', 'Fotojet', 'IconScout', 'Renderforest',
+        'GPL Themes/Plugins',
+        'Netflix', 'Prime Video', 'Chaupal tv',
+        'Indexification', 'Ecomhunt', 'Salehoo', 'Sell the trend', 'Niche Scraper', 'Helium 10', 'Semscoop', 'Buzzsumo', 'Buzzstream', 'Picmonkey', 'Word Tracker',
+        'Epidemicsound', 'Slidebean', 'Motionarray', 'Prezi', 'Udemy', 'Skill Share', 'Turnitin', 'Linkedin Learning', 'Coursera', 'Scribd Premium'
       ],
       savings: 'Save $45',
       popular: true,
-      mainLogo: '/images/tools/canva-logo.svg',
-      icon: 'Heavy Pack icon'
+      icon: 'Small Pack icon'
     },
     {
       id: 'mega-pack',
       name: 'Mega Pack',
       price: '$50.00',
       description: 'Advanced tools for agencies',
-      toolCount: 20,
-      tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
       allTools: [
-        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
-        'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
-        'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
-        'Google Analytics', 'Search Console', 'Ubersuggest',
-        'KWFinder', 'SurferSEO', 'ContentKing', 'DeepCrawl'
+        'Ahrefs', 'SEMrush Guru', 'MOZ Pro', 'Majestic', 'Kwfinder', 'Keywordtool io', 'Ubersuggest', 'SerpState', 'Answer the public', 'Woorank', 'Spyfu', 'SEOptimer', 'SEOSITECHECKUP',
+        'ChatGPT 4', 'Bypass GPT', 'Grammarly', 'Quetext premium', 'WordAi', 'You Ai', 'Claude Ai', 'Hix Ai', 'Copy Ai', 'Jasper Ai', 'Copymatic Ai', 'Stealthwriter Ai', 'Jenni ai', 'Quillbot', 'Spin Rewriter', 'WordHero', 'WordTune', 'SmartCopy', 'CloserCopy', 'Writerzen', 'WriteSonic', 'Rytr me',
+        'CANVA pro', 'Crello', 'Envato Elements', 'Leonardo.AI', 'Freepik', 'Vecteezy', 'StoryBlocks', 'Designs ai', 'CAPCUT Pro', 'PicsArt', 'Fotojet', 'Invideo io', 'IconScout', 'Renderforest',
+        'GPL Themes/Plugins',
+        'Netflix', 'Prime Video', 'Chaupal tv',
+        'Indexification', 'Ecomhunt', 'Sell the trend', 'SaleHoo', 'Niche Scraper', 'Helium 10', 'Jungle Scout', 'Viral Launch', 'Semscoop', 'Buzzsumo', 'Buzzstream', 'Se Ranking', 'Picmonkey', 'Word Tracker',
+        'Epidemicsound', 'Slidebean', 'Motionarray', 'Prezi', 'Udemy', 'Skill Share', 'Turnitin', 'Linkedin Learning', 'Coursera', 'Scribd Premium'
       ],
       savings: 'Save $60',
       popular: false,
-      mainLogo: '/images/tools/chatgpt-logo.svg',
       icon: 'Mega Pack icon'
     },
     {
       id: 'mega-combo-pack',
-      name: 'Mega Combo Pack',
-      price: '$65.00',
+      name: 'Writer Pack',
+      price: '$15.00',
       description: 'All premium tools included',
-      toolCount: 42,
-      tools: ['SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic'],
       allTools: [
-        'SEMrush', 'Ahrefs', 'Moz Pro', 'Majestic', 'SpyFu',
-        'Canva Pro', 'Grammarly', 'BuzzSumo', 'Hootsuite',
-        'Buffer', 'Mailchimp', 'ConvertKit', 'Hotjar',
-        'Google Analytics', 'Search Console', 'Ubersuggest',
-        'KWFinder', 'SurferSEO', 'ContentKing', 'DeepCrawl',
-        'ChatGPT Plus', 'Claude Pro', 'Jasper AI', 'Copy.ai',
-        'RunwayML', 'Midjourney', 'DALL-E', 'Stable Diffusion',
-        'Netflix', 'Spotify', 'Adobe Creative Suite', 'Figma',
-        'Notion', 'Slack', 'Zoom', 'Loom', 'Calendly',
-        'HubSpot', 'Salesforce', 'Zapier', 'Airtable', 'Monday.com'
+        'ChatGPT 4', 'Bypass GPT', 'Grammarly', 'Quetext', 'WordAi', 'You Ai', 'Claude Ai', 'Hix Ai', 'Copymatic AI', 'Jasper Ai', 'Copy AI', 'Stealthwriter Ai', 'Jeeni Ai', 'SpinRewriter', 'Quillbot', 'WordHero', 'SmartCopy', 'WordTune', 'CloserCopy', 'Writerzen', 'Writesonic', 'Rytr me',
+        'Canva', 'Crello', 'WordTracker', 'Motionarray', 'Prezi', 'Turnitin', 'Coursera', 'Leonardo.AI'
       ],
       savings: 'Save $100',
       popular: false,
-      mainLogo: '/images/tools/ahrefs-logo.svg',
-      icon: 'Mega Combo Pack icon'
+      icon: 'Writer Pack icon'
     }
   ]
 
@@ -104,7 +133,10 @@ export const ToolsPackagesSection = () => {
 
         {/* Packages Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
-          {packages.map((pkg, index) => (
+          {packages.map((pkg, index) => {
+          const frontTools = pkg.allTools.slice(0, 4)
+          const toolCount = pkg.allTools.length
+          return (
             <div 
               key={pkg.id}
               className="relative h-[520px]"
@@ -137,7 +169,7 @@ export const ToolsPackagesSection = () => {
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 rounded-lg overflow-hidden group-hover:scale-110 transition-transform duration-300 animate-float-delay-1">
                         <img
-                          src={pkg.mainLogo}
+                          src={getToolLogo(pkg.allTools[0] || '')}
                           alt={pkg.name}
                           className="w-full h-full object-contain p-1"
                         />
@@ -154,50 +186,29 @@ export const ToolsPackagesSection = () => {
                     {/* Price and Tool Count */}
                     <div className="mb-4">
                       <div className="text-2xl font-bold text-gray-900 mb-1">{pkg.price}</div>
-                      <div className="text-sm text-gray-500">{pkg.toolCount} tools</div>
+                      <div className="text-sm text-gray-500">{toolCount} tools</div>
                     </div>
                     
                     {/* Tools List */}
                     <div className="mb-6 flex-1">
                       <h4 className="text-sm font-medium text-gray-900 mb-3">Includes:</h4>
                       <div className="space-y-2">
-                        {pkg.tools.map((tool, toolIndex) => {
-                          // Get the correct logo path for each tool
-                          const getToolLogo = (toolName: string) => {
-                            const toolNameLower = toolName.toLowerCase().replace(/\$/g, '').replace(' ', '-')
-                            switch (toolNameLower) {
-                              case 'semru$h':
-                              case 'semrush':
-                                return '/images/tools/semrush-logo.svg'
-                              case 'ahref$':
-                              case 'ahrefs':
-                                return '/images/tools/ahrefs-logo.svg'
-                              case 'moz-pro':
-                                return '/images/tools/moz-logo.svg'
-                              case 'majestic':
-                                return '/images/tools/seo-tools.svg'
-                              default:
-                                return '/images/tools/seo-tools.svg'
-                            }
-                          }
-                          
-                          return (
+                        {frontTools.map((tool, toolIndex) => (
                             <div key={toolIndex} className="flex items-center gap-2">
-                              <img 
+                              <img
                                 src={getToolLogo(tool)}
                                 alt={tool}
-                                className="w-5 h-5 object-contain"
+                                className="w-5 h-5 object-contain flex-shrink-0"
                               />
                               <span className="text-sm text-gray-700">{tool}</span>
                             </div>
-                          )
-                        })}
+                          ))}
                         {/* Click to view all tools - replaces tooltip */}
                         <button
                           onClick={() => setFlippedCards(prev => ({ ...prev, [pkg.id]: true }))}
                           className="text-sm text-emerald-600 cursor-pointer hover:text-emerald-700 transition-colors duration-200 underline"
                         >
-                          +{pkg.toolCount - pkg.tools.length} more tools
+                          +{toolCount - frontTools.length} more tools
                         </button>
                       </div>
                     </div>
@@ -239,17 +250,19 @@ export const ToolsPackagesSection = () => {
 
                     {/* Title */}
                     <h3 className="text-xl font-bold text-gray-900 mb-4">
-                      All {pkg.toolCount} Tools
+                      All {toolCount} Tools
                     </h3>
 
                     {/* Tools List */}
                     <div className="flex-1 overflow-y-auto pr-2" style={{ maxHeight: '330px' }}>
                       <div className="grid grid-cols-1 gap-2">
                         {pkg.allTools.map((tool, i) => (
-                          <div key={i} className="flex items-start text-sm">
-                            <svg className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
+                          <div key={i} className="flex items-center gap-2 text-sm">
+                            <img
+                              src={getToolLogo(tool)}
+                              alt={tool}
+                              className="w-5 h-5 object-contain flex-shrink-0"
+                            />
                             <span className="text-gray-700">{tool}</span>
                           </div>
                         ))}
@@ -259,7 +272,8 @@ export const ToolsPackagesSection = () => {
                 </div>
               </div>
             </div>
-          ))}
+          )
+        })}
         </div>
 
         <style jsx>{`

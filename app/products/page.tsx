@@ -8,6 +8,7 @@ import ProductGrid from '../../components/ProductGrid'
 import ProductSearch from '../../components/ProductSearch'
 import { Product } from '@/types'
 import { generateCanonicalUrl } from '@/lib/canonical'
+import { SEO_CONFIG } from '@/lib/seo-config'
 
 /** Top 8 popular tools ko Product shape me convert — products list aur search me dikhne ke liye */
 function popularToolsAsProducts(): Product[] {
@@ -58,6 +59,7 @@ export async function generateMetadata(): Promise<Metadata> {
       url: 'https://faditools.com/products',
       locale: 'en_US',
       type: 'website',
+      images: [SEO_CONFIG.defaultOgImage],
     },
     twitter: {
       card: 'summary_large_image',

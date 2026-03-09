@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getProducts } from '@/lib/local-content'
+import { sortProductsWithToolsFirst } from '@/data/product-id-mapping'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -35,12 +36,13 @@ export async function GET(request: NextRequest) {
   try {
     const all = getProducts()
     const filtered = all.filter((p: any) => (p.status || 'publish') === 'publish')
-    const total = filtered.length
+    const sorted = sortProductsWithToolsFirst(filtered)
+    const total = sorted.length
 
     const page = Math.max(1, parseInt(request.nextUrl.searchParams.get('page') || '1'))
     const perPage = Math.min(50, Math.max(1, parseInt(request.nextUrl.searchParams.get('per_page') || '20')))
     const start = (page - 1) * perPage
-    const slice = filtered.slice(start, start + perPage)
+    const slice = sorted.slice(start, start + perPage)
     const products = slice.map(toProductShape)
 
     return NextResponse.json(

@@ -3,6 +3,7 @@ import { fetchPages } from '@/lib/local-wp'
 import { WordPressPage } from '@/types'
 import Header from '@/components/Header'
 import { generateCanonicalUrl } from '@/lib/canonical'
+import { SEO_CONFIG } from '@/lib/seo-config'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     url: 'https://faditools.com/pages',
     locale: 'en_US',
     type: 'website',
+    images: [SEO_CONFIG.defaultOgImage],
   },
   twitter: {
     card: 'summary_large_image',

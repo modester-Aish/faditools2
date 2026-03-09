@@ -19,7 +19,7 @@ export const popularTools: PopularTool[] = [
     id: 'ahrefs',
     name: 'Ahrefs',
     slug: 'ahrefs',
-    price: '$30.00',
+    price: '$25.00',
     originalPrice: '$99.00',
     image: '/images/tools/ahrefs-logo.svg',
     description: 'Comprehensive SEO toolkit for keyword research and backlink analysis',

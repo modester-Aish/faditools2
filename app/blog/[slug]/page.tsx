@@ -5,6 +5,7 @@ import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
 import Image from 'next/image'
 import { generateCanonicalUrl } from '@/lib/canonical'
+import { SEO_CONFIG } from '@/lib/seo-config'
 
 interface BlogPostPageProps {
   params: {
@@ -43,6 +44,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         type: 'article',
         publishedTime: post.date,
         modifiedTime: post.modified ?? post.date,
+        images: [SEO_CONFIG.defaultOgImage],
       },
       twitter: {
         card: 'summary_large_image',

@@ -80,41 +80,66 @@ export const productIdMapping: ProductIdMapping = {
   'ai-seo': { productId: '60', name: 'AI SEO' },
 }
 
-/**
- * Get product ID by slug (only from the 1–60 mapping)
- */
-export function getProductIdBySlug(slug: string): string | null {
-  const mapping = productIdMapping[slug.toLowerCase()]
-  return mapping ? mapping.productId : null
+/** Slug order for sorting: 60 mapped (homepage/products) */
+export const MAPPED_SLUG_ORDER = Object.keys(productIdMapping) as string[]
+
+/** Plan slugs – section mein tools ke baad aayenge */
+const PLAN_SLUGS = ['mega-pack', 'lite-plan', 'small-plan', 'writer-plan', 'designer-plan', 'e-comrace']
+
+/** Section order: pehle 54 tools sequence mein, phir 6 plans, phir baaki */
+export const TOOLS_FIRST_SLUG_ORDER: string[] = [
+  ...MAPPED_SLUG_ORDER.filter((s) => !PLAN_SLUGS.includes(s)),
+  ...PLAN_SLUGS,
+]
+
+/** Sort: tools sequence mein upar, phir plans, phir unmapped */
+export function sortProductsWithToolsFirst<T extends { slug?: string }>(items: T[]): T[] {
+  const order = TOOLS_FIRST_SLUG_ORDER
+  const norm = (s: string) => s.replace(/-group-buy$/i, '').replace(/-group$/i, '').replace(/-buy$/i, '')
+  const indexOf = (slug: string) => {
+    const s = (slug || '').toLowerCase()
+    const i = order.indexOf(s)
+    if (i >= 0) return i
+    return order.indexOf(norm(s))
+  }
+  return [...items].sort((a, b) => {
+    const ia = indexOf(a.slug || '')
+    const ib = indexOf(b.slug || '')
+    if (ia === -1 && ib === -1) return 0
+    if (ia === -1) return 1
+    if (ib === -1) return -1
+    return ia - ib
+  })
+}
+
+/** Sort: 60 mapped first (original order), for products page etc. */
+export function sortProductsWithMappedFirst<T extends { slug?: string }>(items: T[]): T[] {
+  const order = MAPPED_SLUG_ORDER
+  return [...items].sort((a, b) => {
+    const slugA = (a.slug || '').toLowerCase()
+    const slugB = (b.slug || '').toLowerCase()
+    const ia = order.indexOf(slugA)
+    const ib = order.indexOf(slugB)
+    if (ia === -1 && ib === -1) return 0
+    if (ia === -1) return 1
+    if (ib === -1) return -1
+    return ia - ib
+  })
 }
 
 /**
- * Get product ID by product name (fuzzy match against mapping names/slugs)
+ * Get product ID by slug (only from the 1–60 mapping). Sirf slug – name matching nahi.
  */
-export function getProductIdByName(productName: string): string | null {
-  if (!productName) return null
-  const nameLower = productName.toLowerCase()
-  const commonWords = ['group', 'buy', 'tool', 'tools', 'premium', 'pro', 'subscription', 'account', 'access', 'plan', 'pack']
-  const cleanedName = nameLower
-    .replace(/[^a-z0-9\s]/g, ' ')
-    .split(/\s+/)
-    .filter(word => word.length > 2 && !commonWords.includes(word))
-    .join(' ')
-  const slugFormat = cleanedName.replace(/\s+/g, '-')
-  const exactMatch = productIdMapping[slugFormat]
-  if (exactMatch) return exactMatch.productId
-  const keywords = cleanedName.split(/\s+/).filter(word => word.length > 2)
-  for (const [slug, mapping] of Object.entries(productIdMapping)) {
-    const mappingNameLower = mapping.name.toLowerCase()
-    const slugWords = slug.split('-')
-    for (const keyword of keywords) {
-      if (slug === keyword || slug.includes(keyword) || keyword.includes(slug)) return mapping.productId
-      if (slugWords.some(w => w === keyword || w.includes(keyword) || keyword.includes(w))) return mapping.productId
-      if (mappingNameLower.includes(keyword) || keyword.includes(mappingNameLower.replace(/\s+/g, ''))) return mapping.productId
-    }
-    if (keywords.some(k => mappingNameLower.includes(k))) return mapping.productId
-  }
-  return null
+export function getProductIdBySlug(slug: string): string | null {
+  if (!slug || typeof slug !== 'string') return null
+  const s = slug.toLowerCase().trim()
+  const mapping = productIdMapping[s]
+  if (mapping) return mapping.productId
+  const withoutSuffix = s
+    .replace(/-group-buy$/i, '')
+    .replace(/-group$/i, '')
+    .replace(/-buy$/i, '')
+  return productIdMapping[withoutSuffix] ? productIdMapping[withoutSuffix].productId : null
 }
 
 /**
@@ -125,9 +150,9 @@ export function generateBuyUrl(productId: string): string {
 }
 
 /**
- * Buy URL if slug/name is in mapping, otherwise signup URL
+ * Sirf 60 mapped: slug se 1-by-1 sahi cart link; baaki signup. Name match bilkul nahi.
  */
-export function getBuyOrSignupUrl(slug: string, productName?: string): string {
-  const id = getProductIdBySlug(slug) || (productName ? getProductIdByName(productName) : null)
+export function getBuyOrSignupUrl(slug: string): string {
+  const id = getProductIdBySlug(slug)
   return id ? generateBuyUrl(id) : SIGNUP_URL
 }

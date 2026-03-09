@@ -12,6 +12,7 @@ import ToolDetail from '@/components/ToolDetail'
 import Image from 'next/image'
 import Link from 'next/link'
 import { generateSchemaGraph, getOrganizationEntity, getWebSiteEntity, getBreadcrumbEntity, getProductEntity, generateOrganizationSchema, generateWebSiteSchema, generateBreadcrumbSchema } from '@/components/StructuredData'
+import { SEO_CONFIG } from '@/lib/seo-config'
 
 // Runtime reads local JSON (synced by script)
 export const dynamic = 'force-dynamic'
@@ -42,7 +43,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
           locale: 'en_US',
           type: 'article',
           publishedTime: blogPost.date,
-          modifiedTime: blogPost.modified,
+          modifiedTime: (blogPost as any).modified,
+          images: [SEO_CONFIG.defaultOgImage],
         },
         twitter: {
           card: 'summary_large_image',
@@ -77,6 +79,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
           url: `https://faditools.com/${params.slug}`,
           locale: 'en_US',
           type: 'website',
+          images: [SEO_CONFIG.defaultOgImage],
         },
         twitter: {
           card: 'summary_large_image',
@@ -110,6 +113,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
           url: `https://faditools.com/${popularTool.slug}`,
           locale: 'en_US',
           type: 'website',
+          images: [SEO_CONFIG.defaultOgImage],
         },
         twitter: {
           card: 'summary_large_image',
@@ -142,6 +146,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
           url: `https://faditools.com/${tool.slug || tool.id}`,
           locale: 'en_US',
           type: 'website',
+          images: [SEO_CONFIG.defaultOgImage],
         },
         twitter: {
           card: 'summary_large_image',
@@ -193,6 +198,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         url: `https://faditools.com/${product.slug}`,
         locale: 'en_US',
         type: 'website',
+        images: [SEO_CONFIG.defaultOgImage],
       },
       twitter: {
         card: 'summary_large_image',
@@ -209,6 +215,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return {
       title: 'Page',
       description: 'Page details',
+      openGraph: {
+        title: 'Page',
+        description: 'Page details',
+        url: SEO_CONFIG.siteUrl,
+        images: [SEO_CONFIG.defaultOgImage],
+      },
     }
   }
 }

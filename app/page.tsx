@@ -5,6 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { generateCanonicalUrl } from '@/lib/canonical'
 import { fetchProducts } from '@/lib/local-wp'
+import { getAllPopularTools } from '@/data/popular-tools'
+import type { PopularTool } from '@/data/popular-tools'
+import { Product } from '@/types'
 import { PopularToolsSection, TestimonialsSection, TrustSection } from '../components/AnimatedSections'
 import { ToolsPackagesSection } from '../components/ToolsPackagesSection'
 import FAQSection from '../components/FAQSection'
@@ -60,14 +63,54 @@ export const metadata: Metadata = {
 // This caches the homepage and reduces WooCommerce API calls
 export const revalidate = 21600 // 6 hours
 
+/** Top 8 popular tools ko Product shape me — section me upar dikhane ke liye */
+function popularToolsAsProducts(): Product[] {
+  const tools = getAllPopularTools()
+  return tools.map((t: PopularTool, index: number) => {
+    const imageSrc = t.image.startsWith('http') ? t.image : t.image.startsWith('/') ? t.image : `/${t.image}`
+    return {
+      id: parseInt(t.productId || String(9000 + index), 10) || 9000 + index,
+      date: new Date().toISOString(),
+      slug: t.slug,
+      title: { rendered: t.name },
+      content: { rendered: t.longDescription || t.description },
+      excerpt: { rendered: t.description },
+      images: [{ id: 0, src: imageSrc, name: '', alt: t.name }],
+      price: t.price.replace(/[^0-9.]/g, '') || '0',
+      regular_price: t.originalPrice.replace(/[^0-9.]/g, '') || t.price.replace(/[^0-9.]/g, ''),
+      on_sale: true,
+      stock_status: 'instock' as const,
+      status: 'publish',
+      categories: [],
+      ...((t.category && { _local_categories: [{ id: 9000 + index, name: t.category, slug: t.category.toLowerCase().replace(/\s+/g, '-') }] }) as any),
+    } as Product
+  })
+}
+
+/** Homepage se sirf in 3 ko hatao (ispionage, chatgpt, netflix) – baaki kisi ko nahi */
+const HOMEPAGE_EXCLUDE_SLUGS = new Set(['ispionage', 'chatgpt', 'chatgpt-plus', 'netflix'])
+const normSlug = (s: string) => (s || '').replace(/-group-buy$/i, '').replace(/-group$/i, '').replace(/-buy$/i, '')
+
 export default async function Home() {
-  let popularProducts: Awaited<ReturnType<typeof fetchProducts>> = []
+  let popularProducts: Product[] = []
   let totalProducts = 0
   try {
+    const { sortProductsWithToolsFirst } = await import('@/data/product-id-mapping')
+    const top8 = popularToolsAsProducts()
+    const top8Slugs = new Set(top8.map((p) => p.slug))
     const all = await fetchProducts()
     const filtered = all.filter((p: any) => (p.status || 'publish') === 'publish')
-    totalProducts = filtered.length
-    popularProducts = filtered.slice(0, 20)
+    const rest = filtered.filter((p: any) => {
+      const slug = p.slug || ''
+      const n = normSlug(slug)
+      if (HOMEPAGE_EXCLUDE_SLUGS.has(n) || HOMEPAGE_EXCLUDE_SLUGS.has(slug)) return false
+      if (top8Slugs.has(slug)) return false
+      return true
+    })
+    const sortedRest = sortProductsWithToolsFirst(rest)
+    const combined = [...top8, ...sortedRest]
+    totalProducts = combined.length
+    popularProducts = combined.slice(0, 20)
   } catch (e) {
     console.error('Home: fetch products for PopularToolsSection failed', e)
   }
@@ -222,7 +265,7 @@ export default async function Home() {
       </section>
 
       {/* Popular Tools Section - same products as /products, 20 per load, See more */}
-      <PopularToolsSection initialProducts={popularProducts} totalProducts={totalProducts} />
+      <PopularToolsSection initialProducts={popularProducts} totalProducts={totalProducts} excludeSlugs={['ispionage', 'chatgpt', 'chatgpt-plus', 'netflix']} />
 
       {/* Tools Packages Section */}
       <ToolsPackagesSection />
