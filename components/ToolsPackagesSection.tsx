@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { generateBuyUrl, SIGNUP_URL } from '@/data/product-id-mapping'
 
 const TOOL_LOGO_MAP: Record<string, string> = {
   semrush: '/images/tools/semrush-logo.svg',
@@ -50,6 +51,7 @@ export const ToolsPackagesSection = () => {
     {
       id: 'seo-combo',
       name: 'SEO Combo',
+      productId: '7',
       price: '$25.00',
       description: 'Essential SEO tools for professionals',
       allTools: [
@@ -68,6 +70,7 @@ export const ToolsPackagesSection = () => {
     {
       id: 'heavy-pack',
       name: 'Small Pack',
+      productId: '6',
       price: '$15.00',
       description: 'Complete digital marketing solution',
       allTools: [
@@ -86,6 +89,7 @@ export const ToolsPackagesSection = () => {
     {
       id: 'mega-pack',
       name: 'Mega Pack',
+      productId: '1',
       price: '$50.00',
       description: 'Advanced tools for agencies',
       allTools: [
@@ -104,6 +108,7 @@ export const ToolsPackagesSection = () => {
     {
       id: 'mega-combo-pack',
       name: 'Writer Pack',
+      productId: '8',
       price: '$15.00',
       description: 'All premium tools included',
       allTools: [
@@ -216,7 +221,7 @@ export const ToolsPackagesSection = () => {
                     {/* Action Buttons - Fixed at bottom */}
                     <div className="pt-4">
                       <a 
-                        href="https://members.buyseo.org/signup" 
+                        href={pkg.productId ? generateBuyUrl(pkg.productId) : SIGNUP_URL}
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="w-full py-3 px-4 bg-emerald-600 text-white rounded-lg font-semibold text-center block hover:bg-emerald-700 transition-colors transform group-hover:scale-105 shadow-lg"
