@@ -144,7 +144,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://faditools.com/feed.xml" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
-        <meta name="google-site-verification" content="FLAscQ24VbDi1GaSCy0mIVHSFr6L8GOTXEK4yBN1tVk" />
+        <meta name="google-site-verification" content="12RUQGTb4pDfBnos0FueAq6seC22wJl6Bvs8JyihvVM" />
         <meta name="msvalidate.01" content="CA9C80743C5C403924230A48CF321E7C" />
         <meta name="baidu-site-verification" content="YOUR_BAIDU_VERIFICATION_CODE" />
         <meta name="yandex-verification" content="YOUR_YANDEX_VERIFICATION_CODE" />
